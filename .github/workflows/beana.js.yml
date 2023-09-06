@@ -29,7 +29,8 @@ jobs:
     - name: Deploy to Vercel Action
       uses: BetaHuhn/deploy-to-vercel-action@v1.9.12
       with:
-        GITHUB_TOKEN: ${{ secrets.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}}
+        GITHUB_TOKEN: ${{ secrets.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}}
+        GH_PAT: ${{ secrets.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 }}
         VERCEL_TOKEN: ${{ secrets.nmx36ni8l2vj6oF3sLBxVLTL}}
         VERCEL_ORG_ID: ${{ secrets.RhZz8MUxNYlkFUYGDkONEuGj}}
         VERCEL_PROJECT_ID: ${{ secrets.prj_PxhMP9RnWxDJCHSx6CVmDmQAfXJH}}
