@@ -11,6 +11,17 @@ input {
 	font-family: "Poppins", sans-serif;
 }
 
+.RiveContainer {
+	position: absolute;
+	bottom: 68.5%;
+	left: 24.5%;
+	height: 50%;
+	width: 50%;
+	margin: 0;
+	padding: 0;
+	z-index: -1;
+}
+
 .container {
 	position: relative;
 	width: 100%;
@@ -60,9 +71,24 @@ form.sign-in-form {
 	z-index: 2;
 }
 
-.title {
-	font-size: 2.2rem;
-	color: #444;
+.title-signin {
+	margin-top: 80px;
+	border-radius: 35px;
+	padding: 10px 60px;
+	background-color: #86bb86;
+	box-shadow: 2px 5px #888888;
+	font-size: 1.6rem;
+	color: #ffffff;
+	margin-bottom: 12px;
+}
+
+.title-signup {
+	border-radius: 35px;
+	padding: 7px 50px;
+	background-color: #86bb86;
+	box-shadow: 2px 5px #888888;
+	font-size: 1.9rem;
+	color: #ffffff;
 	margin-bottom: 10px;
 }
 
@@ -158,6 +184,7 @@ input:-webkit-autofill:focus-within {
 
 .btn {
 	width: 150px;
+	box-shadow: 0 6px 14px 0 rgba(0, 0, 0, 0.2), 0 6px 14px 0 rgba(0, 0, 0, 0.19);
 	background-color: #86bb86;
 	border: none;
 	outline: none;
@@ -173,6 +200,19 @@ input:-webkit-autofill:focus-within {
 
 .btn:hover {
 	background-color: #6db36d;
+}
+
+.forgot-password {
+	padding-bottom: 10px;
+	position: relative;
+	left: 100px;
+}
+
+.forgot-password:hover {
+	padding-bottom: 10px;
+	position: relative;
+	left: 100px;
+	color: #17b017;
 }
 
 .panels-container {
@@ -253,10 +293,12 @@ input:-webkit-autofill:focus-within {
 	border: 2px solid #fff;
 	width: 130px;
 	height: 41px;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	font-weight: 600;
 	font-size: 0.8rem;
 }
-.btn.transparent:hover{
+
+.btn.transparent:hover {
 	background-color: #fff;
 	color: #49B949;
 	border: 2px solid #17b017;
@@ -408,6 +450,9 @@ input:-webkit-autofill:focus-within {
 		top: 5%;
 		transform: translate(-50%, 0);
 	}
+	.RiveContainer {
+		visibility: hidden;
+	}
 }
 
 @media (max-width: 570px) {
@@ -435,5 +480,12 @@ input:-webkit-autofill:focus-within {
 	.container.sign-up-mode:before {
 		bottom: 28%;
 		left: 50%;
+	}
+
+	.RiveContainer {
+		visibility: hidden;
+	}
+	.icon-password {
+		padding-top: 16px;
 	}
 }
