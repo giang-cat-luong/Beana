@@ -1,0 +1,52 @@
+.headerContainer {
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+}
+
+.headerTop {
+    background-color: #d6fcdf;
+    padding-left: 10px;
+   
+}
+
+.headerTopContent {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 50px;
+    
+}
+
+.contentLeft {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #0E740E;
+    padding: 0.2rem;
+    margin-right: 10px;
+}
+
+.contentRight {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    background-color: #0E740E;
+    padding: 0px 10px;
+}
+
+.headerIcon {
+    margin-right: 5px;
+    width: 25px;
+}
+
+.headerTopText {
+    font-size: 13px;
+}
+.megaMenu{
+   position: relative;
+   z-index: 100;
+    border: 1px solid #0E740E;
+    margin-top: 10px;
+    
+}
