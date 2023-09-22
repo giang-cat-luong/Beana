@@ -27,7 +27,7 @@ export default function header() {
                             style={{ paddingRight: '5px' }}
                             fixedWidth
                         />
-                        <p className={styles.headerTopText}>Contact us</p>
+                        <p className={styles.headerTopText}>CONTACT US</p>
                     </div>
                     <div className={styles.contentRight}>
                         <img src='../assets/facebook.svg' className={styles.headerIcon} />
@@ -38,7 +38,7 @@ export default function header() {
             <div>
                 <nav class={styles.headerBot}>
                     <div class=" flex justify-between  lg:py-5 px-20 py-20 border-b ">
-                        <div className='flex items-center flex-1'>
+                        <div className='flex items-center '>
                             <a href="https://beana.com" class="flex items-center pt-1 ">
                                 <img src="./assets/logo.png" class="w-60" alt="Beana Logo" />
                             </a>
@@ -51,7 +51,7 @@ export default function header() {
                             </svg>
                         </button> */}
                         <div class=" items-center justify-between  font-bold  w-full md:flex md:w-auto md:order-1 ">
-                            <ul class="flex gap-8 mr-16 text-[16px]">
+                            <ul class="flex gap-8 mr-16 text-[14px]">
                                 <Link to='./'>
                                     <li className='beana-top-menu-item'>
                                         TRANG CHỦ
@@ -64,7 +64,7 @@ export default function header() {
                                     <div class='hidden group-hover:flex flex-col absolute left-0 p-10  w-full bg-transparent z-20 text-black duration-300'>
                                         <div class="grid grid-cols-2 grid-cols-4 gap-5" />
                                     </div>
-                                    <div class='hidden group-hover:flex flex-col absolute left-0 p-10 top-[136px] w-full border-t-2 bg-white z-20 text-black duration-800 '>
+                                    <div class=' group-hover:flex flex-col absolute left-0 p-10 top-[136px] w-full border-t-2 bg-white z-20 text-black duration-800 '>
                                         <div class="grid grid-cols-2 grid-cols-4 gap-5 mx-28">
                                             <div className='flex flex-col'>
                                                 <h3 className='beana-top-menu-text'>Theo Loại</h3>
