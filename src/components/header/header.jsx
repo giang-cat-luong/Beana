@@ -1,10 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from './header.module.css'
-import { faEnvelope, faSearch, faLocationDot } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react'
+import { faEnvelope, faSearch, faLocationDot, faUser, faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function header() {
+
+    const [scrolled, setScrolled] = useState(false);
     const [toogleMenu, setToogleMenu] = useState(false);
 
     const openMegaMenu = () => {
@@ -14,11 +16,35 @@ export default function header() {
         setToogleMenu(false);
     }
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
 
     return (
-        <div className={styles.headerContainer}>
+        <div className={`${styles.headerContainer} ${scrolled ? styles.scrolled : ''}`}>
             <div className={styles.headerTop}>
-                <div className={styles.headerTopContent}>
+                {scrolled ? (<div></div>) : (<div className={styles.headerTopContent}>
+                    <div className={styles.contentLeft}>
+                        <FontAwesomeIcon
+                            icon={faLocationDot}
+                            color="#0E740E"
+                            size="lg"
+                            style={{ paddingRight: '5px' }}
+                            fixedWidth
+                        />
+                        <p className={styles.headerTopText}>VIETNAM</p>
+                    </div>
                     <div className={styles.contentLeft}>
                         <FontAwesomeIcon
                             icon={faEnvelope}
@@ -33,7 +59,8 @@ export default function header() {
                         <img src='../assets/facebook.svg' className={styles.headerIcon} />
                         <a href='#' style={{ alignItems: 'center' }}> <p className={styles.headerTopText} >JOIN FANPAGE</p></a>
                     </div>
-                </div>
+                </div>)}
+
             </div>
             <div>
                 <nav class={styles.headerBot}>
@@ -50,7 +77,7 @@ export default function header() {
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
                             </svg>
                         </button> */}
-                        <div class=" items-center justify-between  font-bold  w-full md:flex md:w-auto md:order-1 ">
+                        <div class=" items-center justify-between ml-8  font-bold  w-full md:flex md:w-auto md:order-1 ">
                             <ul class="flex gap-8 mr-16 text-[14px]">
                                 <Link to='./'>
                                     <li className='beana-top-menu-item'>
@@ -61,10 +88,7 @@ export default function header() {
                                     <li className='beana-top-menu-item'>
                                         SẢN PHẨM
                                     </li >
-                                    <div class='hidden group-hover:flex flex-col absolute left-0 p-10  w-full bg-transparent z-20 text-black duration-300'>
-                                        <div class="grid grid-cols-2 grid-cols-4 gap-5" />
-                                    </div>
-                                    <div class=' group-hover:flex flex-col absolute left-0 p-10 top-[136px] w-full border-t-2 bg-white z-20 text-black duration-800 '>
+                                    <div className={`group ${scrolled ? 'top-[110px]' : 'top-[136px]'} hidden group-hover:flex flex-col absolute left-0 p-10 w-full border-t-2 bg-white z-20 text-black duration-800`}>
                                         <div class="grid grid-cols-2 grid-cols-4 gap-5 mx-28">
                                             <div className='flex flex-col'>
                                                 <h3 className='beana-top-menu-text'>Theo Loại</h3>
@@ -115,16 +139,14 @@ export default function header() {
                                 </Link>
                                 <Link to='./'>
                                     <li className='beana-top-menu-item group'>
-                                        CAMERA Q&A
+                                        MẸO CHĂM SÓC DA
                                     </li >
                                 </Link>
                                 <Link to='./'>
                                     <li className='beana-top-menu-item group'>
-                                        MẸO CHĂM SÓC DA
+                                        VỀ BEANA
                                     </li >
                                 </Link>
-
-
                             </ul>
                         </div>
                         <div className='items-center justify-between  font-bold  w-full md:flex md:w-auto md:order-1'>
@@ -140,19 +162,37 @@ export default function header() {
                                     <div className='border-solid border-r-2 border-[#767373] p-2'></div>
                                     <div className='flex flex-row'>
                                         <FontAwesomeIcon
-                                            icon={faLocationDot}
+                                            icon={faUser}
                                             color="#0E740E"
                                             size="lg"
                                             style={{ paddingLeft: '10px' }}
                                             fixedWidth
                                         />
-                                        <p>VN (VIETNAM)</p>
+                                        <p className='pl-1 text-sm font-semibold'> Đăng Nhập</p>
                                     </div>
                                 </li>
                             </ul>
                         </div>
+                        <div className='flex flex-row items-center justify-between bg-[#86bb86] px-4 ml-8 my-2  rounded-[40px] w-full md:flex md:w-auto md:order-1'>
+                            <div>
+                                <FontAwesomeIcon
+                                    icon={faCartShopping}
+                                    color="#fff"
+                                    size="lg"
+                                    style={{ paddingLeft: '10px' }}
+                                    fixedWidth
+                                />
+                            </div>
+                            <div className='flex flex-col text-[#fff] pl-3'>
+                                <div className='font-bold text-sm'>
+                                    3.000.000đ
+                                </div>
+                                <div className='font-light text-xs'>
+                                    12 sản phẩm
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
                 </nav>
             </div>
         </div>

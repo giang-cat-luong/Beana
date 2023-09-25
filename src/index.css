@@ -24,4 +24,7 @@
 .beana-bottom-links{
     @apply hover:underline
 }
+.beana-product-title-header{
+    @apply font-bold text-[22px] mb-10
+}
 
