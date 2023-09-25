@@ -1,6 +1,15 @@
 .headerContainer {
     font-family: 'Montserrat', sans-serif;
     width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background-color: #fff;
+    transition: background-color 0.5s ease; 
+}
+
+.scrolled {
+    background-color: #d6fcdf;
 }
 
 .headerTop {

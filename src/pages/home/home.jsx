@@ -4,20 +4,26 @@ import "./home.css";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
 import Slider from "../../components/slider/slider"
+import LandingPage from "../home/components/landingPage/landingPage"
+
 
 export default function Home() {
     return (
         <>
-            <Header />
+            <div className="bg-[#FAF9F5]">
+                <Header />
 
-            <div className="body">
-                <div className="component">
-                    <Outlet />
-                    <Slider />
+                <div className="body">
+                    <div className="component">
+                        <Outlet />
+                        <Slider />
+                        <LandingPage />
+
+                    </div>
                 </div>
-            </div>
 
-            <Footer />
+                <Footer />
+            </div >
         </>
     );
 }
