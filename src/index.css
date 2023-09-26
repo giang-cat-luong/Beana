@@ -25,6 +25,6 @@
     @apply hover:underline
 }
 .beana-product-title-header{
-    @apply font-bold text-[22px] mb-10
+    @apply font-bold text-[22px] mb-10 flex justify-center
 }
 
