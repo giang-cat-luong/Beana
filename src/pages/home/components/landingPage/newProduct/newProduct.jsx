@@ -1,4 +1,4 @@
-import SingleProduct from '../../components/singleProduct/singleProduct'
+import SingleProduct from '../../../../../components/singleProduct/singleProduct'
 
 export default function newProduct() {
 
