@@ -1,4 +1,4 @@
-import SingleProduct from "../../../../../components/singleProduct/singleProduct"
+import SingleProduct from "../../../components/singleProduct/singleProduct"
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -103,15 +103,18 @@ export default function bestSellerProduct() {
     return (
         <div className='flex flex-col justify-center mt-16 relative group'>
             <h1 className='beana-product-title-header'>SẢN PHẨM BÁN CHẠY NHẤT</h1>
-            <div className='max-w-screen-2xl px-36 pb-20'>
+            <div className='max-w-screen-2xl px-[136px] pb-20'>
                 <Slider {...settings}>
                     {productBestSeller.map((category) => (
-                        <SingleProduct
-                            url={category.url}
-                            name={category.name}
-                            skinType={category.skinType}
-                            price={category.price}
-                        />
+                        <div className="px-2">
+                            <SingleProduct
+                                url={category.url}
+                                name={category.name}
+                                skinType={category.skinType}
+                                price={category.price}
+                            />
+                        </div>
+
                     ))}
                 </Slider>
             </div>
