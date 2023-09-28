@@ -1,12 +1,14 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "./login.css";
+import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faUser, faEnvelope, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useRive, useStateMachineInput } from "@rive-app/react-canvas";
 
 
 
-function Login() {
+function Login({ props }) {
+
     const [isSignUpMode, setIsSignUpMode] = useState(false);
     const [isShow, setIsShow] = useState(false);
     const [isShowConfirm, setIsShowConfirm] = useState(false);
@@ -147,7 +149,7 @@ function Login() {
 
     return (
         <Fragment>
-            <div className={`container ${isSignUpMode ? "sign-up-mode" : ""}`}>
+            <div className={`container ${isSignUpMode ? props && "sign-up-mode" : props}`}>
                 <div className="forms-container">
                     <div className="signin-signup">
                         <form action="#" className="sign-in-form" onSubmit={handleSubmit}>
@@ -217,7 +219,7 @@ function Login() {
                                 <p >Bạn quên mật khẩu?</p>
                             </a>
                             <button
-                                onMouseOver={() =>{ 
+                                onMouseOver={() => {
                                     setGlance(false)
                                     setHangUp(false)
                                 }}
@@ -306,7 +308,6 @@ function Login() {
                                 </div>
                             </div>
                             <input
-
                                 type="submit"
                                 className="btn"
                                 value="Sign up"
@@ -335,9 +336,11 @@ function Login() {
                             <p>
                                 Đăng kí tải khoản ngay để trải nghiệm dịch vụ quét và chăm sóc da mặt hàng đầu Việt Nam.
                             </p>
-                            <button className="btn transparent" onClick={toggleMode}>
-                                Đăng ký
-                            </button>
+                            <Link to="/signup">
+                                <button className="btn transparent" onClick={toggleMode}>
+                                    Đăng ký
+                                </button>
+                            </Link>
                         </div>
                         <img src="/assets/phone.png" className="image" alt="" />
                     </div>
@@ -347,9 +350,11 @@ function Login() {
                             <p>
                                 Đăng nhập ngay để nhận được ưu đãi và dịch vụ quét và chăm sóc da mặt hàng đầu Việt Nam.
                             </p>
-                            <button className="btn transparent" onClick={toggleMode}>
-                                Đăng nhập
-                            </button>
+                            <Link to="/login">
+                                <button className="btn transparent" onClick={toggleMode}>
+                                    Đăng nhập
+                                </button>
+                            </Link>
                         </div>
                         <img
                             src="/assets/phone1.png"
@@ -360,7 +365,7 @@ function Login() {
                     </div>
                 </div>
             </div>
-        </Fragment>
+        </Fragment >
     );
 }
 

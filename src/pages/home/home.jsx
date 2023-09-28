@@ -3,9 +3,6 @@ import { Outlet } from "react-router-dom";
 import "./home.css";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
-import Slider from "../../components/slider/slider"
-import LandingPage from "../home/components/landingPage/landingPage"
-
 
 export default function Home() {
     return (
@@ -16,8 +13,6 @@ export default function Home() {
                 <div className="body">
                     <div className="component">
                         <Outlet />
-                        <Slider />
-                        <LandingPage />
                     </div>
                 </div>
 

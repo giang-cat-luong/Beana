@@ -27,4 +27,9 @@
 .beana-product-title-header{
     @apply font-bold text-[22px] mb-10 flex justify-center
 }
-
+.beana-top-menu-text-search{
+    @apply mb-1 text-lg text-[#0E740E] pb-2
+}
+.beana-top-menu-text-links-search{
+    @apply hover:underline hover:text-[#0E740E] text-sm pb-1 font-semibold
+}
