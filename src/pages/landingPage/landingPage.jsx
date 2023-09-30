@@ -1,11 +1,13 @@
 import BannerScanning from './bannerScanning/bannerScanning'
 import BannerAboutUs from './bannerAboutUs/bannerAboutUs'
 import NewProduct from './newProduct/newProduct'
+import BannerEvent from './bannerEvent/bannerEvent'
 
 import ProductEvent from './productEvent/productEvent'
 import SkincareTips from './skincareTips/skincareTips'
 import BestSellerProduct from './bestSellerProduct/bestSellerProduct'
 import Slider from '../../components/slider/slider'
+
 
 export default function landingPage() {
     const productCategory = [
@@ -25,6 +27,7 @@ export default function landingPage() {
 
     return (
         <>
+            <BannerEvent/>
             <Slider />
             <div className=' flex flex-col justify-center mt-20'>
                 <h1 className='beana-product-title-header'>CÁC LOẠI SẢN PHẨM</h1>
