@@ -4,7 +4,8 @@ import { faEnvelope, faSearch, faLocationDot, faUser, faCartShopping, faCircleAr
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import PopularProduct from './popularProduct/popularProduct'
-import Loading from "../loading/loading"
+import Loading from '../loading/loading'
+import ProductEvent from '../../pages/landingPage/productEvent/productEvent'
 
 const popularProduct = [
     {
@@ -133,6 +134,7 @@ export default function header() {
                 )}
                 {/* Form content */}
             </div>
+            
             <div className={styles.headerTop}>
                 {scrolled ? (<div></div>) : (<div className={styles.headerTopContent}>
                     <div className={styles.contentLeft}>
@@ -157,7 +159,7 @@ export default function header() {
                     </div>
                     <div className={styles.contentRight}>
                         <img src='../assets/facebook.svg' className={styles.headerIcon} />
-                        <a href='#' style={{ alignItems: 'center' }}> <p className={styles.headerTopText} >JOIN FANPAGE</p></a>
+                        <a href='https://www.facebook.com/profile.php?id=61551793473535' style={{ alignItems: 'center' }}> <p className={styles.headerTopText} >JOIN FANPAGE</p></a>
                     </div>
                 </div>)}
 
