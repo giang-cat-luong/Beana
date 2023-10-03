@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircle } from '@fortawesome/free-solid-svg-icons'
 
-export default function slider() {
+export default function Slider() {
     const slider = [
         {
             url: './assets/slider1.jpg'

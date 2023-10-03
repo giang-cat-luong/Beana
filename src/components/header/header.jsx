@@ -3,9 +3,8 @@ import styles from './header.module.css'
 import { faEnvelope, faSearch, faLocationDot, faUser, faCartShopping, faCircleArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import PopularProduct from './popularProduct/popularProduct'
-import Loading from '../loading/loading'
-import ProductEvent from '../../pages/landingPage/productEvent/productEvent'
+import PopularProduct from './components/PopularProduct'
+import Loading from '../Loading'
 
 const popularProduct = [
     {
@@ -62,7 +61,7 @@ const skincareTips = [
 ];
 
 
-export default function header() {
+export default function Header() {
 
     const [scrolled, setScrolled] = useState(false);
     const [toggleSearch, setToggleSearch] = useState(false);
@@ -128,13 +127,11 @@ export default function header() {
                             zIndex: 9999,
                         }}
                     >
-                        {/* Add your loading spinner or animation here */}
                         <Loading />
                     </div>
                 )}
-                {/* Form content */}
             </div>
-            
+
             <div className={styles.headerTop}>
                 {scrolled ? (<div></div>) : (<div className={styles.headerTopContent}>
                     <div className={styles.contentLeft}>
@@ -165,96 +162,109 @@ export default function header() {
 
             </div>
             <div >
-                <nav class={styles.headerBot}>
-                    <div class=" flex justify-between  lg:py-5 px-20 py-20 border-b ">
+                <nav className={styles.headerBot}>
+                    <div className=" flex justify-between  lg:py-5 px-20 py-20 border-b ">
                         <div className='flex items-center '>
-                            <a href="https://beana.com" class="flex items-center pt-1 ">
-                                <img src="./assets/logo.png" class="w-60" alt="Beana Logo" />
-                            </a>
+                            <div className="flex items-center pt-1 ">
+                                <a href="https://beana.com">
+                                    <img src="./assets/logo.png" className="w-60" alt="Beana Logo" />
+                                </a>
+                            </div>
                         </div>
 
-                        {/* <button data-collapse-toggle="mega-menu-full" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu-full" aria-expanded="false">
-                            <span class="sr-only">Open main menu</span>
-                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                        {/* <button data-collapse-toggle="mega-menu-full" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu-full" aria-expanded="false">
+                            <span className="sr-only">Open main menu</span>
+                            <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
                             </svg>
                         </button> */}
-                        <div class=" items-center justify-between ml-8  font-bold  w-full md:flex md:w-auto md:order-1 ">
-                            <ul class="flex gap-8 mr-16 text-[14px]">
-                                <Link to='./'>
+                        <div className=" items-center justify-between ml-8  font-bold  w-full md:flex md:w-auto md:order-1 ">
+                            <ul className="flex gap-8 mr-16 text-[14px]">
+                                <div>
                                     <li className='beana-top-menu-item'>
-                                        TRANG CHỦ
+                                        <Link to='./'>
+                                            TRANG CHỦ
+                                        </Link>
                                     </li >
-                                </Link>
-                                <Link to='./product'>
+                                </div>
+                                <div>
                                     <div className='group'>
                                         <li className='beana-top-menu-item'>
-                                            SẢN PHẨM
+                                            <Link to='./products'>
+                                                SẢN PHẨM
+                                            </Link>
                                         </li >
-                                        <div class='hidden group-hover:flex flex-col absolute left-0 p-10  w-full bg-transparent z-20 text-black duration-300'>
+                                        <div className='hidden group-hover:flex flex-col absolute left-0 p-10  w-full bg-transparent z-20 text-black duration-300'>
                                         </div>
-                                        <div className={`group ${scrolled ? 'top-[110px]' : 'top-[136px]'} hidden group-hover:flex flex-col absolute left-0 p-10 w-full border-t-2 border-b-[1px] border-b-[#e6e1e1] bg-white z-20 text-black duration-800`}>
-                                            <div class="grid grid-cols-4 gap-5 mx-28 pb-16">
-                                                <div className='flex flex-col'>
-                                                    <h3 className='beana-top-menu-text'>Theo Loại</h3>
-                                                    <a href='' className='beana-top-menu-text-links'>Sữa rửa mặt</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Tẩy tế bào chết</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Toners</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Retinols (vitamin a1)</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Vỏ và mặt nạ</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Kem dưỡng ẩm</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Dầu dưỡng da mặt</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Kem chống nắng</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Chăm sóc mắt</a>
-                                                </div>
-                                                <div className='flex flex-col'>
-                                                    <h3 className='beana-top-menu-text'>Theo Tình Trạng Da</h3>
-                                                    <a href='' className='beana-top-menu-text-links'>Da sáng</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Hydrat hóa</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Mụn</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Chống lão hóa</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Mẩn đỏ</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Da nhạy cảm</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Bảo vệ khỏi ánh nắng</a>
-                                                </div>
-                                                <div className='flex flex-col'>
-                                                    <h3 className='beana-top-menu-text'>Bộ Sưu Tập</h3>
-                                                    <a href='' className='beana-top-menu-text-links'>Sữa rửa mặt</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Sy tín</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Vẻ đẹp nhẹ nhàng </a>
-                                                    <a href='' className='beana-top-menu-text-links'>Nắm bắt tổng số</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Nắm bắt tuổi trẻ</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Nắm bắt giấc mơ</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Một điều cần thiết</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Giải pháp chuyên nghiệp</a>
-                                                    <a href='' className='beana-top-menu-text-links'>Bẻ đẹp cuộc sống hydra</a>
-                                                </div>
-                                                <div className='flex flex-col'>
-                                                    <img src='./assets/sales.png'></img>
-                                                    <h3 className='beana-top-menu-text'>   Sản phẩm mới ra mắt</h3>
-                                                    <a href='' className='beana-top-menu-text-links'>Kem phong phú chống lão hóa toàn cầu - nuôi dưỡng & phục hồi mạnh mẽ</a>
+                                        <div className={`group ${scrolled ? 'top-[110px]' : 'top-[136px]'}  duration-500 h-0 overflow-hidden group-hover:h-[430px] absolute left-0 w-full  bg-white z-20 text-black duration-800`}>
+                                            <div className="border-t-2 border-b-[1px] border-b-[#e6e1e1]">
+                                                <div className="grid grid-cols-4 gap-5  mx-36  pt-12 pb-[67px]">
+                                                    <div className='flex flex-col'>
+                                                        <h3 className='beana-top-menu-text'>Trang điểm mặt</h3>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Kem lót</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Kem nền</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Kem che khuyết điểm</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Phẩn phủ</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Tạo khối</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Kẻ chân mày / Kẻ mắt</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Mascara</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Phấn mắt</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Má hồng</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Son môi</Link>
+                                                    </div>
+                                                    <div className='flex flex-col'>
+                                                        <h3 className='beana-top-menu-text'>Chăm sóc da mặt</h3>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Nước tẩy trang</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Bông tẩy trang</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Kem chống nắng</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Sữa rửa mặt</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Serum - Tinh chất</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Chăm sóc da mụn</Link>
+                                                        {/* <Link to="/" className='beana-top-menu-text-links'>Toners</Link>
+                                                    <Link to="/" className='beana-top-menu-text-links'>Mặt nạ</Link>
+                                                    <Link to="/" className='beana-top-menu-text-links'>Kem dưỡng ẩm</Link> */}
+                                                    </div>
+                                                    <div className='flex flex-col'>
+                                                        <h3 className='beana-top-menu-text'>Theo Tình Trạng Da</h3>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Da sáng</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Hydrat hóa</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Mụn</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Chống lão hóa</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Mẩn đỏ</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Da nhạy cảm</Link>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Bảo vệ khỏi ánh nắng</Link>
+                                                    </div>
+                                                    <div className='flex flex-col'>
+                                                        <img className='pb-3' src='./assets/sales.png'></img>
+                                                        <h3 className='beana-top-menu-text'>   Sản phẩm mới ra mắt</h3>
+                                                        <Link to="/" className='beana-top-menu-text-links'>Kem phong phú chống lão hóa toàn cầu - nuôi dưỡng & phục hồi mạnh mẽ</Link>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </Link>
-                                <Link to='./'>
+                                </div>
+                                <div>
                                     <li className='beana-top-menu-item group'>
-                                        FACE SCANNING
+                                        <Link to='./'>
+                                            FACE SCANNING
+                                        </Link>
                                     </li >
-                                </Link>
-                                <Link to='./'>
+                                </div>
+                                <div>
                                     <div className='group'>
                                         <li className='beana-top-menu-item group'>
-                                            MẸO CHĂM SÓC DA
+                                            <Link to='./skincare-tips'>
+                                                MẸO CHĂM SÓC DA
+                                            </Link>
                                         </li >
-                                        <div class='hidden group-hover:flex flex-col absolute left-0 p-10  w-full bg-transparent z-20 text-black duration-300'>
+                                        <div className='hidden group-hover:flex flex-col absolute left-0 p-10  w-full bg-transparent z-20 text-black duration-300'>
                                         </div>
-                                        <div className={`group ${scrolled ? 'top-[110px]' : 'top-[136px]'} hidden group-hover:flex flex-col absolute left-0 p-10 w-full border-t-2 border-b-[1px] border-b-[#e6e1e1] bg-white z-20 text-black duration-800`}>
-                                            <div className='flex flex-col justify-center pt-2 pb-10'>
-                                                <div className='mx-28 flex flex-row gap-10 '>
-                                                    {skincareTips.map((category) => (
-                                                        <div>
+                                        <div className={`group ${scrolled ? 'top-[110px]' : 'top-[136px]'} duration-500 h-0 overflow-hidden group-hover:h-[430px] flex-col absolute w-full left-0 bg-white z-20 text-black duration-800`}>
+                                            <div className='flex flex-col justify-center pt-12 pb-[67px] border-t-2 border-b-[1px] border-b-[#e6e1e1]'>
+                                                <div className='mx-36 flex flex-row gap-10 '>
+                                                    {skincareTips.map((category, index) => (
+                                                        <div key={index}>
                                                             <img className='w-[100%] h-[250px] rounded-[1.25rem] object-cover border-[1px] border-[#fff]' src={category.url} />
                                                             <a href="#" className="flex flex-row justify-between">
                                                                 <p className='pt-5 pl-2 font-bold text-[20px]  text-[#86bb86] hover:text-[#49B949] hover:underline'> {category.name}</p>
@@ -275,12 +285,14 @@ export default function header() {
                                             </div>
                                         </div>
                                     </div>
-                                </Link>
-                                <Link to='./'>
+                                </div>
+                                <div>
                                     <li className='beana-top-menu-item group'>
-                                        VỀ BEANA
+                                        <Link to='./about-us'>
+                                            VỀ BEANA
+                                        </Link>
                                     </li >
-                                </Link>
+                                </div>
                             </ul>
                         </div>
                         <div className='items-center justify-between  font-bold  w-full md:flex md:w-auto md:order-1'>
@@ -308,11 +320,11 @@ export default function header() {
                                         />
                                     )}
                                     {toggleSearch ? (
-                                        <div className='-z-10 border-2 border-[#606060]'>
-                                            <div className={`group ${scrolled ? 'top-[110px]' : 'top-[136px]'} flex flex-col absolute left-0 px-10 pb-10 pt-5 w-full border-t-2 bg-white z-20 text-black`}>
-                                                <div class="flex items-center max-w-screen-2xl border-b-2 border-[#606060] mx-28 mb-10">
+                                        <div className='-z-10 '>
+                                            <div className={`group ${scrolled ? 'top-[110px]' : 'top-[136px]'} flex flex-col absolute left-0 px-10 pb-10 pt-5 w-full border-t-2 border-b-[1px] border-b-[#e6e1e1] bg-white z-20 text-black`}>
+                                                <div className="flex items-center max-w-screen-2xl border-b-2 border-[#606060] mx-28 mb-10">
                                                     <img src='./assets/bean.png' className='w-6 absolute top-4 left-[10]' />
-                                                    <input class="appearance-none bg-transparent border-none w-full text-[#000] font-medium pl-8 leading-tight focus:outline-none  placeholder:text-[#404040] placeholder:font-normal text-lg" type="text" placeholder="Bạn đang tìm gì?" aria-label="Full name" />
+                                                    <input className="appearance-none bg-transparent border-none w-full text-[#000] font-medium pl-8 leading-tight focus:outline-none  placeholder:text-[#404040] placeholder:font-normal text-lg" type="text" placeholder="Bạn đang tìm gì?" aria-label="Full name" />
                                                     <FontAwesomeIcon
                                                         icon={faSearch}
                                                         color="#0E740E"
@@ -321,20 +333,20 @@ export default function header() {
                                                         fixedWidth
                                                     />
                                                 </div>
-                                                <div class="flex flex-row gap-5 mx-28">
+                                                <div className="flex flex-row gap-5 mx-28">
                                                     <div className='basis-1/4'>
                                                         <div className='flex flex-col '>
                                                             <h3 className='beana-top-menu-text-search'>Sản phẩm đang hot</h3>
-                                                            <a href='' className='beana-top-menu-text-links-search'>Sữa rửa mặt</a>
-                                                            <a href='' className='beana-top-menu-text-links-search'>Tẩy tế bào chết</a>
-                                                            <a href='' className='beana-top-menu-text-links-search'>Toners</a>
-                                                            <a href='' className='beana-top-menu-text-links-search'>Retinols (vitamin a1)</a>
+                                                            <Link to="/" className='beana-top-menu-text-links-search'>Sữa rửa mặt</Link>
+                                                            <Link to="/" className='beana-top-menu-text-links-search'>Tẩy tế bào chết</Link>
+                                                            <Link to="/" className='beana-top-menu-text-links-search'>Toners</Link>
+                                                            <Link to="/" className='beana-top-menu-text-links-search'>Retinols (vitamin a1)</Link>
                                                         </div>
                                                         <div className='flex flex-col pt-4'>
                                                             <h3 className='beana-top-menu-text-search'>Tìm kiếm gần đây của bạn</h3>
-                                                            <a href='' className='beana-top-menu-text-links-search'>Sữa rửa mặt</a>
-                                                            <a href='' className='beana-top-menu-text-links-search'>Tẩy tế bào chết</a>
-                                                            <a href='' className='beana-top-menu-text-links-search'>Toners</a>
+                                                            <Link to="/" className='beana-top-menu-text-links-search'>Sữa rửa mặt</Link>
+                                                            <Link to="/" className='beana-top-menu-text-links-search'>Tẩy tế bào chết</Link>
+                                                            <Link to="/" className='beana-top-menu-text-links-search'>Toners</Link>
                                                         </div>
                                                     </div>
                                                     <div className='flex flex-col  basis-3/4'>
@@ -343,8 +355,9 @@ export default function header() {
                                                             <p className='font-bold text-sm text-[#86bb86] hover:text-[#0E740E] hover:underline hover:cursor-pointer'>Xem tất cả</p>
                                                         </div>
                                                         <div className='flex flex-row gap-6'>
-                                                            {popularProduct.map((category) => (
+                                                            {popularProduct.map((category, index) => (
                                                                 <PopularProduct
+                                                                    key={index}
                                                                     url={category.url}
                                                                     name={category.name}
                                                                     skinType={category.skinType}
@@ -382,12 +395,12 @@ export default function header() {
                                             fixedWidth
                                         />
                                         <p className='pl-1 text-sm font-semibold text-[#000] group-hover:text-[#0E740E]' > Đăng Nhập</p>
-                                        <div class={`group ${scrolled ? 'top-[55%]' : 'bottom-[-4%]'} hidden group-hover:block absolute top-[64%] right-[18%] w-32 h-5 bg-transparent  z-20duration-300`}>
+                                        <div className={`group ${scrolled ? 'top-[55%]' : 'bottom-[-4%]'} hidden group-hover:block absolute top-[64%] right-[18%] w-32 h-5 bg-transparent  z-20duration-300`}>
                                         </div>
-                                        <div class={`group ${scrolled ? 'top-[70%]' : 'bottom-[-4%]'} hidden group-hover:block absolute right-[23.5%] w-10 h-10 bg-[#0E740E] z-20 rotate-45 duration-300`}>
+                                        <div className={`group ${scrolled ? 'top-[70%]' : 'bottom-[-4%]'} hidden group-hover:block absolute right-[23.5%] w-10 h-10 bg-[#0E740E] z-20 rotate-45 duration-300`}>
                                         </div>
                                         <div className={`group ${scrolled ? 'top-[70%]' : 'bottom-[-55%]'} hidden group-hover:block absolute right-[18%] px-4 py-3 w-50 h-30 border-2 rounded-sm bg-white z-20 text-black duration-800`}>
-                                            <div class="flex flex-col gap-3 ">
+                                            <div className="flex flex-col gap-3 ">
                                                 {/* <Link to='./login'> */}
                                                 <div onClick={handleNavigateLogin} className='flex justify-center bg-[#86bb86] text-sm text-[#fff] py-2 px-12 hover:bg-[#0E740E] cursor-pointer'>
                                                     Đăng nhập

@@ -1,8 +1,9 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import "./home.css";
-import Header from "../../components/header/header";
-import Footer from "../../components/footer/footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import Chat from "./components/Chat/Chat";
+import Voucher from "./components/voucher/voucher";
 
 export default function Home() {
     return (
@@ -10,9 +11,13 @@ export default function Home() {
             <div className="bg-[#FAF9F5]">
                 <Header />
 
-                <div className="body">
-                    <div className="component">
+                <div className="flex min-h-screen pt-[135px] font-Montserrat">
+                    <div className="flex flex-col justify-self-end w-full justify-between mb-[100px]">
                         <Outlet />
+                    </div>
+                    <div>
+                        <Chat />
+                        <Voucher />
                     </div>
                 </div>
 

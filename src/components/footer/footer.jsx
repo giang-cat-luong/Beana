@@ -1,6 +1,6 @@
-import styles from "./footer.module.css";
 
-export default function footer() {
+
+export default function Footer() {
   return (
     <div className="flex flex-col font-Montserrat">
       <div className="flex flex-row justify-between  px-14 py-6 text-sm text-[#49B949] bg-[#E0F7CD]">
@@ -85,43 +85,22 @@ export default function footer() {
           </div>
           <div className="w-full max-w-xl">
             <div className="flex items-center border-b border-[#cbcbcb] py-2">
-              <input
-                className="appearance-none bg-transparent border-none w-full text-[#fff] mr-3 py-1 px-2 leading-tight focus:outline-none placeholder:italic placeholder:text-[#d8d8d8]"
-                type="text"
-                placeholder="Địa chỉ email..."
-                aria-label="Full name"
-              />
-              <button
-                className="flex-shrink-0 bg-[transparent] hover:bg-[transparent] border-[#cbcbcb] hover:border-[#fff] text-sm border-2 text-white py-2 px-3 rounded"
-                type="button"
-              >
+              <input className="appearance-none bg-transparent border-none w-full text-[#fff] mr-3 py-1 px-2 leading-tight focus:outline-none placeholder:italic placeholder:text-[#d8d8d8]" type="text" placeholder="Địa chỉ email..." aria-label="Full name" />
+              <button className="flex-shrink-0 bg-[transparent] hover:bg-[transparent] border-[#cbcbcb] hover:border-[#fff] text-sm border-2 text-white py-2 px-3 rounded" type="button">
                 Đăng Ký
               </button>
             </div>
           </div>
           <div className="flex mt-2">
             <div className="flex items-center h-5">
-              <input
-                id="helper-checkbox"
-                aria-describedby="helper-checkbox-text"
-                type="checkbox"
-                value=""
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-              />
+              <input id="helper-checkbox" aria-describedby="helper-checkbox-text" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
             </div>
             <div className="ml-2 text-sm">
-              <label
-                for="helper-checkbox"
-                className="text-sm text-[#fff] font-normal'"
-              >
-                Bằng cách gửi email của mình, bạn đồng ý nhận email quảng cáo từ
-                Beautya.
-                <br />
-                Vui lòng xem lại Chính sách quyền riêng tư của chúng tôi, bao
-                gồm Thông báo
-                <br />
-                khuyến khích tài chính dành cho cư dân CA.
-              </label>
+              <label htmlFor="helper-checkbox" className="text-sm text-[#fff] font-normal'">Bằng cách gửi email của mình,
+                bạn đồng ý nhận email quảng cáo từ Beautya.<br />
+                Vui lòng xem lại Chính sách quyền riêng tư của chúng tôi,
+                bao gồm Thông báo<br />
+                khuyến khích tài chính dành cho cư dân CA.</label>
             </div>
           </div>
         </div>
