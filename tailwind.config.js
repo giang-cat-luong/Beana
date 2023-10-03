@@ -27,6 +27,10 @@ export default {
 
         '2xl': '1536px',
         // => @media (min-width: 1536px) { ... }
+      },
+      flexBasis: {
+        '3/8': '37.5',
+        '5/8': '62.5%',
       }
     }
   },

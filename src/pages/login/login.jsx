@@ -167,7 +167,7 @@ function Login({ props }) {
                                     }}
                                     onBlur={() => setCheck(false)}
                                     onChange={(event) => setUser(event.target.value)}
-                                    value={user}
+                                    value={user || ""}
                                     type="text"
                                     placeholder="Username"
                                     style={{ width: "100%" }}
@@ -183,7 +183,7 @@ function Login({ props }) {
                                     onFocus={() => setHangUp(true)}
                                     // onBlur={() => setHangUp(false)}
                                     //onE
-                                    value={password}
+                                    value={password || ""}
                                     type={isShow ? "text" : "password"}
                                     placeholder="Password"
                                 />
@@ -274,7 +274,7 @@ function Login({ props }) {
                                             className="icon-password" />
                                     ) : (
                                         <FontAwesomeIcon
-                                            value={password}
+                                            value={password || ""}
                                             icon={faEye}
                                             color="#000"
                                             size="lg"

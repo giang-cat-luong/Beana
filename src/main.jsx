@@ -4,11 +4,12 @@ import ReactDOM from "react-dom/client";
 // import { Provider } from "react-redux";
 import "./index.css";
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
-import Home from "./pages/home/home";
-import Product from "./pages/product/product";
-import LandingPage from "./pages/landingPage/landingPage";
-import Login from "./pages/login/login";
-import Error404 from "./pages/error404/error404";
+import Home from "./pages/Home";
+import Product from "./pages/Product";
+import LandingPage from "./pages/LandingPage";
+import Login from "./pages/Login";
+import Error404 from "./pages/Error404";
+import ProductDetail from "./pages/ProductDetail";
 
 const router = createBrowserRouter([
   {
@@ -37,8 +38,12 @@ const router = createBrowserRouter([
         element: <LandingPage />,
       },
       {
-        path: "/product",
+        path: "/products",
         element: <Product />,
+      },
+      {
+        path: "/product",
+        element: <ProductDetail />,
       },
     ],
   },
