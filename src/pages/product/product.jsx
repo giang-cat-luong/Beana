@@ -6,7 +6,7 @@ import SortProduct from './components/SortProduct'
 const productBestSeller = [
   {
     id: 1,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Nước Tẩy Trang Bioderma Sensibio H2O 500Ml",
     skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
     price: "525.000đ",
@@ -15,7 +15,7 @@ const productBestSeller = [
   },
   {
     id: 2,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Nước Tẩy Trang Bioderma Sébium H2O 500Ml",
     skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
     price: "525.000đ",
@@ -24,7 +24,7 @@ const productBestSeller = [
   },
   {
     id: 3,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Nước Tẩy Trang Bí Đao Cocoon 140Ml",
     skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
     price: "145.000đ",
@@ -33,7 +33,7 @@ const productBestSeller = [
   },
   {
     id: 4,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Dầu Tẩy Trang Hoa Hồng Cocoon 140Ml",
     skinType: "Phù hợp với da khô, da hỗn hợp thiên khô, da thường",
     price: "180.000đ",
@@ -42,7 +42,7 @@ const productBestSeller = [
   },
   {
     id: 5,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Dầu Tẩy Trang Hoa Hồng Cocoon 140Ml",
     skinType: "Phù hợp với da khô, da hỗn hợp thiên khô, da thường",
     price: "180.000đ",
@@ -51,7 +51,7 @@ const productBestSeller = [
   },
   {
     id: 6,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Nước Tẩy Trang Bí Đao Cocoon 140Ml",
     skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
     price: "146.000đ",
@@ -60,7 +60,7 @@ const productBestSeller = [
   },
   {
     id: 7,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Dầu Tẩy Trang Hoa Hồng Cocoon 140Ml",
     skinType: "Phù hợp với da khô, da hỗn hợp thiên khô, da thường",
     price: "180.000đ",
@@ -69,7 +69,7 @@ const productBestSeller = [
   },
   {
     id: 8,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Nước Tẩy Trang Bioderma Sensibio H2O 500Ml",
     skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
     price: "525.000đ",
@@ -78,7 +78,7 @@ const productBestSeller = [
   },
   {
     id: 9,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Nước Tẩy Trang Bioderma Sébium H2O 500Ml",
     skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
     price: "525.000đ",
@@ -87,7 +87,7 @@ const productBestSeller = [
   },
   {
     id: 10,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Nước Tẩy Trang Bí Đao Cocoon 140Ml",
     skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
     price: "145.000đ",
@@ -96,7 +96,7 @@ const productBestSeller = [
   },
   {
     id: 11,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Dầu Tẩy Trang Hoa Hồng Cocoon 140Ml",
     skinType: "Phù hợp với da khô, da hỗn hợp thiên khô, da thường",
     price: "180.000đ",
@@ -105,7 +105,7 @@ const productBestSeller = [
   },
   {
     id: 12,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Nước Tẩy Trang Bí Đao Cocoon 140Ml",
     skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
     price: "145.000đ",
@@ -114,7 +114,7 @@ const productBestSeller = [
   },
   {
     id: 13,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Dầu Tẩy Trang Hoa Hồng Cocoon 140Ml",
     skinType: "Phù hợp với da khô, da hỗn hợp thiên khô, da thường",
     price: "180.000đ",
@@ -123,7 +123,7 @@ const productBestSeller = [
   },
   {
     id: 14,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Nước Tẩy Trang Bioderma Sensibio H2O 500Ml",
     skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
     price: "525.000đ",
@@ -132,7 +132,7 @@ const productBestSeller = [
   },
   {
     id: 15,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Nước Tẩy Trang Bioderma Sébium H2O 500Ml",
     skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
     price: "525.000đ",
@@ -141,7 +141,7 @@ const productBestSeller = [
   },
   {
     id: 16,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Nước Tẩy Trang Bí Đao Cocoon 140Ml",
     skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
     price: "145.000đ",
@@ -150,7 +150,7 @@ const productBestSeller = [
   },
   {
     id: 17,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Dầu Tẩy Trang Hoa Hồng Cocoon 140Ml",
     skinType: "Phù hợp với da khô, da hỗn hợp thiên khô, da thường",
     price: "180.000đ",
@@ -159,7 +159,7 @@ const productBestSeller = [
   },
   {
     id: 18,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Nước Tẩy Trang Bí Đao Cocoon 140Ml",
     skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
     price: "145.000đ",
@@ -168,7 +168,7 @@ const productBestSeller = [
   },
   {
     id: 19,
-    url: './assets/product.png',
+    url: './assets/test1.png',
     name: "Dầu Tẩy Trang Hoa Hồng Cocoon 140Ml",
     skinType: "Phù hợp với da khô, da hỗn hợp thiên khô, da thường",
     price: "180.000đ",

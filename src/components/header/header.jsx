@@ -395,7 +395,7 @@ export default function Header() {
                                             fixedWidth
                                         />
                                         <p className='pl-1 text-sm font-semibold text-[#000] group-hover:text-[#0E740E]' > Đăng Nhập</p>
-                                        <div className={`group ${scrolled ? 'top-[55%]' : 'bottom-[-4%]'} hidden group-hover:block absolute top-[64%] right-[18%] w-32 h-5 bg-transparent  z-20duration-300`}>
+                                        <div className={`group ${scrolled ? 'top-[58%]' : 'bottom-[-4%]'} hidden group-hover:block absolute top-[64%] right-[18%] w-32 h-5 bg-transparent  z-20duration-300`}>
                                         </div>
                                         <div className={`group ${scrolled ? 'top-[70%]' : 'bottom-[-4%]'} hidden group-hover:block absolute right-[23.5%] w-10 h-10 bg-[#0E740E] z-20 rotate-45 duration-300`}>
                                         </div>
