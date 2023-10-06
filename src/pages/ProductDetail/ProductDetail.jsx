@@ -1,31 +1,11 @@
 import BreadCrumb from '../../components/BreadCrumb'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faCartShopping, faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { faFacebookMessenger, faPinterest } from '@fortawesome/free-brands-svg-icons';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { useState } from 'react';
-
-const listImage = [
-    {
-        url: "./assets/productDetail.png"
-    },
-    {
-        url: "./assets/productDetail2.png"
-    },
-    {
-        url: "./assets/productAds1.jpg"
-    },
-    {
-        url: "./assets/skintips22.jpg"
-    },
-    {
-        url: "./assets/skintips11.jpg"
-    },
-    {
-        url: "./assets/skintips33.jpeg"
-    },
-    {
-        url: "./assets/skintips44.png"
-    },
-]
+import ProductDescription from './ProductDescription/ProductDescription';
+import { Link } from 'react-router-dom';
 
 const category = [
     {
@@ -46,7 +26,7 @@ const prices = {
 };
 
 const images = [
-    "./assets/productDetail.png",
+    "./assets/test2.png",
     "./assets/productDetail2.png",
     "./assets/productAds1.jpg",
     "./assets/skintips22.jpg",
@@ -109,7 +89,7 @@ export default function ProductDetail() {
     return (
         <div className='max-w-screen-2xl px-36 py-10 '>
             <BreadCrumb />
-            <div className='flex flex-row gap-16'>
+            <div className='flex flex-row gap-16 pb-8'>
                 <div className='basis-2/3 flex flex-row gap-7 select-none'>
                     <div className='flex flex-col h-full'>
                         <div
@@ -143,9 +123,39 @@ export default function ProductDetail() {
                                 className="pt-[3px]"
                             />
                         </div>
+
                     </div>
-                    <div className=' max-h-[638px] w-full'>
+                    <div className='flex flex-col max-h-[638px] w-full'>
                         <img className='h-full w-full' src={visibleImages[currentImage]} />
+                        <div className='flex flex-row justify-between items-center pt-2'>
+                            <div className='flex flex-row gap-1 items-center'>
+                                <div className='text-base font-normal pr-2'>
+                                    Chia sẻ:
+                                </div>
+                                <img className='w-8  cursor-pointer' src="./assets/facebook.svg" />
+                                <FontAwesomeIcon
+                                    icon={faFacebookMessenger}
+                                    color='#448AFF'
+                                    className="text-[29px] cursor-pointer"
+                                />
+                                <FontAwesomeIcon
+                                    icon={faPinterest}
+                                    color='#BE0216'
+                                    className="text-[29px] cursor-pointer"
+                                />
+                                <img className='w-[34px] cursor-pointer' src="./assets/twitter.svg" />
+                            </div>
+                            <div className='flex flex-row gap-4 cursor-pointer'>
+                                <div className="w-full font-semibold text-[#F16D9A] text-[14px] hover:text-[#EE5287]">
+                                    <FontAwesomeIcon
+                                        icon={faHeart}
+                                        fixedWidth
+                                        className='pr-1 text-[16px]'
+                                    />
+                                    Thêm vào danh sánh yêu thích
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className='flex flex-col basis-1/3'>
@@ -211,6 +221,7 @@ export default function ProductDetail() {
                         </button>
                         <button className=" basis-2/5 font-semibold text-[#fff] bg-[#86bb86]  shadow-md shadow-[#86bb86] text-[14px] border-2 border-[#E0F7CD] px-6 py-3 hover:bg-[#49B949] hover:text-[#fff] hover:shadow-md hover:shadow-[#49B949]">Mua ngay</button>
                     </div>
+
                     <div className='bg-[#eef6e8] flex grow mt-8'>
                         <div className='flex flex-col gap-4 pl-7 py-6'>
                             <div className='flex flex-row items-center'>
@@ -235,7 +246,7 @@ export default function ProductDetail() {
                     </div>
                 </div>
             </div>
-
+            <ProductDescription />
         </div>
     )
 }

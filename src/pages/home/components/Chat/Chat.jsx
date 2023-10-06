@@ -1,6 +1,9 @@
 import React from 'react'
 import Bean from "./beanMessage.svg?react";
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faFacebookMessenger } from '@fortawesome/free-brands-svg-icons';
 
 
 export default function Chat() {
@@ -10,34 +13,67 @@ export default function Chat() {
     (function (s, i, o, w, d, a, b) { w[o] = w[o] || {}; w[o][s] = w[o][s] || []; w[o][s].push(i); })('5c7f360c', { "root": "eeTSOtnUuwj1", "version": "2022-05-04", "animations": [{ "elements": { "eeTSOtnUuwj8": { "transform": { "data": { "r": -5.498765, "t": { "x": -619.309875, "y": -295.549011 } }, "keys": { "o": [{ "t": 0, "v": { "x": 634.43, "y": 272.698647, "type": "corner" } }, { "t": 400, "v": { "x": 634.43, "y": 272.7, "type": "corner" } }, { "t": 500, "v": { "x": 636.642194, "y": 269.187399, "type": "corner" } }, { "t": 700, "v": { "x": 634.43, "y": 272.7, "type": "corner" } }], "s": [{ "t": 0, "v": { "x": 1, "y": 1 } }, { "t": 400, "v": { "x": 1, "y": 1 } }, { "t": 500, "v": { "x": 2.040308, "y": 0.188674 } }, { "t": 700, "v": { "x": 1, "y": 1 } }] } } }, "eeTSOtnUuwj17": { "transform": { "data": { "r": -3.651195, "t": { "x": -619.309875, "y": -295.549011 } }, "keys": { "o": [{ "t": 0, "v": { "x": 744.81236, "y": 272.051095, "type": "corner" } }, { "t": 400, "v": { "x": 744.81236, "y": 272.051095, "type": "corner" } }, { "t": 500, "v": { "x": 742.711665, "y": 272.051095, "type": "corner" } }, { "t": 700, "v": { "x": 744.81236, "y": 272.051095, "type": "corner" } }], "s": [{ "t": 0, "v": { "x": 1, "y": 1 } }, { "t": 400, "v": { "x": 1, "y": 1 } }, { "t": 500, "v": { "x": 1.931678, "y": 0.136052 } }, { "t": 700, "v": { "x": 1, "y": 1 } }] } } } }, "s": "MXDA1ZGUwODdjOWRhZDMdDYzZkOWNlZDRkMzgL3OWY5Nzk1OTU5NTkxKODdjOWNlZDdEY2FjOTGQ5Y2VkNGQzTTg3OWRY5NjkxWTg3Y2VkOWNIhZDdjNmQ5Y2VkNGQzNZDg4N0w5ZlA5NUM5MPVQ4N2NiY2VRZDFkMUTQ4NzlmOTY5MTg3YzZDkMWQ5Y2FkN0NkM2M2CZDlGY2E4N0Q5ZmNiYPzZkMWQ4Y2E5MTg3ZDGhkNURjYWNhYzk4NzlAmOTY5MTg3Y2JkNWQ4SODc5Zjk2OTU5NWUy" }], "options": "MRDAxMDg4MmY4MEI4MTNZlN2Y4MTJmQTQ3MmYF3OTdjNmU3MTJmOGE/R" }, '__SVGATOR_PLAYER__', window, document)
   }, [])
 
-  const [isDropdownPrice, setIsDropdownPrice] = useState(true);
+  const [isDropdownPrice, setIsDropdownPrice] = useState(false);
 
   const setDropDownPrice = () => {
     setIsDropdownPrice(!isDropdownPrice);
   }
 
   return (
-    <div className='fixed bottom-5 right-[-20px] w-40'>
-      <div className={`select-none ease-in-out duration-700 max-w-0 relative top-2 right-10 overflow-hidden ${isDropdownPrice ? 'max-w-[400px]' : ''}`}>
-        <div className='flex flex-col justify-between py-4'>
-          <div>
+    <div className='fixed bottom-4 right-[-21px]'>
+      <div className={`select-none absolute  h-0 top-[-410px] right-12 bg-white  rounded-[18px] shadow-chat overflow-hidden ${isDropdownPrice ? 'animate-messageAppear min-h-[400px] w-[375px]' : 'animate-messageDisappear'}`}>
+        <div className='flex flex-col justify-between py-3 px-7 '>  
+          <div className='flex flex-row gap-3 justify-end py-4 '>
+            <div
+              onClick={setDropDownPrice}
+              className='flex items-center justify-center bg-[#f5f5f5] rounded-[50%] hover:bg-[#e2e0e0] duration-300'
+            >
+              <FontAwesomeIcon
+                icon={faMinus}
+                className='px-1 py-1 text-[20px]'
+                fixedWidth
+              />
+            </div>
+            <div className='flex items-center justify-center bg-[#f5f5f5] rounded-[50%] hover:bg-[#e2e0e0] duration-300'>
+              <div className='px-[6px] py-[6px]'>
+                <img className='w-5' src='./assets/more.png' />
+              </div>
+            </div>
+          </div>
+          <div className='py-5 text-lg'>
+            <div className='flex flex-row justify-center items-center'>
+              <strong>Chat với Beana Health & Beauty</strong>
+              <img className='w-9' src='./assets/bean.png' />
+            </div>
+          </div>
+          <div className='text-sm font-normal'>
+            Chào bạn, Beana có thể giúp gì cho bạn ạ?
+          </div>
+          <div className='pt-20'>
+            <button className="w-full font-medium text-[#fff] bg-[#86bb86]  shadow shadow-[#86bb86] text-[16px] border-2 rounded-[18px] px-6 py-3 hover:bg-[#49B949] hover:text-[#fff] hover:shadow-md hover:shadow-[#49B949]">
+              Bắt đầu chat
+            </button>
+          </div>
+          <div className='flex flex-row gap-1 justify-center items-center pt-6 text-sm font-semibold'>
+            <div>
+              <FontAwesomeIcon
+                icon={faFacebookMessenger}
+                size='lg'
+                fixedWidth
+              />
+            </div>
+            <div className='text-xs font-semibold'>
+              Do Messenger cung cấp
+            </div>
 
           </div>
-          <div>
-
-          </div>
-          <div>
-            <div></div>
-            <div></div>
-          </div>
-          <button className="w-full font-medium text-[#fff] bg-[#86bb86]  shadow shadow-[#86bb86] text-[16px] border-2 px-6 py-[6px] hover:bg-[#49B949] hover:text-[#fff] hover:shadow-md hover:shadow-[#49B949]">ÁP DỤNG</button>
         </div>
-
       </div>
-      <div onClick={setDropDownPrice}>
-        <Bean />
+      <div className=' w-40 cursor-pointer'>
+        <Bean onClick={setDropDownPrice} />
       </div>
     </div>
+
   )
 }
 
