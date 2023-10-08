@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import "./login.css";
+import "./Login.css";
 import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faUser, faEnvelope, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
