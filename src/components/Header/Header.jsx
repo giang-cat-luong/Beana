@@ -36,27 +36,19 @@ const popularProduct = [
 const skincareTips = [
     {
         url: './assets/skintips11.jpg',
-        name: "Routines",
-        skinType: "Phấn Nước Che Phủ Mỏng Nhẹ, Mịn Mượt Lâu Trôi Maybelline New York Fit Me Matte + Poreless Oil Control Cushion",
-        price: "525.000đ"
+        name: "Quy trình chăm sóc da",
     },
     {
         url: './assets/skintips22.jpg',
-        name: "Skincare Guides",
-        skinType: "Sữa Rửa Mặt Nghệ Hưng Yên Da Sạch Mịn Và Rạng Rỡ Hung Yen Turmeric Cleanser Clean And Radiant Skin Cocoon 140Ml",
-        price: "525.000đ"
+        name: "Hướng dẫn chăm sóc da",
     },
     {
         url: './assets/skintips33.jpeg',
-        name: "Skin Concerns",
-        skinType: "Sữa Rửa Mặt Nghệ Hưng Yên Da Sạch Mịn Và Rạng Rỡ Hung Yen Turmeric Cleanser Clean And Radiant Skin Cocoon 140Ml",
-        price: "525.000đ"
+        name: "Các vấn đề về da mặt",
     },
     {
         url: './assets/skintips44.png',
-        name: "Skin Before Makeup",
-        skinType: "Sữa Rửa Mặt Nghệ Hưng Yên Da Sạch Mịn Và Rạng Rỡ Hung Yen Turmeric Cleanser Clean And Radiant Skin Cocoon 140Ml",
-        price: "525.000đ"
+        name: "Chăm sóc da trước và sau khi trang điểm",
     },
 ];
 
@@ -246,7 +238,7 @@ export default function Header() {
                                 </div>
                                 <div>
                                     <li className='beana-top-menu-item group'>
-                                        <Link to='./'>
+                                        <Link to='./scanning-face'>
                                             FACE SCANNING
                                         </Link>
                                     </li >
@@ -264,7 +256,7 @@ export default function Header() {
                                             <div className='flex flex-col justify-center pt-12 pb-[67px] border-t-2 border-b-[1px] border-b-[#e6e1e1]'>
                                                 <div className='mx-36 flex flex-row gap-10 '>
                                                     {skincareTips.map((category, index) => (
-                                                        <div key={index}>
+                                                        <div key={index} className='basis-1/4'>
                                                             <img className='w-[100%] h-[250px] rounded-[1.25rem] object-cover border-[1px] border-[#fff]' src={category.url} />
                                                             <a href="#" className="flex flex-row justify-between">
                                                                 <p className='pt-5 pl-2 font-bold text-[20px]  text-[#86bb86] hover:text-[#49B949] hover:underline'> {category.name}</p>

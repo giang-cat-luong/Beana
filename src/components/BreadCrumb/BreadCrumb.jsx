@@ -9,13 +9,7 @@ export default function BreadCrumb({ breadCrumbName }) {
   const location = useLocation();
 
   const path = location.pathname;
-  const pathParts = path.split('/');
-  const productPath = pathParts[pathParts.length - 2];
 
-  const currentPath = location.pathname;
-  const currentPath2 = location.pathname;
-  const pathParts2 = currentPath.split('/');
-  const lastPath = pathParts2[pathParts2.length - 1];
   return (
     <div className='flex flex-row gap-2 pb-3'>
       <div className='font-medium text-sm text-[#868686]'>
@@ -31,11 +25,11 @@ export default function BreadCrumb({ breadCrumbName }) {
         />
       </div>
       <div className='font-bold text-sm text-[#000] capitalize'>
-        <Link to="/products">
-          {productPath === "" || productPath === "product" ? "products" : productPath}
+        <Link to={`${path}`}>
+          {breadCrumbName}
         </Link>
       </div>
-      <div>
+      {/* <div>
         {lastPath === "products" ? null :
           <FontAwesomeIcon
             icon={faAngleRight}
@@ -49,7 +43,7 @@ export default function BreadCrumb({ breadCrumbName }) {
           {lastPath === "products" ? "" : lastPath}
         </Link>
 
-      </div>
+      </div> */}
     </div>
   )
 }

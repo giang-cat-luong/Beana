@@ -1,5 +1,5 @@
 import SingleProduct from "../../components/SingleProduct"
-import BreadCrumb from "../../components/BreadCrumb/"
+import BreadCrumb from "../../components/BreadCrumb"
 import SortProduct from './components/SortProduct'
 
 

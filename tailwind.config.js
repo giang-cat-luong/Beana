@@ -8,6 +8,11 @@ export default {
     extend: {
       colors: {
         primary: '#86bb86',
+        secondary: '#49b949',
+        orange:'#FF8200',
+        red:'#FF2826',
+        blue:'#1E88E5',
+        grey:'#9B9B9B',
       },
       fontFamily: {
         Montserrat: ['Montserrat', 'sans-serif'],
@@ -57,7 +62,7 @@ export default {
       },
       boxShadow: {
         'chat': '0 4px 12px 0 rgba(0, 0, 0, .15)',
-      }
+      },
     }
   },
   plugins: [],

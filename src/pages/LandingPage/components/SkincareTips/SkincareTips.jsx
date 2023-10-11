@@ -25,30 +25,22 @@ function SamplePrevArrow(props) {
 
 export default function SkincareTips() {
 
-    const productBestSeller = [
+    const skincareTips = [
         {
             url: './assets/skintips11.jpg',
-            name: "Routines",
-            skinType: "Phấn Nước Che Phủ Mỏng Nhẹ, Mịn Mượt Lâu Trôi Maybelline New York Fit Me Matte + Poreless Oil Control Cushion",
-            price: "525.000đ"
+            name: "Quy trình chăm sóc da",
         },
         {
             url: './assets/skintips22.jpg',
-            name: "Skincare Guides",
-            skinType: "Sữa Rửa Mặt Nghệ Hưng Yên Da Sạch Mịn Và Rạng Rỡ Hung Yen Turmeric Cleanser Clean And Radiant Skin Cocoon 140Ml",
-            price: "525.000đ"
+            name: "Hướng dẫn chăm sóc da",
         },
         {
             url: './assets/skintips33.jpeg',
-            name: "Skin Concerns",
-            skinType: "Sữa Rửa Mặt Nghệ Hưng Yên Da Sạch Mịn Và Rạng Rỡ Hung Yen Turmeric Cleanser Clean And Radiant Skin Cocoon 140Ml",
-            price: "525.000đ"
+            name: "Các vấn đề về da mặt",
         },
         {
             url: './assets/skintips44.png',
-            name: "Skin Prep Before Makeup",
-            skinType: "Sữa Rửa Mặt Nghệ Hưng Yên Da Sạch Mịn Và Rạng Rỡ Hung Yen Turmeric Cleanser Clean And Radiant Skin Cocoon 140Ml",
-            price: "525.000đ"
+            name: "Chăm sóc da trước và sau khi trang điểm",
         },
     ];
 
@@ -91,14 +83,14 @@ export default function SkincareTips() {
 
     return (
         <div className='flex flex-col justify-center mt-16 '>
-            <h1 className='beana-product-title-header'>SKINCARE TIPS</h1>
+            <h1 className='beana-product-title-header'>MẸO CHĂM SÓC DA MẶT</h1>
             <div className='px-36 '>
                 <Slider {...settings}>
-                    {productBestSeller.map((category,index) => (
+                    {skincareTips.map((tip,index) => (
                         <div className="px-2" key={index}>
-                            <img className='w-[100%] h-[400px] rounded-[1.25rem] object-cover border-[1px] border-[#fff]' src={category.url} />
+                            <img className='w-[100%] h-[400px] rounded-[1.25rem] object-cover border-[1px] border-[#fff]' src={tip.url} />
                             <a href="#" className="flex flex-row justify-between group">
-                                <p className='pt-5 pl-2 font-bold text-[20px]  text-[#86bb86] group-hover:text-[#49B949]'> {category.name}</p>
+                                <p className='pt-5 pl-2 font-bold text-[20px]  text-[#86bb86] group-hover:text-[#49B949]'> {tip.name}</p>
                                 <div className='py-4 pr-3'>
                                     <FontAwesomeIcon
                                         icon={faCircleArrowRight}
