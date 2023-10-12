@@ -1,10 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import styles from './Header.module.css'
 import { faEnvelope, faSearch, faLocationDot, faUser, faCartShopping, faCircleArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import PopularProduct from './components/PopularProduct'
-import Loading from '../Loading'
+import Loading from '../Loading/BeanLoading'
 
 const popularProduct = [
     {
@@ -57,6 +56,8 @@ export default function Header() {
 
     const [scrolled, setScrolled] = useState(false);
     const [toggleSearch, setToggleSearch] = useState(false);
+    const [toggleMenu, setToggleMenu] = useState(false);
+
     const [redirecting, setRedirecting] = useState(false);
 
     const navigate = useNavigate();
@@ -67,6 +68,11 @@ export default function Header() {
     const closeSearchMenu = () => {
         setToggleSearch(false);
     }
+
+    const toggleMobileMenu = () => {
+        setToggleMenu(!toggleMenu);
+    }
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -102,7 +108,7 @@ export default function Header() {
     };
 
     return (
-        <div className={`${styles.headerContainer} ${scrolled ? styles.scrolled : ''}`}>
+        <div className={`font-Montserrat w-full fixed top-0 z-[1000] bg-white duration-500 ease-in-out ${scrolled ? 'bg-[#d6fcdf]' : ''}`}>
             <div style={{ position: "relative" }}>
                 {redirecting && (
                     <div
@@ -124,53 +130,44 @@ export default function Header() {
                 )}
             </div>
 
-            <div className={styles.headerTop}>
-                {scrolled ? (<div></div>) : (<div className={styles.headerTopContent}>
-                    <div className={styles.contentLeft}>
-                        <FontAwesomeIcon
-                            icon={faLocationDot}
-                            color="#0E740E"
-                            size="lg"
-                            style={{ paddingRight: '5px' }}
-                            fixedWidth
-                        />
-                        <p className={styles.headerTopText}>VIETNAM</p>
+            <div className="bg-[#d6fcdf] pl-[10px]">
+                {scrolled ? (<div></div>) : (
+                    <div className="flex justify-center md:justify-end md:pr-[50px]">
+                        <div className="flex flex-row items-center color-[#0e740e] p-[0.2rem] mr-[10px]">
+                            <FontAwesomeIcon
+                                icon={faLocationDot}
+                                color="#0E740E"
+                                size="lg"
+                                style={{ paddingRight: '5px' }}
+                                fixedWidth
+                            />
+                            <p className="text-[13px]">VIETNAM</p>
+                        </div>
+                        <div className="flex flex-row items-center justify-between color-[#0e740e] px-[10px] mr-[10px]">
+                            <FontAwesomeIcon
+                                icon={faEnvelope}
+                                color="#0E740E"
+                                size="lg"
+                                style={{ paddingRight: '5px' }}
+                                fixedWidth
+                            />
+                            <p className="text-[13px]">CONTACT US</p>
+                        </div>
+                        <div className="flex flex-row items-center bg-[#0E740E] text-white px-[0.2rem] mr-[10px]">
+                            <img src='../assets/facebook.svg' className="mr-[5px] w-[25px]" />
+                            <a href='https://www.facebook.com/profile.php?id=61551793473535' style={{ alignItems: 'center' }}> <p className="text-[13px]" >JOIN FANPAGE</p></a>
+                        </div>
                     </div>
-                    <div className={styles.contentLeft}>
-                        <FontAwesomeIcon
-                            icon={faEnvelope}
-                            color="#0E740E"
-                            size="lg"
-                            style={{ paddingRight: '5px' }}
-                            fixedWidth
-                        />
-                        <p className={styles.headerTopText}>CONTACT US</p>
-                    </div>
-                    <div className={styles.contentRight}>
-                        <img src='../assets/facebook.svg' className={styles.headerIcon} />
-                        <a href='https://www.facebook.com/profile.php?id=61551793473535' style={{ alignItems: 'center' }}> <p className={styles.headerTopText} >JOIN FANPAGE</p></a>
-                    </div>
-                </div>)}
-
+                )}
             </div>
             <div >
-                <nav className={styles.headerBot}>
-                    <div className=" flex justify-between  lg:py-5 px-20 py-20 border-b ">
-                        <div className='flex items-center '>
-                            <div className="flex items-center pt-1 ">
-                                <a href="https://beana.com">
-                                    <img src="./assets/logo.png" className="w-60" alt="Beana Logo" />
-                                </a>
-                            </div>
-                        </div>
+                <nav >
+                    <div className="flex flex-row px-5 py-5 md:px-20 md:py-5 border-b ">
+                        <a className='flex  md:pt-1' href="https://beana.com">
+                            <img src="./assets/logo.png" className="w-full md:w-60" alt="Beana Logo" />
+                        </a>
 
-                        {/* <button data-collapse-toggle="mega-menu-full" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu-full" aria-expanded="false">
-                            <span className="sr-only">Open main menu</span>
-                            <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
-                            </svg>
-                        </button> */}
-                        <div className=" items-center justify-between ml-8  font-bold  w-full md:flex md:w-auto md:order-1 ">
+                        <div className="hidden ml-8  font-bold  w-full md:flex md:w-auto md:items-center md:justify-between md:order-1 ">
                             <ul className="flex gap-8 mr-16 text-[14px]">
                                 <div>
                                     <li className='beana-top-menu-item'>
@@ -287,9 +284,8 @@ export default function Header() {
                                 </div>
                             </ul>
                         </div>
-                        <div className='items-center justify-between  font-bold  w-full md:flex md:w-auto md:order-1'>
+                        <div className='hidden md:flex items-center justify-between  font-bold  w-auto md:order-1'>
                             <div
-                            // onMouseLeave={() => closeSearchMenu()}
                             >
                                 <li className='flex flex-row select-none '>
                                     {toggleSearch ? (
@@ -371,13 +367,13 @@ export default function Header() {
 
                             </div>
                         </div>
-                        <div className='items-center justify-between  font-bold  w-full md:flex md:w-auto md:order-1'>
+                        <div className='hidden md:flex items-center font-bold w-auto md:order-1'>
                             <div className='border-solid border-r-2 border-[#767373] h-6 pl-3'></div>
                         </div>
-                        <div className='items-center justify-between  font-bold  w-full md:flex md:w-auto md:order-1'>
+                        <div className='hidden md:flex items-center font-bold w-auto md:order-1'>
                             <div className='group'>
                                 <li className='flex flex-row'>
-                                    <div className='flex flex-row group cursor-pointer'>
+                                    <div className='flex flex-row items-center group cursor-pointer'>
                                         <FontAwesomeIcon
                                             icon={faUser}
                                             color="#000"
@@ -386,8 +382,8 @@ export default function Header() {
                                             className='group-hover:text-[#0E740E]'
                                             fixedWidth
                                         />
-                                        <p className='pl-1 text-sm font-semibold text-[#000] group-hover:text-[#0E740E]' > Đăng Nhập</p>
-                                        <div className={`group ${scrolled ? 'top-[58%]' : 'bottom-[-4%]'} hidden group-hover:block absolute top-[64%] right-[18%] w-32 h-5 bg-transparent  z-20duration-300`}>
+                                        <p className='text-xs pl-1 md:text-sm font-semibold text-[#000] group-hover:text-[#0E740E]' > Đăng Nhập</p>
+                                        <div className={`group ${scrolled ? 'top-[55%]' : 'bottom-[-4%]'} hidden group-hover:block absolute top-[64%] right-[18%] w-32 h-5 bg-transparent  z-20duration-300`}>
                                         </div>
                                         <div className={`group ${scrolled ? 'top-[70%]' : 'bottom-[-4%]'} hidden group-hover:block absolute right-[23.5%] w-10 h-10 bg-[#0E740E] z-20 rotate-45 duration-300`}>
                                         </div>
@@ -409,7 +405,7 @@ export default function Header() {
                                 </li>
                             </div>
                         </div>
-                        <div className='flex flex-row items-center justify-between bg-[#86bb86] px-4 ml-8 my-2  rounded-[40px] w-full md:flex md:w-auto md:order-1'>
+                        <div className='flex flex-row items-center bg-[#86bb86] px-4 py-2 ml-8 md:my-2  rounded-[40px] w-auto md:order-1'>
                             <div>
                                 <FontAwesomeIcon
                                     icon={faCartShopping}
@@ -428,6 +424,55 @@ export default function Header() {
                                 </div>
                             </div>
                         </div>
+                        <div
+                            className='pl-5 flex items-center md:hidden'
+                            onClick={toggleMobileMenu}
+                        >
+                            <li className='flex flex-row select-none '>
+                                <button className="flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg  hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-black dark:hover:bg-secondary dark:hover:text-white ">
+                                    <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+                                    </svg>
+                                </button>
+                                {toggleMenu ? (
+                                    <div class={`duration-500 ease absolute top-[119px] w-full right-0 bg-white p-4 pb-0 ${scrolled ? 'top-[93px]' : ''}`}>
+                                        <ul class="space-y-4 pt-3 pb-6 flex flex-col items-center">
+                                            <li >
+                                                <a href="#" class="text-black hover:text-secondary font-medium ">
+                                                    TRANG CHỦ
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="text-black hover:text-secondary font-medium ">
+                                                    SẢN PHẨM
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="text-black hover:text-secondary font-medium ">
+                                                    FACE SCANNING
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="text-black hover:text-secondary font-medium ">
+                                                    MẸO CHĂM SÓC DA
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="text-black hover:text-secondary font-medium ">
+                                                    VỀ BEANA
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                ) : (
+                                    <div>
+                                    </div>
+                                )}
+
+
+                            </li>
+                        </div>
+
                     </div>
                 </nav>
             </div>

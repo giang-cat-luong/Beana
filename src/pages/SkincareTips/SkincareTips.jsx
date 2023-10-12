@@ -355,6 +355,24 @@ export default function SkincareTips() {
                 </div>
             </div>
             {/* end skin guide */}
+
+            <div className="w-full bg-gradient-to-br from-[#86bb86] from-45% to-[#E0F7CD] to-95%">
+                <div className='max-w-screen-2xl flex flex-row gap-4 justify-center items-center px-10 py-12'>
+                    <div className="basis-1/2">
+                        <img className="w-[702px] h-[702px] rounded-3xl" src="./assets/skincaretipsBanner.jpg" />
+                    </div>
+                    <div className="basis-1/2 flex flex-col gap-2">
+                        <p className="font-bold text-white text-[40px]">OILY OR DRY? ROUGH AND FLAKY OR REDNESS-PRONE?</p>
+                        <p className="font-normal text-white text-[20px]">
+                            Not sure where to start on your new skincare regime? Answer a few simple questions to get you on your way.
+                        </p>
+                        <button className="mt-5 w-44 font-normal text-[#fff] text-[13px] border-2 px-6 py-2 hover:bg-[#49B949] hover:text-[#fff]">Tìm hiểu thêm</button>
+                        <p className="text-white font-normal">Hoặc</p>
+                        <img className="w-32" src='./assets/qr-code.png' />
+                        <p className="text-white font-normal">Scan QR code on mobile device to get started</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
     )
