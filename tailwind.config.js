@@ -58,6 +58,7 @@ export default {
       animation: {
         messageAppear: 'messageAppear 1s ease-in-out ',
         messageDisappear: 'messageDisappear 1s ease-in-out ',
+        questionAppear: 'messageAppear 0.5s ease-in-out ',
         sliderDescription: 'sliderDescription 0.4s ease ',
       },
       boxShadow: {

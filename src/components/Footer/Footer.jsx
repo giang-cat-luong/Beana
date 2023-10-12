@@ -1,64 +1,95 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons"
+import { useState } from "react"
 
 
 export default function Footer() {
+  const [bottomMenu1, setBottomMenu1] = useState(false);
+  const [bottomMenu2, setBottomMenu2] = useState(false);
+
+  const toggleBottomMenu1 = () => {
+    setBottomMenu1(!bottomMenu1);
+  }
+  const toggleBottomMenu2 = () => {
+    setBottomMenu2(!bottomMenu2);
+  }
+
   return (
-    <div className='flex flex-col font-Montserrat'>
-      <div className="flex flex-row justify-between  px-14 py-6 text-sm text-[#49B949] bg-[#E0F7CD]">
-        <div className="flex items-center flex-row gap-4 px-10">
-          <img src='./assets/rabbit.svg' />
-          <p>Không Thử Nghiệm Trên Động Vật</p>
+    <div className='flex flex-col font-Montserrat select-none'>
+      <div className="py-6 md:flex flex-row justify-between  md:px-14 md:py-6 text-sm text-[#49B949] bg-[#E0F7CD]">
+        <div className="md:flex items-center flex-row gap-4 md:px-10">
+          <img className="mx-auto md:mx-0" src='./assets/rabbit.svg' />
+          <p className="text-center md:pt-0 pt-2">Không Thử Nghiệm Trên Động Vật</p>
         </div>
-        <div className="flex items-center flex-row  gap-4  px-10">
-          <img src='./assets/leaf.svg' />
-          <p>Không Có Thành Phần Có <br /> Nguồn Gốc Từ Động Vật</p>
+        <div className="pt-6 md:pt-0 md:flex items-center flex-row gap-4 md:px-10">
+          <img className="mx-auto md:mx-0" src='./assets/leaf.svg' />
+          <p className="text-center md:pt-0 pt-2">Không Có Thành Phần Có <br /> Nguồn Gốc Từ Động Vật</p>
         </div>
-        <div className="flex items-center flex-row  gap-4   px-10">
-          <img src='./assets/rice.svg' />
-          <p>Không Có Gluten, Hoặc Sản <br /> Phẩm Phụ Gluten</p>
+        <div className="pt-6 md:pt-0 md:flex items-center flex-row gap-4 md:px-10">
+          <img className="mx-auto md:mx-0" src='./assets/rice.svg' />
+          <p className="text-center md:pt-0 pt-2">Không Có Gluten, Hoặc Sản <br /> Phẩm Phụ Gluten</p>
         </div>
-        <div className="flex items-center flex-row  gap-4   px-10">
-          <img src='./assets/package.svg' />
-          <p>Bao Bì Có Thể Tái Chế</p>
+        <div className="pt-6 md:pt-0 md:flex items-center flex-row gap-4 md:px-10">
+          <img className="mx-auto md:mx-0" src='./assets/package.svg' />
+          <p className="text-center md:pt-0 pt-2">Bao Bì Có Thể Tái Chế</p>
         </div>
       </div>
-      <div className="flex flex-row px-28 py-16 bg-[#86bb86]">
-        <div className='basis-1/3 flex flex-col'>
-          <h3 className='beana-bottom-menu-text'>Chúng Tôi Có Thể Giúp Gì</h3>
-          <div className='beana-bottom-menu-text-links'>
-            <a href='' className='beana-bottom-links' >Về Beana</a>
+      <div className="px-10 md:flex flex-row md:px-28 py-16 bg-[#86bb86]">
+        <div className='md:basis-1/3 md:flex flex-col'>
+          <div className="flex flex-row justify-between items-center">
+            <h3 className='beana-bottom-menu-text'>Chúng Tôi Có Thể Giúp Gì</h3>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              className="text-[12px] text-white pb-3 flex md:hidden"
+              onClick={toggleBottomMenu1}
+            />
           </div>
-          <div className='beana-bottom-menu-text-links'>
-            <a href='' className='beana-bottom-links'>Liên Hệ</a>
-          </div>
-          <div className='beana-bottom-menu-text-links'>
-            <a href='' className='beana-bottom-links'>Fanpage</a>
-          </div>
-          <div className='beana-bottom-menu-text-links'>
-            <a href='' className='beana-bottom-links'>FAQ</a>
-          </div>
-          <div className='beana-bottom-menu-text-links'>
-            <a href='' className='beana-bottom-links'>Face Scanning</a>
-          </div>
-          <div className='beana-bottom-menu-text-links'>
-            <a href='' className='beana-bottom-links'>Skincare Tips</a>
+          <div className={`md:max-h-full ease-in duration-500 overflow-hidden max-h-0 ${bottomMenu1 ? 'duration-500 max-h-[300px]' : ''}`}>
+            <div className='beana-bottom-menu-text-links'>
+              <a href='' className='beana-bottom-links' >Về Beana</a>
+            </div>
+            <div className='beana-bottom-menu-text-links'>
+              <a href='' className='beana-bottom-links'>Liên Hệ</a>
+            </div>
+            <div className='beana-bottom-menu-text-links'>
+              <a href='' className='beana-bottom-links'>Fanpage</a>
+            </div>
+            <div className='beana-bottom-menu-text-links'>
+              <a href='' className='beana-bottom-links'>FAQ</a>
+            </div>
+            <div className='beana-bottom-menu-text-links'>
+              <a href='' className='beana-bottom-links'>Face Scanning</a>
+            </div>
+            <div className='beana-bottom-menu-text-links'>
+              <a href='' className='beana-bottom-links'>Skincare Tips</a>
+            </div>
           </div>
         </div>
         <div className='basis-1/6 flex flex-col'>
-          <h3 className='beana-bottom-menu-text'>Sản Phẩm</h3>
-          <div className='beana-bottom-menu-text-links'>
-            <a href='' className='beana-bottom-links'>Chăm Sóc Da Mặt</a>
+          <div className="flex flex-row justify-between items-center">
+            <h3 className='beana-bottom-menu-text'>Sản Phẩm</h3>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              className="text-[12px] text-white pb-3 flex md:hidden"
+              onClick={toggleBottomMenu2}
+            />
           </div>
-          <div className='beana-bottom-menu-text-links'>
-            <a href='' className='beana-bottom-links'>Trang Điểm Mặt</a>
-          </div>
-          <div className='beana-bottom-menu-text-links'>
-            <a href='' className='beana-bottom-links'>Gifts & Sets</a>
+          <div className={`md:max-h-full ease-in duration-500 overflow-hidden max-h-0 ${bottomMenu2 ? 'duration-500 max-h-[200px]' : ''}`}>
+            <div className='beana-bottom-menu-text-links'>
+              <a href='' className='beana-bottom-links'>Chăm Sóc Da Mặt</a>
+            </div>
+            <div className='beana-bottom-menu-text-links'>
+              <a href='' className='beana-bottom-links'>Trang Điểm Mặt</a>
+            </div>
+            <div className='beana-bottom-menu-text-links'>
+              <a href='' className='beana-bottom-links'>Gifts & Sets</a>
+            </div>
           </div>
         </div>
-        <div className='basis-1/2 flex flex-col pl-4'>
+        <div className='basis-1/2 flex flex-col md:pl-4'>
           <h3 className='beana-bottom-menu-text'>Giữ Liên Lạc Với Beana</h3>
           <div className='text-base text-[#fff] pb-2 font-light'>
-            Tham gia bản tin Beautya và là người đầu tiên nghe về tin tức,
+            Tham gia fanpage <a href="" className="underline">Beana</a> và là người đầu tiên nghe về tin tức,
             ưu đãi và lời khuyên chăm sóc da
           </div>
           <div className="w-full max-w-xl">
@@ -83,7 +114,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="flex flex-row justify-between px-28 py-5 text-[#fff] bg-[#0E740E]">
+      <div className="px-5 flex flex-row justify-between md:px-28 py-5 text-[#fff] bg-[#0E740E]">
         <div>
           Tăng Nhơn Phú A, Quận 9.
         </div>
@@ -91,15 +122,15 @@ export default function Footer() {
           0981-890-262
         </div>
       </div>
-      <div className="flex flex-row justify-between px-28 py-4 text-[#fff] font-light text-xs bg-[#000]">
-        <div>
+      <div className="px-5 md:flex flex-row justify-between md:px-28 py-4 text-[#fff] font-light text-xs bg-[#000]">
+        <div className="text-center">
           2023 Beana. All Rights Reserved.
         </div>
-        <div className='flex flex-row gap-7'>
+        <div className='pt-5 md:pt-0 flex flex-row gap-7'>
           <div>
             Điều Khoản Và Điều Kiện
           </div>
-          <div>
+          <div className="ml-36 md:ml-0">
             Chính Sách Bảo Mật
           </div>
 

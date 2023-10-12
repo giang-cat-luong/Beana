@@ -12,6 +12,7 @@ import Error404 from "./pages/Error404";
 import ProductDetail from "./pages/ProductDetail";
 import SkincareTips from "./pages/SkincareTips";
 import ScanningFace from "./pages/ScanningFace";
+import ScanningResult from "./pages/ScanningFace/components/QuestionQA/ScanningResult";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,11 @@ const router = createBrowserRouter([
         path: "/scanning-face",
         element: <ScanningFace />,
       },
+      {
+        path: "/scanning-result",
+        element: <ScanningResult />,
+      },
+
     ],
   },
 

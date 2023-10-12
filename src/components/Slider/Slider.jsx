@@ -1,20 +1,11 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircle } from '@fortawesome/free-solid-svg-icons'
+import Questionnaire from "../Questionnaire/Questionnaire";
 
-export default function Slider({ sliderUrls, title, description, button, colorTitle, colorDescription }) {
-    // const slider = [
-    //     {
-    //         url: { sliderUrl1 }
-    //     },
-    //     {
-    //         url: { sliderUrl2 }
-    //     },
-    //     {
-    //         url: { sliderUrl3 }
-    //     },
-    // ];
+export default function Slider({ sliderUrls, title, description, button, colorTitle, colorDescription, img }) {
 
+    const [isOpenQA, setIsOpenQA] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const prevSlide = () => {
@@ -33,19 +24,40 @@ export default function Slider({ sliderUrls, title, description, button, colorTi
 
     }
 
+    const toggleQuestionQA = () => {
+        setIsOpenQA(!isOpenQA);
+    }
+
     return (
-        <div className="max-w-screen-2xl h-[600px] w-full  relative group">
-            <div style={{ backgroundImage: `url(${sliderUrls[currentIndex]})` }} className="w-full h-full  bg-center bg-cover duration-500">
+        <div className="max-w-screen-2xl h-[300px] md:h-[600px] w-full  relative group">
+            {isOpenQA && <Questionnaire/>}
+           
+            <div style={{ backgroundImage: `url(${sliderUrls[currentIndex]})` }} className="w-full h-full md:w-full md:h-full  bg-center bg-cover duration-500">
                 {currentIndex === 0 ?
                     (
                         <div className="flex flex-row w-full h-full">
-                            <div className="basis-1/2 flex flex-col justify-center px-14  gap-1">
-                                <p className={`font-bold text-[${colorTitle[currentIndex]}] text-[40px]`}>{title[currentIndex]}</p>
-                                <p className={`font-normal text-[${colorDescription[currentIndex]}] text-[20px]`}>
+                            <div className="basis-1/2 flex flex-col justify-center pl-5 md:px-14  gap-1">
+                                <p className={`text-[12px] font-bold text-[${colorTitle[currentIndex]}] md:text-[40px]`}>{title[currentIndex]}</p>
+                                <p className={`text-[12px] font-normal text-[${colorDescription[currentIndex]}] md:text-[20px]`}>
                                     {description[currentIndex]}
                                 </p>
                                 {button &&
                                     <button className="mt-5 w-44 font-normal text-[#fff] text-[13px] border-2 px-6 py-2 hover:bg-[#49B949] hover:text-[#fff]">{button[currentIndex]}</button>
+                                }
+                                {img &&
+                                    <div className="flex flex-row justify-between gap-8 md:mt-16">
+                                        <div>
+                                            <p className="hidden md:flex text-white font-normal">Quét mã QR bằng điện thoại để bắt đầu</p>
+                                            <p className='hidden md:flex py-3 text-white'>Hoặc</p>
+                                            <button 
+                                            className="font-normal text-[#fff] mt-2 md:mt-0 text-xs md:text-[13px] border-2 px-6 py-2 hover:bg-[#49B949] hover:text-[#fff] hover:shadow-md hover:shadow-[#49B949]"
+                                            onClick={toggleQuestionQA}
+                                            >
+                                                Trả Lời Một Vài Câu Hỏi
+                                            </button>
+                                        </div>
+                                        <img className="w-0 md:w-40 md:h-full" src={img[currentIndex]} />
+                                    </div>
                                 }
                             </div>
                             <div className="basis-1/2">
