@@ -45,12 +45,12 @@ export default function Slider({ sliderUrls, title, description, button, colorTi
                                     <button className="mt-5 w-44 font-normal text-[#fff] text-[13px] border-2 px-6 py-2 hover:bg-[#49B949] hover:text-[#fff]">{button[currentIndex]}</button>
                                 }
                                 {img &&
-                                    <div className="flex flex-row justify-between gap-8 md:mt-16">
+                                    <div className="md:flex flex-row justify-between gap-8 md:mt-16">
                                         <div>
                                             <p className="hidden md:flex text-white font-normal">Quét mã QR bằng điện thoại để bắt đầu</p>
                                             <p className='hidden md:flex py-3 text-white'>Hoặc</p>
                                             <button 
-                                            className="font-normal text-[#fff] mt-2 md:mt-0 text-xs md:text-[13px] border-2 px-6 py-2 hover:bg-[#49B949] hover:text-[#fff] hover:shadow-md hover:shadow-[#49B949]"
+                                            className="font-normal text-[#fff] mt-2 md:mt-0 text-xs md:text-[13px] border-2 px-3 py-2 hover:bg-[#49B949] hover:text-[#fff] hover:shadow-md hover:shadow-[#49B949]"
                                             onClick={toggleQuestionQA}
                                             >
                                                 Trả Lời Một Vài Câu Hỏi

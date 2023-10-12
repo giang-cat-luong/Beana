@@ -40,7 +40,7 @@ export default function ScanningFace() {
         colorDescription={sliderTitleDescription}
         img={sliderImg}
       />
-      <div className="md:hidden flex justify-center border-[1px] border-white mx-28 py-1 my-5 rounded-3xl bg-primary text-white shadow-md shadow-primary hover:bg-secondary hover:shadow-md hover:shadow-secondary cursor-pointer">
+      <div className="md:hidden flex justify-center border-[1px] border-white mx-20 py-1 my-5 rounded-3xl bg-primary text-white shadow-md shadow-primary hover:bg-secondary hover:shadow-md hover:shadow-secondary cursor-pointer">
         BẮT ĐẦU QUÉT DA MẶT
       </div>
       <div className="max-w-screen-2xl md:px-36">
@@ -75,7 +75,7 @@ export default function ScanningFace() {
                 cụ xem xét mức độ cung cấp nước, độ săn chắc, độ mịn màng và đồng đều của sắc tố da.</p>
             </div>
           </div>
-          <div className="md:hidden flex justify-center border-[1px] border-white mx-28 py-1 my-14 rounded-3xl bg-primary text-white shadow-md shadow-primary hover:bg-secondary hover:shadow-md hover:shadow-secondary cursor-pointer">
+          <div className="md:hidden flex justify-center border-[1px] border-white mx-20 py-1 my-14 rounded-3xl bg-primary text-white shadow-md shadow-primary hover:bg-secondary hover:shadow-md hover:shadow-secondary cursor-pointer">
             BẮT ĐẦU QUÉT DA MẶT
           </div>
           <div className="px-6 md:px-0 max-w-full md:flex flex-col justify-between items-center gap-5">
@@ -100,7 +100,7 @@ export default function ScanningFace() {
           </div>
         </div>
       </div>
-      <div className="md:hidden flex justify-center border-[1px] border-white mx-28 py-1 my-10 rounded-3xl bg-primary text-white shadow-md shadow-primary hover:bg-secondary hover:shadow-md hover:shadow-secondary cursor-pointer">
+      <div className="md:hidden flex justify-center border-[1px] border-white mx-20 py-1 my-10 rounded-3xl bg-primary text-white shadow-md shadow-primary hover:bg-secondary hover:shadow-md hover:shadow-secondary cursor-pointer">
         BẮT ĐẦU QUÉT DA MẶT
       </div>
       <div className="w-full bg-primary">
@@ -118,7 +118,7 @@ export default function ScanningFace() {
 
         </div>
       </div>
-      <div className="md:hidden flex justify-center border-[1px] border-white mx-28 py-1 my-10 rounded-3xl bg-primary text-white shadow-md shadow-primary hover:bg-secondary hover:shadow-md hover:shadow-secondary cursor-pointer">
+      <div className="md:hidden flex justify-center border-[1px] border-white mx-20 py-1 my-10 rounded-3xl bg-primary text-white shadow-md shadow-primary hover:bg-secondary hover:shadow-md hover:shadow-secondary cursor-pointer">
         BẮT ĐẦU QUÉT DA MẶT
       </div>
     </div>

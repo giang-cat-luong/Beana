@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import styles from './Header.module.css'
 import { faEnvelope, faSearch, faLocationDot, faUser, faCartShopping, faCircleArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -109,7 +108,7 @@ export default function Header() {
     };
 
     return (
-        <div className={`${styles.headerContainer} ${scrolled ? styles.scrolled : ''}`}>
+        <div className={`font-Montserrat w-full fixed top-0 z-[1000] bg-white duration-500 ease-in-out ${scrolled ? 'bg-[#d6fcdf]' : ''}`}>
             <div style={{ position: "relative" }}>
                 {redirecting && (
                     <div
@@ -131,37 +130,38 @@ export default function Header() {
                 )}
             </div>
 
-            <div className={styles.headerTop}>
-                {scrolled ? (<div></div>) : (<div className={styles.headerTopContent}>
-                    <div className={styles.contentLeft}>
-                        <FontAwesomeIcon
-                            icon={faLocationDot}
-                            color="#0E740E"
-                            size="lg"
-                            style={{ paddingRight: '5px' }}
-                            fixedWidth
-                        />
-                        <p className={styles.headerTopText}>VIETNAM</p>
+            <div className="bg-[#d6fcdf] pl-[10px]">
+                {scrolled ? (<div></div>) : (
+                    <div className="flex justify-center md:justify-end md:pr-[50px]">
+                        <div className="flex flex-row items-center color-[#0e740e] p-[0.2rem] mr-[10px]">
+                            <FontAwesomeIcon
+                                icon={faLocationDot}
+                                color="#0E740E"
+                                size="lg"
+                                style={{ paddingRight: '5px' }}
+                                fixedWidth
+                            />
+                            <p className="text-[13px]">VIETNAM</p>
+                        </div>
+                        <div className="flex flex-row items-center justify-between color-[#0e740e] px-[10px] mr-[10px]">
+                            <FontAwesomeIcon
+                                icon={faEnvelope}
+                                color="#0E740E"
+                                size="lg"
+                                style={{ paddingRight: '5px' }}
+                                fixedWidth
+                            />
+                            <p className="text-[13px]">CONTACT US</p>
+                        </div>
+                        <div className="flex flex-row items-center bg-[#0E740E] text-white px-[0.2rem] mr-[10px]">
+                            <img src='../assets/facebook.svg' className="mr-[5px] w-[25px]" />
+                            <a href='https://www.facebook.com/profile.php?id=61551793473535' style={{ alignItems: 'center' }}> <p className="text-[13px]" >JOIN FANPAGE</p></a>
+                        </div>
                     </div>
-                    <div className={styles.contentLeft}>
-                        <FontAwesomeIcon
-                            icon={faEnvelope}
-                            color="#0E740E"
-                            size="lg"
-                            style={{ paddingRight: '5px' }}
-                            fixedWidth
-                        />
-                        <p className={styles.headerTopText}>CONTACT US</p>
-                    </div>
-                    <div className={styles.contentRight}>
-                        <img src='../assets/facebook.svg' className={styles.headerIcon} />
-                        <a href='https://www.facebook.com/profile.php?id=61551793473535' style={{ alignItems: 'center' }}> <p className={styles.headerTopText} >JOIN FANPAGE</p></a>
-                    </div>
-                </div>)}
-
+                )}
             </div>
             <div >
-                <nav className={styles.headerBot}>
+                <nav >
                     <div className="flex flex-row px-5 py-5 md:px-20 md:py-5 border-b ">
                         <a className='flex  md:pt-1' href="https://beana.com">
                             <img src="./assets/logo.png" className="w-full md:w-60" alt="Beana Logo" />
@@ -429,13 +429,13 @@ export default function Header() {
                             onClick={toggleMobileMenu}
                         >
                             <li className='flex flex-row select-none '>
-                                <button className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg  hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-black dark:hover:bg-secondary dark:hover:text-white ">
+                                <button className="flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg  hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-black dark:hover:bg-secondary dark:hover:text-white ">
                                     <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
                                     </svg>
                                 </button>
                                 {toggleMenu ? (
-                                    <div class={`duration-500 ease absolute top-[109px] w-full right-0 bg-white p-4 pb-0 ${scrolled ? 'top-[93px]' :''}`}>
+                                    <div class={`duration-500 ease absolute top-[119px] w-full right-0 bg-white p-4 pb-0 ${scrolled ? 'top-[93px]' : ''}`}>
                                         <ul class="space-y-4 pt-3 pb-6 flex flex-col items-center">
                                             <li >
                                                 <a href="#" class="text-black hover:text-secondary font-medium ">

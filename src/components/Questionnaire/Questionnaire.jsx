@@ -89,7 +89,7 @@ export default function Questionnaire() {
                                     zIndex: 9999,
                                 }}
                             >
-                                <div className='w-[30%]'>
+                                <div className=' w-[70%] md:w-[30%]'>
                                     <SuccessLoading />
                                 </div>
                             </div>
@@ -97,10 +97,10 @@ export default function Questionnaire() {
                     </div>
                     {/* start */}
                     {nextQuestion === 0 &&
-                        <div className='animate-questionAppear relative bg-[#FAF9F5] max-w-[620px] min-h-[420px] border-secondary shadow-[0_5px_20px_-5px_#86bb86]'>
-                            <div className='px-10 py-7 '>
-                                <p className='text-[18px] font-bold text-secondary'>Khám Phá Da Mặt Của Bạn</p>
-                                <div className='px-16 py-10'>
+                        <div className='animate-questionAppear relative bg-[#FAF9F5] max-w-[370px] md:max-w-[620px] min-h-[420px] border-secondary shadow-[0_5px_20px_-5px_#86bb86]'>
+                            <div className='px-3 mt-6 md:px-10 py-7 '>
+                                <p className='text-[18px] text-center font-bold text-secondary'>Khám Phá Da Mặt Của Bạn</p>
+                                <div className='px-6 md:px-16 py-10'>
                                     <p>Hãy trả lời 7 câu hỏi nhanh của chúng tôi và khám phá loại da của bạn trong vòng 2 phút.
                                         Chúng tôi sẽ cung cấp các đề xuất chăm sóc da cá nhân đáp ứng nhu cầu riêng của bạn.</p>
                                     <button
@@ -117,7 +117,7 @@ export default function Questionnaire() {
                                     color="#86bb86"
                                     size="2x"
                                     fixedWidth
-                                    className='absolute top-6 right-8 hover:text-[#49b949] cursor-pointer'
+                                    className='absolute top-4 md:top-6 right-2 md:right-8 hover:text-[#49b949] cursor-pointer'
                                     onClick={setShow}
                                 />
                             </div>
@@ -125,19 +125,19 @@ export default function Questionnaire() {
                     }
                     {/* question 1 */}
                     {nextQuestion === 1 &&
-                        <div className='animate-sliderDescription relative bg-[#FAF9F5] max-w-[700px] min-h-[420px] border-secondary shadow-[0_5px_20px_-5px_#86bb86]'>
-                            <div className='px-10 pt-7 py-16'>
-                                <p className='text-[20px] font-bold text-secondary'>Khám Phá Da Mặt Của Bạn</p>
+                        <div className='animate-sliderDescription relative bg-[#FAF9F5] max-w-[370px] md:max-w-[700px] min-h-[420px] border-secondary shadow-[0_5px_20px_-5px_#86bb86]'>
+                            <div className='px-3 mt-2 md:mt-6 md:px-10 py-10 '>
+                                <p className='text-[20px] text-center font-bold text-secondary'>Khám Phá Da Mặt Của Bạn</p>
 
-                                <div className='mx-28 py-10 flex flex-col gap-4'>
-                                    <p className='font-medium text-lg text-center pb-2'>Bạn sẽ mô tả làn da của mình như thế nào?</p>
+                                <div className='md:mx-24 pt-3 pb-8 mx-8 md:py-10 flex flex-col gap-4'>
+                                    <p className='font-medium text-lg text-center md:pb-2'>Bạn sẽ mô tả làn da của mình như thế nào?</p>
                                     <div
                                         className={`flex flex-col items-center gap-1 py-2 px-4 border-[2px] cursor-pointer select-none border-[#606060] ${selectedAnswer === 1 ? 'border-[2px] border-secondary text-secondary' : ''
                                             }`}
                                         onClick={() => handleAnswerClick(1)}
                                     >
                                         <p className='text-[15px]'>Da Bình Thường</p>
-                                        <p className='text-[13px] font-medium'>Bề ngoài rõ ràng, không căng cũng không nhờn</p>
+                                        <p className='text-[13px] font-medium text-center'>Bề ngoài rõ ràng, không căng cũng không nhờn</p>
                                     </div>
                                     <div
                                         className={`flex flex-col items-center gap-1 py-2 px-4 border-[2px] cursor-pointer select-none border-[#606060] ${selectedAnswer === 2 ? 'border-[2px] border-secondary text-secondary' : ''
@@ -145,7 +145,7 @@ export default function Questionnaire() {
                                         onClick={() => handleAnswerClick(2)}
                                     >
                                         <p className='text-[15px] '>Da Dầu</p>
-                                        <p className='text-[13px] font-medium'>Sáng bóng, thường xuyên nổi mụn</p>
+                                        <p className='text-[13px] font-medium text-center'>Sáng bóng, thường xuyên nổi mụn</p>
                                     </div>
                                     <div
                                         className={`flex flex-col items-center gap-1 py-2 px-4 border-[2px] cursor-pointer select-none border-[#606060] ${selectedAnswer === 3 ? 'border-[2px] border-secondary text-secondary' : ''
@@ -153,7 +153,7 @@ export default function Questionnaire() {
                                         onClick={() => handleAnswerClick(3)}
                                     >
                                         <p className='text-[15px] '>Da Khô</p>
-                                        <p className='text-[13px] font-medium'>Cảm thấy căng và khó chịu, thường trông bong tróc</p>
+                                        <p className='text-[13px] font-medium text-center'>Cảm thấy căng và khó chịu, thường trông bong tróc</p>
                                     </div>
                                     <div
                                         className={`flex flex-col items-center gap-1 py-2 px-4 border-[2px] cursor-pointer select-none border-[#606060] ${selectedAnswer === 4 ? 'border-[2px] border-secondary text-secondary' : ''
@@ -161,7 +161,7 @@ export default function Questionnaire() {
                                         onClick={() => handleAnswerClick(4)}
                                     >
                                         <p className='text-[15px] '>Da Nhạy Cảm</p>
-                                        <p className='text-[13px] font-medium'>Dễ bị kích ứng, khô rát, thường nổi mẩn đỏ</p>
+                                        <p className='text-[13px] font-medium text-center'>Dễ bị kích ứng, khô rát, thường nổi mẩn đỏ</p>
                                     </div>
                                 </div>
 
@@ -172,7 +172,7 @@ export default function Questionnaire() {
                                     color="#86bb86"
                                     size="2x"
                                     fixedWidth
-                                    className='absolute top-6 right-8 hover:text-[#49b949] cursor-pointer'
+                                    className='absolute top-4 md:top-6 right-2 md:right-8 hover:text-[#49b949] cursor-pointer'
                                     onClick={setShow}
                                 />
                             </div>
@@ -193,7 +193,7 @@ export default function Questionnaire() {
                                 1 / 7
                             </div>
                             <div
-                                className='absolute bottom-8 right-5 flex flex-row items-center'
+                                className='absolute bottom-6 right-5 flex flex-row items-center'
                                 onClick={() => handleQuestionClick(nextQuestion + 1)}
                             >
                                 <p className='font-semibold text-[#000] cursor-pointer'>Next</p>
@@ -211,12 +211,12 @@ export default function Questionnaire() {
 
                     {/* question 2 */}
                     {nextQuestion === 2 &&
-                        <div className='animate-sliderDescription relative bg-[#FAF9F5] min-w-[700px] min-h-[420px] border-secondary shadow-[0_5px_20px_-5px_#86bb86]'>
-                            <div className='px-10 pt-7 py-16'>
-                                <p className='text-[20px] font-bold text-secondary'>Khám Phá Da Mặt Của Bạn</p>
-                                <p className='font-medium text-lg text-center mx-26 pt-10 '>Mối quan tâm hàng đầu về da của bạn là gì?</p>
+                        <div className='animate-sliderDescription relative bg-[#FAF9F5] max-w-[370px] md:min-w-[700px] min-h-[420px] border-secondary shadow-[0_5px_20px_-5px_#86bb86]'>
+                            <div className='px-3 mt-2 md:mt-6 md:px-10 py-10 '>
+                                <p className='text-[20px] text-center font-bold text-secondary'>Khám Phá Da Mặt Của Bạn</p>
+                                <p className='font-medium text-lg text-center mx-26 pt-3 md:pt-10 '>Mối quan tâm hàng đầu về da của bạn là gì?</p>
                                 <p className='font-medium text-lg text-center pb-2'>(Chọn tối đa 3)</p>
-                                <div className='px-[85px] pt-5 pb-10 grid grid-cols-2 gap-6 capitalize'>
+                                <div className='px-3 md:px-[85px] pt-2 md:pt-5 pb-10 grid grid-cols-2 md:gap-6 gap-3 capitalize'>
                                     <div
                                         className={`flex flex-row items-center gap-1 py-2 px-4 border-[2px] cursor-pointer select-none border-[#606060] ${selectedAnswer2.includes(1) ? 'border-[2px] border-secondary text-secondary' : ''
                                             }`}
@@ -233,7 +233,7 @@ export default function Questionnaire() {
                                         <p className='text-[14px]'> Vết nám + nếp nhăn</p>
                                     </div>
                                     <div
-                                        className={`flex flex-row justify-center gap-1 py-2 px-4 border-[2px] cursor-pointer select-none border-[#606060] ${selectedAnswer2.includes(2) ? 'border-[2px] border-secondary text-secondary' : ''
+                                        className={`flex flex-row justify-center gap-1 py-2 px-3 border-[2px] cursor-pointer select-none border-[#606060] ${selectedAnswer2.includes(2) ? 'border-[2px] border-secondary text-secondary' : ''
                                             }`}
                                         onClick={() => handleAnswerClick2(2)}
                                     >
@@ -278,7 +278,7 @@ export default function Questionnaire() {
                                         <p className='text-[14px] '>Da chảy sệ</p>
                                     </div>
                                     <div
-                                        className={`flex flex-row justify-center gap-1 py-2 px-4 border-[2px] cursor-pointer select-none border-[#606060] ${selectedAnswer2.includes(5) ? 'border-[2px] border-secondary text-secondary' : ''
+                                        className={`flex flex-row justify-center gap-1 py-2 px-3 border-[2px] cursor-pointer select-none border-[#606060] ${selectedAnswer2.includes(5) ? 'border-[2px] border-secondary text-secondary' : ''
                                             }`}
                                         onClick={() => handleAnswerClick2(5)}
                                     >
@@ -293,7 +293,7 @@ export default function Questionnaire() {
                                         <p className='text-[14px]'>Cấu trúc da thô</p>
                                     </div>
                                     <div
-                                        className={`flex flex-row justify-center gap-1 py-2 px-4 border-[2px] cursor-pointer select-none border-[#606060] ${selectedAnswer2.includes(6) ? 'border-[2px] border-secondary text-secondary' : ''
+                                        className={`flex flex-row justify-center items-center gap-1 py-2 px-4 border-[2px] cursor-pointer select-none border-[#606060] ${selectedAnswer2.includes(6) ? 'border-[2px] border-secondary text-secondary' : ''
                                             }`}
                                         onClick={() => handleAnswerClick2(6)}
                                     >
@@ -308,7 +308,7 @@ export default function Questionnaire() {
                                         <p className='text-[14px] '>Da mờ mịt</p>
                                     </div>
                                     <div
-                                        className={`flex flex-row justify-center gap-1 py-2 px-4 border-[2px] cursor-pointer select-none border-[#606060] ${selectedAnswer2.includes(7) ? 'border-[2px] border-secondary text-secondary' : ''
+                                        className={`flex flex-row justify-center items-center gap-1 py-2 px-1 border-[2px] cursor-pointer select-none border-[#606060] ${selectedAnswer2.includes(7) ? 'border-[2px] border-secondary text-secondary' : ''
                                             }`}
                                         onClick={() => handleAnswerClick2(7)}
                                     >
@@ -345,7 +345,7 @@ export default function Questionnaire() {
                                     color="#86bb86"
                                     size="2x"
                                     fixedWidth
-                                    className='absolute top-6 right-8 hover:text-[#49b949] cursor-pointer'
+                                    className='absolute top-4 md:top-6 right-2 md:right-8 hover:text-[#49b949] cursor-pointer'
                                     onClick={setShow}
                                 />
                             </div>
@@ -363,10 +363,10 @@ export default function Questionnaire() {
                                 <p className='font-semibold text-[#9a9b98] cursor-pointer'>Back</p>
                             </div>
                             <div className='absolute bottom-6 left-[50%] -translate-x-1/2 font-semibold text-lg'>
-                                1 / 7
+                                2 / 7
                             </div>
                             <div
-                                className='absolute bottom-8 right-5 flex flex-row items-center'
+                                className='absolute bottom-6 right-5 flex flex-row items-center'
                                 onClick={() => handleQuestionClick(nextQuestion + 1)}
                             >
                                 <p className='font-semibold text-[#000] cursor-pointer'>Next</p>
@@ -384,11 +384,11 @@ export default function Questionnaire() {
 
                     {/* question 3 */}
                     {nextQuestion === 3 &&
-                        <div className='animate-sliderDescription relative bg-[#FAF9F5] max-w-[700px] min-h-[420px] border-secondary shadow-[0_5px_20px_-5px_#86bb86]'>
-                            <div className='px-10 pt-7 py-16'>
-                                <p className='text-[20px] font-bold text-secondary'>Khám Phá Da Mặt Của Bạn</p>
+                        <div className='animate-sliderDescription relative bg-[#FAF9F5] max-w-[370px] md:min-w-[700px] min-h-[420px] border-secondary shadow-[0_5px_20px_-5px_#86bb86]'>
+                            <div className='px-3 mt-2 md:mt-6 md:px-10 py-10 '>
+                                <p className='text-[20px]  text-center font-bold text-secondary'>Khám Phá Da Mặt Của Bạn</p>
 
-                                <div className='mx-[110px] py-10 flex flex-col gap-4'>
+                                <div className='md:mx-[110px] pt-2 md:pt-10 pb-10 flex flex-col gap-4'>
                                     <p className='font-medium text-lg text-center pb-2'>Thông thường làn da của bạn rất nhạy cảm và phản ứng với hầu hết các sản phẩm chăm sóc da?</p>
                                     <div
                                         className={`flex flex-col items-center gap-1 py-2 px-4 border-[2px] cursor-pointer select-none border-[#606060] ${selectedAnswer3 === 1 ? 'border-[2px] border-secondary text-secondary' : ''
@@ -396,7 +396,7 @@ export default function Questionnaire() {
                                         onClick={() => handleAnswerClick3(1)}
                                     >
                                         <p className='text-[15px]'>Có</p>
-                                        <p className='text-[13px] font-medium'>Da bị mẩn đỏ, dễ nhạy cảm với sản phẩm</p>
+                                        <p className='text-[13px] font-medium text-center'>Da bị mẩn đỏ, dễ nhạy cảm với sản phẩm</p>
                                     </div>
                                     <div
                                         className={`flex flex-col items-center gap-1 py-2 px-4 border-[2px] cursor-pointer select-none border-[#606060] ${selectedAnswer3 === 2 ? 'border-[2px] border-secondary text-secondary' : ''
@@ -404,7 +404,7 @@ export default function Questionnaire() {
                                         onClick={() => handleAnswerClick3(2)}
                                     >
                                         <p className='text-[15px] '>Không</p>
-                                        <p className='text-[13px] font-medium'>Sử dụng được với hầu hết các sản phẩm</p>
+                                        <p className='text-[13px] font-medium text-center'>Sử dụng được với hầu hết các sản phẩm</p>
                                     </div>
                                     <div
                                         className={`flex flex-col items-center gap-1 py-2 px-4 border-[2px] cursor-pointer select-none border-[#606060] ${selectedAnswer3 === 3 ? 'border-[2px] border-secondary text-secondary' : ''
@@ -412,7 +412,7 @@ export default function Questionnaire() {
                                         onClick={() => handleAnswerClick3(3)}
                                     >
                                         <p className='text-[15px] '>Khác</p>
-                                        <p className='text-[13px] font-medium'>Có hoặc không tùy vào loại sản phẩm</p>
+                                        <p className='text-[13px] font-medium text-center'>Có hoặc không tùy vào loại sản phẩm</p>
                                     </div>
                                 </div>
 
@@ -423,7 +423,7 @@ export default function Questionnaire() {
                                     color="#86bb86"
                                     size="2x"
                                     fixedWidth
-                                    className='absolute top-6 right-8 hover:text-[#49b949] cursor-pointer'
+                                    className='absolute top-4 md:top-6 right-2 md:right-8 hover:text-[#49b949] cursor-pointer'
                                     onClick={setShow}
                                 />
                             </div>
@@ -441,10 +441,10 @@ export default function Questionnaire() {
                                 <p className='font-semibold text-[#9a9b98] cursor-pointer'>Back</p>
                             </div>
                             <div className='absolute bottom-6 left-[50%] -translate-x-1/2 font-semibold text-lg'>
-                                1 / 7
+                                7 / 7
                             </div>
                             <div
-                                className='absolute bottom-8 right-5 flex flex-row items-center'
+                                className='absolute bottom-6 right-5 flex flex-row items-center'
                                 onClick={() => handleQuestionClick(nextQuestion + 1)}
                             >
                                 <p className='font-semibold text-[#000] cursor-pointer'>Next</p>
@@ -465,10 +465,10 @@ export default function Questionnaire() {
 
                     {/* done */}
                     {nextQuestion === 4 &&
-                        <div className='animate-sliderDescription relative bg-[#FAF9F5] max-w-[700px] min-h-[420px] border-secondary shadow-[0_5px_20px_-5px_#86bb86]'>
-                            <div className='px-24 py-7 pb-16'>
-                                <p className='text-[18px] font-bold text-secondary'>Khám Phá Da Mặt Của Bạn</p>
-                                <div className='px-16 py-10'>
+                        <div className='animate-sliderDescription relative bg-[#FAF9F5] max-w-[370px] md:min-w-[700px] min-h-[420px] border-secondary shadow-[0_5px_20px_-5px_#86bb86]'>
+                            <div className='px-6 md:px-24 mt-2 py-10 md:mt-6 pb-16'>
+                                <p className='text-[18px] text-center font-bold text-secondary'>Khám Phá Da Mặt Của Bạn</p>
+                                <div className='md:px-16 py-10'>
                                     <p className='font-medium text-lg text-center pb-2'>Cảm ơn bạn đã hoàn thành câu trả lời.</p>
                                     <p className='font-medium text-base text-center pb-2'>Nhập địa chỉ email của bạn để nhận lịch trình chăm sóc da của bạn.</p>
 
@@ -496,12 +496,12 @@ export default function Questionnaire() {
                                     color="#86bb86"
                                     size="2x"
                                     fixedWidth
-                                    className='absolute top-6 right-8 hover:text-[#49b949] cursor-pointer'
+                                    className='absolute top-4 md:top-6 right-2 md:right-8 hover:text-[#49b949] cursor-pointer'
                                     onClick={setShow}
                                 />
                             </div>
                             <div
-                                className='absolute bottom-6 left-8 flex flex-row items-center'
+                                className='absolute bottom-7 left-8 flex flex-row items-center'
                                 onClick={() => handleQuestionClick(nextQuestion - 1)}
                             >
                                 <FontAwesomeIcon
@@ -530,15 +530,15 @@ export default function Questionnaire() {
                     {/* end done */}
                     {/* success */}
                     {successSend &&
-                        <div className='animate-sliderDescription relative bg-[#FAF9F5] max-w-[700px] min-h-[420px] border-secondary shadow-[0_5px_20px_-5px_#86bb86]'>
-                            <div className='px-24  pb-10 flex flex-col justify-center items-center'>
-                                <div className='pt-16 py-2'>
+                        <div className='animate-sliderDescription relative bg-[#FAF9F5] max-w-[390px] md:min-w-[700px] min-h-[420px] border-secondary shadow-[0_5px_20px_-5px_#86bb86]'>
+                            <div className='px-3 md:px-24  pb-10 flex flex-col justify-center items-center'>
+                                <div className='pt-16 py-2 '>
                                     <p className='font-bold text-lg text-center pb-2'>Cảm ơn bạn đã tin tưởng Beana.</p>
                                     <p className='font-medium text-base text-center pb-2'>Bạn sẽ nhận được kết quả về da mặt của bạn trong thời gian sớm nhất.</p>
                                 </div>
                                 <div className='flex flex-row justify-center'>
-                                    <img className='w-60 pb-16' src='./assets/beanMale.png' />
-                                    <img className='w-40 pb-16' src='./assets/beanFemale.png' />
+                                    <img className='w-60 pb-16 md:pl-0 ml-16' src='./assets/beanMale.png' />
+                                    <img className='w-40 pb-16 md:pl-0 mr-9' src='./assets/beanFemale.png' />
                                 </div>
                             </div>
 
@@ -548,12 +548,12 @@ export default function Questionnaire() {
                                     color="#86bb86"
                                     size="2x"
                                     fixedWidth
-                                    className='absolute top-6 right-8 hover:text-[#49b949] cursor-pointer'
+                                    className='absolute top-4 md:top-6 right-2 md:right-8 hover:text-[#49b949] cursor-pointer'
                                     onClick={setShow}
                                 />
                             </div>
 
-                            <div className='absolute bottom-8 right-8 border-[1px] px-3 py-3 bg-primary rounded-3xl shadow-md shadow-primary text-white hover:bg-secondary hover:shadow-md hover:shadow-secondary cursor-pointer font-semibold text-sm'>
+                            <div className='absolute bottom-8 right-20 md:right-8 border-[1px] px-3 py-3 bg-primary rounded-3xl shadow-md shadow-primary text-white hover:bg-secondary hover:shadow-md hover:shadow-secondary cursor-pointer font-semibold text-sm'>
                                 <Link to="/scanning-result">
                                     Xem các sản phẩm phù hợp
                                 </Link>

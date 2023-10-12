@@ -126,11 +126,11 @@ export default function Footer() {
         <div className="text-center">
           2023 Beana. All Rights Reserved.
         </div>
-        <div className='pt-5 md:pt-0 flex flex-row gap-7'>
-          <div>
+        <div className='pt-5 md:pt-0 md:flex flex-row md:gap-7'>
+          <div className="text-center">
             Điều Khoản Và Điều Kiện
           </div>
-          <div className="ml-36 md:ml-0">
+          <div className="pt-5 md:pt-0 text-center">
             Chính Sách Bảo Mật
           </div>
 
