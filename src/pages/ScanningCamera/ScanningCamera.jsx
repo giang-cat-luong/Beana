@@ -53,16 +53,47 @@ function ScanningCamera() {
 
     return (
         <div className="bg-black w-full h-full">
-            <header className="px-10 py-560">
+            {/* <div className="px-10 py-560">
                 <Webcam
                     ref={webcamRef}
                     className="absolute mx-auto  top-[100px] left-0 right-[80px] text-center z-10 w-[640px] h-[480px]"
                 />
                 <canvas
                     ref={canvasRef}
-                    className="absolute mx-auto md:top-[40px] left-0 md:left-0 top-[90px] md:right-[80px] text-center z-10 w-[400px] md:w-[640px] h-[500px] md:h-[550px]"
+                    className="absolute mx-auto md:top-[40px] left-2 md:left-0 top-[90px] md:right-[80px] text-center z-10 w-[400px] md:w-[640px] h-[500px] md:h-[550px]"
                 />
-            </header>
+            </div> */}
+             <header className="App-header">
+        <Webcam
+          ref={webcamRef}
+          style={{
+            position: "absolute",
+            marginLeft: "auto",
+            marginRight: "auto",
+            left: 0,
+            right: 0,
+            textAlign: "center",
+            zIndex: 9,
+            width: 640,
+            height: 480,
+          }}
+        />
+
+        <canvas
+          ref={canvasRef}
+          style={{
+            position: "absolute",
+            marginLeft: "auto",
+            marginRight: "auto",
+            left: 0,
+            right: 0,
+            textAlign: "center",
+            zIndex: 9,
+            width: 540,
+            height: 480,
+          }}
+        />
+      </header>
         </div>
     );
 
