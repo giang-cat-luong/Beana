@@ -63,7 +63,7 @@ function ScanningCamera() {
         <div className="flex w-[100vw] h-[100vh] flex-col items-center justify-between">
             <h1>FAce Detection</h1>
             <div className="px-10 flex items-center">
-                <video  crossOrigin="anonymous" ref={videoRef} allowsInlineMediaPlayback></video>
+                <video  crossOrigin="anonymous" ref={videoRef} autoPlay></video>
             </div>
             <canvas ref={canvasRef} width="640" height="550"
                 className="absolute top-[350px]" />
