@@ -448,9 +448,11 @@ export default function Header() {
                                                 </a>
                                             </li>
                                             <li>
+                                                <Link to="/scanning-face">
                                                 <a href="#" class="text-black hover:text-secondary font-medium ">
                                                     FACE SCANNING
                                                 </a>
+                                                </Link>
                                             </li>
                                             <li>
                                                 <a href="#" class="text-black hover:text-secondary font-medium ">
