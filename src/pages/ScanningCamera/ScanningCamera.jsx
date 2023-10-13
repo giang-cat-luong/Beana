@@ -6,6 +6,7 @@ import { drawMesh } from "./utilities";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import ScanningFaceLoading from '../../components/Loading/ScanningFaceLoading';
+import ProgessLoading from '../../components/Loading/progessLoading/progessLoading';
 
 const sliderUrls = [
     './assets/cameraBanner.jpg',
@@ -49,7 +50,7 @@ function ScanningCamera() {
         setTimeout(() => {
             setLoading(false);
             setPage(2);
-        }, 6000);
+        }, 3500);
     };
 
     //for camera detection
@@ -118,9 +119,16 @@ function ScanningCamera() {
                                 zIndex: 9000,
                             }}
                         >
-                            <div className=' w-full'>
+                            <div className=' w-full mb-64'>
                                 <ScanningFaceLoading />
+                                <p className='text-white absolute bottom-24 left-[50%] text-center -translate-x-1/2'>
+                                    IT's Beana đang khởi tạo môi trường selfie cho bạn.
+                                </p>
+                                <div className='w-[50%] absolute bottom-12 left-[50%] text-center -translate-x-1/2'>
+                                    <ProgessLoading />
+                                </div>
                             </div>
+
                         </div>
                     )}
                 </div>
@@ -194,7 +202,7 @@ function ScanningCamera() {
                 </div>
             </div>
             {/* page 0 */}
-            {page === 0 &&
+            {page === 2 &&
                 <div>
                     <div className="w-full min-h-full h-full md:w-full md:h-full bg-center bg-cover z-0 bg-fixed" style={{ backgroundImage: `url(${sliderUrls[0]})` }}>
                         <div className="px-10 py-10 text-white  bg-black/50 backdrop-opacity-10 w-full backdrop-invert">
@@ -282,17 +290,19 @@ function ScanningCamera() {
 
 
             {/* page 2 */}
-            {page === 2 &&
-                <div className="bg-black w-full h-full">
-                    <div className="px-10 py-560">
+            {page === 0 &&
+                <div className="bg-black w-full h-full relative top-0 px-32">
+                    <div className="">
                         <Webcam
                             ref={webcamRef}
-                            className="absolute mx-auto  top-[100px] left-0 right-[80px] text-center z-10 w-[640px] h-[480px]"
+                            className="absolute mx-auto  top-0 left-0 right-[80px] text-center z-10 w-[640px] h-[480px]"
                         />
                         <canvas
                             ref={canvasRef}
-                            className="absolute mx-auto md:top-[40px] left-2 md:left-0 top-[90px] md:right-[80px] text-center z-10 w-[400px] md:w-[640px] h-[500px] md:h-[550px]"
+                            className="absolute mx-auto md:top-[140px] left-2 md:left-0 top-[90px] md:right-[80px] text-center z-10 w-[400px] md:w-[640px] h-[500px] md:h-[550px]"
                         />
+                        <div>
+                        </div>
                     </div>
                 </div>
             }
