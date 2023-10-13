@@ -86,7 +86,7 @@ export default function ScanningFace() {
           <div className="px-6 md:px-0 max-w-full md:flex flex-col justify-between items-center gap-5">
             <p className="pt-8 md:pt-0 font-bold text-black text-[30px] text-center">CÁC BƯỚC SỬ DỤNG FACE SCANNING</p>
             <div className="md:flex flex-row max-w-full justify-between gap-10 ">
-              <div className="flex-1 pt-5">
+              <div className="flex-1 pt-5 md:pt-0">
                 <img className="w-full border-[1px]" src="./assets/step1.png" />
                 <p className="pt-8 md:pt-5 font-bold text-black text-[20px] text-center">BƯỚC 1 CHỤP ẢNH TỰ SƯỚNG</p>
                 <p className="font-medium text-black text-sm pt-4 text-center px-5">Chụp một bức ảnh tự sướng trong ánh sáng tự nhiên với tóc buộc lên.</p>
