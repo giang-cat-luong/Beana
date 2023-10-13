@@ -1,1 +1,1 @@
-export {default} from './ScanningFaceLoading'
+export {default} from './ProgessLoading'
