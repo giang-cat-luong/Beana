@@ -60,7 +60,7 @@ function ScanningCamera() {
                 />
                 <canvas
                     ref={canvasRef}
-                    className="absolute mx-auto md:top-[40px] left-[-10px] md:left-0 top-[130px] md:right-[80px] text-center z-10 w-[500px] md:w-[640px] h-[600px] md:h-[550px]"
+                    className="absolute mx-auto md:top-[40px] left-[-10px] md:left-0 top-[90px] md:right-[80px] text-center z-10 w-[400px] md:w-[640px] h-[500px] md:h-[550px]"
                 />
             </header>
         </div>
