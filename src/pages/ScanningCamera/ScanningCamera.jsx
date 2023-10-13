@@ -1,75 +1,98 @@
-import { useRef, useEffect } from 'react'
-import * as faceapi from 'face-api.js'
+import React, { useRef } from 'react';
+import Webcam from 'react-webcam';
+import * as tf from '@tensorflow/tfjs';
+import draw from './utilities'
+import * as blazeface from '@tensorflow-models/blazeface';
 
 function ScanningCamera() {
-    const videoRef = useRef()
-    const canvasRef = useRef()
+    const webcamRef = useRef(null);
+    const canvasRef = useRef(null);
 
-    useEffect(() => {
-        startVideo()
-        videoRef && loadModels()
+    const runFacedetection = async () => {
 
-    }, [])
+        const model = await blazeface.load()
+        console.log("FaceDetection Model is Loaded..")
+        setInterval(() => {
+            detect(model);
+        }, 100);
 
-
-    // OPEN YOU FACE WEBCAM
-    const startVideo = () => {
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then((currentStream) => {
-                videoRef.current.srcObject = currentStream
-            })
-            .catch((err) => {
-                console.log(err)
-            })
     }
 
-    const loadModels = () => {
-        Promise.all([
-            faceapi.nets.tinyFaceDetector.loadFromUri("/models"),
-            faceapi.nets.faceLandmark68Net.loadFromUri("/models"),
-            faceapi.nets.faceRecognitionNet.loadFromUri("/models"),
-            faceapi.nets.faceExpressionNet.loadFromUri("/models")
+    const returnTensors = false;
 
-        ]).then(() => {
-            faceMyDetect()
-        })
+    const detect = async (model) => {
+        if (
+            typeof webcamRef.current !== "undefined" &&
+            webcamRef.current !== null &&
+            webcamRef.current.video.readyState === 4
+        ) {
+            // Get video properties
+            const video = webcamRef.current.video;
+            const videoWidth = webcamRef.current.video.videoWidth;
+            const videoHeight = webcamRef.current.video.videoHeight;
+
+            //Set video height and width
+            webcamRef.current.video.width = videoWidth;
+            webcamRef.current.video.height = videoHeight;
+
+            //Set canvas height and width
+            canvasRef.current.width = videoWidth;
+            canvasRef.current.height = videoHeight;
+
+            // Make detections
+
+            const prediction = await model.estimateFaces(video, returnTensors);
+
+            console.log(prediction)
+
+            const ctx = canvasRef.current.getContext("2d");
+            draw(prediction, ctx)
+        }
+
     }
 
-    const faceMyDetect = () => {
-        setInterval(async () => {
-            const detections = await faceapi.detectAllFaces(videoRef.current,
-                new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
-
-            canvasRef.current.innerHtml = faceapi.createCanvasFromMedia(videoRef.current)
-            faceapi.matchDimensions(canvasRef.current, {
-                width: 640,
-                height: 550
-            })
-
-            const resized = faceapi.resizeResults(detections, {
-                width: 640,
-                height: 550
-            })
-
-            faceapi.draw.drawDetections(canvasRef.current, resized)
-            faceapi.draw.drawFaceLandmarks(canvasRef.current, resized)
-            faceapi.draw.drawFaceExpressions(canvasRef.current, resized)
-
-
-        }, 1000)
-    }
-
+    runFacedetection();
     return (
-        <div className="flex w-[100vw] h-[100vh] flex-col items-center justify-between">
-            <h1>FAce Detection</h1>
-            <div className="px-10 flex items-center">
-                <video  crossOrigin="anonymous" ref={videoRef} autoPlay></video>
-            </div>
-            <canvas ref={canvasRef} width="640" height="550"
-                className="absolute top-[350px]" />
+        <div className="App">
+            <header className="App-header">
+                <Webcam
+                    ref={webcamRef}
+                    style={{
+                        position: "absolute",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        top: 100,
+                        left: 0,
+                        right: 80,
+                        textAlign: "center",
+                        zIndex: 9,
+                        width: 640,
+                        height: 480,
+                    }}
+                />
+
+                <canvas
+                    ref={canvasRef}
+                    style={{
+                        position: "absolute",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        top: 100,
+                        left: 0,
+                        right: 80,
+                        textAlign: "center",
+                        zIndex: 9,
+                        width: 640,
+                        height: 480,
+                    }}
+                />
+
+
+
+
+            </header>
         </div>
-    )
+    );
 
 }
-
 export default ScanningCamera;

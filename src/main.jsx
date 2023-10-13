@@ -13,7 +13,7 @@ import ProductDetail from "./pages/ProductDetail";
 import SkincareTips from "./pages/SkincareTips";
 import ScanningFace from "./pages/ScanningFace";
 import ScanningResult from "./pages/ScanningFace/components/QuestionQA/ScanningResult";
-import ScanningCamera from "./pages/ScanningCamera";
+import ScanningCamera from "./pages/ScanningCamera/ScanningCamera";
 
 const router = createBrowserRouter([
   {
