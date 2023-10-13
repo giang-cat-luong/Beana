@@ -61,12 +61,13 @@ const router = createBrowserRouter([
         path: "/scanning-result",
         element: <ScanningResult />,
       },
-      {
-        path: "/scanning-camera",
-        element: <ScanningCamera />,
-      },
+
 
     ],
+  },
+  {
+    path: "/scanning-camera",
+    element: <ScanningCamera />,
   },
 
 ]);
