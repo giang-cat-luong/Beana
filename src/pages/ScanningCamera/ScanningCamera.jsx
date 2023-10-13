@@ -301,10 +301,10 @@ function ScanningCamera() {
                             ref={canvasRef}
                             className="absolute mx-auto  left-2 md:left-0 top-[-10px] text-center z-10 w-[400px] h-[500px] "
                         />
-                        <div className='text-black absolute top-28 z-10 left-[50%] -translate-x-1/2'>
+                        <div className='text-black absolute top-[82px] z-10 left-[50%] -translate-x-1/2'>
                             Đỉnh đầu
                         </div>
-                        <div className='text-black absolute top-[350px] z-10 left-[50%] -translate-x-1/2'>
+                        <div className='text-black absolute top-[380px] z-10 left-[50%] -translate-x-1/2'>
                             Cằm
                         </div>
                     </div>
