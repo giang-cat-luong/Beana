@@ -5,7 +5,7 @@ import * as facemesh from "@tensorflow-models/face-landmarks-detection";
 import { drawMesh } from "./utilities";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-
+import ScanningFaceLoading from '../../components/Loading/ScanningFaceLoading';
 
 const sliderUrls = [
     './assets/cameraBanner.jpg',
@@ -49,7 +49,7 @@ function ScanningCamera() {
         setTimeout(() => {
             setLoading(false);
             setPage(2);
-        }, 2000);
+        }, 6000);
     };
 
     //for camera detection
@@ -101,6 +101,30 @@ function ScanningCamera() {
     return (
         <div className="bg-black min-h-full h-full md:hidden">
             <div className='relative visible'>
+                {/* loading */}
+                <div style={{ position: "relative" }}>
+                    {loading && (
+                        <div
+                            style={{
+                                position: "fixed",
+                                top: 0,
+                                left: 0,
+                                width: "100%",
+                                height: "100%",
+                                backgroundColor: "rgba(0, 0, 0, 1)",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                zIndex: 9000,
+                            }}
+                        >
+                            <div className=' w-full'>
+                                <ScanningFaceLoading />
+                            </div>
+                        </div>
+                    )}
+                </div>
+                {/* end loading */}
                 {isShow && (
                     <div
                         style={{
@@ -256,13 +280,6 @@ function ScanningCamera() {
             }
             {/* end page 1 */}
 
-            {/* loading */}
-            {loading &&
-                <div className={`w-full h-[100vh] flex justify-center ease-in-out duration-300 opacity-0 ${loading ? 'opacity-1' : 'opacity-0'}`}>
-                    <h1>Your Home Page</h1>
-                </div>
-            }
-            {/* end loading */}
 
             {/* page 2 */}
             {page === 2 &&
