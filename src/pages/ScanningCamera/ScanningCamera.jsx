@@ -1,4 +1,4 @@
-import React, { useRef,useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Webcam from 'react-webcam';
 import * as tf from '@tensorflow/tfjs';
 import draw from './utilities'
@@ -11,7 +11,6 @@ function ScanningCamera() {
     const runFacedetection = async () => {
 
         const model = await blazeface.load()
-        console.log("FaceDetection Model is Loaded..")
         setInterval(() => {
             detect(model);
         }, 100);
@@ -42,60 +41,51 @@ function ScanningCamera() {
             // Make detections
 
             const prediction = await model.estimateFaces(video, returnTensors);
-
-            console.log(prediction)
-
             const ctx = canvasRef.current.getContext("2d");
             draw(prediction, ctx)
         }
 
     }
 
-    
-  useEffect(() => {
-    runFacedetection();
-  }, []);
 
-   
+    useEffect(() => {
+        runFacedetection();
+    }, []);
+
+
     return (
-        <div className="App">
-            <header className="App-header">
-                <Webcam
-                    ref={webcamRef}
-                    style={{
-                        position: "absolute",
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                        top: 100,
-                        left: 0,
-                        right: 80,
-                        textAlign: "center",
-                        zIndex: 9,
-                        width: 640,
-                        height: 480,
-                    }}
-                />
+        <div className="bg-black w-full">
+            <Webcam
+                ref={webcamRef}
+                style={{
+                    position: "absolute",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    top: 100,
+                    left: 0,
+                    right: 80,
+                    textAlign: "center",
+                    zIndex: 9,
+                    width: 640,
+                    height: 480,
+                }}
+                className="bg-black"
+            />
 
-                <canvas
-                    ref={canvasRef}
-                    style={{
-                        position: "absolute",
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                        top: 100,
-                        left: 0,
-                        right: 80,
-                        textAlign: "center",
-                        zIndex: 9,
-                        width: 640,
-                        height: 480,
-                    }}
-                />
-
-
-
-
-            </header>
+            <canvas
+                ref={canvasRef}
+                style={{
+                    position: "absolute",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    top: 70,
+                    right: 20,
+                    textAlign: "center",
+                    zIndex: 9,
+                    width: 440,
+                    height: 480,
+                }}
+            />
         </div>
     );
 
