@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react'
 import * as faceapi from 'face-api.js'
 
 function ScanningCamera() {
-    const videoRef = useRef(null)
+    const videoRef = useRef()
     const canvasRef = useRef()
 
     useEffect(() => {

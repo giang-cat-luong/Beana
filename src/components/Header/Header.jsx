@@ -108,7 +108,7 @@ export default function Header() {
     };
 
     return (
-        <div className={`font-Montserrat w-full fixed top-0 z-[1000] bg-[#d6fcdf] duration-500 ease-in-out ${scrolled ? 'bg-white' : ''}`}>
+        <div className={`font-Montserrat w-full fixed top-0 z-[1000] duration-500 ease-in-out ${scrolled ? 'bg-[#d6fcdf]' : 'bg-white'}`}>
             <div style={{ position: "relative" }}>
                 {redirecting && (
                     <div
