@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef,useEffect } from 'react';
 import Webcam from 'react-webcam';
 import * as tf from '@tensorflow/tfjs';
 import draw from './utilities'
@@ -51,7 +51,12 @@ function ScanningCamera() {
 
     }
 
+    
+  useEffect(() => {
     runFacedetection();
+  }, []);
+
+   
     return (
         <div className="App">
             <header className="App-header">
