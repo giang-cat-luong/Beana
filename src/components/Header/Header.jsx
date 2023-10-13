@@ -108,7 +108,7 @@ export default function Header() {
     };
 
     return (
-        <div className={`font-Montserrat w-full fixed top-0 z-[1000] bg-white duration-500 ease-in-out ${scrolled ? 'bg-[#d6fcdf]' : ''}`}>
+        <div className={`font-Montserrat w-full fixed top-0 z-[1000] bg-[#d6fcdf] duration-500 ease-in-out ${scrolled ? 'bg-white' : ''}`}>
             <div style={{ position: "relative" }}>
                 {redirecting && (
                     <div
@@ -383,7 +383,7 @@ export default function Header() {
                                             fixedWidth
                                         />
                                         <p className='text-xs pl-1 md:text-sm font-semibold text-[#000] group-hover:text-[#0E740E]' > Đăng Nhập</p>
-                                        <div className={`group ${scrolled ? 'top-[55%]' : 'bottom-[-4%]'} hidden group-hover:block absolute top-[64%] right-[18%] w-32 h-5 bg-transparent  z-20duration-300`}>
+                                        <div className={`group ${scrolled ? 'top-[54%]' : 'bottom-[-4%]'} hidden group-hover:block absolute top-[64%] right-[18%] w-32 h-5 bg-transparent  z-20duration-300`}>
                                         </div>
                                         <div className={`group ${scrolled ? 'top-[70%]' : 'bottom-[-4%]'} hidden group-hover:block absolute right-[23.5%] w-10 h-10 bg-[#0E740E] z-20 rotate-45 duration-300`}>
                                         </div>
