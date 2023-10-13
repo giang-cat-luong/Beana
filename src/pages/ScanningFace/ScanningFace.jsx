@@ -1,6 +1,7 @@
 import SliderBanner from "../../components/Slider";
 import { useState } from "react";
 import Questionnaire from "../../components/Questionnaire/Questionnaire";
+import { Link } from "react-router-dom";
 
 const sliderUrls = [
   './assets/slider1.jpg',
@@ -41,7 +42,9 @@ export default function ScanningFace() {
         img={sliderImg}
       />
       <div className="md:hidden flex justify-center border-[1px] border-white mx-20 py-1 my-5 rounded-3xl bg-primary text-white shadow-md shadow-primary hover:bg-secondary hover:shadow-md hover:shadow-secondary cursor-pointer">
-        BẮT ĐẦU QUÉT DA MẶT
+        <Link to="/scanning-camera">
+          BẮT ĐẦU QUÉT DA MẶT
+        </Link>
       </div>
       <div className="max-w-screen-2xl md:px-36">
         <div className="md:py-20 md:flex md:flex-col md:gap-24">
@@ -76,7 +79,9 @@ export default function ScanningFace() {
             </div>
           </div>
           <div className="md:hidden flex justify-center border-[1px] border-white mx-20 py-1 my-14 rounded-3xl bg-primary text-white shadow-md shadow-primary hover:bg-secondary hover:shadow-md hover:shadow-secondary cursor-pointer">
-            BẮT ĐẦU QUÉT DA MẶT
+            <Link to="/scanning-camera">
+              BẮT ĐẦU QUÉT DA MẶT
+            </Link>
           </div>
           <div className="px-6 md:px-0 max-w-full md:flex flex-col justify-between items-center gap-5">
             <p className="pt-8 md:pt-0 font-bold text-black text-[30px] text-center">CÁC BƯỚC SỬ DỤNG FACE SCANNING</p>
@@ -101,7 +106,9 @@ export default function ScanningFace() {
         </div>
       </div>
       <div className="md:hidden flex justify-center border-[1px] border-white mx-20 py-1 my-10 rounded-3xl bg-primary text-white shadow-md shadow-primary hover:bg-secondary hover:shadow-md hover:shadow-secondary cursor-pointer">
-        BẮT ĐẦU QUÉT DA MẶT
+        <Link to="/scanning-camera">
+          BẮT ĐẦU QUÉT DA MẶT
+        </Link>
       </div>
       <div className="w-full bg-primary">
         <div className="flex flex-col justify-center items-center gap-4 py-9">
@@ -119,7 +126,9 @@ export default function ScanningFace() {
         </div>
       </div>
       <div className="md:hidden flex justify-center border-[1px] border-white mx-20 py-1 my-10 rounded-3xl bg-primary text-white shadow-md shadow-primary hover:bg-secondary hover:shadow-md hover:shadow-secondary cursor-pointer">
-        BẮT ĐẦU QUÉT DA MẶT
+        <Link to="/scanning-camera">
+          BẮT ĐẦU QUÉT DA MẶT
+        </Link>
       </div>
     </div>
   )

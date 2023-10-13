@@ -13,6 +13,7 @@ import ProductDetail from "./pages/ProductDetail";
 import SkincareTips from "./pages/SkincareTips";
 import ScanningFace from "./pages/ScanningFace";
 import ScanningResult from "./pages/ScanningFace/components/QuestionQA/ScanningResult";
+import ScanningCamera from "./pages/ScanningCamera";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "/scanning-result",
         element: <ScanningResult />,
+      },
+      {
+        path: "/scanning-camera",
+        element: <ScanningCamera />,
       },
 
     ],

@@ -19,15 +19,15 @@ export default function BannerEvent() {
             setIsShow(false)
             const timeoutId = setTimeout(() => {
                 setIsShow(true);
-                localStorage.setItem('adClosedCount', '1'); 
-            }, 60 * 5 * 1000); 
+                localStorage.setItem('adClosedCount', '1');
+            }, 5 * 60 * 1000);
 
-          
+
             // return () => clearTimeout(timeoutId);
         }
     }, []);
 
-    
+
     return (
         <div className='relative visible'>
             {isShow && (
@@ -47,7 +47,7 @@ export default function BannerEvent() {
                 >
                     <div className='relative'>
                         <a href='https://www.facebook.com/profile.php?id=61551793473535' className='flex justify-center '>
-                            <img src='./assets/event.png' className='w-[30%] shadow-[0_25px_60px_-20px_#86bb86]' />
+                            <img src='./assets/event.png' className='w-[90%] md:w-[30%] shadow-[0_25px_60px_-20px_#86bb86]' />
                         </a>
                         <div>
                             <FontAwesomeIcon
@@ -55,7 +55,7 @@ export default function BannerEvent() {
                                 color="#fff"
                                 size="2x"
                                 fixedWidth
-                                className='absolute bottom-[100%] right-[32%] hover:text-[#86bb86] cursor-pointer'
+                                className='absolute bottom-[103%] md:bottom-[100%] right-5 md:right-[32%] hover:text-[#86bb86] cursor-pointer'
                                 onClick={setShow}
                             />
                         </div>
