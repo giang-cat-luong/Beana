@@ -6,7 +6,7 @@ import { drawMesh } from "./utilities";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import ScanningFaceLoading from '../../components/Loading/ScanningFaceLoading';
-import ProgessLoading from '../../components/Loading/progessLoading/progessLoading';
+import ProgessLoading from '../../components/Loading/ProgessLoading';
 
 const sliderUrls = [
     './assets/cameraBanner.jpg',
@@ -202,7 +202,7 @@ function ScanningCamera() {
                 </div>
             </div>
             {/* page 0 */}
-            {page === 0 &&
+            {page === 2 &&
                 <div>
                     <div className="w-full min-h-full h-full md:w-full md:h-full bg-center bg-cover z-0 bg-fixed" style={{ backgroundImage: `url(${sliderUrls[0]})` }}>
                         <div className="px-10 py-10 text-white  bg-black/50 backdrop-opacity-10 w-full backdrop-invert">
@@ -290,7 +290,7 @@ function ScanningCamera() {
 
 
             {/* page 2 */}
-            {page === 2 &&
+            {page === 0 &&
                 <div className="bg-black w-full h-full relative top-0 px-32">
                     <div className="">
                         <Webcam
