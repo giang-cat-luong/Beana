@@ -57,34 +57,11 @@ function ScanningCamera() {
         <div className="bg-black w-full">
             <Webcam
                 ref={webcamRef}
-                style={{
-                    position: "absolute",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                    top: 100,
-                    left: 0,
-                    right: 80,
-                    textAlign: "center",
-                    zIndex: 9,
-                    width: 640,
-                    height: 480,
-                }}
-                className="bg-black"
+                className="bg-black absolute mx-auto top-[100px] left-0 right-[80px] text-center z-10 w-[640px] h-[480px]"
             />
-
             <canvas
                 ref={canvasRef}
-                style={{
-                    position: "absolute",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                    top: 70,
-                    right: 20,
-                    textAlign: "center",
-                    zIndex: 9,
-                    width: 440,
-                    height: 480,
-                }}
+                className="absolute mx-auto md:top-[15px] left-0 top-[60px] md:right-[80px] right-[20px] text-center z-10 w-[440px] md:w-[540px] h-[500px] md:h-[600px]"
             />
         </div>
     );
