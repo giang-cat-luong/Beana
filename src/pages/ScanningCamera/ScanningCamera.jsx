@@ -100,7 +100,7 @@ function ScanningCamera() {
 
 
     return (
-        <div className="bg-black min-h-full h-full md:hidden">
+        <div className="bg-black   min-h-full h-full md:hidden">
             <div className='relative visible'>
                 {/* loading */}
                 <div style={{ position: "relative" }}>
@@ -291,8 +291,8 @@ function ScanningCamera() {
 
             {/* page 2 */}
             {page === 0 &&
-                <div className="bg-black w-full h-full relative top-0 px-32">
-                    <div className="">
+                <div className="w-full h-full relative top-0 px-32">
+                    <div className="py-10">
                         <Webcam
                             ref={webcamRef}
                             className="absolute mx-auto  top-0 left-0 right-[80px] text-center z-10 w-[640px] h-[480px]"
@@ -301,7 +301,11 @@ function ScanningCamera() {
                             ref={canvasRef}
                             className="absolute mx-auto  left-2 md:left-0 top-[-10px] text-center z-10 w-[400px] h-[500px] "
                         />
-                        <div>
+                        <div className='text-black absolute top-28 z-10 left-[50%] -translate-x-1/2'>
+                            Đỉnh đầu
+                        </div>
+                        <div className='text-black absolute top-[350px] z-10 left-[50%] -translate-x-1/2'>
+                            Cằm
                         </div>
                     </div>
                 </div>
