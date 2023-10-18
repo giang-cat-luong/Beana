@@ -299,7 +299,7 @@ function ScanningCamera() {
                         />
                         <canvas
                             ref={canvasRef}
-                            className="absolute mx-auto  left-2 md:left-0 top-[-10px] text-center z-10 w-[400px] h-[500px] "
+                            className="absolute mx-auto  left-2 md:left-0 top-[80px] text-center z-10 w-[400px] h-[500px] "
                         />
                         <div className='text-black absolute top-[82px] z-10 left-[50%] -translate-x-1/2'>
                             Đỉnh đầu
@@ -309,6 +309,24 @@ function ScanningCamera() {
                         </div>
                     </div>
                 </div>
+                // <div className="w-full h-full relative top-0 px-32">
+                //     <div className="">
+                //         <Webcam
+                //             ref={webcamRef}
+                //             className="absolute mx-auto  top-0 left-0 right-[80px] text-center z-10 w-[640px] h-[480px]"
+                //         />
+                //         <canvas
+                //             ref={canvasRef}
+                //             className="absolute mx-auto  left-2 md:left-32 top-[-10px] text-center z-10 w-[400px] h-[500px] "
+                //         />
+                //         <div className='text-black absolute top-[82px] z-10 left-[50%] -translate-x-1/2'>
+                //             Đỉnh đầu
+                //         </div>
+                //         <div className='text-black absolute top-[380px] z-10 left-[50%] -translate-x-1/2'>
+                //             Cằm
+                //         </div>
+                //     </div>
+                // </div>
             }
             {/* end page 2 */}
         </div>
