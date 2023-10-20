@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import PopularProduct from './components/PopularProduct'
 import Loading from '../Loading/BeanLoading'
+import CartSideBar from '../CartSideBar'
 
 const popularProduct = [
     {
@@ -60,6 +61,8 @@ export default function Header() {
 
     const [redirecting, setRedirecting] = useState(false);
 
+    const [isOpen, setIsOpen] = useState(false);
+
     const navigate = useNavigate();
 
     const openSearchMenu = () => {
@@ -107,8 +110,13 @@ export default function Header() {
         }, 2000);
     };
 
+    const handleOpenCart = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
         <div className={`font-Montserrat w-full fixed top-0 z-[1000] duration-500 ease-in-out ${scrolled ? 'bg-[#d6fcdf]' : 'bg-white'}`}>
+            <CartSideBar isOpen={isOpen} setIsOpen={setIsOpen}/>
             <div style={{ position: "relative" }}>
                 {redirecting && (
                     <div
@@ -164,7 +172,7 @@ export default function Header() {
                 <nav >
                     <div className="flex flex-row px-5 py-5 md:px-20 md:py-5 border-b ">
                         <a className='flex  md:pt-1' href="https://beana.com">
-                            <img src="./assets/logo.png" className="w-full md:w-60" alt="Beana Logo" />
+                            <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708868/Beana_assets/logo_wvawux.png" className="w-full md:w-60" alt="Beana Logo" />
                         </a>
 
                         <div className="hidden ml-8  font-bold  w-full md:flex md:w-auto md:items-center md:justify-between md:order-1 ">
@@ -405,7 +413,9 @@ export default function Header() {
                                 </li>
                             </div>
                         </div>
-                        <div className='flex flex-row items-center bg-[#86bb86] px-4 py-2 ml-8 md:my-2  rounded-[40px] w-auto md:order-1'>
+                        <div className='flex flex-row items-center bg-[#86bb86] px-4 py-2 ml-8 md:my-2  rounded-[40px] w-auto md:order-1 cursor-pointer'
+                        onClick={handleOpenCart}
+                        >
                             <div>
                                 <FontAwesomeIcon
                                     icon={faCartShopping}
@@ -431,7 +441,7 @@ export default function Header() {
                             <li className='flex flex-row select-none '>
                                 <button className="flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg  hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-black dark:hover:bg-secondary dark:hover:text-white ">
                                     <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
                                     </svg>
                                 </button>
                                 {toggleMenu ? (

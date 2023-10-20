@@ -7,50 +7,63 @@ import { useState } from 'react';
 import ProductDescription from './components/ProductDescription';
 import ProductRecommend from './components/ProductRecommend';
 import Rating from './components/Rating';
-import { Link } from 'react-router-dom';
+import useGetSingleProduct from './hooks/useGetSingleProduct';
+import { useParams } from "react-router-dom";
+import CartSideBar from '../../components/CartSideBar';
+import { useAddToCart } from '../../services/Cart/services';
 
-const category = [
-    {
-        name: "Cho da nhạy cảm"
-    },
-    {
-        name: "Sáng hoặc tối"
-    },
-    {
-        name: "Làm sáng da"
-    }
-]
-const prices = {
-    "50ML": "100.000đ",
-    "150ML": "150.000đ",
-    "250ML": "250.000đ",
-    "500ML": "300.000đ",
-};
 
 const images = [
-    "./assets/productDetail2.png",
-    "./assets/test2.png",
-    "./assets/productAds1.jpg",
-    "./assets/skintips22.jpg",
-    "./assets/skintips11.jpg",
-    "./assets/skintips33.jpeg",
-    "./assets/skintips44.png",
+    "https://res.cloudinary.com/dc4hafqoa/image/upload/v1697709671/Beana_assets/test3_zx1yrl.png",
+    "https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708889/Beana_assets/test2_ngfftk.png",
+    "https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708788/Beana_assets/productAds1_pmojci.jpg",
+    "https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708873/Beana_assets/skintips22_hb49pw.jpg",
+    "https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708873/Beana_assets/skintips11_gt0nrf.jpg",
+    "https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708873/Beana_assets/skintips33_tvps8h.jpg",
+    "https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708876/Beana_assets/skintips44_brhkqq.png",
 ];
 
 export default function ProductDetail() {
 
     const maxStars = 5;
+    const { id } = useParams();
 
-    const [selectedSize, setSelectedSize] = useState("50ML");
+    const { mutate } = useAddToCart();
+
+    const [quantityCart, setQuantityCart] = useState(0);
+    const { data, isLoading } = useGetSingleProduct(id);
+
+    const [isOpen, setIsOpen] = useState(false);
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [currentImage, setCurrentImage] = useState(0);
 
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-    const handleSizeChange = (event) => {
-        const newSize = event.target.value;
-        setSelectedSize(newSize);
+    const handleAddToCart = () => {
+        try {
+            mutate({
+                id: data.id,
+                name: data.id,
+                quantity: data.quantity,
+                price: data.price,
+                cartQuantity: quantityCart,
+            });
+            setIsOpen(!isOpen);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleCartQuantity = (event) => {
+        const newValue = event.target.value === '' ? '' : parseInt(event.target.value);
+        if (newValue === '' || (!isNaN(newValue) && newValue >= 1 && newValue <= 1000)) {
+            setQuantityCart(newValue);
+        }
+    };
+
+    const handleOpenCart = () => {
+        setIsOpen(!isOpen);
     };
 
     const nextSlide = () => {
@@ -88,10 +101,14 @@ export default function ProductDetail() {
         images[(currentIndex + 5) % images.length],
     ];
 
+    if (isLoading) {
+        return <div>hhuhu</div>
+    }
     return (
         <div>
+            <CartSideBar isOpen={isOpen} setIsOpen={setIsOpen} />
             <div className='max-w-screen-2xl px-36 py-10 '>
-                <BreadCrumb />
+                <BreadCrumb breadCrumbName={data.name} breadCrumbName0={"Sản phẩm"} />
                 <div className='flex flex-row gap-16 pb-8'>
                     <div className='basis-2/3 flex flex-row gap-7 select-none'>
                         <div className='flex flex-col h-full'>
@@ -135,7 +152,7 @@ export default function ProductDetail() {
                                     <div className='text-base font-normal pr-2'>
                                         Chia sẻ:
                                     </div>
-                                    <img className='w-8  cursor-pointer' src="./assets/facebook.svg" />
+                                    <img className='w-8  cursor-pointer' src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708782/Beana_assets/facebook_ir5hat.svg" />
                                     <FontAwesomeIcon
                                         icon={faFacebookMessenger}
                                         color='#448AFF'
@@ -146,7 +163,7 @@ export default function ProductDetail() {
                                         color='#BE0216'
                                         className="text-[29px] cursor-pointer"
                                     />
-                                    <img className='w-[34px] cursor-pointer' src="./assets/twitter.svg" />
+                                    <img className='w-[34px] cursor-pointer' src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697710360/Beana_assets/twitter_lrrblh.svg" />
                                 </div>
                                 <div className='flex flex-row gap-4 cursor-pointer'>
                                     <div className="w-full font-semibold text-[#F16D9A] text-[14px] hover:text-[#EE5287]">
@@ -162,28 +179,35 @@ export default function ProductDetail() {
                         </div>
                     </div>
                     <div className='flex flex-col basis-1/3'>
-                        <h1 className='font-bold text-[28px]  text-[#49B949]'>Nước Tẩy Trang Bioderma Sensibio H2O 500Ml</h1>
+                        <h1 className='font-bold text-[28px]  text-[#49B949]'>{data.name}</h1>
                         <div className="flex flex-row items-center py-2">
-                            {Array.from({ length: maxStars }, (_, index) => (
-                                <FontAwesomeIcon
-                                    key={index}
-                                    icon={faStar}
-                                    className={`text-[16px] ${index < maxStars ? 'text-yellow-400' : 'text-gray-300'}`}
-                                    fixedWidth
-                                />
-                            ))}
-                            <p className="pl-2 ">( 112 đánh giá )</p>
+                            <div className="flex flex-row items-center">
+                                {Array.from({ length: maxStars }, (_, index) => (
+                                    <FontAwesomeIcon
+                                        key={index}
+                                        icon={faStar}
+                                        className={`text-[16px] ${index < data.rate ? 'text-yellow-400' : 'text-gray-300'}`}
+                                        fixedWidth
+                                    />
+                                ))}
+                                <p className="pl-2 ">( {data.rate} đánh giá)</p>
+                            </div>
+                            <div className="flex flex-row items-center">
+                                <div className="border-solid border-r-2 border-[#767373] h-5 pl-3 mr-3"></div>
+                                <div>{data.soldQuantity} đã bán</div>
+                            </div>
+
                         </div>
                         <p className='font-bold text-[#0C0C0C] pt-2 leading-6'>
-                            Serum Chống Lão Hóa Da Mặt
+                            {data.childCategory.name}
                         </p>
                         <div className='flex flex-row font-medium text-sm pt-2 text-[#606060]'>
-                            {category.map((cate, index) => (
-                                <div key={index} className='flex flex-row'>
-                                    <div >
-                                        {cate.name}
+                            {data.productSkins.map((skin, index) => (
+                                <div key={skin.id} className='flex flex-row'>
+                                    <div className='normal-case'>
+                                        {skin.skin.name}
                                     </div>
-                                    {index !== category.length - 1 && <div className="border-solid border-r-2 border-[#767373] h-5 pl-3 mr-3"></div>}
+                                    {index !== data.productSkins.length - 1 && (<div className="border-solid border-r-2 border-[#767373] h-5 pl-3 mr-3"></div>)}
                                 </div>
 
                             ))}
@@ -193,28 +217,32 @@ export default function ProductDetail() {
                         </p>
                         <div className='flex flex-row justify-between items-center border-b-2 border-[#606060] py-3'>
                             <p className='font-bold text-[#0C0C0C] text-[24px] pt-3 pb-3 leading-6'>
-                                {prices[selectedSize]}
+                                {data.price.toLocaleString("vi-VN")}
                             </p>
                             <div>
-                                <select
-                                    className="w-[100px]  px-1 py-1   outline-none font-semibold text-base text-[#49b949] bg-transparent"
-                                    value={selectedSize}
-                                    onChange={handleSizeChange}
+                                <div
+                                    className="px-1 py-1 outline-none font-semibold text-base text-[#49b949] bg-transparent"
                                 >
-                                    <option className="text-[#0C0C0C]" value="50ML">50ML</option>
-                                    <option className="text-[#0C0C0C]" value="150ML">150ML</option>
-                                    <option className="text-[#0C0C0C]" value="250ML">250ML</option>
-                                    <option className="text-[#0C0C0C]" value="500ML">500ML</option>
-                                </select>
+                                    {data.specification}
+                                </div>
                             </div>
                         </div>
                         <div className='flex flex-row py-6 justify-between items-center'>
-                            <label for="quantity" className='font-medium'>Số lượng:</label>
-                            <input className='px-1 py-1 pl-3 w-[60px] bg-[#e1e0e0]' type="number" id="quantity" name="quantity" min="1" max="1000" defaultValue="1" />
-                            <p className='text-sm font-medium text-[#757575]'>99 sản phẩm có sẵn</p>
+                            <label className='font-medium'>Số lượng:</label>
+                            <input
+                                type="text"
+                                name="quantity"
+                                value={quantityCart}
+                                onChange={handleCartQuantity}
+                                className='py-1 mr-20 w-[55px] bg-[#e1e0e0] text-center'
+                            />
+                            <p className='text-sm font-medium text-[#757575]'>{data.quantity} sản phẩm có sẵn</p>
                         </div>
                         <div className='flex flex-row gap-4'>
-                            <button className=" basis-3/5 w-full font-semibold text-[#49B949] bg-[#E0F7CD]  shadow-md shadow-[#E0F7CD] text-[14px] border-2 border-[#86bb86] px-6 py-3 hover:bg-[#dbf1c8]  hover:shadow-md hover:shadow-[#dbf1c8]">
+                            <button
+                                className=" basis-3/5 w-full font-semibold text-[#49B949] bg-[#E0F7CD]  shadow-md shadow-[#E0F7CD] text-[14px] border-2 border-[#86bb86] px-6 py-3 hover:bg-[#dbf1c8]  hover:shadow-md hover:shadow-[#dbf1c8]"
+                                onClick={handleAddToCart}
+                            >
                                 <FontAwesomeIcon
                                     icon={faCartShopping}
                                     fixedWidth
@@ -224,23 +252,22 @@ export default function ProductDetail() {
                             </button>
                             <button className=" basis-2/5 font-semibold text-[#fff] bg-[#86bb86]  shadow-md shadow-[#86bb86] text-[14px] border-2 border-[#E0F7CD] px-6 py-3 hover:bg-[#49B949] hover:text-[#fff] hover:shadow-md hover:shadow-[#49B949]">Mua ngay</button>
                         </div>
-
                         <div className='bg-[#eef6e8] flex grow mt-8'>
                             <div className='flex flex-col gap-4 pl-7 py-6'>
                                 <div className='flex flex-row items-center'>
-                                    <img className='w-[25px]' src='./assets/gift.svg' />
+                                    <img className='w-[25px]' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708783/Beana_assets/gift_xsrww5.svg' />
                                     <div className='px-4 font-medium text-[13px] text-[#4CAF50]'>
                                         Nhận 2 Mẫu Miễn Phí Khi Bạn Chi 100.000đ
                                     </div>
                                 </div>
                                 <div className='flex flex-row items-center'>
-                                    <img className='w-[25px]' src='./assets/tag.svg' />
+                                    <img className='w-[25px]' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697710360/Beana_assets/tag_qvepuv.svg' />
                                     <div className='px-4 font-medium text-[13px] text-[#4CAF50]'>
                                         Nhận 10.000đ Khi Bạn Trả Lại 5 Lọ Rỗng
                                     </div>
                                 </div>
                                 <div className='flex flex-row items-center'>
-                                    <img className='w-[25px]' src='./assets/message.svg' />
+                                    <img className='w-[25px]' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708784/Beana_assets/message_aoeiya.svg' />
                                     <div className='px-4 font-medium text-[13px] text-[#4CAF50]'>
                                         Được Tư Vấn Miễn Phí  Tại Các Chi Nhánh
                                     </div>
@@ -249,16 +276,16 @@ export default function ProductDetail() {
                         </div>
                     </div>
                 </div>
-                <ProductDescription />
+                <ProductDescription data={data} />
             </div>
             <div className='pt-6 px-12'>
                 <div className=' bg-[#86bb86] '>
                     <div className='px-24 py-8 '>
                         <div className='flex flex-row justify-between pb-6'>
-                            <img className='w-[290px]' src='./assets/productDes1.png' />
-                            <img className='w-[290px]' src='./assets/productDes2.png' />
-                            <img className='w-[290px]' src='./assets/productDes3.png' />
-                            <img className='w-[290px]' src='./assets/productDes4.png' />
+                            <img className='w-[290px]' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708897/Beana_assets/productDes1_wcafq0.png' />
+                            <img className='w-[290px]' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697710374/Beana_assets/productDes2_dja3xi.png' />
+                            <img className='w-[290px]' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708883/Beana_assets/productDes3_d3aiew.png' />
+                            <img className='w-[290px]' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708898/Beana_assets/productDes4_j5frry.png' />
                         </div>
                         <div className='flex flex-col justify-center items-center font-normal text-base text-white capitalize'>
                             <ul>
@@ -277,14 +304,14 @@ export default function ProductDetail() {
                         height="600"
                         src="https://www.youtube.com/embed/nniMQ-cpoaw"
                         title="Dior Prestige - How to Energize Your Skin with Micro-Nutrition?"
-                        frameborder="0"
+                        frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
                     </iframe>
                     <div className='absolute bottom-0 left-[-6%]'>
-                        <img className='w-40 -scale-x-100' src='./assets/bean.png' />
+                        <img className='w-40 -scale-x-100' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708873/Beana_assets/bean_afjwev.png' />
                     </div>
                     <div className='absolute bottom-[-9%] right-[-9%]'>
-                        <img className='w-56 ' src='./assets/beautyProduct.png' />
+                        <img className='w-56 ' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708874/Beana_assets/beautyProduct_ww3qut.png' />
                     </div>
                 </div>
 

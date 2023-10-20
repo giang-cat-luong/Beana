@@ -107,10 +107,7 @@ function Login({ props }) {
         }
 
         let ratio = nbChars / parseFloat(15);
-        console.log("ratio " + ratio);
-
         let lookToSet = ratio * 100 - 25
-        console.log("lookToSet " + Math.round(lookToSet));
         stateLook.value = Math.round(lookToSet);
     }
     const setCheck = (check) => {
@@ -131,16 +128,16 @@ function Login({ props }) {
 
 
     if (rive) {
-        console.log(rive.contents);
+        // console.log(rive.contents);
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+        // console.log({
+        //     email: data.get('email'),
+        //     password: data.get('password'),
+        // });
     };
 
     const checkLogin = (user, pass) => {

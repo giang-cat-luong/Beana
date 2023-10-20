@@ -4,7 +4,7 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { Link, useLocation } from 'react-router-dom'
 
 
-export default function BreadCrumb({ breadCrumbName }) {
+export default function BreadCrumb({ breadCrumbName0, breadCrumbName }) {
 
   const location = useLocation();
 
@@ -24,6 +24,22 @@ export default function BreadCrumb({ breadCrumbName }) {
           size="1x"
         />
       </div>
+      {breadCrumbName0 &&
+        <div className='flex flex-row gap-2'>
+          <div className='font-bold text-sm text-[#000] capitalize'>
+            <Link to="/products">
+              {breadCrumbName0}
+            </Link>
+          </div>
+          <div>
+            <FontAwesomeIcon
+              icon={faAngleRight}
+              color='#868686'
+              size="1x"
+            />
+          </div>
+        </div>
+      }
       <div className='font-bold text-sm text-[#000] capitalize'>
         <Link to={`${path}`}>
           {breadCrumbName}

@@ -82,7 +82,6 @@ export default function Rating() {
       } else {
         updatedSelectedStatus[rating] = [...updatedSelectedStatus[rating], status];
       }
-      console.log(selectedStatus)
       return updatedSelectedStatus;
     });
   };
@@ -251,7 +250,7 @@ export default function Rating() {
             />
           </div>
           <div className="w-full px-12 py-4">
-            {isSelected === true && <div className="text-sm text-[#008000]">Gửi đánh giá thành công!</div>}
+            {isSelected === true && (<div className="text-sm text-[#008000]">Gửi đánh giá thành công!</div>)}
             {isCommentEmpty && (
               <div className="text-sm text-[#f10000]">Vui lòng nhập đánh giá của bạn.</div>
             )}
@@ -267,7 +266,7 @@ export default function Rating() {
         <div className="px-12 py-3 ">
           <div className="flex flex-row gap-3 border-t-[1px] border-[#E1E1E1] py-5">
             <div>
-              <img className="w-[70px]" src="./assets/nonAvatar.png" />
+              <img className="w-[70px]" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708874/Beana_assets/nonAvatar_k12l1p.png" />
             </div>
             <div className="flex flex-col">
               <div className="font-semibold">T.Giang</div>
@@ -303,7 +302,7 @@ export default function Rating() {
               {/* reply comment */}
               <div className="flex flex-row gap-3  border-[#E1E1E1] pt-5">
                 <div>
-                  <img className="w-[70px]" src="./assets/nonAvatar.png" />
+                  <img className="w-[70px]" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708874/Beana_assets/nonAvatar_k12l1p.png" />
                 </div>
                 <div className="flex flex-col">
                   <div className="font-semibold">T.Khoi</div>
@@ -323,7 +322,7 @@ export default function Rating() {
           </div>
           <div className="flex flex-row gap-3 border-t-[1px] border-[#E1E1E1] py-5">
             <div>
-              <img className="w-[70px]" src="./assets/nonAvatar.png" />
+              <img className="w-[70px]" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708874/Beana_assets/nonAvatar_k12l1p.png" />
             </div>
             <div className="flex flex-col">
               <div className="font-semibold">T.Khôi</div>
@@ -350,7 +349,7 @@ export default function Rating() {
           </div>
           <div className="flex flex-row gap-3 border-t-[1px] border-[#E1E1E1] py-5">
             <div>
-              <img className="w-[70px]" src="./assets/nonAvatar.png" />
+              <img className="w-[70px]" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708874/Beana_assets/nonAvatar_k12l1p.png" />
             </div>
             <div className="flex flex-col">
               <div className="font-semibold">B.Khanh</div>
@@ -377,7 +376,7 @@ export default function Rating() {
           </div>
           <div className="flex flex-row gap-3 border-t-[1px] border-[#E1E1E1] py-5">
             <div>
-              <img className="w-[70px]" src="./assets/nonAvatar.png" />
+              <img className="w-[70px]" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708874/Beana_assets/nonAvatar_k12l1p.png" />
             </div>
             <div className="flex flex-col">
               <div className="font-semibold">M.Anh</div>
@@ -404,7 +403,7 @@ export default function Rating() {
           </div>
           <div className="flex flex-row gap-3 border-t-[1px] border-[#E1E1E1] py-5">
             <div>
-              <img className="w-[70px]" src="./assets/nonAvatar.png" />
+              <img className="w-[70px]" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708874/Beana_assets/nonAvatar_k12l1p.png" />
             </div>
             <div className="flex flex-col">
               <div className="font-semibold">V.Kiên</div>

@@ -1,188 +1,20 @@
 import SingleProduct from "../../components/SingleProduct"
 import BreadCrumb from "../../components/BreadCrumb"
 import SortProduct from './components/SortProduct'
-
-
-const productBestSeller = [
-  {
-    id: 1,
-    url: './assets/test1.png',
-    name: "Nước Tẩy Trang Bioderma Sensibio H2O 500Ml",
-    skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
-    price: "525.000đ",
-    totalStars: "3",
-    totalRates: "34"
-  },
-  {
-    id: 2,
-    url: './assets/test1.png',
-    name: "Nước Tẩy Trang Bioderma Sébium H2O 500Ml",
-    skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
-    price: "525.000đ",
-    totalStars: "3",
-    totalRates: "71"
-  },
-  {
-    id: 3,
-    url: './assets/test1.png',
-    name: "Nước Tẩy Trang Bí Đao Cocoon 140Ml",
-    skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
-    price: "145.000đ",
-    totalStars: "3",
-    totalRates: "12"
-  },
-  {
-    id: 4,
-    url: './assets/test1.png',
-    name: "Dầu Tẩy Trang Hoa Hồng Cocoon 140Ml",
-    skinType: "Phù hợp với da khô, da hỗn hợp thiên khô, da thường",
-    price: "180.000đ",
-    totalStars: "2",
-    totalRates: "34"
-  },
-  {
-    id: 5,
-    url: './assets/test1.png',
-    name: "Dầu Tẩy Trang Hoa Hồng Cocoon 140Ml",
-    skinType: "Phù hợp với da khô, da hỗn hợp thiên khô, da thường",
-    price: "180.000đ",
-    totalStars: "2",
-    totalRates: "34"
-  },
-  {
-    id: 6,
-    url: './assets/test1.png',
-    name: "Nước Tẩy Trang Bí Đao Cocoon 140Ml",
-    skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
-    price: "146.000đ",
-    totalStars: "4",
-    totalRates: "112"
-  },
-  {
-    id: 7,
-    url: './assets/test1.png',
-    name: "Dầu Tẩy Trang Hoa Hồng Cocoon 140Ml",
-    skinType: "Phù hợp với da khô, da hỗn hợp thiên khô, da thường",
-    price: "180.000đ",
-    totalStars: "5",
-    totalRates: "4"
-  },
-  {
-    id: 8,
-    url: './assets/test1.png',
-    name: "Nước Tẩy Trang Bioderma Sensibio H2O 500Ml",
-    skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
-    price: "525.000đ",
-    totalStars: "3",
-    totalRates: "34"
-  },
-  {
-    id: 9,
-    url: './assets/test1.png',
-    name: "Nước Tẩy Trang Bioderma Sébium H2O 500Ml",
-    skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
-    price: "525.000đ",
-    totalStars: "3",
-    totalRates: "71"
-  },
-  {
-    id: 10,
-    url: './assets/test1.png',
-    name: "Nước Tẩy Trang Bí Đao Cocoon 140Ml",
-    skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
-    price: "145.000đ",
-    totalStars: "3",
-    totalRates: "12"
-  },
-  {
-    id: 11,
-    url: './assets/test1.png',
-    name: "Dầu Tẩy Trang Hoa Hồng Cocoon 140Ml",
-    skinType: "Phù hợp với da khô, da hỗn hợp thiên khô, da thường",
-    price: "180.000đ",
-    totalStars: "2",
-    totalRates: "34"
-  },
-  {
-    id: 12,
-    url: './assets/test1.png',
-    name: "Nước Tẩy Trang Bí Đao Cocoon 140Ml",
-    skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
-    price: "145.000đ",
-    totalStars: "4",
-    totalRates: "112"
-  },
-  {
-    id: 13,
-    url: './assets/test1.png',
-    name: "Dầu Tẩy Trang Hoa Hồng Cocoon 140Ml",
-    skinType: "Phù hợp với da khô, da hỗn hợp thiên khô, da thường",
-    price: "180.000đ",
-    totalStars: "5",
-    totalRates: "4"
-  },
-  {
-    id: 14,
-    url: './assets/test1.png',
-    name: "Nước Tẩy Trang Bioderma Sensibio H2O 500Ml",
-    skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
-    price: "525.000đ",
-    totalStars: "3",
-    totalRates: "34"
-  },
-  {
-    id: 15,
-    url: './assets/test1.png',
-    name: "Nước Tẩy Trang Bioderma Sébium H2O 500Ml",
-    skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
-    price: "525.000đ",
-    totalStars: "3",
-    totalRates: "71"
-  },
-  {
-    id: 16,
-    url: './assets/test1.png',
-    name: "Nước Tẩy Trang Bí Đao Cocoon 140Ml",
-    skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
-    price: "145.000đ",
-    totalStars: "3",
-    totalRates: "12"
-  },
-  {
-    id: 17,
-    url: './assets/test1.png',
-    name: "Dầu Tẩy Trang Hoa Hồng Cocoon 140Ml",
-    skinType: "Phù hợp với da khô, da hỗn hợp thiên khô, da thường",
-    price: "180.000đ",
-    totalStars: "2",
-    totalRates: "34"
-  },
-  {
-    id: 18,
-    url: './assets/test1.png',
-    name: "Nước Tẩy Trang Bí Đao Cocoon 140Ml",
-    skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
-    price: "145.000đ",
-    totalStars: "4",
-    totalRates: "112"
-  },
-  {
-    id: 19,
-    url: './assets/test1.png',
-    name: "Dầu Tẩy Trang Hoa Hồng Cocoon 140Ml",
-    skinType: "Phù hợp với da khô, da hỗn hợp thiên khô, da thường",
-    price: "180.000đ",
-    totalStars: "5",
-    totalRates: "4"
-  },
-
-];
+import useGetProduct from "./hooks/useGetProduct";
 
 export default function Product() {
 
+  const { data, isLoading } = useGetProduct();
+
+  if (isLoading) {
+    return <div>hhuhu</div>
+  }
+
   return (
     <div className='max-w-screen-2xl px-36 py-10 '>
-      <BreadCrumb breadCrumbName="Sản phẩm"/>
+     
+      <BreadCrumb breadCrumbName="Sản phẩm" />
       <h1 className='text-[28px] font-extrabold'>
         Sản phẩm
         <span className='pl-2 text-[16px] font-bold text-[#606060]'>(216)</span>
@@ -207,7 +39,7 @@ export default function Product() {
           <SortProduct />
         </div>
         <div className='basis-[75%] grid grid-cols-3 gap-6'>
-          {productBestSeller.map((category, index) => (
+          {data.map((product, index) => (
             <div className={` ${index === 6 ? 'col-span-2' : 'col-span-1'} ${index === 7 ? 'order-1' : ''}`} key={index}>
               {index === 2 ? (
                 <div style={{ backgroundImage: 'url("./assets/productAds.png")' }} className="w-full h-full bg-center bg-cover">
@@ -254,13 +86,14 @@ export default function Product() {
                   </div>
                 ) : (
                   <SingleProduct
-                    id={category.id}
-                    url={category.url}
-                    name={category.name}
-                    skinType={category.skinType}
-                    price={category.price}
-                    totalStars={category.totalStars}
-                    totalRates={category.totalRates}
+                    id={product.id}
+                    url={product.productImageList[0].url}
+                    name={product.name}
+                    skinType={product?.productSkins}
+                    price={product.price}
+                    totalStars={product.rate}
+                    totalRates={product.rate}
+                    quantity={product.quantity}
                   />
                 )}
             </div>

@@ -1,33 +1,35 @@
 import { useState, useEffect } from 'react';
 
-const productDescription = [
-  {
-    id: 1,
-    name: "Chi tiết sản phẩm",
-    description: "Chi tiết sản phẩm"
-  },
-  {
-    id: 2,
-    name: " Cách sử dụng",
-    description: "Cách sử dụng"
-  },
-  {
-    id: 3,
-    name: "Thành phần",
-    description: "Thành phần"
-  },
-  {
-    id: 4,
-    name: "Điều gì làm sản phẩm đặc biệt",
-    description: "Điều gì làm sản phẩm đặc biệt"
-  },
-  {
-    id: 5,
-    name: "Chứng nhận về sản phẩm",
-    description: " Chứng nhận về sản phẩm"
-  },
-]
-export default function ProductDescription() {
+
+export default function ProductDescription({ data }) {
+
+  const productDescription = [
+    {
+      id: 1,
+      name: "Chi tiết sản phẩm",
+      description: data.description
+    },
+    {
+      id: 2,
+      name: " Cách sử dụng",
+      description: data.howToUse
+    },
+    {
+      id: 3,
+      name: "Thành phần",
+      description: data.ingredients
+    },
+    {
+      id: 4,
+      name: "Điều gì làm sản phẩm đặc biệt",
+      description: data.mainFunction
+    },
+    {
+      id: 5,
+      name: "Chứng nhận về sản phẩm",
+      description: data.certification
+    },
+  ]
 
   const [selectedItem, setSelectedItem] = useState(productDescription[0]);
   const [defaultSelectedItem] = useState(productDescription[0]);
@@ -68,15 +70,7 @@ export default function ProductDescription() {
               {selectedItem.name}
             </div>
             <div>
-              {selectedItem.description}
-              3CE Soft Matte Lipstick – Version Deep Under More Deep vẫn <br /> giữ nguyên kết cấu mềm mại đặc trưng và độ bám màu cao,<br />
-              giúp đôi môi luôn mềm mại, mịn màng như nhung. Công thức với bột<br />  đàn hồi silicon giúp son nhẹ nhàng lướt êm trên môi, <br />
-              cho lớp nền môi nhẹ thoáng, mịn lì, cảm giác như không đánh son. <br /> Bên cạnh đó, hạt phức hợp semi-solid sẽ giúp màu son <br />
-              được lưu giữ trên môi lâu hơn, không bị phai hay nứt nẻ.
-
-              Chỉ với một lần lướt nhẹ trên môi, Son Thỏi 3CE Soft Matte<br />  Lipstick – Version Deep Under More Deep sẽ mang đến một lớp<br />
-              nền hoàn hảo cho đôi môi của bạn với khả năng lâu trôi màu<br />  vượt trội, không lộ vân môi, không gây khô môi. Hãy để thỏi<br />
-              son này mang đến sắc màu tô điểm đôi môi đẹp xinh cả ngày
+              <div dangerouslySetInnerHTML={{ __html: selectedItem.description }} />
               {isHide ? (<div>Bộ sưu tập Son Thỏi 3CE Soft Matte Lipstick Phiên Bản Đặc Biệt <br /> Deep Under More Deep hiện đã có mặtBeana với 3 tông<br />
                 màu cho bạn lựa chọn là:<br />
 
