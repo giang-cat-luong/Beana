@@ -1,6 +1,6 @@
 import SingleProduct from "../../../../components/SingleProduct"
 
-export default function NewProduct() {
+export default function NewProduct({ data }) {
 
     const productBestSeller = [
         {
@@ -37,18 +37,19 @@ export default function NewProduct() {
                             </p>
                         </div>
                         <div className='basis-1/2 flex flex-row gap-6'>
-                            {productBestSeller.map((category, index) => (
-                                <div key={index}>
+                            {data?.slice(2,4).map((product, index) => (
+                                <div className='basis-1/2 flex flex-row gap-6' key={index}>
                                     <SingleProduct
-                                        url={category.url}
-                                        name={category.name}
-                                        skinType={category.skinType}
-                                        price={category.price}
-                                        totalStars={category.totalStars}
-                                        totalRates={category.totalRates}
+                                        id={product.id}
+                                        url={product.productImageList[0].url}
+                                        name={product.name}
+                                        skinType={product?.productSkins}
+                                        price={product.price}
+                                        totalStars={product.rate}
+                                        totalRates={product.rate}
+                                        quantity={product.quantity}
                                     />
                                 </div>
-
                             ))}
                         </div>
                     </div>

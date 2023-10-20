@@ -15,6 +15,12 @@ export const addToCart = async ({ id, name, quantity, price, cartQuantity }) => 
     price,
     cartQuantity
   });
-  console.log("cookies:", res.headers)
+  return res.data;
+};
+export const removeCartItem = async ({ id }) => {
+  const res = await instance.delete(API.REMOVE_CART_ITEM, {
+    id,
+  });
+
   return res.data;
 };

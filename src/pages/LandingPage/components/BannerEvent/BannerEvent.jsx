@@ -13,7 +13,7 @@ export default function BannerEvent() {
     useEffect(() => {
         const adCount = parseInt(localStorage.getItem('adClosedCount') || '1', 10);
 
-        if (adCount < 2) {
+        if (adCount < 40) {
             localStorage.setItem('adClosedCount', (adCount + 1).toString());
         } else {
             setIsShow(false)
@@ -21,9 +21,7 @@ export default function BannerEvent() {
                 setIsShow(true);
                 localStorage.setItem('adClosedCount', '1');
             }, 5 * 60 * 1000);
-
-
-            // return () => clearTimeout(timeoutId);
+            return () => clearTimeout(timeoutId);
         }
     }, []);
 

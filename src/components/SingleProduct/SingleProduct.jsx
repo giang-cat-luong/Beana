@@ -32,7 +32,7 @@ export default function SingleProduct({ id, url, name, skinType, price, totalSta
             setTimeout(() => {
                 setIsSuccess(false);
             }, 5000);
-            setIsOpen(!isOpen);
+            setIsOpen(true);
         } catch (error) {
             console.log(error);
         }

@@ -21,13 +21,15 @@
     "@tensorflow-models/face-landmarks-detection": "^1.0.5",
     "@tensorflow/tfjs": "^4.11.0",
     "axios": "^1.5.1",
+    "jwt-decode": "^3.1.2",
     "lottie-react": "^2.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0",
     "react-slick": "^0.29.0",
     "react-webcam": "^7.1.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "tailwind-datepicker-react": "^1.4.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

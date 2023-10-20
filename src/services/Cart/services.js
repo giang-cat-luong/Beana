@@ -1,5 +1,5 @@
 import { useQuery, } from "@tanstack/react-query";
-import { getCart, addToCart } from "../Cart/callers";
+import { getCart, addToCart,removeCartItem } from "../Cart/callers";
 import { useMutation } from "@tanstack/react-query";
 const API_KEY = {
   GET_CART: "cart",
@@ -20,6 +20,17 @@ export const useGetCart = () => {
 export const useAddToCart = () => {
   // const navigate = useNavigate();
   return useMutation(addToCart, {
+    onSuccess: () => {
+      // navigate("/");
+    },
+    onError: () => {
+    },
+  });
+};
+
+export const useRemoveCartItem = () => {
+  // const navigate = useNavigate();
+  return useMutation(removeCartItem, {
     onSuccess: () => {
       // navigate("/");
     },

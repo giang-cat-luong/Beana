@@ -73,7 +73,7 @@ const productBestSeller = [
 ];
 
 
-export default function BestSellerProduct() {
+export default function BestSellerProduct({data}) {
 
     var settings = {
         dots: true,
@@ -117,15 +117,17 @@ export default function BestSellerProduct() {
             <h1 className='beana-product-title-header'>SẢN PHẨM BÁN CHẠY NHẤT</h1>
             <div className='max-w-screen-2xl px-[136px] pb-20'>
                 <Slider {...settings}>
-                    {productBestSeller.map((category, index) => (
+                    {data?.map((product, index) => (
                         <div className="px-2" key={index}>
                             <SingleProduct
-                                url={category.url}
-                                name={category.name}
-                                skinType={category.skinType}
-                                price={category.price}
-                                totalStars={category.totalStars}
-                                totalRates={category.totalRates}
+                                id={product.id}
+                                url={product.productImageList[0].url}
+                                name={product.name}
+                                skinType={product?.productSkins}
+                                price={product.price}
+                                totalStars={product.rate}
+                                totalRates={product.rate}
+                                quantity={product.quantity}
                             />
                         </div>
 

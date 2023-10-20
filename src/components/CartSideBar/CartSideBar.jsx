@@ -5,9 +5,14 @@ import useCart from "../../pages/Cart/hooks/useCart";
 import { useState, useEffect } from "react";
 import EmptyCart from './emptyCart.json'
 import Lottie from "lottie-react"
+import { useRemoveCartItem } from "../../services/Cart/services";
 
 export default function CartSideBar({ isOpen, setIsOpen }) {
+    
     const { data, isLoading } = useCart();
+
+    const { mutate } = useRemoveCartItem();
+    
 
     const [totalPrice, setTotalPrice] = useState(0);
 
@@ -20,6 +25,18 @@ export default function CartSideBar({ isOpen, setIsOpen }) {
 
         setTotalPrice(total);
     };
+
+    const removeItemById = (id) => {
+        try {
+            mutate({
+                id: id,
+            });
+            console.log("id",id)
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
 
     useEffect(() => {
         updateTotalPrice(); // Gọi hàm khi data thay đổi
@@ -38,14 +55,14 @@ export default function CartSideBar({ isOpen, setIsOpen }) {
     return (
         <div className="relative">
             <div className={`h-full fixed top-0  bg-white w-[480px] duration-500 overflow-hidden z-[7777] ${isOpen ? 'right-0' : 'right-[-480px]'}`}>
-                <div className='pt-[60px] px-[70px] pb-[100px]'>
+                <div className='pt-[60px]  h-full overflow-y-scroll px-[70px] pb-[100px]'>
                     <div >
                         <div className='text-md font-medium mb-14'>
                             GIỎ HÀNG
                         </div>
 
                         {data?.map((cart) => (
-                            <div className='mt-16 flex flex-row gap-4 relative items-center pb-3 border-b-2 border-dashed'>
+                            <div className='mt-3 flex flex-row gap-4 relative items-center pb-3 border-b-2 border-dashed'>
                                 <img className='max-w-[85px] max-h-[85px]' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708889/Beana_assets/test2_ngfftk.png' />
                                 <div className='flex flex-col gap-1'>
                                     <div className='text-[11px] font-semibold'>{cart.item.name}</div>
@@ -55,7 +72,10 @@ export default function CartSideBar({ isOpen, setIsOpen }) {
                                         <div className='text-[14px] font-normal text-[#272727]'>{cart.item.price}</div>
                                     </div>
                                 </div>
-                                <div className="absolute right-[-5px] top-0">
+                                <div
+                                    className="absolute right-[-5px] top-0"
+                                    onClick={() => removeItemById(cart.item.id)}
+                                >
                                     <FontAwesomeIcon
                                         icon={faXmark}
                                         size="1x"
@@ -66,9 +86,7 @@ export default function CartSideBar({ isOpen, setIsOpen }) {
                         {data === null &&
                             <div className="relative">
                                 <Lottie animationData={EmptyCart} loop={true} />
-                                <div>
-                                    <img className="w-20 absolute bottom-10 left-[65px]" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697789641/Beana_assets/beanEmpty_o3a7mg.png" />
-                                </div>
+                                <img className="w-20 absolute bottom-10 left-16" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697789641/Beana_assets/beanEmpty_o3a7mg.png"></img>
                                 <div>Không có sản phẩm nào trong giỏ hàng</div>
                             </div>
                         }
@@ -82,14 +100,14 @@ export default function CartSideBar({ isOpen, setIsOpen }) {
                                     {totalPrice.toLocaleString("vi-VN")}đ
                                 </div>
                             </div>
-                            <div className="flex flex-row gap-4 justify-between w-full">
+                            <div className="flex flex-row gap-3 justify-between w-full">
                                 <div
-                                    className='text-[14px] font-normal text-white px-6 py-3 bg-secondary border-[1px] border-secondary hover:bg-white hover:text-secondary hover:border-[1px] hover:border-primary duration-500 cursor-pointer'
+                                    className='text-[13px] font-normal text-white px-6 py-3 bg-secondary border-[1px] border-secondary hover:bg-white hover:text-secondary hover:border-[1px] hover:border-primary duration-500 cursor-pointer'
                                     onClick={navigateToCart}
                                 >
                                     XEM GIỎ HÀNG
                                 </div>
-                                <div className='text-[14px] font-normal bg-white border-secondary border-[1px] px-8 py-3 text-secondary hover:bg-secondary hover:text-white duration-500 cursor-pointer'
+                                <div className='text-[13px] font-normal bg-white border-secondary border-[1px] px-8 py-3 text-secondary hover:bg-secondary hover:text-white duration-500 cursor-pointer'
 
                                 >
                                     THANH TOÁN

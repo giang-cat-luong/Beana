@@ -217,7 +217,7 @@ export default function ProductDetail() {
                         </p>
                         <div className='flex flex-row justify-between items-center border-b-2 border-[#606060] py-3'>
                             <p className='font-bold text-[#0C0C0C] text-[24px] pt-3 pb-3 leading-6'>
-                                {data.price.toLocaleString("vi-VN")}
+                                {data.price.toLocaleString("vi-VN")}đ
                             </p>
                             <div>
                                 <div

@@ -1,10 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faSearch, faLocationDot, faUser, faCartShopping, faCircleArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faSearch, faLocationDot, faUser, faCartShopping, faCircleArrowRight, faFileInvoice, faCartFlatbedSuitcase, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import PopularProduct from './components/PopularProduct'
 import Loading from '../Loading/BeanLoading'
 import CartSideBar from '../CartSideBar'
+import { useToken } from '../../services/Auth/services'
+
 
 const popularProduct = [
     {
@@ -55,6 +57,9 @@ const skincareTips = [
 
 export default function Header() {
 
+    const decodedToken = useToken();
+    const [loggedIn, setLoggedIn] = useState(false);
+
     const [scrolled, setScrolled] = useState(false);
     const [toggleSearch, setToggleSearch] = useState(false);
     const [toggleMenu, setToggleMenu] = useState(false);
@@ -91,6 +96,24 @@ export default function Header() {
         };
     }, []);
 
+    useEffect(() => {
+        if (decodedToken) {
+            setLoggedIn(true);
+        }
+    }, [decodedToken]);
+
+    const logout = () => {
+        setRedirecting(true);
+        setTimeout(() => {
+            localStorage.removeItem("userToken");
+            navigate("./")
+            setRedirecting(false);
+        }, 2000);
+        setLoggedIn(false);
+
+        // window.location.reload()
+    };
+
     const handleNavigateLogin = () => {
 
         setRedirecting(true);
@@ -116,7 +139,7 @@ export default function Header() {
 
     return (
         <div className={`font-Montserrat w-full fixed top-0 z-[1000] duration-500 ease-in-out ${scrolled ? 'bg-[#d6fcdf]' : 'bg-white'}`}>
-            <CartSideBar isOpen={isOpen} setIsOpen={setIsOpen}/>
+            <CartSideBar isOpen={isOpen} setIsOpen={setIsOpen} />
             <div style={{ position: "relative" }}>
                 {redirecting && (
                     <div
@@ -170,7 +193,7 @@ export default function Header() {
             </div>
             <div >
                 <nav >
-                    <div className="flex flex-row px-5 py-5 md:px-20 md:py-5 border-b ">
+                    <div className={`flex flex-row px-5 py-5  md:py-5 border-b ${loggedIn ? 'md:px-[77px]' : 'md:px-20'} `}>
                         <a className='flex  md:pt-1' href="https://beana.com">
                             <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708868/Beana_assets/logo_wvawux.png" className="w-full md:w-60" alt="Beana Logo" />
                         </a>
@@ -390,31 +413,98 @@ export default function Header() {
                                             className='group-hover:text-[#0E740E]'
                                             fixedWidth
                                         />
-                                        <p className='text-xs pl-1 md:text-sm font-semibold text-[#000] group-hover:text-[#0E740E]' > Đăng Nhập</p>
+                                        {!loggedIn ? (
+                                            <p className='text-xs pl-1 md:text-sm font-semibold text-[#000] group-hover:text-[#0E740E]' > Đăng Nhập</p>
+                                        ) : (
+                                            <p className='text-xs pl-1 max-w-[100px] truncate underline-offset-1 md:text-xs font-semibold text-[#000] group-hover:text-[#0E740E]' >Chào,<br /> {decodedToken?.sub}</p>
+                                        )}
+
                                         <div className={`group ${scrolled ? 'top-[54%]' : 'bottom-[-4%]'} hidden group-hover:block absolute top-[64%] right-[18%] w-32 h-5 bg-transparent  z-20duration-300`}>
                                         </div>
                                         <div className={`group ${scrolled ? 'top-[70%]' : 'bottom-[-4%]'} hidden group-hover:block absolute right-[23.5%] w-10 h-10 bg-[#0E740E] z-20 rotate-45 duration-300`}>
                                         </div>
-                                        <div className={`group ${scrolled ? 'top-[70%]' : 'bottom-[-55%]'} hidden group-hover:block absolute right-[18%] px-4 py-3 w-50 h-30 border-2 rounded-sm bg-white z-20 text-black duration-800`}>
-                                            <div className="flex flex-col gap-3 ">
-                                                {/* <Link to='./login'> */}
-                                                <div onClick={handleNavigateLogin} className='flex justify-center bg-[#86bb86] text-sm text-[#fff] py-2 px-12 hover:bg-[#0E740E] cursor-pointer'>
-                                                    Đăng nhập
+                                        {loggedIn ? (
+                                            <div className={`group ${scrolled ? 'top-[70%]' : 'bottom-[-125%]'} hidden group-hover:block absolute right-[16.2%] px-4 py-3 w-50 h-30 border-2 rounded-sm bg-white z-20 text-black duration-800`}>
+                                                <div className="flex flex-col gap-3 ">
+                                                    {/* <Link to='./login'> */}
+                                                    <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
+                                                        <FontAwesomeIcon
+                                                            icon={faFileInvoice}
+                                                            color="#000"
+                                                            size="lg"
+                                                            className='pr-2'
+                                                            fixedWidth
+                                                        />
+                                                        <div className="text-sm text-[#fff] ">
+                                                            Tài khoản của bạn
+                                                        </div>
+                                                    </div>
+                                                    {/* </Link> */}
+                                                    {/* <Link to='./signup'> */}
+                                                    <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
+                                                        <FontAwesomeIcon
+                                                            icon={faCartFlatbedSuitcase}
+                                                            color="#000"
+                                                            size="lg"
+                                                            className='pr-2'
+                                                            fixedWidth
+                                                        />
+                                                        <div className="text-sm text-[#fff] ">
+                                                            Quản lý đơn hàng
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
+                                                        <FontAwesomeIcon
+                                                            icon={faLocationDot}
+                                                            color="#000"
+                                                            size="lg"
+                                                            className='pr-2'
+                                                            fixedWidth
+                                                        />
+                                                        <div className="text-sm text-[#fff] ">
+                                                            Địa chỉ giao hàng
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'
+                                                        onClick={logout}
+                                                    >
+                                                        <FontAwesomeIcon
+                                                            icon={faArrowRightFromBracket}
+                                                            color="#000"
+                                                            size="lg"
+                                                            className='pr-2'
+                                                            fixedWidth
+                                                        />
+                                                        <div className="text-sm text-[#fff] ">
+                                                            Thoát
+                                                        </div>
+                                                    </div>
+                                                    {/* </Link> */}
                                                 </div>
-                                                {/* </Link> */}
-                                                {/* <Link to='./signup'> */}
-                                                <div onClick={handleNavigateSignup} className='flex justify-center  bg-[#86bb86] text-sm text-[#fff] py-2 px-12 hover:bg-[#0E740E] cursor-pointer'>
-                                                    Đăng ký
-                                                </div>
-                                                {/* </Link> */}
                                             </div>
-                                        </div>
+                                        ) : (
+                                            <div className={`group ${scrolled ? 'top-[70%]' : 'bottom-[-55%]'} hidden group-hover:block absolute right-[18%] px-4 py-3 w-50 h-30 border-2 rounded-sm bg-white z-20 text-black duration-800`}>
+                                                <div className="flex flex-col gap-3 ">
+                                                    {/* <Link to='./login'> */}
+                                                    <div onClick={handleNavigateLogin} className='flex justify-center bg-[#86bb86] text-sm text-[#fff] py-2 px-12 hover:bg-[#0E740E] cursor-pointer'>
+                                                        Đăng nhập
+                                                    </div>
+                                                    {/* </Link> */}
+                                                    {/* <Link to='./signup'> */}
+                                                    <div onClick={handleNavigateSignup} className='flex justify-center  bg-[#86bb86] text-sm text-[#fff] py-2 px-12 hover:bg-[#0E740E] cursor-pointer'>
+                                                        Đăng ký
+                                                    </div>
+                                                    {/* </Link> */}
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </li>
                             </div>
                         </div>
                         <div className='flex flex-row items-center bg-[#86bb86] px-4 py-2 ml-8 md:my-2  rounded-[40px] w-auto md:order-1 cursor-pointer'
-                        onClick={handleOpenCart}
+                            onClick={handleOpenCart}
                         >
                             <div>
                                 <FontAwesomeIcon
@@ -459,9 +549,9 @@ export default function Header() {
                                             </li>
                                             <li>
                                                 <Link to="/scanning-face">
-                                                <a href="#" class="text-black hover:text-secondary font-medium ">
-                                                    FACE SCANNING
-                                                </a>
+                                                    <a href="#" class="text-black hover:text-secondary font-medium ">
+                                                        FACE SCANNING
+                                                    </a>
                                                 </Link>
                                             </li>
                                             <li>
@@ -486,9 +576,9 @@ export default function Header() {
                         </div>
 
                     </div>
-                </nav>
-            </div>
-        </div>
+                </nav >
+            </div >
+        </div >
 
 
     )

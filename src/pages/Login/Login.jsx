@@ -2,18 +2,123 @@ import React, { Fragment, useState, useEffect } from "react";
 import "./Login.css";
 import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLock, faUser, faEnvelope, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { faLock, faUser, faEnvelope, faEye, faEyeSlash, faCalendar, faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useRive, useStateMachineInput } from "@rive-app/react-canvas";
+import { useSignin, useSignup } from '../../services/Auth/services'
+import Datepicker from "tailwind-datepicker-react"
+
+const options = {
+    title: "Chọn ngày sinh",
+    autoHide: true,
+    todayBtn: true,
+    clearBtn: true,
+    clearBtnText: "Clear",
+    maxDate: new Date("2030-01-01"),
+    minDate: new Date("1950-01-01"),
+    theme: {
+        background: "bg-gray-700 dark:bg-gray-800",
+        todayBtn: "",
+        clearBtn: "",
+        icons: "",
+        text: "",
+        disabledText: "bg-red-500",
+        input: "",
+        inputIcon: "",
+        selected: "",
+    },
+    icons: {
+        // () => ReactElement | JSX.Element
+        prev: () => <FontAwesomeIcon
+            icon={faArrowLeft}
+            color="#fff"
+            size="1x"
+            fixedWidth />,
+        next: () => <FontAwesomeIcon
+            icon={faArrowRight}
+            color="#fff"
+            size="1x"
+            fixedWidth />,
+    },
+    datepickerClassNames: "top-12",
+    defaultDate: new Date("2022-01-01"),
+    language: "vie",
+    disabledDates: [],
+    weekDays: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+    inputNameProp: "date",
+    inputIdProp: "date",
+    inputPlaceholderProp: "Select Date",
+    inputDateFormatProp: {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    }
+}
 
 
 
 function Login({ props }) {
 
+
+
     const [isSignUpMode, setIsSignUpMode] = useState(false);
     const [isShow, setIsShow] = useState(false);
     const [isShowConfirm, setIsShowConfirm] = useState(false);
 
+    //handle date
+    const [show, setShow] = useState(false);
 
+    const handleChange = (selectedDate) => {
+        setSelectedDate(new Intl.DateTimeFormat().format(selectedDate))
+        console.log(new Intl.DateTimeFormat().format(selectedDate))
+    }
+    const handleClose = (state) => {
+        setShow(state)
+    }
+
+    //signup
+    const [signupUsername, setSignupUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
+    const [phone, setPhone] = useState("");
+    const [selectedDate, setSelectedDate] = useState(null)
+    const [gender, setGender] = useState("");
+    const [signgupPassword, setSignupPassword] = useState("");
+    console.log(gender)
+    // signin
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const { mutate: mutateSignin } = useSignin();
+    const { mutate: mutateSignup } = useSignup();
+
+    const handleSignUp = (e) => {
+        e.preventDefault();
+        try {
+            mutateSignup({
+                username: signupUsername,
+                name: name,
+                email: email,
+                phone: phone,
+                gender: gender,
+                dob: selectedDate,
+                password: signgupPassword,
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    };
+    const handleSignIn = (e) => {
+        e.preventDefault();
+        try {
+            mutateSignin({ username, password });
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const checkLogin = (username, pass) => {
+        return username === "user" && pass === "password"
+    }
     //toggle sign up or sign in mode
     const toggleMode = () => {
         setIsSignUpMode(!isSignUpMode);
@@ -34,8 +139,7 @@ function Login({ props }) {
     };
 
     //rive animation for bean
-    const [user, setUser] = useState(null);
-    const [password, setPassword] = useState(null);
+
 
     const STATE_MACHINE_NAME = "Enter";
 
@@ -47,7 +151,7 @@ function Login({ props }) {
 
     useEffect(() => {
         setLook();
-    }, [user])
+    }, [username])
 
     const stateSuccess = useStateMachineInput(
         rive,
@@ -102,8 +206,8 @@ function Login({ props }) {
         setHangUp(false)
         setCheck(true);
         let nbChars = 0;
-        if (user) {
-            nbChars = parseFloat(user.split('').length);
+        if (username) {
+            nbChars = parseFloat(username.split('').length);
         }
 
         let ratio = nbChars / parseFloat(15);
@@ -131,25 +235,13 @@ function Login({ props }) {
         // console.log(rive.contents);
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        // console.log({
-        //     email: data.get('email'),
-        //     password: data.get('password'),
-        // });
-    };
-
-    const checkLogin = (user, pass) => {
-        return user === "user" && pass === "password"
-    }
 
     return (
         <Fragment>
             <div className={`container ${isSignUpMode ? props && "sign-up-mode" : props}`}>
                 <div className="forms-container">
                     <div className="signin-signup">
-                        <form action="#" className="sign-in-form" onSubmit={handleSubmit}>
+                        <form action="#" className="sign-in-form" onSubmit={handleSignIn}>
                             <div className="RiveContainer">
                                 <RiveComponent src="/assets/bean_animation1.riv" />
                             </div>
@@ -163,8 +255,8 @@ function Login({ props }) {
                                         setHangUp(false);
                                     }}
                                     onBlur={() => setCheck(false)}
-                                    onChange={(event) => setUser(event.target.value)}
-                                    value={user || ""}
+                                    onChange={(event) => setUsername(event.target.value)}
+                                    value={username || ""}
                                     type="text"
                                     placeholder="Username"
                                     style={{ width: "100%" }}
@@ -223,7 +315,7 @@ function Login({ props }) {
                                 onFocus={() => setHangUp(false)}
                                 onClick={() => {
                                     setCheck(false);
-                                    if (checkLogin(user, password)) {
+                                    if (checkLogin(username, password)) {
                                         triggerSuccess()
                                     } else {
                                         triggerFail();
@@ -247,63 +339,107 @@ function Login({ props }) {
                             </div>
                         </form>
 
-                        <form action="#" className="sign-up-form" >
+                        <form action="#" className="sign-up-form" onSubmit={handleSignUp}>
                             <div className="title-signup">Đăng Ký</div>
-                            <div className="input-field">
-                                <FontAwesomeIcon icon={faEnvelope} color="#acacac" size="lg" fixedWidth className="icon-login" />
-                                <input type="email" placeholder="Email" style={{ width: "100%" }} />
-                            </div>
-                            <div className="input-field">
-                                <FontAwesomeIcon icon={faUser} color="#acacac" size="lg" fixedWidth className="icon-login" />
-                                <input type="text" placeholder="Username" style={{ width: "100%" }} />
-                            </div>
-                            <div className="input-field">
-                                <FontAwesomeIcon icon={faLock} color="#acacac" size="lg" fixedWidth className="icon-login" />
-                                <input type={isShow ? "text" : "password"} placeholder="Password" />
-                                <div>
-                                    {isShow ? (
-                                        <FontAwesomeIcon
-                                            icon={faEyeSlash}
-                                            color="#000"
-                                            size="lg"
-                                            fixedWidth
-                                            onClick={() => hidePassword()}
-                                            className="icon-password" />
-                                    ) : (
-                                        <FontAwesomeIcon
-                                            value={password || ""}
-                                            icon={faEye}
-                                            color="#000"
-                                            size="lg"
-                                            fixedWidth
-                                            onClick={() => showPassword()}
-                                            className="icon-password" />
-                                    )}
+                            <div className="grid grid-cols-2 gap-3">
+                                <div className="">
+                                    <div className="input-field">
+                                        <FontAwesomeIcon icon={faEnvelope} color="#acacac" size="lg" fixedWidth className="icon-login" />
+                                        <input
+                                            type="email"
+                                            placeholder="Email"
+                                            style={{ width: "100%" }}
+                                            onChange={(event) => setEmail(event.target.value)}
+                                            value={email || ""}
+                                        />
+                                    </div>
+                                    <div className="input-field">
+                                        <FontAwesomeIcon icon={faUser} color="#acacac" size="lg" fixedWidth className="icon-login" />
+                                        <input
+                                            type="text"
+                                            placeholder="Name"
+                                            style={{ width: "100%" }}
+                                            onChange={(event) => setName(event.target.value)}
+                                            value={name || ""}
+                                        />
+                                    </div>
+                                    <div className="input-field">
+                                        <FontAwesomeIcon icon={faUser} color="#acacac" size="lg" fixedWidth className="icon-login" />
+                                        <input
+                                            type="text"
+                                            placeholder="Username"
+                                            style={{ width: "100%" }}
+                                            onChange={(event) => setSignupUsername(event.target.value)}
+                                            value={signupUsername || ""}
+                                        />
+                                    </div>
+                                    <div className="input-field">
+                                        <FontAwesomeIcon icon={faUser} color="#acacac" size="lg" fixedWidth className="icon-login" />
+                                        <input
+                                            type="text"
+                                            placeholder="Phone"
+                                            style={{ width: "100%" }}
+                                            onChange={(event) => setPhone(event.target.value)}
+                                            value={phone || ""}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="">
+                                    <div className="input-field">
+                                        <FontAwesomeIcon icon={faUser} color="#acacac" size="lg" fixedWidth className="icon-login" />
+
+                                        <select className="bg-[#f0f0f0] outline-none focus-within:bg-white pl-4" name="cars" style={{ width: "100%" }} >
+                                            <option value="0" className="">Nam</option>
+                                            <option value="1">Nữ</option>
+                                        </select>
+                                    </div>
+                                    <div className="input-field">
+                                        <div className="...">
+                                            <Datepicker options={options} onChange={handleChange} show={show} setShow={handleClose}>
+                                                <FontAwesomeIcon icon={faCalendar} size="lg" color="#acacac" className="icon-login" />
+                                            </Datepicker>
+                                        </div>
+                                        <input type="text"
+                                            className="ml-1"
+                                            placeholder="Select Date"
+                                            value={selectedDate || ""}
+                                            onFocus={() => setShow(true)}
+                                            readOnly />
+                                    </div>
+                                    <div className="input-field">
+                                        <FontAwesomeIcon icon={faLock} color="#acacac" size="lg" fixedWidth className="icon-login" />
+                                        <input
+                                            type={isShow ? "text" : "password"}
+                                            placeholder="Password"
+                                            value={signgupPassword || ""}
+                                            onChange={(event) => setSignupPassword(event.target.value)}
+                                        />
+                                        <div className="relative">
+                                            {isShow ? (
+                                                <FontAwesomeIcon
+                                                    icon={faEyeSlash}
+                                                    color="#000"
+                                                    size="lg"
+                                                    fixedWidth
+                                                    onClick={() => hidePassword()}
+                                                    className="pt-4 absolute left-[-40px]" />
+                                            ) : (
+                                                <FontAwesomeIcon
+                                                    value={password || ""}
+                                                    icon={faEye}
+                                                    color="#000"
+                                                    size="lg"
+                                                    fixedWidth
+                                                    onClick={() => showPassword()}
+                                                    className="pt-4 absolute left-[-40px]" />
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="input-field">
-                                <FontAwesomeIcon icon={faLock} color="#acacac" size="lg" fixedWidth className="icon-login" />
-                                <input type={isShowConfirm ? "text" : "password"} placeholder="Confirm Password" />
-                                <div>
-                                    {isShowConfirm ? (
-                                        <FontAwesomeIcon
-                                            icon={faEyeSlash}
-                                            color="#000"
-                                            size="lg"
-                                            fixedWidth
-                                            onClick={() => hidePasswordConfirm()}
-                                            className="icon-password" />
-                                    ) : (
-                                        <FontAwesomeIcon
-                                            icon={faEye}
-                                            color="#000"
-                                            size="lg"
-                                            fixedWidth
-                                            onClick={() => showPasswordConfirm()}
-                                            className="icon-password" />
-                                    )}
-                                </div>
-                            </div>
+
+
+
                             <input
                                 type="submit"
                                 className="btn"

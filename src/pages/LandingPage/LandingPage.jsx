@@ -7,6 +7,7 @@ import ProductEvent from './components/ProductEvent'
 import SkincareTips from './components/SkincareTips'
 import BestSellerProduct from './components/BestSellerProduct'
 import Slider from '../../components/Slider'
+import useGetProduct from '../Product/hooks/useGetProduct'
 
 
 export default function LandingPage() {
@@ -56,6 +57,9 @@ export default function LandingPage() {
         },
     ];
 
+    const { data } = useGetProduct();
+
+
     return (
         <>
             <BannerEvent />
@@ -81,8 +85,8 @@ export default function LandingPage() {
                     ))}
                 </div>
                 <BannerScanning />
-                <BestSellerProduct />
-                <NewProduct />
+                <BestSellerProduct data={data} />
+                <NewProduct data={data}/>
                 <ProductEvent />
                 <BannerAboutUs />
                 <SkincareTips />

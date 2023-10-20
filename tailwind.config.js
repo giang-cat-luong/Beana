@@ -2,17 +2,18 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}"
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/tailwind-datepicker-react/dist/**/*.js",
   ],
   theme: {
     extend: {
       colors: {
         primary: '#86bb86',
         secondary: '#49b949',
-        orange:'#FF8200',
-        red:'#FF2826',
-        blue:'#1E88E5',
-        grey:'#9B9B9B',
+        orange: '#FF8200',
+        red: '#FF2826',
+        blue: '#1E88E5',
+        grey: '#9B9B9B',
       },
       fontFamily: {
         Montserrat: ['Montserrat', 'sans-serif'],
