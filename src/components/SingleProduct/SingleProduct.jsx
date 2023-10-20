@@ -38,7 +38,6 @@ export default function SingleProduct({ id, url, name, skinType, price, totalSta
         }
     };
 
-
     return (
         <div className='flex flex-col  bg-[#fff] border-[1px] border-[#DFDFDF]'>
             <Success isSuccess={isSuccess} setIsSuccess={setIsSuccess} />

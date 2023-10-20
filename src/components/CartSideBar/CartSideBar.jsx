@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useNavigate } from "react-router-dom"
 import useCart from "../../pages/Cart/hooks/useCart";
 import { useState, useEffect } from "react";
+import EmptyCart from './emptyCart.json'
+import Lottie from "lottie-react"
 
 export default function CartSideBar({ isOpen, setIsOpen }) {
     const { data, isLoading } = useCart();
@@ -62,7 +64,13 @@ export default function CartSideBar({ isOpen, setIsOpen }) {
                             </div>
                         ))}
                         {data === null &&
-                            <div>Không có sản phẩm nào trong giỏ hàng</div>
+                            <div className="relative">
+                                <Lottie animationData={EmptyCart} loop={true} />
+                                <div>
+                                    <img className="w-20 absolute bottom-10 left-[65px]" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697789641/Beana_assets/beanEmpty_o3a7mg.png" />
+                                </div>
+                                <div>Không có sản phẩm nào trong giỏ hàng</div>
+                            </div>
                         }
                         <div className="border-t-[2px] border-black mt-3"></div>
                         <div className="flex flex-col gap-5 mt-5">

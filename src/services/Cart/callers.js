@@ -15,6 +15,6 @@ export const addToCart = async ({ id, name, quantity, price, cartQuantity }) => 
     price,
     cartQuantity
   });
-
+  console.log("cookies:", res.headers)
   return res.data;
 };

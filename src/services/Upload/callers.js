@@ -1,4 +1,4 @@
-import {instanceUpload} from '../../utils/request'
+import { instanceUpload } from '../../utils/request'
 import { API } from "./api_paths";
 
 export const upLoadBgImage = async ({ type, image }) => {
@@ -7,5 +7,6 @@ export const upLoadBgImage = async ({ type, image }) => {
     type,
     image,
   });
+
   return res.data;
 };

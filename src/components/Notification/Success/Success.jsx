@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { faCircleXmark } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export default function Success({ isSuccess, setIsSuccess }) {
 
@@ -13,8 +15,11 @@ export default function Success({ isSuccess, setIsSuccess }) {
                     <p class="text-sm">Mua thành công nhưng mua nữa bố m ban acc m.</p>
                 </div>
             </div>
-            <div className='absolute top-2 right-2' onClick={() => setIsSuccess(false)}>
-                HIHI
+            <div className='absolute top-3 right-3 cursor-pointer' onClick={() => setIsSuccess(false)}>
+                <FontAwesomeIcon 
+                icon={faCircleXmark}
+                className='text-[25px] text-primary hover:text-secondary'
+                />
             </div>
         </div>
     )
