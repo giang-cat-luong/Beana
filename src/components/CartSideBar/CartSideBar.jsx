@@ -8,11 +8,11 @@ import Lottie from "lottie-react"
 import { useRemoveCartItem } from "../../services/Cart/services";
 
 export default function CartSideBar({ isOpen, setIsOpen }) {
-    
-    const { data, isLoading } = useCart();
+
+    const { data } = useCart();
 
     const { mutate } = useRemoveCartItem();
-    
+
 
     const [totalPrice, setTotalPrice] = useState(0);
 
@@ -31,7 +31,6 @@ export default function CartSideBar({ isOpen, setIsOpen }) {
             mutate({
                 id: id,
             });
-            console.log("id",id)
         } catch (error) {
             console.error(error);
         }
@@ -49,9 +48,7 @@ export default function CartSideBar({ isOpen, setIsOpen }) {
         setIsOpen(false);
     }
 
-    if (isLoading) {
-        return <div>hhuhu</div>
-    }
+   
     return (
         <div className="relative">
             <div className={`h-full fixed top-0  bg-white w-[480px] duration-500 overflow-hidden z-[7777] ${isOpen ? 'right-0' : 'right-[-480px]'}`}>
@@ -62,14 +59,14 @@ export default function CartSideBar({ isOpen, setIsOpen }) {
                         </div>
 
                         {data?.map((cart) => (
-                            <div className='mt-3 flex flex-row gap-4 relative items-center pb-3 border-b-2 border-dashed'>
-                                <img className='max-w-[85px] max-h-[85px]' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708889/Beana_assets/test2_ngfftk.png' />
+                            <div key={cart.item.id} className='mt-3 flex flex-row gap-4 relative items-center pb-3 border-b-2 border-dashed'>
+                                <img className='max-w-[85px] max-h-[85px]' src={cart?.item?.productImageList[0]?.url} />
                                 <div className='flex flex-col gap-1'>
                                     <div className='text-[11px] font-semibold'>{cart.item.name}</div>
                                     <div className='text-[11px] font-normal text-[#272727]'>Còn {cart.item.quantity} sản phẩm có sẵn</div>
                                     <div className='flex flex-row gap-3 items-center'>
                                         <div className='bg-[#ededed] px-3 py-1 text-[12px] font-normal]'>{cart.quantity}</div>
-                                        <div className='text-[14px] font-normal text-[#272727]'>{cart.item.price}</div>
+                                        <div className='text-[14px] font-normal text-[#272727]'>{cart.item.price.toLocaleString("vi-VN")}đ</div>
                                     </div>
                                 </div>
                                 <div

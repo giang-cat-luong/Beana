@@ -13,7 +13,7 @@ export default function BannerAboutUs() {
                 <button className="mt-3 font-normal text-[#fff] text-[13px] border-2 px-6 py-3 hover:bg-[#49B949] hover:text-[#fff] hover:shadow-md hover:shadow-[#49B949]">Khám Phá Thêm</button>
             </div>
             <div className='basis-3/5'>
-                <img className='w-[100%] h-[100%] bg-center bg-cover' src='./assets/bannerAboutUs.png' />
+                <img className='w-[100%] h-[100%] bg-center bg-cover' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708897/Beana_assets/bannerAboutUs_oxx2oi.png' />
             </div>
         </div>
     )

@@ -2,12 +2,28 @@ import { faXmark, faPlus, faMinus, faArrowRight } from "@fortawesome/free-solid-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react";
 import useCart from "./hooks/useCart";
+import { useRemoveCartItem } from "../../services/Cart/services";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
 
     const [quantity, setQuantity] = useState(1);
 
-    const { data, isLoading } = useCart();
+    const { data } = useCart();
+
+
+    const { mutate } = useRemoveCartItem();
+
+    const removeItemById = (id) => {
+        try {
+            mutate({
+                id: id,
+            });
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
 
     const incrementQuantity = () => {
         setQuantity(quantity + 1);
@@ -27,9 +43,7 @@ export default function Cart() {
         }
     };
 
-    if (isLoading) {
-        return <div>hhuhu</div>
-    }
+
     return (
         <div className=''>
             <div className='flex flex-row'>
@@ -38,16 +52,15 @@ export default function Cart() {
                     <div className='text-[14px] font-medium '>3 items</div>
 
                     {data?.map((cart) => (
-                        <div className='mt-8 flex flex-row gap-4 relative pb-6 border-b-2 border-black/25 border-dashed'>
-
-                            <img className='max-w-[255px] max-h-[250px]' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708889/Beana_assets/test2_ngfftk.png' />
+                        <div key={cart.item.id} className='mt-8 flex flex-row gap-4 relative pb-6 border-b-2 border-black/25 border-dashed'>
+                            <img className='max-w-[255px] max-h-[250px]' src={cart?.item?.productImageList[0]?.url} />
                             <div className='flex flex-col gap-3 justify-between'>
                                 <div>
                                     <div className='text-[22px] text-black font-semibold pb-3'>{cart.item.name}</div>
                                     <div className='text-[14px] font-medium text-[#272727]'>Còn {cart.item.quantity} sản phẩm có sẵn</div>
                                 </div>
                                 <div className='flex flex-row gap-3 justify-between items-center mb-4 px-5'>
-                                    <div class="flex flex-row items-center">
+                                    <div className="flex flex-row items-center">
                                         <FontAwesomeIcon
                                             icon={faMinus}
                                             onClick={decrementQuantity}
@@ -71,7 +84,10 @@ export default function Cart() {
                                     <div className='text-[20px] font-semibold'>53.000đ</div>
                                 </div>
                             </div>
-                            <div className="absolute right-0 top-[-20px]">
+                            <div
+                                className="absolute right-0 top-[-20px]"
+                                onClick={() => removeItemById(cart.item.id)}
+                            >
                                 <FontAwesomeIcon
                                     icon={faXmark}
                                     color="#272727"
@@ -153,7 +169,13 @@ export default function Cart() {
                         </div>
 
                         <div className="flex flex-col gap-5 text-[13px] font-bold">
-                            <button className="bg-secondary py-3 text-white border-[1px] border-secondary hover:bg-white hover:text-secondary hover:border-[1px] hover:border-primary duration-500">CHECKOUT</button>
+                            <button
+                                className="bg-secondary py-3 text-white border-[1px] border-secondary hover:bg-white hover:text-secondary hover:border-[1px] hover:border-primary duration-500"
+                            >
+                                <Link to="/checkout">
+                                    CHECKOUT
+                                </Link>
+                            </button>
                             <button className="bg-white border-secondary border-[1px] py-3 text-secondary hover:bg-secondary hover:text-white duration-500">CONTINUE SHOPPING</button>
                         </div>
 

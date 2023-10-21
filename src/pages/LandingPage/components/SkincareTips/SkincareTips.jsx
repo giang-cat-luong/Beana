@@ -27,19 +27,19 @@ export default function SkincareTips() {
 
     const skincareTips = [
         {
-            url: './assets/skintips11.jpg',
+            url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708873/Beana_assets/skintips11_gt0nrf.jpg',
             name: "Quy trình chăm sóc da",
         },
         {
-            url: './assets/skintips22.jpg',
+            url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708873/Beana_assets/skintips22_hb49pw.jpg',
             name: "Hướng dẫn chăm sóc da",
         },
         {
-            url: './assets/skintips33.jpeg',
+            url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708873/Beana_assets/skintips33_tvps8h.jpg',
             name: "Các vấn đề về da mặt",
         },
         {
-            url: './assets/skintips44.png',
+            url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708876/Beana_assets/skintips44_brhkqq.png',
             name: "Chăm sóc da trước và sau khi trang điểm",
         },
     ];

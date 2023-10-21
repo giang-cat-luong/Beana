@@ -45,7 +45,7 @@ export default function BannerEvent() {
                 >
                     <div className='relative'>
                         <a href='https://www.facebook.com/profile.php?id=61551793473535' className='flex justify-center '>
-                            <img src='./assets/event.png' className='w-[90%] md:w-[30%] shadow-[0_25px_60px_-20px_#86bb86]' />
+                            <img src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708897/Beana_assets/event_wdzxq5.png' className='w-[90%] md:w-[30%] shadow-[0_25px_60px_-20px_#86bb86]' />
                         </a>
                         <div>
                             <FontAwesomeIcon

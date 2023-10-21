@@ -69,7 +69,6 @@ function Login({ props }) {
 
     const handleChange = (selectedDate) => {
         setSelectedDate(new Intl.DateTimeFormat().format(selectedDate))
-        console.log(new Intl.DateTimeFormat().format(selectedDate))
     }
     const handleClose = (state) => {
         setShow(state)

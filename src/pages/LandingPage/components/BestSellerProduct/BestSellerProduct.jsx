@@ -121,7 +121,7 @@ export default function BestSellerProduct({data}) {
                         <div className="px-2" key={index}>
                             <SingleProduct
                                 id={product.id}
-                                url={product.productImageList[0].url}
+                                url={product.productImageList}
                                 name={product.name}
                                 skinType={product?.productSkins}
                                 price={product.price}

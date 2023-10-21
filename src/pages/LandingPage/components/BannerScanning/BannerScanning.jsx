@@ -27,12 +27,12 @@ export default function BannerScanning() {
                         >Trả Lời Một Vài Câu Hỏi</button>
                     </div>
                     <div>
-                        <img className='w-24 h-24 mt-2 mr-4' src='./assets/qr-code.png' />
+                        <img className='w-24 h-24 mt-2 mr-4' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708787/Beana_assets/qr-code_ghe29a.png' />
                     </div>
                 </div>
             </div>
             <div className='basis-1/2 '>
-                <img className='w-[100%] h-[100%] bg-center bg-cover' src='./assets/bannerScanning.png' />
+                <img className='w-[100%] h-[100%] bg-center bg-cover' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708910/Beana_assets/bannerScanning_mguoxf.png' />
             </div>
         </div>
     )

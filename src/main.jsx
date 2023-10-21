@@ -21,6 +21,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import Checkout from "./pages/Checkout/Checkout";
 
 
 const router = createBrowserRouter([
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
       },
 
 

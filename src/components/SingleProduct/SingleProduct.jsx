@@ -19,6 +19,12 @@ export default function SingleProduct({ id, url, name, skinType, price, totalSta
     function formatPrice(price) {
         return price.toLocaleString("vi-VN");
     }
+    const productImageList = [{
+        id: url[0].id,
+        url: url[0].url,
+        status: url[0].status,
+        type: url[0].type,
+    }]
     const handleAddToCart = () => {
         try {
             mutate({
@@ -27,6 +33,7 @@ export default function SingleProduct({ id, url, name, skinType, price, totalSta
                 quantity: quantity,
                 price: price,
                 cartQuantity: 1,
+                productImageList: productImageList,
             });
             setIsSuccess(true);
             setTimeout(() => {
@@ -43,7 +50,7 @@ export default function SingleProduct({ id, url, name, skinType, price, totalSta
             <Success isSuccess={isSuccess} setIsSuccess={setIsSuccess} />
             <CartSideBar isOpen={isOpen} setIsOpen={setIsOpen} />
             <Link to={`/product/${id}`}>
-                <img className=' w-[100%] h-[400px] rounded-sm' src={url} />
+                <img className=' w-[100%] h-[400px] rounded-sm' src={url[0].url} />
             </Link>
             <Link to={`/product/${id}`}>
                 <p className='basis-1/3 pt-5 pl-4 font-bold text-base  text-[#86bb86] hover:text-[#49B949] cursor-pointer text-ellipsis line-clamp-2 overflow-hidden'> {name}</p>

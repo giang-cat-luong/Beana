@@ -208,12 +208,12 @@ export default function SortProduct() {
                     </div>
                 )}
                 <div className={`select-none duration-300 max-h-0 overflow-hidden ${isDropdownCategory ? 'max-h-[400px]' : ''}`}>
-                    <ul class="pt-2 w-48 text-sm font-medium text-gray-900 ">
+                    <ul className="pt-2 w-48 text-sm font-medium text-gray-900 ">
                         {category.map((category, index) => (
-                            <li class="w-full" key={index}>
-                                <div class="flex items-center">
-                                    <input id="react-checkbox" type="checkbox" value={category.name} class="w-5 h-5 accent-[#49b949]" />
-                                    <label for="react-checkbox" class="w-full py-[6px] ml-2 text-sm font-medium text-[#0C0C0C]">{category.name}</label>
+                            <li className="w-full" key={index}>
+                                <div className="flex items-center">
+                                    <input id="react-checkbox" type="checkbox" value={category.name} className="w-5 h-5 accent-[#49b949]" />
+                                    <label className="w-full py-[6px] ml-2 text-sm font-medium text-[#0C0C0C]">{category.name}</label>
                                 </div>
                             </li>
                         ))}
@@ -247,12 +247,12 @@ export default function SortProduct() {
                     </div>
                 )}
                 <div className={`select-none duration-500 max-h-0 overflow-hidden ${isDropdownMakeup ? 'max-h-[400px]' : ''}`}>
-                    <ul class="pt-2 w-48 text-sm font-medium text-gray-900 ">
+                    <ul className="pt-2 w-48 text-sm font-medium text-gray-900 ">
                         {makeup.map((makeup, index) => (
-                            <li class="w-full" key={index}>
-                                <div class="flex items-center">
-                                    <input id="react-checkbox" type="checkbox" value={makeup.name} class="w-5 h-5 accent-[#49b949]" />
-                                    <label for="react-checkbox" class="w-full py-[6px] ml-2 text-sm font-medium text-[#0C0C0C]">{makeup.name}</label>
+                            <li className="w-full" key={index}>
+                                <div className="flex items-center">
+                                    <input id="react-checkbox" type="checkbox" value={makeup.name} className="w-5 h-5 accent-[#49b949]" />
+                                    <label className="w-full py-[6px] ml-2 text-sm font-medium text-[#0C0C0C]">{makeup.name}</label>
                                 </div>
                             </li>
                         ))}
@@ -285,12 +285,12 @@ export default function SortProduct() {
                     </div>
                 )}
                 <div className={`select-none duration-500 max-h-0 overflow-hidden ${isDropdownSkincare ? 'max-h-[400px]' : ''}`}>
-                    <ul class="pt-2 w-48 text-sm font-medium text-gray-900 ">
+                    <ul className="pt-2 w-48 text-sm font-medium text-gray-900 ">
                         {skincare.map((skincare, index) => (
-                            <li class="w-full" key={index}>
-                                <div class="flex items-center">
-                                    <input id="react-checkbox" type="checkbox" value={skincare.name} class="w-5 h-5 accent-[#49b949]" />
-                                    <label for="react-checkbox" class="w-full py-[6px] ml-2 text-sm font-medium text-[#0C0C0C]">{skincare.name}</label>
+                            <li className="w-full" key={index}>
+                                <div className="flex items-center">
+                                    <input id="react-checkbox" type="checkbox" value={skincare.name} className="w-5 h-5 accent-[#49b949]" />
+                                    <label className="w-full py-[6px] ml-2 text-sm font-medium text-[#0C0C0C]">{skincare.name}</label>
                                 </div>
                             </li>
                         ))}
@@ -323,12 +323,12 @@ export default function SortProduct() {
                     </div>
                 )}
                 <div className={`select-none duration-500 max-h-0 overflow-hidden ${isDropdownSkinStatus ? 'max-h-[400px]' : ''}`}>
-                    <ul class="pt-2 w-48 text-sm font-medium text-gray-900 ">
+                    <ul className="pt-2 w-48 text-sm font-medium text-gray-900 ">
                         {skinStatus.map((skinStatus, index) => (
-                            <li class="w-full" key={index}>
-                                <div class="flex items-center">
-                                    <input id="react-checkbox" type="checkbox" value={skinStatus.name} class="w-5 h-5 accent-[#49b949]" />
-                                    <label for="react-checkbox" class="w-full py-[6px] ml-2 text-sm font-medium text-[#0C0C0C]">{skinStatus.name}</label>
+                            <li className="w-full" key={index}>
+                                <div className="flex items-center">
+                                    <input id="react-checkbox" type="checkbox" value={skinStatus.name} className="w-5 h-5 accent-[#49b949]" />
+                                    <label className="w-full py-[6px] ml-2 text-sm font-medium text-[#0C0C0C]">{skinStatus.name}</label>
                                 </div>
                             </li>
                         ))}

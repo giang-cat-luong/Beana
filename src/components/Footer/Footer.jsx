@@ -18,19 +18,19 @@ export default function Footer() {
     <div className='flex flex-col font-Montserrat select-none'>
       <div className="py-6 md:flex flex-row justify-between  md:px-14 md:py-6 text-sm text-[#49B949] bg-[#E0F7CD]">
         <div className="md:flex items-center flex-row gap-4 md:px-10">
-          <img className="mx-auto md:mx-0" src='./assets/rabbit.svg' />
+          <img className="mx-auto md:mx-0" src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697710360/Beana_assets/rabbit_l4irkw.svg' />
           <p className="text-center md:pt-0 pt-2">Không Thử Nghiệm Trên Động Vật</p>
         </div>
         <div className="pt-6 md:pt-0 md:flex items-center flex-row gap-4 md:px-10">
-          <img className="mx-auto md:mx-0" src='./assets/leaf.svg' />
+          <img className="mx-auto md:mx-0" src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708780/Beana_assets/leaf_pksw1e.svg' />
           <p className="text-center md:pt-0 pt-2">Không Có Thành Phần Có <br /> Nguồn Gốc Từ Động Vật</p>
         </div>
         <div className="pt-6 md:pt-0 md:flex items-center flex-row gap-4 md:px-10">
-          <img className="mx-auto md:mx-0" src='./assets/rice.svg' />
+          <img className="mx-auto md:mx-0" src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697710360/Beana_assets/rice_qwufra.svg' />
           <p className="text-center md:pt-0 pt-2">Không Có Gluten, Hoặc Sản <br /> Phẩm Phụ Gluten</p>
         </div>
         <div className="pt-6 md:pt-0 md:flex items-center flex-row gap-4 md:px-10">
-          <img className="mx-auto md:mx-0" src='./assets/package.svg' />
+          <img className="mx-auto md:mx-0" src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708785/Beana_assets/package_e49gq4.svg' />
           <p className="text-center md:pt-0 pt-2">Bao Bì Có Thể Tái Chế</p>
         </div>
       </div>

@@ -30,9 +30,10 @@ export default function ProductDetail() {
 
     const { mutate } = useAddToCart();
 
-    const [quantityCart, setQuantityCart] = useState(0);
-    const { data, isLoading } = useGetSingleProduct(id);
+    const [quantityCart, setQuantityCart] = useState(1);
+    const { data } = useGetSingleProduct(id);
 
+    
     const [isOpen, setIsOpen] = useState(false);
 
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -40,14 +41,23 @@ export default function ProductDetail() {
 
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
+    const productImageList = [{
+        id: data?.productImageList[0].id,
+        url:data?.productImageList[0].url,
+        status:data?.productImageList[0].status,
+        type:data?.productImageList[0].type,
+    }]
+
+
     const handleAddToCart = () => {
         try {
             mutate({
-                id: data.id,
-                name: data.id,
-                quantity: data.quantity,
-                price: data.price,
+                id: data?.id,
+                name: data?.name,
+                quantity: data?.quantity,
+                price: data?.price,
                 cartQuantity: quantityCart,
+                productImageList: productImageList,
             });
             setIsOpen(!isOpen);
         } catch (error) {
@@ -57,8 +67,11 @@ export default function ProductDetail() {
 
     const handleCartQuantity = (event) => {
         const newValue = event.target.value === '' ? '' : parseInt(event.target.value);
-        if (newValue === '' || (!isNaN(newValue) && newValue >= 1 && newValue <= 1000)) {
+        if (newValue === '' || (!isNaN(newValue) && newValue >= 1 && newValue <= (data?.quantity))) {
             setQuantityCart(newValue);
+        }else{
+            setQuantityCart(1)
+            //thong bao cho nguoi dung
         }
     };
 
@@ -101,14 +114,12 @@ export default function ProductDetail() {
         images[(currentIndex + 5) % images.length],
     ];
 
-    if (isLoading) {
-        return <div>hhuhu</div>
-    }
+ 
     return (
         <div>
             <CartSideBar isOpen={isOpen} setIsOpen={setIsOpen} />
             <div className='max-w-screen-2xl px-36 py-10 '>
-                <BreadCrumb breadCrumbName={data.name} breadCrumbName0={"Sản phẩm"} />
+                <BreadCrumb breadCrumbName={data?.name} breadCrumbName0={"Sản phẩm"} />
                 <div className='flex flex-row gap-16 pb-8'>
                     <div className='basis-2/3 flex flex-row gap-7 select-none'>
                         <div className='flex flex-col h-full'>
@@ -179,35 +190,35 @@ export default function ProductDetail() {
                         </div>
                     </div>
                     <div className='flex flex-col basis-1/3'>
-                        <h1 className='font-bold text-[28px]  text-[#49B949]'>{data.name}</h1>
+                        <h1 className='font-bold text-[28px]  text-[#49B949]'>{data?.name}</h1>
                         <div className="flex flex-row items-center py-2">
                             <div className="flex flex-row items-center">
                                 {Array.from({ length: maxStars }, (_, index) => (
                                     <FontAwesomeIcon
                                         key={index}
                                         icon={faStar}
-                                        className={`text-[16px] ${index < data.rate ? 'text-yellow-400' : 'text-gray-300'}`}
+                                        className={`text-[16px] ${index < data?.rate ? 'text-yellow-400' : 'text-gray-300'}`}
                                         fixedWidth
                                     />
                                 ))}
-                                <p className="pl-2 ">( {data.rate} đánh giá)</p>
+                                <p className="pl-2 ">( {data?.rate} đánh giá)</p>
                             </div>
                             <div className="flex flex-row items-center">
                                 <div className="border-solid border-r-2 border-[#767373] h-5 pl-3 mr-3"></div>
-                                <div>{data.soldQuantity} đã bán</div>
+                                <div>{data?.soldQuantity} đã bán</div>
                             </div>
 
                         </div>
                         <p className='font-bold text-[#0C0C0C] pt-2 leading-6'>
-                            {data.childCategory.name}
+                            {data?.childCategory.name}
                         </p>
                         <div className='flex flex-row font-medium text-sm pt-2 text-[#606060]'>
-                            {data.productSkins.map((skin, index) => (
+                            {data?.productSkins.map((skin, index) => (
                                 <div key={skin.id} className='flex flex-row'>
                                     <div className='normal-case'>
                                         {skin.skin.name}
                                     </div>
-                                    {index !== data.productSkins.length - 1 && (<div className="border-solid border-r-2 border-[#767373] h-5 pl-3 mr-3"></div>)}
+                                    {index !== data?.productSkins.length - 1 && (<div className="border-solid border-r-2 border-[#767373] h-5 pl-3 mr-3"></div>)}
                                 </div>
 
                             ))}
@@ -217,13 +228,13 @@ export default function ProductDetail() {
                         </p>
                         <div className='flex flex-row justify-between items-center border-b-2 border-[#606060] py-3'>
                             <p className='font-bold text-[#0C0C0C] text-[24px] pt-3 pb-3 leading-6'>
-                                {data.price.toLocaleString("vi-VN")}đ
+                                {data?.price.toLocaleString("vi-VN")}đ
                             </p>
                             <div>
                                 <div
                                     className="px-1 py-1 outline-none font-semibold text-base text-[#49b949] bg-transparent"
                                 >
-                                    {data.specification}
+                                    {data?.specification}
                                 </div>
                             </div>
                         </div>
@@ -236,7 +247,7 @@ export default function ProductDetail() {
                                 onChange={handleCartQuantity}
                                 className='py-1 mr-20 w-[55px] bg-[#e1e0e0] text-center'
                             />
-                            <p className='text-sm font-medium text-[#757575]'>{data.quantity} sản phẩm có sẵn</p>
+                            <p className='text-sm font-medium text-[#757575]'>{data?.quantity} sản phẩm có sẵn</p>
                         </div>
                         <div className='flex flex-row gap-4'>
                             <button
@@ -305,7 +316,7 @@ export default function ProductDetail() {
                         src="https://www.youtube.com/embed/nniMQ-cpoaw"
                         title="Dior Prestige - How to Energize Your Skin with Micro-Nutrition?"
                         frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+                     >
                     </iframe>
                     <div className='absolute bottom-0 left-[-6%]'>
                         <img className='w-40 -scale-x-100' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708873/Beana_assets/bean_afjwev.png' />

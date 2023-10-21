@@ -38,6 +38,7 @@ export const useToken = () => {
       if (token) {
         return jwtDecode(token);
       }
+      return null; // Trả về null hoặc giá trị mặc định khác khi không có token.
     },
   });
   return decodedToken;

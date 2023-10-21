@@ -63,9 +63,7 @@ export default function ProductRecommend() {
     const { data, isLoading } = useGetProduct();
 
     
-  if (isLoading) {
-    return <div>hhuhu</div>
-  }
+  
     return (
         <div className="flex flex-col justify-center mt-16 relative group bg-[#EEF6E8]">
             <h1 className='beana-product-title-header pt-6'>CÁC SẢN PHẨM LIÊN QUAN</h1>
@@ -75,7 +73,7 @@ export default function ProductRecommend() {
                         <div className="px-2" key={index}>
                             <SingleProduct
                                 id={product.id}
-                                url={product.productImageList[0].url}
+                                url={product.productImageList}
                                 name={product.name}
                                 skinType={product?.productSkins}
                                 price={product.price}

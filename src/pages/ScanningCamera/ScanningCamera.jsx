@@ -243,7 +243,7 @@ function ScanningCamera() {
                                 <div className='flex flex-col justify-between gap-4'>
                                     <div className='flex flex-row'>
                                         <p className='pt-5 text-[29px] font-bold text-secondary'>ĐẾN GIỜ SELFIE RỒI !</p>
-                                        <img className='w-20' src='./assets/bean.png' />
+                                        <img className='w-20' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708873/Beana_assets/bean_afjwev.png' />
                                     </div>
                                     <div className='flex flex-col'>
                                         <ul className='pl-5 text-[13px] font-normal'>

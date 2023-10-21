@@ -7,27 +7,27 @@ export default function ProductDescription({ data }) {
     {
       id: 1,
       name: "Chi tiết sản phẩm",
-      description: data.description
+      description: data?.description
     },
     {
       id: 2,
       name: " Cách sử dụng",
-      description: data.howToUse
+      description: data?.howToUse
     },
     {
       id: 3,
       name: "Thành phần",
-      description: data.ingredients
+      description: data?.ingredients
     },
     {
       id: 4,
       name: "Điều gì làm sản phẩm đặc biệt",
-      description: data.mainFunction
+      description: data?.mainFunction
     },
     {
       id: 5,
       name: "Chứng nhận về sản phẩm",
-      description: data.certification
+      description: data?.certification
     },
   ]
 

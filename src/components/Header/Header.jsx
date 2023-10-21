@@ -6,7 +6,8 @@ import PopularProduct from './components/PopularProduct'
 import Loading from '../Loading/BeanLoading'
 import CartSideBar from '../CartSideBar'
 import { useToken } from '../../services/Auth/services'
-
+import useCart from '../../pages/Cart/hooks/useCart'
+import useGetProduct from '../../pages/Product/hooks/useGetProduct'
 
 const popularProduct = [
     {
@@ -37,19 +38,19 @@ const popularProduct = [
 
 const skincareTips = [
     {
-        url: './assets/skintips11.jpg',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708873/Beana_assets/skintips11_gt0nrf.jpg',
         name: "Quy trình chăm sóc da",
     },
     {
-        url: './assets/skintips22.jpg',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708873/Beana_assets/skintips22_hb49pw.jpg',
         name: "Hướng dẫn chăm sóc da",
     },
     {
-        url: './assets/skintips33.jpeg',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708873/Beana_assets/skintips33_tvps8h.jpg',
         name: "Các vấn đề về da mặt",
     },
     {
-        url: './assets/skintips44.png',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708876/Beana_assets/skintips44_brhkqq.png',
         name: "Chăm sóc da trước và sau khi trang điểm",
     },
 ];
@@ -59,6 +60,23 @@ export default function Header() {
 
     const decodedToken = useToken();
     const [loggedIn, setLoggedIn] = useState(false);
+
+    const { data: product } = useGetProduct();
+    const { data } = useCart();
+
+    const [totalPrice, setTotalPrice] = useState(0);
+    const updateTotalPrice = () => {
+        let total = 0;
+
+        data?.forEach((cart) => {
+            total += cart.item.price * cart.quantity;
+        });
+
+        setTotalPrice(total);
+    };
+    useEffect(() => {
+        updateTotalPrice(); // Gọi hàm khi data thay đổi
+    }, [data]);
 
     const [scrolled, setScrolled] = useState(false);
     const [toggleSearch, setToggleSearch] = useState(false);
@@ -86,8 +104,11 @@ export default function Header() {
         const handleScroll = () => {
             if (window.scrollY > 1000) {
                 setScrolled(true);
-            } else {
+            }
+            if (window.scrollY > 3000) {
                 setScrolled(false);
+            } else {
+                setScrolled(true);
             }
         };
         window.addEventListener('scroll', handleScroll);
@@ -255,7 +276,7 @@ export default function Header() {
                                                         <Link to="/" className='beana-top-menu-text-links'>Bảo vệ khỏi ánh nắng</Link>
                                                     </div>
                                                     <div className='flex flex-col'>
-                                                        <img className='pb-3' src='./assets/sales.png'></img>
+                                                        <img className='pb-3' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708883/Beana_assets/sales_me267a.png'></img>
                                                         <h3 className='beana-top-menu-text'>   Sản phẩm mới ra mắt</h3>
                                                         <Link to="/" className='beana-top-menu-text-links'>Kem phong phú chống lão hóa toàn cầu - nuôi dưỡng & phục hồi mạnh mẽ</Link>
                                                     </div>
@@ -342,7 +363,7 @@ export default function Header() {
                                         <div className='-z-10 '>
                                             <div className={`group ${scrolled ? 'top-[110px]' : 'top-[136px]'} flex flex-col absolute left-0 px-10 pb-10 pt-5 w-full border-t-2 border-b-[1px] border-b-[#e6e1e1] bg-white z-20 text-black`}>
                                                 <div className="flex items-center max-w-screen-2xl border-b-2 border-[#606060] mx-28 mb-10">
-                                                    <img src='./assets/bean.png' className='w-6 absolute top-4 left-[10]' />
+                                                    <img src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708873/Beana_assets/bean_afjwev.png' className='w-6 absolute top-4 left-[10]' />
                                                     <input className="appearance-none bg-transparent border-none w-full text-[#000] font-medium pl-8 leading-tight focus:outline-none  placeholder:text-[#404040] placeholder:font-normal text-lg" type="text" placeholder="Bạn đang tìm gì?" aria-label="Full name" />
                                                     <FontAwesomeIcon
                                                         icon={faSearch}
@@ -374,15 +395,9 @@ export default function Header() {
                                                             <p className='font-bold text-sm text-[#86bb86] hover:text-[#0E740E] hover:underline hover:cursor-pointer'>Xem tất cả</p>
                                                         </div>
                                                         <div className='flex flex-row gap-6'>
-                                                            {popularProduct.map((category, index) => (
-                                                                <PopularProduct
-                                                                    key={index}
-                                                                    url={category.url}
-                                                                    name={category.name}
-                                                                    skinType={category.skinType}
-                                                                    price={category.price}
-                                                                />
-                                                            ))}
+                                                            <PopularProduct
+                                                                data={product}
+                                                            />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -517,10 +532,13 @@ export default function Header() {
                             </div>
                             <div className='flex flex-col text-[#fff] pl-3'>
                                 <div className='font-bold text-sm'>
-                                    3.000.000đ
+                                    {/* {data.map((cart) => (
+                                        toal = + (cart.price * cart.quantity)
+                                    ))} */}
+                                    {totalPrice.toLocaleString("vi-VN")}
                                 </div>
                                 <div className='font-light text-xs'>
-                                    12 sản phẩm
+                                    {data?.length} sản phẩm
                                 </div>
                             </div>
                         </div>
@@ -535,32 +553,32 @@ export default function Header() {
                                     </svg>
                                 </button>
                                 {toggleMenu ? (
-                                    <div class={`duration-500 ease absolute top-[119px] w-full right-0 bg-white p-4 pb-0 ${scrolled ? 'top-[93px]' : ''}`}>
-                                        <ul class="space-y-4 pt-3 pb-6 flex flex-col items-center">
+                                    <div className={`duration-500 ease absolute top-[119px] w-full right-0 bg-white p-4 pb-0 ${scrolled ? 'top-[93px]' : ''}`}>
+                                        <ul className="space-y-4 pt-3 pb-6 flex flex-col items-center">
                                             <li >
-                                                <a href="#" class="text-black hover:text-secondary font-medium ">
+                                                <a href="#" className="text-black hover:text-secondary font-medium ">
                                                     TRANG CHỦ
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#" class="text-black hover:text-secondary font-medium ">
+                                                <a href="#" className="text-black hover:text-secondary font-medium ">
                                                     SẢN PHẨM
                                                 </a>
                                             </li>
                                             <li>
                                                 <Link to="/scanning-face">
-                                                    <a href="#" class="text-black hover:text-secondary font-medium ">
+                                                    <a href="#" className="text-black hover:text-secondary font-medium ">
                                                         FACE SCANNING
                                                     </a>
                                                 </Link>
                                             </li>
                                             <li>
-                                                <a href="#" class="text-black hover:text-secondary font-medium ">
+                                                <a href="#" className="text-black hover:text-secondary font-medium ">
                                                     MẸO CHĂM SÓC DA
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#" class="text-black hover:text-secondary font-medium ">
+                                                <a href="#" className="text-black hover:text-secondary font-medium ">
                                                     VỀ BEANA
                                                 </a>
                                             </li>

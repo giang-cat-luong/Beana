@@ -537,8 +537,8 @@ export default function Questionnaire() {
                                     <p className='font-medium text-base text-center pb-2'>Bạn sẽ nhận được kết quả về da mặt của bạn trong thời gian sớm nhất.</p>
                                 </div>
                                 <div className='flex flex-row justify-center'>
-                                    <img className='w-60 pb-16 md:pl-0 ml-16' src='./assets/beanMale.png' />
-                                    <img className='w-40 pb-16 md:pl-0 mr-9' src='./assets/beanFemale.png' />
+                                    <img className='w-60 pb-16 md:pl-0 ml-16' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708840/Beana_assets/beanMale_yk19ye.png' />
+                                    <img className='w-40 pb-16 md:pl-0 mr-9' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708824/Beana_assets/beanFemale_f91mdb.png' />
                                 </div>
                             </div>
 

@@ -36,14 +36,14 @@ export default function Chat() {
             </div>
             <div className='flex items-center justify-center bg-[#f5f5f5] rounded-[50%] hover:bg-[#e2e0e0] duration-300'>
               <div className='px-[6px] py-[6px]'>
-                <img className='w-5' src='./assets/more.png' />
+                <img className='w-5' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708785/Beana_assets/more_tyqydk.png' />
               </div>
             </div>
           </div>
           <div className='py-5 text-lg'>
             <div className='flex flex-row justify-center items-center'>
               <strong>Chat với Beana Health & Beauty</strong>
-              <img className='w-9' src='./assets/bean.png' />
+              <img className='w-9' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708873/Beana_assets/bean_afjwev.png' />
             </div>
           </div>
           <div className='text-sm font-normal'>

@@ -2,13 +2,14 @@ import SingleProduct from "../../components/SingleProduct"
 import BreadCrumb from "../../components/BreadCrumb"
 import SortProduct from './components/SortProduct'
 import useGetProduct from "./hooks/useGetProduct";
+import BeanLoading from "../../components/Loading/BeanLoading";
 
 export default function Product() {
 
   const { data, isLoading } = useGetProduct();
 
   if (isLoading) {
-    return <div>hhuhu</div>
+    return <BeanLoading/>
   }
 
   return (
@@ -24,7 +25,7 @@ export default function Product() {
           Bộ Lọc
         </div>
         <div>
-          <div class="custom-select shadow-lg shadow-[#DFDFDF]">
+          <div className="custom-select shadow-lg shadow-[#DFDFDF]">
             <select className="w-[200px] px-2 py-2  outline-2 font-semibold text-base text-[#49b949] outline-[#49b949] border-[2px] border-[#DFDFDF]">
               <option className="text-[#0C0C0C]" value="0">Bán chạy nhất</option>
               <option className="text-[#0C0C0C]" value="1">Mới nhất</option>
@@ -81,13 +82,13 @@ export default function Product() {
                       <ul className="list-disc">
                         <li className="ml-6 font-normal ">Có sẵn dành riêng cho điện thoại di động</li>
                       </ul>
-                      <img className='w-16 h-16 mt-2 mr-4 mb-4 absolute bottom-0 right-0' src='./assets/qr-code.png' />
+                      <img className='w-16 h-16 mt-2 mr-4 mb-4 absolute bottom-0 right-0' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708787/Beana_assets/qr-code_ghe29a.png' />
                     </div>
                   </div>
                 ) : (
                   <SingleProduct
                     id={product.id}
-                    url={product.productImageList[0].url}
+                    url={product.productImageList}
                     name={product.name}
                     skinType={product?.productSkins}
                     price={product.price}
