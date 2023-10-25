@@ -105,10 +105,8 @@ export default function Header() {
             if (window.scrollY > 1000) {
                 setScrolled(true);
             }
-            if (window.scrollY > 3000) {
+            else {
                 setScrolled(false);
-            } else {
-                setScrolled(true);
             }
         };
         window.addEventListener('scroll', handleScroll);
@@ -434,12 +432,12 @@ export default function Header() {
                                             <p className='text-xs pl-1 max-w-[100px] truncate underline-offset-1 md:text-xs font-semibold text-[#000] group-hover:text-[#0E740E]' >Chào,<br /> {decodedToken?.sub}</p>
                                         )}
 
-                                        <div className={`group ${scrolled ? 'top-[54%]' : 'bottom-[-4%]'} hidden group-hover:block absolute top-[64%] right-[18%] w-32 h-5 bg-transparent  z-20duration-300`}>
+                                        <div className={`group ${scrolled ? 'top-[55%]' : 'bottom-[-4%]'} hidden group-hover:block absolute top-[64%] right-[17.5%] w-56 h-8 bg-transparent  z-20duration-300`}>
                                         </div>
                                         <div className={`group ${scrolled ? 'top-[70%]' : 'bottom-[-4%]'} hidden group-hover:block absolute right-[23.5%] w-10 h-10 bg-[#0E740E] z-20 rotate-45 duration-300`}>
                                         </div>
                                         {loggedIn ? (
-                                            <div className={`group ${scrolled ? 'top-[70%]' : 'bottom-[-125%]'} hidden group-hover:block absolute right-[16.2%] px-4 py-3 w-50 h-30 border-2 rounded-sm bg-white z-20 text-black duration-800`}>
+                                            <div className={`group ${scrolled ? 'top-[70%]' : 'bottom-[-115%]'} hidden group-hover:block absolute right-[16.2%] px-4 py-3 w-50 h-30 border-2 rounded-sm bg-white z-20 text-black duration-800`}>
                                                 <div className="flex flex-col gap-3 ">
                                                     {/* <Link to='./login'> */}
                                                     <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
@@ -451,7 +449,9 @@ export default function Header() {
                                                             fixedWidth
                                                         />
                                                         <div className="text-sm text-[#fff] ">
-                                                            Tài khoản của bạn
+                                                            <Link to="/profile">
+                                                                Tài khoản của bạn
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                     {/* </Link> */}
@@ -535,10 +535,10 @@ export default function Header() {
                                     {/* {data.map((cart) => (
                                         toal = + (cart.price * cart.quantity)
                                     ))} */}
-                                    {totalPrice.toLocaleString("vi-VN")}
+                                    {totalPrice.toLocaleString("vi-VN")}đ
                                 </div>
                                 <div className='font-light text-xs'>
-                                    {data?.length} sản phẩm
+                                    {data?.length} sản phẩm {!data && <div>0 sản phẩm</div>}
                                 </div>
                             </div>
                         </div>

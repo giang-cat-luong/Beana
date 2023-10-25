@@ -13,7 +13,7 @@ export default function BannerEvent() {
     useEffect(() => {
         const adCount = parseInt(localStorage.getItem('adClosedCount') || '1', 10);
 
-        if (adCount < 40) {
+        if (adCount < 7) {
             localStorage.setItem('adClosedCount', (adCount + 1).toString());
         } else {
             setIsShow(false)

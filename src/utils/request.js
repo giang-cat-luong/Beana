@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://35.197.144.3:8686/api/v1";
+const url = "https://apibeana.com/api/v1";
 export const instance = axios.create({
   withCredentials: true,
   baseURL: url,
@@ -22,7 +22,7 @@ export const instanceUpload = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
-    const accessToken = localStorage.getItem("accessToken");
+    const accessToken = localStorage.getItem("userToken");
     if (accessToken) {
       config.headers["Authorization"] = `Bearer ${accessToken}`;
     }

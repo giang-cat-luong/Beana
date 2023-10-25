@@ -2,12 +2,29 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useNavigate } from "react-router-dom"
 import useCart from "../../pages/Cart/hooks/useCart";
-import { useState, useEffect } from "react";
-import EmptyCart from './emptyCart.json'
-import Lottie from "lottie-react"
+import { useState, useEffect, useRef } from "react";
 import { useRemoveCartItem } from "../../services/Cart/services";
+import EmptyCart from "../NoData/EmptyCart";
+import BeanLoading from "../Loading/BeanLoading";
 
 export default function CartSideBar({ isOpen, setIsOpen }) {
+    const sidebarRef = useRef(null); // Tạo một ref cho sidebar
+
+    const handleOutsideClick = (e) => {
+        if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
+            setIsOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleOutsideClick);
+        return () => {
+            document.removeEventListener("mousedown", handleOutsideClick);
+        };
+    });
+
+    const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
 
     const { data } = useCart();
 
@@ -41,17 +58,20 @@ export default function CartSideBar({ isOpen, setIsOpen }) {
         updateTotalPrice(); // Gọi hàm khi data thay đổi
     }, [data]);
 
-    const navigate = useNavigate();
-
     const navigateToCart = () => {
-        navigate("/cart");
         setIsOpen(false);
+        setIsLoading(true)
+        setTimeout(() => {
+            setIsLoading(false);
+            navigate("/cart")
+        }, 1300)
     }
 
-   
+
     return (
         <div className="relative">
-            <div className={`h-full fixed top-0  bg-white w-[480px] duration-500 overflow-hidden z-[7777] ${isOpen ? 'right-0' : 'right-[-480px]'}`}>
+            {isLoading && <BeanLoading />}
+            <div ref={sidebarRef} className={`h-full fixed top-0  bg-white w-[480px] duration-500 overflow-hidden z-[7777] ${isOpen ? 'right-0' : 'right-[-480px]'}`}>
                 <div className='pt-[60px]  h-full overflow-y-scroll px-[70px] pb-[100px]'>
                     <div >
                         <div className='text-md font-medium mb-14'>
@@ -80,9 +100,9 @@ export default function CartSideBar({ isOpen, setIsOpen }) {
                                 </div>
                             </div>
                         ))}
-                        {data === null &&
+                        {data?.length <= 0 &&
                             <div className="relative">
-                                <Lottie animationData={EmptyCart} loop={true} />
+                                <EmptyCart />
                                 <img className="w-20 absolute bottom-10 left-16" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697789641/Beana_assets/beanEmpty_o3a7mg.png"></img>
                                 <div>Không có sản phẩm nào trong giỏ hàng</div>
                             </div>

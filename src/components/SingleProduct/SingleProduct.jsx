@@ -47,7 +47,7 @@ export default function SingleProduct({ id, url, name, skinType, price, totalSta
 
     return (
         <div className='flex flex-col  bg-[#fff] border-[1px] border-[#DFDFDF]'>
-            <Success isSuccess={isSuccess} setIsSuccess={setIsSuccess} />
+            {/* <Success isSuccess={isSuccess} setIsSuccess={setIsSuccess} /> */}
             <CartSideBar isOpen={isOpen} setIsOpen={setIsOpen} />
             <Link to={`/product/${id}`}>
                 <img className=' w-[100%] h-[400px] rounded-sm' src={url[0].url} />

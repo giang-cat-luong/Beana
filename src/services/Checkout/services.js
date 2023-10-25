@@ -1,26 +1,25 @@
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
-import { getCart, addToCart, removeCartItem } from "../Cart/callers";
+import { addOrder } from "./callers";
 
-const API_KEY = {
-  GET_CART: "cart",
-  ADD_TO_CART: "add_to_cart",
-};
+// const API_KEY = {
+//   GET_CART: "cart",
+//   ADD_TO_CART: "add_to_cart",
+// };
 
-export const useGetCart = () => {
-  return useQuery(
-    {
-      queryKey: [API_KEY.GET_CART],
-      queryFn: () => getCart(),
-      refetchInterval: 1000,
-    },
-    {
-      staleTime: "100000",
-    },
-  );
-};
-export const useAddToCart = () => {
+// export const useGetCart = () => {
+//   return useQuery(
+//     {
+//       queryKey: [API_KEY.GET_CART],
+//       queryFn: () => getCart(),
+//     },
+//     {
+//       staleTime: "100000",
+//     },
+//   );
+// };
+export const useCheckout = () => {
   // const navigate = useNavigate();
-  return useMutation(addToCart, {
+  return useMutation(addOrder, {
     onSuccess: () => {
       // navigate("/");
     },
@@ -29,12 +28,4 @@ export const useAddToCart = () => {
   });
 };
 
-export const useRemoveCartItem = () => {
-  const queryClient = useQueryClient()
-  // const navigate = useNavigate();
-  return useMutation(removeCartItem, {
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['removeCart'] }),
-    onError: () => {
-    },
-  });
-};
+

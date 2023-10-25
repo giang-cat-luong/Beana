@@ -10,9 +10,8 @@ export default function Home() {
         <>
             <div className="bg-[#FAF9F5]">
                 <Header />
-
                 <div className="flex min-h-screen md:pt-[135px] pt-[120px] font-Montserrat">
-                    <div className="flex flex-col justify-self-end w-full justify-between mb-[100px]">
+                    <div className="flex flex-col justify-self-end w-full justify-between mb-[60px]">
                         <Outlet />
                     </div>
                     <div>

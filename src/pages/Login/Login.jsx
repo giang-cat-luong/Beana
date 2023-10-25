@@ -54,15 +54,10 @@ const options = {
     }
 }
 
-
-
 function Login({ props }) {
-
-
 
     const [isSignUpMode, setIsSignUpMode] = useState(false);
     const [isShow, setIsShow] = useState(false);
-    const [isShowConfirm, setIsShowConfirm] = useState(false);
 
     //handle date
     const [show, setShow] = useState(false);
@@ -80,7 +75,7 @@ function Login({ props }) {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [selectedDate, setSelectedDate] = useState(null)
-    const [gender, setGender] = useState("");
+    const [gender, setGender] = useState("0");
     const [signgupPassword, setSignupPassword] = useState("");
     console.log(gender)
     // signin
@@ -387,9 +382,14 @@ function Login({ props }) {
                                     <div className="input-field">
                                         <FontAwesomeIcon icon={faUser} color="#acacac" size="lg" fixedWidth className="icon-login" />
 
-                                        <select className="bg-[#f0f0f0] outline-none focus-within:bg-white pl-4" name="cars" style={{ width: "100%" }} >
-                                            <option value="0" className="">Nam</option>
-                                            <option value="1">Nữ</option>
+                                        <select
+                                            className="bg-[#f0f0f0] outline-none focus-within:bg-white pl-4" name="cars" style={{ width: "100%" }}
+                                            onChange={(event) => setGender(event.target.value)}
+                                            value={gender}
+                                        >
+                                            <option value="0" className="">Nữ</option>
+                                            <option value="1">Nam</option>
+                                            <option value="2">Khác</option>
                                         </select>
                                     </div>
                                     <div className="input-field">

@@ -14,7 +14,14 @@ import SkincareTips from "./pages/SkincareTips";
 import ScanningFace from "./pages/ScanningFace";
 import ScanningResult from "./pages/ScanningFace/components/QuestionQA/ScanningResult";
 import ScanningCamera from "./pages/ScanningCamera/ScanningCamera";
+import Profile from "./pages/Profile"
 import Cart from "./pages/Cart";
+import AccountInformation from "./pages/Profile/components/AccountInformation"
+import AccountManagement from "./pages/Profile/components/AccountManagement"
+import AddressManagement from "./pages/Profile/components/AddressManagement"
+import MyOrder from "./pages/Profile/components/MyOrder"
+import Wishlist from "./pages/Profile/components/Wishlist"
+import Repurchase from "./pages/Profile/components/Repurchase"
 
 import {
   QueryClient,
@@ -78,10 +85,58 @@ const router = createBrowserRouter([
         path: "/checkout",
         element: <Checkout />,
       },
+      {
+        path: "/profile",
+        element: <Profile />,
+        children: [
+          {
+            index: true, element: <Navigate to="account-management" replace />
+          },
+          {
+            path: "account-info",
+            element: <AccountInformation />,
+          },
+          {
+            path: "account-management",
+            element: <AccountManagement />,
+          },
+          {
+            path: "address-management",
+            element: <AddressManagement />,
+          },
+          {
+            path: "my-order",
+            element: <MyOrder />,
+          },
+          {
+            path: "repurchase",
+            element: <Repurchase />,
+          },
+          {
+            path: "wishlist",
+            element: <Wishlist />,
+          },
+        ]
+      },
 
 
     ],
   },
+  // {
+  //   path: "/",
+  //   element: <Home />,
+  //   errorElement: <Error404 />,
+
+  //   children: [
+  //     {
+  //       index: true, element: <Navigate to="/landingPage" replace />
+  //     },
+  //     {
+  //       path: "/landingPage",
+  //       element: <LandingPage />,
+  //     },
+  //   ],
+  // },
   {
     path: "/scanning-camera",
     element: <ScanningCamera />,

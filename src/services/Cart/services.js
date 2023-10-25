@@ -11,7 +11,7 @@ export const useGetCart = () => {
     {
       queryKey: [API_KEY.GET_CART],
       queryFn: () => getCart(),
-      refetchInterval: 1000,
+
     },
     {
       staleTime: "100000",
@@ -19,11 +19,9 @@ export const useGetCart = () => {
   );
 };
 export const useAddToCart = () => {
-  // const navigate = useNavigate();
+  const queryClient = useQueryClient()
   return useMutation(addToCart, {
-    onSuccess: () => {
-      // navigate("/");
-    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['cart'] }),
     onError: () => {
     },
   });
@@ -31,9 +29,8 @@ export const useAddToCart = () => {
 
 export const useRemoveCartItem = () => {
   const queryClient = useQueryClient()
-  // const navigate = useNavigate();
   return useMutation(removeCartItem, {
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['removeCart'] }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['cart'] }),
     onError: () => {
     },
   });
