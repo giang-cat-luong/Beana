@@ -191,7 +191,7 @@ export default function SkincareTips() {
                 colorDescription={sliderTitleDescription}
             />
             {/* skin routines */}
-            <div className='max-w-screen-2xl px-10 pt-5'>
+            <div className='  px-10 pt-5'>
                 <BreadCrumb breadCrumbName="Mẹo chăm sóc da" />
                 <div className='flex flex-row gap-6 justify-center mt-10 '>
                     <div className="basis-1/6">
@@ -274,7 +274,7 @@ export default function SkincareTips() {
             {/* end skin guide */}
 
             {/* skin concerns */}
-            <div className='max-w-screen-2xl px-10 pt-5'>
+            <div className='  px-10 pt-5'>
                 <div className='flex flex-row gap-6 justify-center mt-10 '>
                     <div className="basis-1/6">
                         <h1 className='font-semibold text-secondary text-[28px] px-3'>CÁC VẤN ĐỀ VỀ DA MẶT</h1>
@@ -357,7 +357,7 @@ export default function SkincareTips() {
             {/* end skin guide */}
 
             <div className="w-full bg-gradient-to-br from-[#86bb86] from-45% to-[#E0F7CD] to-95%">
-                <div className='max-w-screen-2xl flex flex-row gap-4 justify-center items-center px-10 py-12'>
+                <div className='  flex flex-row gap-4 justify-center items-center px-10 py-12'>
                     <div className="basis-1/2">
                         <img className="w-[702px] h-[702px] rounded-3xl" src="./assets/skincaretipsBanner.jpg" />
                     </div>

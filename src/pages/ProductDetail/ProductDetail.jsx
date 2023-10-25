@@ -118,7 +118,7 @@ export default function ProductDetail() {
     return (
         <div>
             <CartSideBar isOpen={isOpen} setIsOpen={setIsOpen} />
-            <div className='max-w-screen-2xl px-36 py-10 '>
+            <div className='  px-36 py-10 '>
                 <BreadCrumb breadCrumbName={data?.name} breadCrumbName0={"Sản phẩm"} />
                 <div className='flex flex-row gap-16 pb-8'>
                     <div className='basis-2/3 flex flex-row gap-7 select-none'>

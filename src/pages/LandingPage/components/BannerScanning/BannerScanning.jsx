@@ -9,7 +9,7 @@ export default function BannerScanning() {
         setIsOpenQA(!isOpenQA);
     }
     return (
-        <div className='max-w-screen-2xl px-36 flex flex-row '>
+        <div className='  px-36 flex flex-row '>
               {isOpenQA && <Questionnaire/>}
             <div className='basis-1/2 bg-[#86BB86] pl-20 py-6 text-[#fff]'>
                 <h1 className='font-semibold text-[24px]'>Phân Tích Chăm Sóc Da Ảo Mới</h1>

@@ -67,7 +67,7 @@ export default function ProductRecommend() {
     return (
         <div className="flex flex-col justify-center mt-16 relative group bg-[#EEF6E8]">
             <h1 className='beana-product-title-header pt-6'>CÁC SẢN PHẨM LIÊN QUAN</h1>
-            <div className='max-w-screen-2xl px-[136px] pb-20'>
+            <div className='  px-[136px] pb-20'>
                 <Slider {...settings}>
                     {data?.map((product, index) => (
                         <div className="px-2" key={index}>

@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function BannerAboutUs() {
     return (
-        <div className='max-w-screen-2xl px-48 flex flex-row '>
+        <div className='  px-48 flex flex-row '>
             <div className='basis-4/5 bg-[#86BB86] pl-20 pr-6 py-10 text-[#fff]'>
                 <h1 className='font-semibold text-[24px]'>Về Chúng Tôi</h1>
                 <p className='font-normal text-sm pt-2 leading-6'>

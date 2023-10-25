@@ -11,7 +11,7 @@ export const instance = axios.create({
 }
 );
 
-const urlUpload = "http://35.197.144.3:8686/api/v1";
+const urlUpload = "https://apibeana.com/api/v1";
 export const instanceUpload = axios.create({
   baseURL: urlUpload,
   headers: {

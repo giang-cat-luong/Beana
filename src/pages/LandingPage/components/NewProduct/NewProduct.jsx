@@ -22,7 +22,7 @@ export default function NewProduct({ data }) {
     ];
 
     return (
-        <div className='max-w-screen-2xl px-12 py-12'>
+        <div className='  px-12 py-12'>
             <div className='flex flex-col bg-[#86bb86]'>
                 <div className='px-24 py-10 pb-24'>
                     <h1 className='beana-product-title-header text-[#fff] flex justify-center'>SẢN PHẨM MỚI</h1>

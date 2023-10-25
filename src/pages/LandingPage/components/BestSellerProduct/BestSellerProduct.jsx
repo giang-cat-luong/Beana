@@ -115,7 +115,7 @@ export default function BestSellerProduct({data}) {
     return (
         <div className='flex flex-col justify-center mt-16 relative group'>
             <h1 className='beana-product-title-header'>SẢN PHẨM BÁN CHẠY NHẤT</h1>
-            <div className='max-w-screen-2xl px-[136px] pb-20'>
+            <div className='  px-[136px] pb-20'>
                 <Slider {...settings}>
                     {data?.map((product, index) => (
                         <div className="px-2" key={index}>

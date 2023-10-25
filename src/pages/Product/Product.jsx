@@ -13,7 +13,7 @@ export default function Product() {
   }
 
   return (
-    <div className='max-w-screen-2xl px-36 py-10 '>
+    <div className='  px-36 py-10 '>
      
       <BreadCrumb breadCrumbName="Sản phẩm" />
       <h1 className='text-[28px] font-extrabold'>

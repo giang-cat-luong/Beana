@@ -112,7 +112,7 @@ export default function Rating() {
   }
 
   return (
-    <div className='max-w-screen-2xl px-36 pt-10'>
+    <div className='  px-36 pt-10'>
       <h1 className='beana-product-title-header'>ĐÁNH GIÁ SẢN PHẨM</h1>
       <div className='bg-white'>
         <div className='px-5 py-6'>

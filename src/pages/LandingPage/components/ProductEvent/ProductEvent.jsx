@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function ProductEvent() {
     return (
-        <div className='max-w-screen-2xl px-36 pb-14 flex flex-row '>
+        <div className='  px-36 pb-14 flex flex-row '>
             <div className='basis-4/5 '>
                 <img className='w-[100%] h-[100%] bg-center bg-cover' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697817670/Beana_assets/MA_BK_b6k3yv.jpg' />
             </div>

@@ -46,7 +46,7 @@ export default function ScanningFace() {
           BẮT ĐẦU QUÉT DA MẶT
         </Link>
       </div>
-      <div className="max-w-screen-2xl md:px-36">
+      <div className="  md:px-36">
         <div className="md:py-20 md:flex md:flex-col md:gap-24">
           <div className="px-6 md:flex md:flex-row md:justify-between md:items-center md:gap-36">
             <img className="basis-1/2 w-[520px] h-[456px] md:p-0 " src="./assets/facescanning1.png" />

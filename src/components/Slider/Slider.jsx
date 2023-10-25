@@ -29,7 +29,7 @@ export default function Slider({ sliderUrls, title, description, button, colorTi
     }
 
     return (
-        <div className="max-w-screen-2xl h-[300px] md:h-[600px] w-full  relative group">
+        <div className="h-[300px] md:h-[600px] w-full  relative group">
             {isOpenQA && <Questionnaire/>}
            
             <div style={{ backgroundImage: `url(${sliderUrls[currentIndex]})` }} className="w-full h-full md:w-full md:h-full  bg-center bg-cover duration-500">

@@ -360,7 +360,7 @@ export default function Header() {
                                     {toggleSearch ? (
                                         <div className='-z-10 '>
                                             <div className={`group ${scrolled ? 'top-[110px]' : 'top-[136px]'} flex flex-col absolute left-0 px-10 pb-10 pt-5 w-full border-t-2 border-b-[1px] border-b-[#e6e1e1] bg-white z-20 text-black`}>
-                                                <div className="flex items-center max-w-screen-2xl border-b-2 border-[#606060] mx-28 mb-10">
+                                                <div className="flex items-center   border-b-2 border-[#606060] mx-28 mb-10">
                                                     <img src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708873/Beana_assets/bean_afjwev.png' className='w-6 absolute top-4 left-[10]' />
                                                     <input className="appearance-none bg-transparent border-none w-full text-[#000] font-medium pl-8 leading-tight focus:outline-none  placeholder:text-[#404040] placeholder:font-normal text-lg" type="text" placeholder="Bạn đang tìm gì?" aria-label="Full name" />
                                                     <FontAwesomeIcon
