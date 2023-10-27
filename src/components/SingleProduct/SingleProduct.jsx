@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 import { useAddToCart } from '../../services/Cart/services';
 import CartSideBar from "../../components/CartSideBar";
 import { useState } from "react";
-import Success from "../Notification/Success";
+
 
 export default function SingleProduct({ id, url, name, skinType, price, totalStars, totalRates, quantity }) {
 
     const { mutate } = useAddToCart();
     const maxStars = 5;
     const [isOpen, setIsOpen] = useState(false);
-    const [isSuccess, setIsSuccess] = useState(false);
+
     const minPercentage = 10;
     const maxPercentage = 15;
     const randomPercentage = Math.floor(Math.random() * (maxPercentage - minPercentage + 1)) + minPercentage;
@@ -35,10 +35,6 @@ export default function SingleProduct({ id, url, name, skinType, price, totalSta
                 cartQuantity: 1,
                 productImageList: productImageList,
             });
-            setIsSuccess(true);
-            setTimeout(() => {
-                setIsSuccess(false);
-            }, 5000);
             setIsOpen(true);
         } catch (error) {
             console.log(error);
@@ -47,7 +43,6 @@ export default function SingleProduct({ id, url, name, skinType, price, totalSta
 
     return (
         <div className='flex flex-col  bg-[#fff] border-[1px] border-[#DFDFDF]'>
-            {/* <Success isSuccess={isSuccess} setIsSuccess={setIsSuccess} /> */}
             <CartSideBar isOpen={isOpen} setIsOpen={setIsOpen} />
             <Link to={`/product/${id}`}>
                 <img className=' w-[100%] h-[400px] rounded-sm' src={url[0].url} />

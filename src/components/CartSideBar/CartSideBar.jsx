@@ -8,7 +8,7 @@ import EmptyCart from "../NoData/EmptyCart";
 import BeanLoading from "../Loading/BeanLoading";
 
 export default function CartSideBar({ isOpen, setIsOpen }) {
-    const sidebarRef = useRef(null); // Tạo một ref cho sidebar
+    const sidebarRef = useRef(null); 
 
     const handleOutsideClick = (e) => {
         if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {

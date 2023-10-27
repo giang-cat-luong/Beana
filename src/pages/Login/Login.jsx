@@ -2,10 +2,12 @@ import React, { Fragment, useState, useEffect } from "react";
 import "./Login.css";
 import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLock, faUser, faEnvelope, faEye, faEyeSlash, faCalendar, faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faLock, faUser, faEnvelope, faEye, faEyeSlash, faCalendar, faArrowRight, faArrowLeft,faPhone, faPersonHalfDress } from "@fortawesome/free-solid-svg-icons";
 import { useRive, useStateMachineInput } from "@rive-app/react-canvas";
 import { useSignin, useSignup } from '../../services/Auth/services'
 import Datepicker from "tailwind-datepicker-react"
+
+import Failed from "../../components/Notification/Failed";
 
 const options = {
     title: "Chọn ngày sinh",
@@ -58,7 +60,7 @@ function Login({ props }) {
 
     const [isSignUpMode, setIsSignUpMode] = useState(false);
     const [isShow, setIsShow] = useState(false);
-
+    const [isFailed, setIsFailed] = useState(false);
     //handle date
     const [show, setShow] = useState(false);
 
@@ -77,12 +79,12 @@ function Login({ props }) {
     const [selectedDate, setSelectedDate] = useState(null)
     const [gender, setGender] = useState("0");
     const [signgupPassword, setSignupPassword] = useState("");
-    console.log(gender)
+
     // signin
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const { mutate: mutateSignin } = useSignin();
+    const { mutate: mutateSignin, isFailed2 } = useSignin();
     const { mutate: mutateSignup } = useSignup();
 
     const handleSignUp = (e) => {
@@ -105,8 +107,13 @@ function Login({ props }) {
         e.preventDefault();
         try {
             mutateSignin({ username, password });
+            setIsFailed(true);
+            setTimeout(() => {
+                setIsFailed(false);
+            }, 5000);
         } catch (error) {
             console.error(error);
+
         }
     };
 
@@ -125,15 +132,8 @@ function Login({ props }) {
     const hidePassword = () => {
         setIsShow(false);
     };
-    const showPasswordConfirm = () => {
-        setIsShowConfirm(true);
-    };
-    const hidePasswordConfirm = () => {
-        setIsShowConfirm(false);
-    };
 
     //rive animation for bean
-
 
     const STATE_MACHINE_NAME = "Enter";
 
@@ -232,6 +232,9 @@ function Login({ props }) {
 
     return (
         <Fragment>
+            {isFailed2 === isFailed &&
+                <Failed isFailed={isFailed} setIsFailed={setIsFailed} title="Đăng nhập thất bại" description="Sai tên đăng nhập hoặc mật khẩu." />
+            }
             <div className={`container ${isSignUpMode ? props && "sign-up-mode" : props}`}>
                 <div className="forms-container">
                     <div className="signin-signup">
@@ -298,6 +301,9 @@ function Login({ props }) {
                                     )}
                                 </div>
                             </div>
+                            {isFailed2 &&
+                                <p className="text-sm text-red mr-28">Sai tên đăng nhập hoặc mật khẩu !</p>
+                            }
                             <a href="#" className="forgot-password">
                                 <p >Bạn quên mật khẩu?</p>
                             </a>
@@ -351,7 +357,7 @@ function Login({ props }) {
                                         <FontAwesomeIcon icon={faUser} color="#acacac" size="lg" fixedWidth className="icon-login" />
                                         <input
                                             type="text"
-                                            placeholder="Name"
+                                            placeholder="Tên của bạn"
                                             style={{ width: "100%" }}
                                             onChange={(event) => setName(event.target.value)}
                                             value={name || ""}
@@ -361,17 +367,17 @@ function Login({ props }) {
                                         <FontAwesomeIcon icon={faUser} color="#acacac" size="lg" fixedWidth className="icon-login" />
                                         <input
                                             type="text"
-                                            placeholder="Username"
+                                            placeholder="Tên đăng nhập"
                                             style={{ width: "100%" }}
                                             onChange={(event) => setSignupUsername(event.target.value)}
                                             value={signupUsername || ""}
                                         />
                                     </div>
                                     <div className="input-field">
-                                        <FontAwesomeIcon icon={faUser} color="#acacac" size="lg" fixedWidth className="icon-login" />
+                                        <FontAwesomeIcon icon={faPhone} color="#acacac" size="lg" fixedWidth className="icon-login" />
                                         <input
                                             type="text"
-                                            placeholder="Phone"
+                                            placeholder="Số điện thoại"
                                             style={{ width: "100%" }}
                                             onChange={(event) => setPhone(event.target.value)}
                                             value={phone || ""}
@@ -380,10 +386,10 @@ function Login({ props }) {
                                 </div>
                                 <div className="">
                                     <div className="input-field">
-                                        <FontAwesomeIcon icon={faUser} color="#acacac" size="lg" fixedWidth className="icon-login" />
+                                        <FontAwesomeIcon icon={faPersonHalfDress} color="#acacac" size="lg" fixedWidth className="icon-login" />
 
                                         <select
-                                            className="bg-[#f0f0f0] outline-none focus-within:bg-white pl-4" name="cars" style={{ width: "100%" }}
+                                            className="bg-[#f0f0f0] outline-none focus-within:bg-white pl-4"  style={{ width: "100%" }}
                                             onChange={(event) => setGender(event.target.value)}
                                             value={gender}
                                         >
@@ -400,7 +406,7 @@ function Login({ props }) {
                                         </div>
                                         <input type="text"
                                             className="ml-1"
-                                            placeholder="Select Date"
+                                            placeholder="Chọn ngày sinh"
                                             value={selectedDate || ""}
                                             onFocus={() => setShow(true)}
                                             readOnly />
@@ -409,7 +415,7 @@ function Login({ props }) {
                                         <FontAwesomeIcon icon={faLock} color="#acacac" size="lg" fixedWidth className="icon-login" />
                                         <input
                                             type={isShow ? "text" : "password"}
-                                            placeholder="Password"
+                                            placeholder="Mật khẩu"
                                             value={signgupPassword || ""}
                                             onChange={(event) => setSignupPassword(event.target.value)}
                                         />

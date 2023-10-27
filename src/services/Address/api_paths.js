@@ -1,4 +1,4 @@
 export const API = {
-  GET_ADDRESS: `addresses/get`,
+  GET_ADDRESS: `addresses`,
   ADD_ADDRESS: `addresses`,
 };

@@ -218,7 +218,7 @@ export default function Header() {
                         </a>
 
                         <div className="hidden ml-8  font-bold  w-full md:flex md:w-auto md:items-center md:justify-between md:order-1 ">
-                            <ul className="flex gap-8 mr-16 text-[14px]">
+                            <ul className="flex gap-8 mr-20 text-[14px]">
                                 <div>
                                     <li className='beana-top-menu-item'>
                                         <Link to='./'>
@@ -418,99 +418,113 @@ export default function Header() {
                             <div className='group'>
                                 <li className='flex flex-row'>
                                     <div className='flex flex-row items-center group cursor-pointer'>
-                                        <FontAwesomeIcon
-                                            icon={faUser}
-                                            color="#000"
-                                            size="lg"
-                                            style={{ paddingLeft: '10px' }}
-                                            className='group-hover:text-[#0E740E]'
-                                            fixedWidth
-                                        />
+                                        {!loggedIn ? (
+                                            <FontAwesomeIcon
+                                                icon={faUser}
+                                                color="#000"
+                                                size="lg"
+                                                style={{ paddingLeft: '10px' }}
+                                                className='group-hover:text-[#0E740E]'
+                                                fixedWidth
+                                            />
+                                        ) : (
+                                            <img className='w-10 pl-[10px]' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708874/Beana_assets/nonAvatar_k12l1p.png' />
+                                        )}
+
                                         {!loggedIn ? (
                                             <p className='text-xs pl-1 md:text-sm font-semibold text-[#000] group-hover:text-[#0E740E]' > Đăng Nhập</p>
                                         ) : (
-                                            <p className='text-xs pl-1 max-w-[100px] truncate underline-offset-1 md:text-xs font-semibold text-[#000] group-hover:text-[#0E740E]' >Chào,<br /> {decodedToken?.sub}</p>
+                                            <p className='text-xs pl-1 max-w-[100px] truncate underline-offset-1 md:text-xs font-semibold text-[#000] group-hover:text-[#0E740E]' >Chào,<br /> {decodedToken?.sub}ddddddd</p>
                                         )}
 
-                                        <div className={`group ${scrolled ? 'top-[55%]' : 'bottom-[-4%]'} hidden group-hover:block absolute top-[64%] right-[17.5%] w-56 h-8 bg-transparent  z-20duration-300`}>
-                                        </div>
-                                        <div className={`group ${scrolled ? 'top-[70%]' : 'bottom-[-4%]'} hidden group-hover:block absolute right-[23.5%] w-10 h-10 bg-[#0E740E] z-20 rotate-45 duration-300`}>
-                                        </div>
                                         {loggedIn ? (
-                                            <div className={`group ${scrolled ? 'top-[70%]' : 'bottom-[-115%]'} hidden group-hover:block absolute right-[16.2%] px-4 py-3 w-50 h-30 border-2 rounded-sm bg-white z-20 text-black duration-800`}>
-                                                <div className="flex flex-col gap-3 ">
-                                                    {/* <Link to='./login'> */}
-                                                    <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
-                                                        <FontAwesomeIcon
-                                                            icon={faFileInvoice}
-                                                            color="#000"
-                                                            size="lg"
-                                                            className='pr-2'
-                                                            fixedWidth
-                                                        />
-                                                        <div className="text-sm text-[#fff] ">
-                                                            <Link to="/profile">
-                                                                Tài khoản của bạn
-                                                            </Link>
+                                            <div>
+                                                <div className={`group ${scrolled ? 'top-[55%]' : 'bottom-[-4%]'} hidden group-hover:block absolute top-[64%] right-[17.5%] w-56 h-8 bg-transparent  z-20duration-300`}>
+                                                </div>
+                                                <div className={`group ${scrolled ? 'top-[79%]' : 'bottom-[-13%]'} hidden group-hover:block absolute right-[23.5%] w-10 h-10 bg-[#0E740E] z-20 rotate-45 duration-300`}>
+                                                </div>
+
+                                                <div className={`group ${scrolled ? 'top-[80%]' : 'bottom-[-135%]'} hidden group-hover:block absolute right-[16.2%] px-4 py-3 w-50 h-30 border-2 rounded-sm bg-white z-20 text-black duration-800`}>
+                                                    <div className="flex flex-col gap-3 ">
+                                                        {/* <Link to='./login'> */}
+                                                        <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
+                                                            <FontAwesomeIcon
+                                                                icon={faFileInvoice}
+                                                                color="#000"
+                                                                size="lg"
+                                                                className='pr-2'
+                                                                fixedWidth
+                                                            />
+                                                            <div className="text-sm text-[#fff] ">
+                                                                <Link to="/profile">
+                                                                    Tài khoản của bạn
+                                                                </Link>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    {/* </Link> */}
-                                                    {/* <Link to='./signup'> */}
-                                                    <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
-                                                        <FontAwesomeIcon
-                                                            icon={faCartFlatbedSuitcase}
-                                                            color="#000"
-                                                            size="lg"
-                                                            className='pr-2'
-                                                            fixedWidth
-                                                        />
-                                                        <div className="text-sm text-[#fff] ">
-                                                            Quản lý đơn hàng
+                                                        {/* </Link> */}
+                                                        {/* <Link to='./signup'> */}
+                                                        <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
+                                                            <FontAwesomeIcon
+                                                                icon={faCartFlatbedSuitcase}
+                                                                color="#000"
+                                                                size="lg"
+                                                                className='pr-2'
+                                                                fixedWidth
+                                                            />
+                                                            <div className="text-sm text-[#fff] ">
+                                                                Quản lý đơn hàng
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
-                                                        <FontAwesomeIcon
-                                                            icon={faLocationDot}
-                                                            color="#000"
-                                                            size="lg"
-                                                            className='pr-2'
-                                                            fixedWidth
-                                                        />
-                                                        <div className="text-sm text-[#fff] ">
-                                                            Địa chỉ giao hàng
+                                                        <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
+                                                            <FontAwesomeIcon
+                                                                icon={faLocationDot}
+                                                                color="#000"
+                                                                size="lg"
+                                                                className='pr-2'
+                                                                fixedWidth
+                                                            />
+                                                            <div className="text-sm text-[#fff] ">
+                                                                Địa chỉ giao hàng
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div
-                                                        className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'
-                                                        onClick={logout}
-                                                    >
-                                                        <FontAwesomeIcon
-                                                            icon={faArrowRightFromBracket}
-                                                            color="#000"
-                                                            size="lg"
-                                                            className='pr-2'
-                                                            fixedWidth
-                                                        />
-                                                        <div className="text-sm text-[#fff] ">
-                                                            Thoát
+                                                        <div
+                                                            className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'
+                                                            onClick={logout}
+                                                        >
+                                                            <FontAwesomeIcon
+                                                                icon={faArrowRightFromBracket}
+                                                                color="#000"
+                                                                size="lg"
+                                                                className='pr-2'
+                                                                fixedWidth
+                                                            />
+                                                            <div className="text-sm text-[#fff] ">
+                                                                Thoát
+                                                            </div>
                                                         </div>
+                                                        {/* </Link> */}
                                                     </div>
-                                                    {/* </Link> */}
                                                 </div>
                                             </div>
                                         ) : (
-                                            <div className={`group ${scrolled ? 'top-[70%]' : 'bottom-[-55%]'} hidden group-hover:block absolute right-[18%] px-4 py-3 w-50 h-30 border-2 rounded-sm bg-white z-20 text-black duration-800`}>
-                                                <div className="flex flex-col gap-3 ">
-                                                    {/* <Link to='./login'> */}
-                                                    <div onClick={handleNavigateLogin} className='flex justify-center bg-[#86bb86] text-sm text-[#fff] py-2 px-12 hover:bg-[#0E740E] cursor-pointer'>
-                                                        Đăng nhập
+                                            <div>
+                                                <div className={`group ${scrolled ? 'top-[55%]' : 'bottom-[-4%]'} hidden group-hover:block absolute top-[64%] right-[17.5%] w-56 h-8 bg-transparent  z-20duration-300`}>
+                                                </div>
+                                                <div className={`group ${scrolled ? 'top-[79%]' : 'bottom-[-13%]'} hidden group-hover:block absolute right-[23.5%] w-10 h-10 bg-[#0E740E] z-20 rotate-45 duration-300`}>
+                                                </div>
+                                                <div className={`group ${scrolled ? 'top-[80%]' : 'bottom-[-65%]'} hidden group-hover:block absolute right-[18%] px-4 py-3 w-50 h-30 border-2 rounded-sm bg-white z-20 text-black duration-800`}>
+                                                    <div className="flex flex-col gap-3 ">
+                                                        {/* <Link to='./login'> */}
+                                                        <div onClick={handleNavigateLogin} className='flex justify-center bg-[#86bb86] text-sm text-[#fff] py-2 px-12 hover:bg-[#0E740E] cursor-pointer'>
+                                                            Đăng nhập
+                                                        </div>
+                                                        {/* </Link> */}
+                                                        {/* <Link to='./signup'> */}
+                                                        <div onClick={handleNavigateSignup} className='flex justify-center  bg-[#86bb86] text-sm text-[#fff] py-2 px-12 hover:bg-[#0E740E] cursor-pointer'>
+                                                            Đăng ký
+                                                        </div>
+                                                        {/* </Link> */}
                                                     </div>
-                                                    {/* </Link> */}
-                                                    {/* <Link to='./signup'> */}
-                                                    <div onClick={handleNavigateSignup} className='flex justify-center  bg-[#86bb86] text-sm text-[#fff] py-2 px-12 hover:bg-[#0E740E] cursor-pointer'>
-                                                        Đăng ký
-                                                    </div>
-                                                    {/* </Link> */}
                                                 </div>
                                             </div>
                                         )}
@@ -518,7 +532,7 @@ export default function Header() {
                                 </li>
                             </div>
                         </div>
-                        <div className='flex flex-row items-center bg-[#86bb86] px-4 py-2 ml-8 md:my-2  rounded-[40px] w-auto md:order-1 cursor-pointer'
+                        <div className='flex flex-grow-1 flex-row items-center bg-[#86bb86] px-4 py-2 ml-8 md:my-2   rounded-[40px] w-auto md:order-1 cursor-pointer'
                             onClick={handleOpenCart}
                         >
                             <div>
@@ -538,7 +552,7 @@ export default function Header() {
                                     {totalPrice.toLocaleString("vi-VN")}đ
                                 </div>
                                 <div className='font-light text-xs'>
-                                    {data?.length} sản phẩm {!data && <div>0 sản phẩm</div>}
+                                    {data ? <div>{data?.length} sản phẩm</div> : <div>0 sản phẩm</div>}
                                 </div>
                             </div>
                         </div>
