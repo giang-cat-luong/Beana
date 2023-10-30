@@ -214,7 +214,7 @@ export default function Header() {
                 <nav >
                     <div className={`flex flex-row px-5 py-5  md:py-5 border-b ${loggedIn ? 'md:px-[77px]' : 'md:px-20'} `}>
                         <a className='flex  md:pt-1' href="https://beana.com">
-                            <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708868/Beana_assets/logo_wvawux.png" className="w-full md:w-60" alt="Beana Logo" />
+                            <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1698682268/Beana_assets/logo_halloween_dckbhp.png" className="w-full md:w-56" alt="Beana Logo" />
                         </a>
 
                         <div className="hidden ml-8  font-bold  w-full md:flex md:w-auto md:items-center md:justify-between md:order-1 ">
