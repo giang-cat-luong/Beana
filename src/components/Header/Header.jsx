@@ -205,7 +205,7 @@ export default function Header() {
                         </div>
                         <div className="flex flex-row items-center bg-[#0E740E] text-white px-[0.2rem] mr-[10px]">
                             <img src='../assets/facebook.svg' className="mr-[5px] w-[25px]" />
-                            <a href='https://www.facebook.com/profile.php?id=61551793473535' style={{ alignItems: 'center' }}> <p className="text-[13px]" >JOIN FANPAGE</p></a>
+                            <a href='https://www.facebook.com/profile.php?id=61551793473535' target="_blank" style={{ alignItems: 'center' }}> <p className="text-[13px]" >JOIN FANPAGE</p></a>
                         </div>
                     </div>
                 )}
@@ -359,7 +359,7 @@ export default function Header() {
                                     )}
                                     {toggleSearch ? (
                                         <div className='-z-10 '>
-                                            <div className={`group ${scrolled ? 'top-[110px]' : 'top-[136px]'} flex flex-col absolute left-0 px-10 pb-10 pt-5 w-full border-t-2 border-b-[1px] border-b-[#e6e1e1] bg-white z-20 text-black`}>
+                                            <div className={`group ${scrolled ? 'top-[120px]' : 'top-[146px]'} flex flex-col absolute left-0 px-10 pb-10 pt-5 w-full border-t-2 border-b-[1px] border-b-[#e6e1e1] bg-white z-20 text-black`}>
                                                 <div className="flex items-center   border-b-2 border-[#606060] mx-28 mb-10">
                                                     <img src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708873/Beana_assets/bean_afjwev.png' className='w-6 absolute top-4 left-[10]' />
                                                     <input className="appearance-none bg-transparent border-none w-full text-[#000] font-medium pl-8 leading-tight focus:outline-none  placeholder:text-[#404040] placeholder:font-normal text-lg" type="text" placeholder="Bạn đang tìm gì?" aria-label="Full name" />
@@ -417,7 +417,7 @@ export default function Header() {
                         <div className='hidden md:flex items-center font-bold w-auto md:order-1'>
                             <div className='group'>
                                 <li className='flex flex-row'>
-                                    <div className='flex flex-row items-center group cursor-pointer'>
+                                    <div className='flex flex-row items-center group cursor-pointer relative'>
                                         {!loggedIn ? (
                                             <FontAwesomeIcon
                                                 icon={faUser}
@@ -434,19 +434,23 @@ export default function Header() {
                                         {!loggedIn ? (
                                             <p className='text-xs pl-1 md:text-sm font-semibold text-[#000] group-hover:text-[#0E740E]' > Đăng Nhập</p>
                                         ) : (
-                                            <p className='text-xs pl-1 max-w-[100px] truncate underline-offset-1 md:text-xs font-semibold text-[#000] group-hover:text-[#0E740E]' >Chào,<br /> {decodedToken?.sub}ddddddd</p>
+                                            <p className='text-xs pl-1 max-w-[100px] truncate underline-offset-1 md:text-xs font-semibold text-[#000] group-hover:text-[#0E740E]' >Chào,<br /> {decodedToken?.sub}</p>
                                         )}
 
                                         {loggedIn ? (
                                             <div>
-                                                <div className={`group ${scrolled ? 'top-[55%]' : 'bottom-[-4%]'} hidden group-hover:block absolute top-[64%] right-[17.5%] w-56 h-8 bg-transparent  z-20duration-300`}>
+                                                {/* <div className={`group ${scrolled ? 'top-[55%]' : 'bottom-[-4%]'} hidden group-hover:block absolute top-[64%] right-[17.5%] w-56 h-8 bg-primary  z-20duration-300`}>
                                                 </div>
                                                 <div className={`group ${scrolled ? 'top-[79%]' : 'bottom-[-13%]'} hidden group-hover:block absolute right-[23.5%] w-10 h-10 bg-[#0E740E] z-20 rotate-45 duration-300`}>
+                                                </div> */}
+                                                <div className={`group ${scrolled ? 'top-8' : 'top-8'} hidden group-hover:block absolute left-[-65%] w-64 h-10 bg-transparent  z-20duration-300`}>
+                                                </div>
+                                                <div className={`group ${scrolled ? 'top-[48px]' : 'top-[48px]'} hidden group-hover:block absolute right-[23.5%] w-10 h-10 bg-[#0E740E] z-20 rotate-45 duration-300`}>
                                                 </div>
 
-                                                <div className={`group ${scrolled ? 'top-[80%]' : 'bottom-[-135%]'} hidden group-hover:block absolute right-[16.2%] px-4 py-3 w-50 h-30 border-2 rounded-sm bg-white z-20 text-black duration-800`}>
+                                                <div className={`group ${scrolled ? 'top-[50px]' : 'top-[50px]'} hidden group-hover:block absolute left-[-68%] px-4 py-3 w-64 border-2 rounded-sm bg-white z-20 text-black duration-800`}>
                                                     <div className="flex flex-col gap-3 ">
-                                                        {/* <Link to='./login'> */}
+                                                        <Link to='./profile'>
                                                         <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
                                                             <FontAwesomeIcon
                                                                 icon={faFileInvoice}
@@ -456,13 +460,10 @@ export default function Header() {
                                                                 fixedWidth
                                                             />
                                                             <div className="text-sm text-[#fff] ">
-                                                                <Link to="/profile">
                                                                     Tài khoản của bạn
-                                                                </Link>
                                                             </div>
                                                         </div>
-                                                        {/* </Link> */}
-                                                        {/* <Link to='./signup'> */}
+                                                        </Link>
                                                         <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
                                                             <FontAwesomeIcon
                                                                 icon={faCartFlatbedSuitcase}
@@ -508,19 +509,24 @@ export default function Header() {
                                             </div>
                                         ) : (
                                             <div>
-                                                <div className={`group ${scrolled ? 'top-[55%]' : 'bottom-[-4%]'} hidden group-hover:block absolute top-[64%] right-[17.5%] w-56 h-8 bg-transparent  z-20duration-300`}>
+                                                {/* <div className={`group ${scrolled ? 'top-[55%]' : 'bottom-[-4%]'} hidden group-hover:block absolute top-[64%] right-[17.5%] w-56 h-8 bg-transparent  z-20duration-300`}>
                                                 </div>
                                                 <div className={`group ${scrolled ? 'top-[79%]' : 'bottom-[-13%]'} hidden group-hover:block absolute right-[23.5%] w-10 h-10 bg-[#0E740E] z-20 rotate-45 duration-300`}>
+                                                </div> */}
+
+                                                <div className={`group ${scrolled ? 'top-2' : 'top-2'} hidden group-hover:block absolute left-[-38%] w-52 h-10 bg-transparent  z-20duration-300`}>
                                                 </div>
-                                                <div className={`group ${scrolled ? 'top-[80%]' : 'bottom-[-65%]'} hidden group-hover:block absolute right-[18%] px-4 py-3 w-50 h-30 border-2 rounded-sm bg-white z-20 text-black duration-800`}>
+                                                <div className={`group ${scrolled ? 'top-9' : 'top-9'} hidden group-hover:block absolute left-10 w-10 h-10 bg-[#0E740E] z-20 rotate-45 duration-300`}>
+                                                </div>
+                                                <div className={`group ${scrolled ? 'top-9' : 'top-9'} hidden group-hover:inline-block absolute left-[-38%] px-4 py-3 w-52 h-28 border-2 rounded-sm bg-white z-20 text-black duration-800`}>
                                                     <div className="flex flex-col gap-3 ">
                                                         {/* <Link to='./login'> */}
-                                                        <div onClick={handleNavigateLogin} className='flex justify-center bg-[#86bb86] text-sm text-[#fff] py-2 px-12 hover:bg-[#0E740E] cursor-pointer'>
+                                                        <div onClick={handleNavigateLogin} className='flex justify-center items-center bg-[#86bb86] text-sm text-[#fff] py-2 px-10  hover:bg-[#0E740E] cursor-pointer'>
                                                             Đăng nhập
                                                         </div>
                                                         {/* </Link> */}
                                                         {/* <Link to='./signup'> */}
-                                                        <div onClick={handleNavigateSignup} className='flex justify-center  bg-[#86bb86] text-sm text-[#fff] py-2 px-12 hover:bg-[#0E740E] cursor-pointer'>
+                                                        <div onClick={handleNavigateSignup} className='flex justify-center items-center bg-[#86bb86] text-sm text-[#fff] py-2 px-12 hover:bg-[#0E740E] cursor-pointer'>
                                                             Đăng ký
                                                         </div>
                                                         {/* </Link> */}

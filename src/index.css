@@ -2,41 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
-.beana-top-menu-item{
+.beana-top-menu-item {
     @apply hover:text-[#49B949] relative after:absolute after:bottom-0 after:left-0 after:bg-[#49B949] after:h-0.5 after:w-0 hover:after:w-full after:transition-all after:ease-in-out
 }
-.beana-top-menu-text{
+
+.beana-top-menu-text {
     @apply mb-3 text-sm text-[#0E740E]
 }
-.beana-top-menu-text-links{
+
+.beana-top-menu-text-links {
     @apply hover:underline hover:text-[#0E740E] text-xs pb-3 font-medium
 }
 
-.beana-bottom-menu-item{
+.beana-bottom-menu-item {
     @apply hover:text-[#49B949] relative after:absolute after:bottom-0 after:left-0 after:bg-[#49B949] after:h-0.5 after:w-0 hover:after:w-full after:transition-all after:ease-in-out
 }
-.beana-bottom-menu-text{
+
+.beana-bottom-menu-text {
     @apply mb-1 text-2xl text-[#fff] font-semibold pb-2
 }
-.beana-bottom-menu-text-links{
+
+.beana-bottom-menu-text-links {
     @apply text-[#fff] text-sm pb-2 font-light
 }
-.beana-bottom-links{
+
+.beana-bottom-links {
     @apply hover:underline
 }
-.beana-product-title-header{
+
+.beana-product-title-header {
     @apply font-bold text-[22px] mb-10 flex justify-center
 }
-.beana-top-menu-text-search{
+
+.beana-top-menu-text-search {
     @apply mb-1 text-lg text-[#0E740E] pb-2
 }
-.beana-top-menu-text-links-search{
+
+.beana-top-menu-text-links-search {
     @apply hover:underline hover:text-[#0E740E] text-sm pb-1 font-semibold
 }
 
-.beana-product-description-head{
+.beana-product-description-head {
     @apply hover:text-[#49B949] relative after:absolute after:bottom-[-4px] after:left-0 after:bg-[#49B949] after:h-0.5 after:w-0 hover:after:w-full after:transition-all after:ease-in-out
 }
-.beana-product-description-head{
+
+.beana-product-description-head {
     @apply hover:text-[#49B949] relative after:absolute after:bottom-[-4px] after:left-0 after:bg-[#49B949] after:h-0.5 after:w-0 hover:after:w-full after:transition-all after:ease-in-out
+}
+
+/* input */
+.beana-input-profile {
+    @apply focus:shadow-profile focus:shadow-primary focus:outline-none focus:border-primary w-full font-normal text-sm text-[#606060] border-[1px] border-[#c2c2c2] leading-tight py-2 pl-2 placeholder:text-[#606060] placeholder:text-sm placeholder:font-normal
+}
+
+/* button */
+.beana-button-green-hover {
+    @apply bg-secondary text-center text-white border-[1px] border-secondary hover:bg-white hover:text-secondary hover:border-[1px] hover:border-primary duration-500 cursor-pointer
+}
+
+.beana-button-green {
+    @apply bg-secondary text-center text-white border-[1px] border-secondary cursor-pointer
+}
+
+.beana-button-white-hover {
+    @apply bg-white border-secondary border-[1px] text-secondary hover:bg-secondary hover:text-white duration-500 cursor-pointer
+}
+
+.beana-button-green-shadow {
+    @apply text-[#fff] bg-[#86bb86] shadow-md shadow-[#86bb86] border-2 border-[#E0F7CD] hover:bg-[#49B949] hover:text-[#fff] hover:shadow-md hover:shadow-[#49B949]
 }

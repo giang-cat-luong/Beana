@@ -50,8 +50,8 @@ export default function Profile() {
     <div className="px-36 md:pt-[35px] font-Montserrat">
       <BreadCrumb breadCrumbName="Thông tin tài khoản" />
       <div className='flex flex-row gap-5 justify-between'>
-        <div className='basis-[27%] bg-white'>
-          <div className='px-5 pt-3 pb-1 rounded-sm shadow-sm'>
+        <div className='basis-[27%]'>
+          <div className='px-5 pt-3 pb-1 rounded-sm shadow-sm bg-white'>
             <div className='flex flex-row gap-3 pb-3 w-full'>
               <img className='w-16' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708874/Beana_assets/nonAvatar_k12l1p.png' />
               <div>
@@ -60,13 +60,13 @@ export default function Profile() {
               </div>
             </div>
           </div>
-          <div className='rounded-sm shadow-md'>
-            <p onClick={() => handleNextPage(1)} className={`text-[13px]  py-[12px] px-5 cursor-pointer ${page === 1 ? 'font-bold text-secondary' : 'font-medium'} `}>Quản lý tài khoản</p>
-            <p onClick={() => handleNextPage(2)} className={`text-[13px]  py-[12px] px-5 cursor-pointer ${page === 2 ? 'font-bold text-secondary' : 'font-medium'} `}> Thông tin tài khoản</p>
-            <p onClick={() => handleNextPage(3)} className={`text-[13px]  py-[12px] px-5 cursor-pointer ${page === 3 ? 'font-bold text-secondary' : 'font-medium'} `}> Đơn hàng của tôi</p>
-            <p onClick={() => handleNextPage(4)} className={`text-[13px]  py-[12px] px-5 cursor-pointer ${page === 4 ? 'font-bold text-secondary' : 'font-medium'} `}> Sổ địa chỉ nhận hàng</p>
-            <p onClick={() => handleNextPage(5)} className={`text-[13px]  py-[12px] px-5 cursor-pointer ${page === 5 ? 'font-bold text-secondary' : 'font-medium'} `}> Danh sách yêu thích</p>
-            <p onClick={() => handleNextPage(6)} className={`text-[13px]  py-[12px] px-5 cursor-pointer ${page === 6 ? 'font-bold text-secondary' : 'font-medium'} `}> Mua lại</p>
+          <div className='rounded-sm shadow-md bg-white'>
+            <p onClick={() => handleNextPage(1)} className={`text-[13px]  py-[12px] px-5 cursor-pointer ${page === 1 ? 'font-bold text-secondary bg-[#f7f7f7]' : 'font-medium'} `}>Quản lý tài khoản</p>
+            <p onClick={() => handleNextPage(2)} className={`text-[13px]  py-[12px] px-5 cursor-pointer ${page === 2 ? 'font-bold text-secondary bg-[#f7f7f7]' : 'font-medium'} `}> Thông tin tài khoản</p>
+            <p onClick={() => handleNextPage(3)} className={`text-[13px]  py-[12px] px-5 cursor-pointer ${page === 3 ? 'font-bold text-secondary bg-[#f7f7f7]' : 'font-medium'} `}> Đơn hàng của tôi</p>
+            <p onClick={() => handleNextPage(4)} className={`text-[13px]  py-[12px] px-5 cursor-pointer ${page === 4 ? 'font-bold text-secondary bg-[#f7f7f7]' : 'font-medium'} `}> Sổ địa chỉ nhận hàng</p>
+            <p onClick={() => handleNextPage(5)} className={`text-[13px]  py-[12px] px-5 cursor-pointer ${page === 5 ? 'font-bold text-secondary bg-[#f7f7f7]' : 'font-medium'} `}> Danh sách yêu thích</p>
+            <p onClick={() => handleNextPage(6)} className={`text-[13px]  py-[12px] px-5 cursor-pointer ${page === 6 ? 'font-bold text-secondary bg-[#f7f7f7]' : 'font-medium'} `}> Mua lại</p>
           </div>
         </div>
         <div className='basis-[73%] bg-white rounded-sm shadow-md'>

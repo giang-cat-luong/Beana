@@ -119,12 +119,12 @@ export default function CartSideBar({ isOpen, setIsOpen }) {
                             </div>
                             <div className="flex flex-row gap-3 justify-between w-full">
                                 <div
-                                    className='text-[13px] font-normal text-white px-6 py-3 bg-secondary border-[1px] border-secondary hover:bg-white hover:text-secondary hover:border-[1px] hover:border-primary duration-500 cursor-pointer'
+                                    className='text-[13px] font-normal px-6 py-3 beana-button-green-hover cursor-pointer'
                                     onClick={navigateToCart}
                                 >
                                     XEM GIỎ HÀNG
                                 </div>
-                                <div className='text-[13px] font-normal bg-white border-secondary border-[1px] px-8 py-3 text-secondary hover:bg-secondary hover:text-white duration-500 cursor-pointer'
+                                <div className='beana-button-white-hover px-8 py-3 text-[13px] font-normal'
 
                                 >
                                     THANH TOÁN

@@ -14,6 +14,8 @@ export default {
         red: '#FF2826',
         blue: '#1E88E5',
         grey: '#9B9B9B',
+        lightBlack:'#333333',
+        lightGrey:'#909090',
       },
       fontFamily: {
         Montserrat: ['Montserrat', 'sans-serif'],
@@ -65,6 +67,7 @@ export default {
       },
       boxShadow: {
         'chat': '0 4px 12px 0 rgba(0, 0, 0, .15)',
+        'profile': '0px 0px 1px 1px '
       },
     }
   },

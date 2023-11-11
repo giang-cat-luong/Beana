@@ -1,7 +1,7 @@
-import {  faCircleCheck } from "@fortawesome/free-solid-svg-icons"
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-export default function Delivery({addressList,defaultAddress, handleSetDefaultAddress, handleNextPage}) {
+export default function Delivery({ addressList, defaultAddress, handleSetDefaultAddress, handleNextPage }) {
 
     return (
         <div className='border-t-[1px] border-l-[1px] border-b-[1px] border-[#c3c2bc] mt-8 bg-white'>
@@ -36,7 +36,11 @@ export default function Delivery({addressList,defaultAddress, handleSetDefaultAd
                                         <p className="mt-2">{address.address}</p>
                                     </div>
                                 </div>
-
+                                {defaultAddress === address.id &&
+                                    <div className="absolute right-0 top-0">
+                                        <img className="w-8" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1699474594/Beana_assets/default_w3ztfr.png" />
+                                    </div>
+                                }
                             </div>
                         </div>
                     ))}

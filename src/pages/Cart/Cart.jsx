@@ -285,7 +285,7 @@ export default function Cart() {
                         </div>
 
                         <div className="flex flex-col gap-5 text-[13px] font-bold">
-                            <div onClick={handleCheckoutNavigate} className="bg-secondary py-3 text-center text-white border-[1px] border-secondary hover:bg-white hover:text-secondary hover:border-[1px] hover:border-primary duration-500">
+                            <div onClick={handleCheckoutNavigate} className="beana-button-green-hover py-3">
                                 <button>
                                     THANH TOÁN
                                 </button>

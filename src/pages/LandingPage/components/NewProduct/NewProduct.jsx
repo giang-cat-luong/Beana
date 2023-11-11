@@ -2,25 +2,6 @@ import SingleProduct from "../../../../components/SingleProduct"
 
 export default function NewProduct({ data }) {
 
-    const productBestSeller = [
-        {
-            url: './assets/product.png',
-            name: "Nước Tẩy Trang Bioderma Sensibio H2O 500Ml",
-            skinType: "Phấn Nước Che Phủ Mỏng Nhẹ, Mịn Mượt Lâu Trôi Maybelline New York Fit Me Matte + Poreless Oil Control Cushion",
-            price: "525.000đ",
-            totalStars: "3",
-            totalRates: "34"
-        },
-        {
-            url: './assets/product.png',
-            name: "Nước Tẩy Trang Bioderma Sébium H2O 500Ml",
-            skinType: "Sữa Rửa Mặt Nghệ Hưng Yên Da Sạch Mịn Và Rạng Rỡ Hung Yen Turmeric Cleanser Clean And Radiant Skin Cocoon 140Ml",
-            price: "525.000đ",
-            totalStars: "5",
-            totalRates: "14"
-        },
-    ];
-
     return (
         <div className='  px-12 py-12'>
             <div className='flex flex-col bg-[#86bb86]'>
