@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import Webcam from 'react-webcam';
 import * as tf from '@tensorflow/tfjs';
 import * as facemesh from "@tensorflow-models/face-landmarks-detection";
@@ -14,6 +14,8 @@ const sliderUrls = [
 ]
 
 function ScanningCamera() {
+
+
 
     const [scrolled, setScrolled] = useState(false);
     const [page, setPage] = useState(0);
@@ -56,6 +58,31 @@ function ScanningCamera() {
     //for camera detection
     const webcamRef = useRef(null);
     const canvasRef = useRef(null);
+
+    // create a capture function
+    const [captureCountdown, setCaptureCountdown] = useState(10);
+    const startCaptureCountdown = () => {
+        const countdownInterval = setInterval(() => {
+            setCaptureCountdown((prevCount) => prevCount - 1);
+        }, 1000);
+
+        setTimeout(() => {
+            clearInterval(countdownInterval);
+            capture();
+        }, 2000);
+    };
+
+    const [imgSrc, setImgSrc] = useState(null);
+    const capture = useCallback(() => {
+        const imageSrc = webcamRef.current.getScreenshot();
+        setImgSrc(imageSrc);
+    }, [webcamRef]);
+
+    useEffect(() => {
+        if (page === 0) {
+            startCaptureCountdown();
+        }
+    }, [page]);
 
     const runFaceMesh = async () => {
         const model = facemesh.SupportedModels.MediaPipeFaceMesh;
@@ -293,22 +320,33 @@ function ScanningCamera() {
             {page === 0 &&
                 <div className="w-full h-full relative top-0">
                     <div className="">
-                    <div className='w-[500px] h-20 bg-black opacity-50'></div>
-                        <Webcam
-                            ref={webcamRef}
-                            className="absolute mx-auto  top-32 left-0 right-[80px] text-center z-10 w-[640px] h-[480px]"
-                        />
-                        <canvas
-                            ref={canvasRef}
-                            className="absolute mx-auto  left-4 md:left-0 top-[110px] text-center z-10 w-[380px] h-[500px] "
-                        />
-                        <div className='text-black font-bold text-lg absolute top-[190px] z-10 left-[50%] -translate-x-1/2'>
-                            Đỉnh đầu
-                        </div>
-                        <div className='text-black font-bold text-lg absolute top-[540px] z-10 left-[50%] -translate-x-1/2'>
-                            Cằm
-                        </div>
+                        <div className='w-[500px] h-20 bg-black opacity-50'>{captureCountdown}s</div>
+                        {!imgSrc &&
+                            <div>
+                                <Webcam
+                                    ref={webcamRef}
+                                    screenshotFormat="image/jpeg"
+                                    className="absolute mx-auto  top-32 left-0 right-[80px] text-center z-10 w-[640px] h-[480px]"
+                                />
+                                <canvas
+                                    ref={canvasRef}
+                                    className="absolute mx-auto  left-4 md:left-0 top-[110px] text-center z-10 w-[380px] h-[500px] "
+                                />
+
+                                <div className='text-black font-bold text-lg absolute top-[190px] z-10 left-[50%] -translate-x-1/2'>
+                                    Đỉnh đầu
+                                </div>
+                                <div className='text-black font-bold text-lg absolute top-[540px] z-10 left-[50%] -translate-x-1/2'>
+                                    Cằm
+                                </div>
+                            </div>
+                        }
                     </div>
+                    {imgSrc && (
+                        <img
+                            src={imgSrc}
+                        />
+                    )}
                 </div>
                 // <div className="w-full h-full relative top-0 px-32">
                 //     <div className="">
