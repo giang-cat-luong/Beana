@@ -6,7 +6,7 @@ on:
   push:
     branches:
       - dev
-      -face-scanning
+      - face-scanning
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest
