@@ -100,7 +100,7 @@ function ScanningCamera() {
 
 
     return (
-        <div className="bg-black   min-h-full h-full md:hidden">
+        <div className="bg-black min-h-full h-full md:hidden">
             <div className='relative visible'>
                 {/* loading */}
                 <div style={{ position: "relative" }}>
@@ -202,7 +202,7 @@ function ScanningCamera() {
                 </div>
             </div>
             {/* page 0 */}
-            {page === 0 &&
+            {page === 2 &&
                 <div>
                     <div className="w-full min-h-full h-full md:w-full md:h-full bg-center bg-cover z-0 bg-fixed" style={{ backgroundImage: `url(${sliderUrls[0]})` }}>
                         <div className="px-10 py-10 text-white  bg-black/50 backdrop-opacity-10 w-full backdrop-invert">
@@ -290,7 +290,7 @@ function ScanningCamera() {
 
 
             {/* page 2 */}
-            {page === 2 &&
+            {page === 0 &&
                 <div className="w-full h-full relative top-0 px-32">
                     <div className="">
                         <Webcam
@@ -299,12 +299,12 @@ function ScanningCamera() {
                         />
                         <canvas
                             ref={canvasRef}
-                            className="absolute mx-auto  left-2 md:left-0 top-[80px] text-center z-10 w-[400px] h-[500px] "
+                            className="absolute mx-auto  left-2 md:left-0 top-[80px] text-center z-10 w-[410px] h-[500px] "
                         />
-                        <div className='text-black absolute top-[82px] z-10 left-[50%] -translate-x-1/2'>
+                        <div className='text-black absolute top-[130px] z-10 left-[50%] -translate-x-1/2'>
                             Đỉnh đầu
                         </div>
-                        <div className='text-black absolute top-[380px] z-10 left-[50%] -translate-x-1/2'>
+                        <div className='text-black absolute top-[440px] z-10 left-[50%] -translate-x-1/2'>
                             Cằm
                         </div>
                     </div>

@@ -71,3 +71,17 @@
 .beana-button-green-shadow {
     @apply text-[#fff] bg-[#86bb86] shadow-md shadow-[#86bb86] border-2 border-[#E0F7CD] hover:bg-[#49B949] hover:text-[#fff] hover:shadow-md hover:shadow-[#49B949]
 }
+
+/* table */
+.beana-table-header{
+    @apply text-left p-2
+}
+.beana-table-row{
+
+}
+.beana-table-data{
+    @apply  text-left p-2 tracking-wider
+}
+.beana-table-body{
+    @apply [&>*:nth-child(odd)]:bg-transparent [&>*:nth-child(even)]:bg-[#f7f7f7]
+}

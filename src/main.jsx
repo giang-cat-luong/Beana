@@ -22,6 +22,8 @@ import AddressManagement from "./pages/Profile/components/AddressManagement"
 import MyOrder from "./pages/Profile/components/MyOrder"
 import Wishlist from "./pages/Profile/components/Wishlist"
 import Repurchase from "./pages/Profile/components/Repurchase"
+import NewAddress from "./pages/Profile/components/AddressManagement/components/NewAddress";
+import AddressBook from "./pages/Profile/components/AddressManagement/components/AddressBook";
 
 import {
   QueryClient,
@@ -103,6 +105,19 @@ const router = createBrowserRouter([
           {
             path: "address-management",
             element: <AddressManagement />,
+            children: [
+              {
+                index: true, element: <Navigate to="address-book" replace />
+              },
+              {
+                path: "new-address",
+                element: <NewAddress />,
+              },
+              {
+                path: "address-book",
+                element: <AddressBook />,
+              }
+            ]
           },
           {
             path: "my-order",

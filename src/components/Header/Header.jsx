@@ -9,32 +9,6 @@ import { useToken } from '../../services/Auth/services'
 import useCart from '../../pages/Cart/hooks/useCart'
 import useGetProduct from '../../pages/Product/hooks/useGetProduct'
 
-const popularProduct = [
-    {
-        url: './assets/product.png',
-        name: "Nước Tẩy Trang Bioderma Sensibio H2O 500Ml",
-        skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
-        price: "525.000đ"
-    },
-    {
-        url: './assets/product.png',
-        name: "Nước Tẩy Trang Bioderma Sébium H2O 500Ml",
-        skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
-        price: "525.000đ"
-    },
-    {
-        url: './assets/product.png',
-        name: "Nước Tẩy Trang Bí Đao Cocoon 140Ml",
-        skinType: "Phù hợp với da dầu, da hỗn hợp thiên dầu, da mụn",
-        price: "145.000đ"
-    },
-    {
-        url: './assets/product.png',
-        name: "Dầu Tẩy Trang Hoa Hồng Cocoon 140Ml",
-        skinType: "Phù hợp với da khô, da hỗn hợp thiên khô, da thường",
-        price: "180.000đ"
-    },
-];
 
 const skincareTips = [
     {
@@ -214,7 +188,7 @@ export default function Header() {
                 <nav >
                     <div className={`flex flex-row px-5 py-5  md:py-5 border-b ${loggedIn ? 'md:px-[77px]' : 'md:px-20'} `}>
                         <a className='flex  md:pt-1' href="https://beana.com">
-                            <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1698682268/Beana_assets/logo_halloween_dckbhp.png" className="w-full md:w-56" alt="Beana Logo" />
+                            <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1699710769/Beana_assets/logo_teacher_eu0vcz.png" className="w-full md:w-56" alt="Beana Logo" />
                         </a>
 
                         <div className="hidden ml-8  font-bold  w-full md:flex md:w-auto md:items-center md:justify-between md:order-1 ">
@@ -464,6 +438,7 @@ export default function Header() {
                                                             </div>
                                                         </div>
                                                         </Link>
+                                                        <Link to='./profile/my-order'>
                                                         <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
                                                             <FontAwesomeIcon
                                                                 icon={faCartFlatbedSuitcase}
@@ -476,6 +451,8 @@ export default function Header() {
                                                                 Quản lý đơn hàng
                                                             </div>
                                                         </div>
+                                                        </Link>
+                                                        <Link to='./profile/address-management'>
                                                         <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
                                                             <FontAwesomeIcon
                                                                 icon={faLocationDot}
@@ -488,6 +465,7 @@ export default function Header() {
                                                                 Địa chỉ giao hàng
                                                             </div>
                                                         </div>
+                                                        </Link>
                                                         <div
                                                             className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'
                                                             onClick={logout}

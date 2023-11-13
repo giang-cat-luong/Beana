@@ -14,8 +14,22 @@ export default {
         red: '#FF2826',
         blue: '#1E88E5',
         grey: '#9B9B9B',
-        lightBlack:'#333333',
-        lightGrey:'#909090',
+        lightBlack: '#333333',
+        lightGrey: '#909090',
+
+        cancel: '#e30512',
+        success: '#4B8C6C',
+        pending: '#aeaeae',
+
+      },
+      fontSize: {
+        xss: '13px'
+      },
+      padding: {
+        '5px': '5px',
+      },
+      borderWidth: {
+        DEFAULT: '1px',
       },
       fontFamily: {
         Montserrat: ['Montserrat', 'sans-serif'],
