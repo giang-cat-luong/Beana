@@ -60,12 +60,12 @@ function ScanningCamera() {
     const canvasRef = useRef(null);
 
     // create a capture function
-    const [captureCountdown, setCaptureCountdown] = useState(16);
+    const [captureCountdown, setCaptureCountdown] = useState(10);
     const startCaptureCountdown = () => {
         setTimeout(() => {
             const countdownInterval = setInterval(() => {
-                setCaptureCountdown(prevCount => (prevCount > 0 ? prevCount - 0.5 : 0));
-            }, 500);
+                setCaptureCountdown(prevCount => (prevCount > 0 ? prevCount - 1 : 0));
+            }, 1000);
 
             setTimeout(() => {
                 clearInterval(countdownInterval);
@@ -362,11 +362,11 @@ function ScanningCamera() {
                                     ref={canvasRef}
                                     className="absolute left-4 md:left-0 top-[98px] text-center w-[380px] h-[500px]"
                                 />
+                                <div className='absolute top-[290px] z-20 left-[50%] -translate-x-1/2'>
+                                    <div className='text-black font-semibold text-[64px]'>{captureCountdown < 3 && captureCountdown + 1}</div>
+                                </div>
                                 <div className='text-black font-bold text-lg absolute top-[190px] left-[50%] -translate-x-1/2'>
                                     Đỉnh đầu
-                                </div>
-                                <div className='text-black font-bold text-[50px] absolute top-[290px] left-[50%] -translate-x-1/2'>
-                                    3 {captureCountdown}
                                 </div>
                                 <div className='text-black font-bold text-lg absolute top-[540px] left-[50%] -translate-x-1/2'>
                                     Cằm
