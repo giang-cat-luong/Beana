@@ -330,15 +330,15 @@ function ScanningCamera() {
                             </div>
                         </div>
                         <div className='flex flex-col items-center mt-2'>
-                            <div className='font-semibold text-[20px] '>Bạn làm tốt lắm</div>
-                            <div>Đặt khuôn mặt của bạn vào giữa khung hình</div>
+                            <div className='font-semibold text-[20px] text-white'>Bạn làm tốt lắm</div>
+                            <div className='text-white'>Đặt khuôn mặt của bạn vào giữa khung hình</div>
                         </div>
                         {!imgSrc &&
                             <div>
                                 <Webcam
                                     ref={webcamRef}
                                     screenshotFormat="image/jpeg"
-                                    className="absolute top-14 left-0 right-[80px] text-center z-10 w-full h-[480px] border-2"
+                                    className="absolute top-28 left-0 right-[80px] text-center z-10 w-full h-[480px] border-2 border-secondary"
                                 />
                                 <canvas
                                     ref={canvasRef}
