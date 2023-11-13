@@ -295,11 +295,11 @@ function ScanningCamera() {
                     <div className="">
                         <Webcam
                             ref={webcamRef}
-                            className="absolute mx-auto  top-28 left-0 right-[80px] text-center z-10 w-[640px] h-[480px]"
+                            className="absolute mx-auto  top-32 left-0 right-[80px] text-center z-10 w-[640px] h-[480px]"
                         />
                         <canvas
                             ref={canvasRef}
-                            className="absolute mx-auto  left-2 md:left-0 top-[80px] text-center z-10 w-[410px] h-[500px] "
+                            className="absolute mx-auto  left-2 md:left-0 top-[96px] text-center z-10 w-[400px] h-[500px] "
                         />
                         <div className='text-black absolute top-[130px] z-10 left-[50%] -translate-x-1/2'>
                             Đỉnh đầu
