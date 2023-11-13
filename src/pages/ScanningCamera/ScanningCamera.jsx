@@ -299,7 +299,7 @@ function ScanningCamera() {
                         />
                         <canvas
                             ref={canvasRef}
-                            className="absolute mx-auto  left-2 md:left-0 top-[104px] text-center z-10 w-[380px] h-[500px] "
+                            className="absolute mx-auto  left-4 md:left-0 top-[110px] text-center z-10 w-[380px] h-[500px] "
                         />
                         <div className='text-black absolute top-[130px] z-10 left-[50%] -translate-x-1/2'>
                             Đỉnh đầu
