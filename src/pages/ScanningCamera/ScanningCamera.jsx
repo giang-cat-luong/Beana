@@ -338,7 +338,7 @@ function ScanningCamera() {
                                 <Webcam
                                     ref={webcamRef}
                                     screenshotFormat="image/jpeg"
-                                    className="absolute top-20 left-0 right-[80px] text-center z-10 w-[640px] h-[480px]"
+                                    className="absolute top-14 left-0 right-[80px] text-center z-10 w-full h-[480px] border-2"
                                 />
                                 <canvas
                                     ref={canvasRef}
