@@ -329,26 +329,30 @@ function ScanningCamera() {
                                 <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>NHÌN THẲNG</div>
                             </div>
                         </div>
-                        <div className='flex flex-col items-center mt-2'>
-                            <div className='font-semibold text-[20px] text-white'>Bạn làm tốt lắm</div>
-                            <div className='text-white'>Đặt khuôn mặt của bạn vào giữa khung hình</div>
+                        <div className='absolute top-28 z-10 left-[50%] -translate-x-1/2'>
+                            <div className='font-semibold text-[20px] text-secondary'>Bạn làm tốt lắm</div>
+                          
+                        </div>
+                        <div className='absolute top-36 z-10 left-[23%]'>
+                        <div className='text-secondary'>Đặt khuôn mặt của bạn vào giữa khung hình</div>
+                          
                         </div>
                         {!imgSrc &&
                             <div>
                                 <Webcam
                                     ref={webcamRef}
                                     screenshotFormat="image/jpeg"
-                                    className="absolute top-28 left-0 right-[80px] text-center z-10 w-full h-[480px] border-2 border-secondary"
+                                    className="absolute top-28 left-0 right-[80px] text-center w-full h-[480px] border-2 border-secondary"
                                 />
                                 <canvas
                                     ref={canvasRef}
-                                    className="absolute left-4 md:left-0 top-[174px] text-center z-10 w-[380px] h-[500px] "
+                                    className="absolute left-4 md:left-0 top-[174px] text-center w-[380px] h-[500px] "
                                 />
 
-                                <div className='text-black font-bold text-lg absolute top-[190px] z-10 left-[50%] -translate-x-1/2'>
+                                <div className='text-black font-bold text-lg absolute top-[190px] left-[50%] -translate-x-1/2'>
                                     Đỉnh đầu
                                 </div>
-                                <div className='text-black font-bold text-lg absolute top-[540px] z-10 left-[50%] -translate-x-1/2'>
+                                <div className='text-black font-bold text-lg absolute top-[540px] left-[50%] -translate-x-1/2'>
                                     Cằm
                                 </div>
                             </div>
