@@ -60,16 +60,16 @@ function ScanningCamera() {
     const canvasRef = useRef(null);
 
     // create a capture function
-    const [captureCountdown, setCaptureCountdown] = useState(10);
+    const [captureCountdown, setCaptureCountdown] = useState(16);
     const startCaptureCountdown = () => {
         const countdownInterval = setInterval(() => {
-            setCaptureCountdown((prevCount) => prevCount - 1);
-        }, 1000);
+            setCaptureCountdown(prevCount => (prevCount > 0 ? prevCount - 0.5 : 0));
+        }, 500);
 
         setTimeout(() => {
             clearInterval(countdownInterval);
             capture();
-        }, 100000);
+        }, 10000);
     };
 
     const [imgSrc, setImgSrc] = useState(null);
@@ -320,23 +320,33 @@ function ScanningCamera() {
             {page === 0 &&
                 <div className="w-full h-full relative">
                     <div className="">
-                        <div className="h-28 py-5 flex justify-center items-center text-white bg-black/50 backdrop-opacity-10 w-full backdrop-invert">
-                            <div className='text-secondary flex flex-row gap-3 justify-center'>
-                                <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>ÁNH SÁNG</div>
-                                <div className='border-l h-5 pr-2 ml-2'></div>
-                                <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>VỊ TRÍ MẶT</div>
-                                <div className='border-l h-5 pr-2 ml-2'></div>
-                                <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>NHÌN THẲNG</div>
+                        {!imgSrc &&
+                            <div className="h-28 py-5 flex justify-center items-center text-white bg-black/80 backdrop-opacity-10 w-full backdrop-invert">
+                                <div className='text-secondary flex flex-row gap-3 justify-center'>
+                                    <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>ÁNH SÁNG</div>
+                                    <div className='border-l h-5 pr-2 ml-2'></div>
+                                    <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>VỊ TRÍ MẶT</div>
+                                    <div className='border-l h-5 pr-2 ml-2'></div>
+                                    <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>NHÌN THẲNG</div>
+                                </div>
                             </div>
-                        </div>
-                        <div className='absolute top-28 z-10 left-[50%] -translate-x-1/2'>
-                            <div className='font-semibold text-[20px] text-secondary'>Bạn làm tốt lắm</div>
-                          
-                        </div>
-                        <div className='absolute top-36 z-10 left-[23%]'>
-                        <div className='text-secondary'>Đặt khuôn mặt của bạn vào giữa khung hình</div>
-                          
-                        </div>
+                        }
+                        {!imgSrc &&
+                            <div>
+                                <div className='absolute top-28 z-20 left-[50%] -translate-x-1/2'>
+                                    {captureCountdown && captureCountdown % 2 == 0 ?
+                                        (
+                                            <div className='font-semibold text-[20px] text-white'>Khuôn mặt bạn chưa đúng vị trí</div>
+                                        ) : (
+                                            <div className='font-semibold text-[20px] text-white'>Bạn làm tốt lắm</div>
+                                        )}
+                                </div>
+                                <div className='absolute top-36 z-10 left-[23%]'>
+                                    <div className='text-white'>Đặt khuôn mặt của bạn vào giữa khung hình</div>
+                                </div>
+                            </div>
+                        }
+
                         {!imgSrc &&
                             <div>
                                 <Webcam
@@ -348,7 +358,9 @@ function ScanningCamera() {
                                     ref={canvasRef}
                                     className="absolute left-4 md:left-0 top-[174px] text-center w-[380px] h-[500px] "
                                 />
-
+                                <div className='absolute top-[290px] left-[50%] -translate-x-1/2'>
+                                    <div className='text-white font-semibold text-[64px]'>{captureCountdown < 3 && captureCountdown + 1}</div>
+                                </div>
                                 <div className='text-black font-bold text-lg absolute top-[190px] left-[50%] -translate-x-1/2'>
                                     Đỉnh đầu
                                 </div>
