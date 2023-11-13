@@ -341,7 +341,7 @@ function ScanningCamera() {
                                             <div className='font-semibold text-[20px] text-black'>Khuôn mặt bạn chưa đúng vị trí</div>
                                         </div>
                                     ) : (
-                                        <div className='absolute top-28 left-[50%] -translate-x-1/2'>
+                                        <div className='absolute top-28 z-20 left-[50%] -translate-x-1/2'>
                                             <div className='font-semibold text-[20px] text-black'>Bạn làm tốt lắm</div>
                                         </div>
                                     )}
@@ -356,13 +356,13 @@ function ScanningCamera() {
                                 <Webcam
                                     ref={webcamRef}
                                     screenshotFormat="image/jpeg"
-                                    className="absolute top-28 left-0 right-[80px] text-center w-full h-[480px]"
+                                    className="absolute top-32 left-0 right-[80px] text-center w-full h-[480px]"
                                 />
                                 <canvas
                                     ref={canvasRef}
-                                    className="absolute left-4 md:left-0 top-[150px] text-center w-[380px] h-[500px]"
+                                    className="absolute left-4 md:left-0 top-[120px] text-center w-[380px] h-[500px]"
                                 />
-                                <div className='absolute top-[290px] z-10 left-[50%] -translate-x-1/2'>
+                                <div className='absolute top-[290px] z-20 left-[50%] -translate-x-1/2'>
                                     <div className='text-black font-semibold text-[64px]'>{captureCountdown < 3 && captureCountdown + 1}</div>
                                 </div>
                                 <div className='text-black font-bold text-lg absolute top-[190px] left-[50%] -translate-x-1/2'>
