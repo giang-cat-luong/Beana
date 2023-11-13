@@ -69,7 +69,7 @@ function ScanningCamera() {
         setTimeout(() => {
             clearInterval(countdownInterval);
             capture();
-        }, 2000);
+        }, 30000);
     };
 
     const [imgSrc, setImgSrc] = useState(null);
