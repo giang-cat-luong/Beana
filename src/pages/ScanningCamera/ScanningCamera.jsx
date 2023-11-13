@@ -348,9 +348,6 @@ function ScanningCamera() {
                                 <div className='absolute top-36 z-10 left-8'>
                                     <div className='text-black'>Đặt khuôn mặt của bạn vào giữa khung hình</div>
                                 </div>
-                                <div className='absolute top-[290px] z-20 left-[50%] -translate-x-1/2'>
-                                    <div className='text-black font-semibold text-[64px]'>{captureCountdown < 3 && captureCountdown + 1}</div>
-                                </div>
                             </div>
                         }
 
@@ -367,6 +364,9 @@ function ScanningCamera() {
                                 />
                                 <div className='text-black font-bold text-lg absolute top-[190px] left-[50%] -translate-x-1/2'>
                                     Đỉnh đầu
+                                </div>
+                                <div className='text-black font-bold text-[50px] absolute top-[290px] left-[50%] -translate-x-1/2'>
+                                    {captureCountdown < 3 && captureCountdown + 1}
                                 </div>
                                 <div className='text-black font-bold text-lg absolute top-[540px] left-[50%] -translate-x-1/2'>
                                     Cằm
