@@ -62,14 +62,16 @@ function ScanningCamera() {
     // create a capture function
     const [captureCountdown, setCaptureCountdown] = useState(16);
     const startCaptureCountdown = () => {
-        const countdownInterval = setInterval(() => {
-            setCaptureCountdown(prevCount => (prevCount > 0 ? prevCount - 0.5 : 0));
-        }, 500);
-
         setTimeout(() => {
-            clearInterval(countdownInterval);
-            capture();
-        }, 10000);
+            const countdownInterval = setInterval(() => {
+                setCaptureCountdown(prevCount => (prevCount > 0 ? prevCount - 0.5 : 0));
+            }, 500);
+
+            setTimeout(() => {
+                clearInterval(countdownInterval);
+                capture();
+            }, 10000);
+        }, 5000);
     };
 
     const [imgSrc, setImgSrc] = useState(null);
