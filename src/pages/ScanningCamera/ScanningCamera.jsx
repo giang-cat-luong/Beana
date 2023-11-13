@@ -121,9 +121,9 @@ function ScanningCamera() {
         }
     };
 
-    // useEffect(() => {
-    //     runFaceMesh();
-    // }, []);
+    useEffect(() => {
+        runFaceMesh();
+    }, []);
 
 
     return (
@@ -333,16 +333,18 @@ function ScanningCamera() {
                         }
                         {!imgSrc &&
                             <div>
-                                <div className='absolute top-28 z-20 left-[50%] -translate-x-1/2'>
-                                    {captureCountdown && captureCountdown % 2 == 0 ?
-                                        (
-                                            <div className='font-semibold text-[20px] text-white'>Khuôn mặt bạn chưa đúng vị trí</div>
-                                        ) : (
-                                            <div className='font-semibold text-[20px] text-white'>Bạn làm tốt lắm</div>
-                                        )}
-                                </div>
-                                <div className='absolute top-36 z-10 left-[23%]'>
-                                    <div className='text-white'>Đặt khuôn mặt của bạn vào giữa khung hình</div>
+                                {captureCountdown && captureCountdown % 2 === 0 ?
+                                    (
+                                        <div className='absolute top-28 z-20 left-12'>
+                                            <div className='font-semibold text-[20px] text-black'>Khuôn mặt bạn chưa đúng vị trí</div>
+                                        </div>
+                                    ) : (
+                                        <div className='absolute top-28 z-20 left-[50%] -translate-x-1/2'>
+                                            <div className='font-semibold text-[20px] text-black'>Bạn làm tốt lắm</div>
+                                        </div>
+                                    )}
+                                <div className='absolute top-36 z-10 left-8'>
+                                    <div className='text-black'>Đặt khuôn mặt của bạn vào giữa khung hình</div>
                                 </div>
                             </div>
                         }
@@ -352,14 +354,14 @@ function ScanningCamera() {
                                 <Webcam
                                     ref={webcamRef}
                                     screenshotFormat="image/jpeg"
-                                    className="absolute top-28 left-0 right-[80px] text-center w-full h-[480px] border-2 border-secondary"
+                                    className="absolute top-28 left-0 right-[80px] text-center w-full h-[480px]"
                                 />
                                 <canvas
                                     ref={canvasRef}
                                     className="absolute left-4 md:left-0 top-[174px] text-center w-[380px] h-[500px] "
                                 />
-                                <div className='absolute top-[290px] left-[50%] -translate-x-1/2'>
-                                    <div className='text-white font-semibold text-[64px]'>{captureCountdown < 3 && captureCountdown + 1}</div>
+                                <div className='absolute top-[290px] z-10 left-[50%] -translate-x-1/2'>
+                                    <div className='text-black font-semibold text-[64px]'>{captureCountdown < 3 && captureCountdown + 1}</div>
                                 </div>
                                 <div className='text-black font-bold text-lg absolute top-[190px] left-[50%] -translate-x-1/2'>
                                     Đỉnh đầu
