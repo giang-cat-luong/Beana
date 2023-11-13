@@ -343,11 +343,11 @@ function ScanningCamera() {
                             <div>
                                 {captureCountdown && captureCountdown % 2 === 0 ?
                                     (
-                                        <div className='absolute top-28 z-20 left-12'>
+                                        <div className='absolute top-28 z-20 left-[50%] -translate-x-1/2'>
                                             <div className='font-semibold text-[20px] text-black'>Bạn làm tốt lắm</div>
                                         </div>
                                     ) : (
-                                        <div className='absolute top-28 z-20 left-[50%] -translate-x-1/2'>
+                                        <div className='absolute top-28 z-20 left-12'>
                                             <div className='font-semibold text-[20px] text-black'>Khuôn mặt bạn chưa đúng vị trí</div>
 
                                         </div>
