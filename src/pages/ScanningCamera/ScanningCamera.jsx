@@ -348,7 +348,7 @@ function ScanningCamera() {
                                         </div>
                                     ) : (
                                         <div className='absolute top-28 z-20 left-[50%] -translate-x-1/2'>
-                                            <div className='font-semibold text-[20px] text-black'>Bạn làm tốt lắm {captureCountdown}</div>
+                                            <div className='font-semibold text-[20px] text-black'>Bạn làm tốt lắm</div>
                                         </div>
 
                                     )}
@@ -370,7 +370,7 @@ function ScanningCamera() {
                                     className="absolute left-4 md:left-0 top-[98px] text-center w-[380px] h-[500px]"
                                 />
                                 <div className='absolute top-[290px] z-20 left-[50%] -translate-x-1/2'>
-                                    <div className='text-black font-semibold text-[64px]'>{captureCountdown < 6 && captureCountdown - 1}</div>
+                                    <div className='text-black font-semibold text-[64px]'>{captureCountdown < 3 && captureCountdown + 1}</div>
                                 </div>
                                 <div className='text-black font-bold text-lg absolute top-[190px] left-[50%] -translate-x-1/2'>
                                     Đỉnh đầu
