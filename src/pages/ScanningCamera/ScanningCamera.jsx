@@ -121,9 +121,9 @@ function ScanningCamera() {
         }
     };
 
-    useEffect(() => {
-        runFaceMesh();
-    }, []);
+    // useEffect(() => {
+    //     runFaceMesh();
+    // }, []);
 
 
     return (
@@ -320,7 +320,19 @@ function ScanningCamera() {
             {page === 0 &&
                 <div className="w-full h-full relative top-0">
                     <div className="">
-                        <div className='w-[500px] h-20 bg-black opacity-50'>{captureCountdown}s</div>
+                        <div className="py-5 text-white bg-black/50 backdrop-opacity-10 w-full backdrop-invert">
+                            <div className='text-secondary flex flex-row gap-3 justify-center'>
+                                <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>ÁNH SÁNG</div>
+                                <div className='border-l h-5 pr-2 ml-2'></div>
+                                <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>VỊ TRÍ MẶT</div>
+                                <div className='border-l h-5 pr-2 ml-2'></div>
+                                <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>NHÌN THẲNG</div>
+                            </div>
+                        </div>
+                        <div className='flex flex-col items-center mt-2'>
+                            <div className='font-semibold text-[24px] '>Bạn làm tốt lắm</div>
+                            <div>Đặt khuôn mặt của bạn vào giữa khung hình</div>
+                        </div>
                         {!imgSrc &&
                             <div>
                                 <Webcam
@@ -343,10 +355,12 @@ function ScanningCamera() {
                         }
                     </div>
                     {imgSrc && (
+
                         <img
                             src={imgSrc}
                         />
                     )}
+
                 </div>
                 // <div className="w-full h-full relative top-0 px-32">
                 //     <div className="">
