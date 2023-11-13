@@ -65,7 +65,7 @@ function ScanningCamera() {
         setTimeout(() => {
             const countdownInterval = setInterval(() => {
                 setCaptureCountdown(prevCount => (prevCount > 0 ? prevCount - 1 : 0));
-            }, 500);
+            }, 1000);
 
             setTimeout(() => {
                 clearInterval(countdownInterval);
