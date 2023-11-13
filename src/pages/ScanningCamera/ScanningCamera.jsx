@@ -341,7 +341,7 @@ function ScanningCamera() {
                                             <div className='font-semibold text-[20px] text-black'>Khuôn mặt bạn chưa đúng vị trí</div>
                                         </div>
                                     ) : (
-                                        <div className='absolute top-28 z-20 left-[50%] -translate-x-1/2'>
+                                        <div className='absolute top-28 left-[50%] -translate-x-1/2'>
                                             <div className='font-semibold text-[20px] text-black'>Bạn làm tốt lắm</div>
                                         </div>
                                     )}
@@ -360,7 +360,7 @@ function ScanningCamera() {
                                 />
                                 <canvas
                                     ref={canvasRef}
-                                    className="absolute left-4 md:left-0 top-[174px] text-center w-[380px] h-[500px] "
+                                    className="absolute left-4 md:left-0 top-[150px] text-center w-[380px] h-[500px]"
                                 />
                                 <div className='absolute top-[290px] z-10 left-[50%] -translate-x-1/2'>
                                     <div className='text-black font-semibold text-[64px]'>{captureCountdown < 3 && captureCountdown + 1}</div>
