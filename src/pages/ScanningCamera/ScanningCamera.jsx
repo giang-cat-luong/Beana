@@ -69,7 +69,7 @@ function ScanningCamera() {
         setTimeout(() => {
             clearInterval(countdownInterval);
             capture();
-        }, 30000);
+        }, 100000);
     };
 
     const [imgSrc, setImgSrc] = useState(null);
@@ -320,7 +320,7 @@ function ScanningCamera() {
             {page === 0 &&
                 <div className="w-full h-full relative top-0">
                     <div className="">
-                        <div className="py-5 text-white bg-black/50 backdrop-opacity-10 w-full backdrop-invert">
+                        <div className="h-28 py-5 flex justify-center items-center text-white bg-black/50 backdrop-opacity-10 w-full backdrop-invert">
                             <div className='text-secondary flex flex-row gap-3 justify-center'>
                                 <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>ÁNH SÁNG</div>
                                 <div className='border-l h-5 pr-2 ml-2'></div>
@@ -330,7 +330,7 @@ function ScanningCamera() {
                             </div>
                         </div>
                         <div className='flex flex-col items-center mt-2'>
-                            <div className='font-semibold text-[24px] '>Bạn làm tốt lắm</div>
+                            <div className='font-semibold text-[20px] '>Bạn làm tốt lắm</div>
                             <div>Đặt khuôn mặt của bạn vào giữa khung hình</div>
                         </div>
                         {!imgSrc &&
@@ -338,11 +338,11 @@ function ScanningCamera() {
                                 <Webcam
                                     ref={webcamRef}
                                     screenshotFormat="image/jpeg"
-                                    className="absolute mx-auto  top-32 left-0 right-[80px] text-center z-10 w-[640px] h-[480px]"
+                                    className="absolute top-16 left-0 right-[80px] text-center z-10 w-[640px] h-[480px]"
                                 />
                                 <canvas
                                     ref={canvasRef}
-                                    className="absolute mx-auto  left-4 md:left-0 top-[110px] text-center z-10 w-[380px] h-[500px] "
+                                    className="absolute left-4 md:left-0 top-[174px] text-center z-10 w-[380px] h-[500px] "
                                 />
 
                                 <div className='text-black font-bold text-lg absolute top-[190px] z-10 left-[50%] -translate-x-1/2'>
@@ -362,24 +362,6 @@ function ScanningCamera() {
                     )}
 
                 </div>
-                // <div className="w-full h-full relative top-0 px-32">
-                //     <div className="">
-                //         <Webcam
-                //             ref={webcamRef}
-                //             className="absolute mx-auto  top-0 left-0 right-[80px] text-center z-10 w-[640px] h-[480px]"
-                //         />
-                //         <canvas
-                //             ref={canvasRef}
-                //             className="absolute mx-auto  left-2 md:left-32 top-[-10px] text-center z-10 w-[400px] h-[500px] "
-                //         />
-                //         <div className='text-black absolute top-[82px] z-10 left-[50%] -translate-x-1/2'>
-                //             Đỉnh đầu
-                //         </div>
-                //         <div className='text-black absolute top-[380px] z-10 left-[50%] -translate-x-1/2'>
-                //             Cằm
-                //         </div>
-                //     </div>
-                // </div>
             }
             {/* end page 2 */}
         </div>
