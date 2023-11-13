@@ -70,7 +70,7 @@ function ScanningCamera() {
             setTimeout(() => {
                 clearInterval(countdownInterval);
                 capture();
-            }, 10000);
+            }, 11000);
         }, 5000);
     };
 
@@ -329,9 +329,10 @@ function ScanningCamera() {
                                     <div className='border-l h-5 pr-2 ml-2'></div>
                                     {captureCountdown && captureCountdown % 2 === 0 ?
                                         (
-                                            <div className='font-light text-[13px] border-b-2 pb-2 border-red text-red'>VỊ TRÍ MẶT</div>
-                                        ) : (
                                             <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>VỊ TRÍ MẶT</div>
+                                        ) : (
+                                            <div className='font-light text-[13px] border-b-2 pb-2 border-red text-red'>VỊ TRÍ MẶT</div>
+
                                         )}
                                     <div className='border-l h-5 pr-2 ml-2'></div>
                                     <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>NHÌN THẲNG</div>
@@ -343,11 +344,12 @@ function ScanningCamera() {
                                 {captureCountdown && captureCountdown % 2 === 0 ?
                                     (
                                         <div className='absolute top-28 z-20 left-12'>
-                                            <div className='font-semibold text-[20px] text-black'>Khuôn mặt bạn chưa đúng vị trí</div>
+                                            <div className='font-semibold text-[20px] text-black'>Bạn làm tốt lắm</div>
                                         </div>
                                     ) : (
                                         <div className='absolute top-28 z-20 left-[50%] -translate-x-1/2'>
-                                            <div className='font-semibold text-[20px] text-black'>Bạn làm tốt lắm</div>
+                                            <div className='font-semibold text-[20px] text-black'>Khuôn mặt bạn chưa đúng vị trí</div>
+
                                         </div>
                                     )}
                                 <div className='absolute top-36 z-10 left-8'>
