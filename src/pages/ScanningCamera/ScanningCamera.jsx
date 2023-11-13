@@ -291,7 +291,7 @@ function ScanningCamera() {
 
             {/* page 2 */}
             {page === 0 &&
-                <div className="w-full h-full relative top-0 px-32">
+                <div className="w-full h-full relative top-0">
                     <div className="">
                     <div className='w-[500px] h-20 bg-black opacity-50'></div>
                         <Webcam
