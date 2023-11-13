@@ -318,7 +318,7 @@ function ScanningCamera() {
 
             {/* page 2 */}
             {page === 0 &&
-                <div className="w-full h-full relative top-0">
+                <div className="w-full h-full relative px-32">
                     <div className="">
                         <div className="h-28 py-5 flex justify-center items-center text-white bg-black/50 backdrop-opacity-10 w-full backdrop-invert">
                             <div className='text-secondary flex flex-row gap-3 justify-center'>
@@ -338,7 +338,7 @@ function ScanningCamera() {
                                 <Webcam
                                     ref={webcamRef}
                                     screenshotFormat="image/jpeg"
-                                    className="absolute top-16 left-0 right-[80px] text-center z-10 w-[640px] h-[480px]"
+                                    className="absolute top-24 left-0 right-[80px] text-center z-10 w-[640px] h-[480px]"
                                 />
                                 <canvas
                                     ref={canvasRef}
