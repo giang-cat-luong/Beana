@@ -80,6 +80,10 @@ const router = createBrowserRouter([
         element: <ScanningResult />,
       },
       {
+        path: "/scanning-calculation",
+        element: <ScanningCalculation />,
+      },
+      {
         path: "/cart",
         element: <Cart />,
       },
