@@ -65,12 +65,12 @@ function ScanningCamera() {
         setTimeout(() => {
             const countdownInterval = setInterval(() => {
                 setCaptureCountdown(prevCount => (prevCount > 0 ? prevCount - 1 : 0));
-            }, 1000);
+            }, 500);
 
             setTimeout(() => {
                 clearInterval(countdownInterval);
                 capture();
-            }, 11000);
+            }, 10000);
         }, 5000);
     };
 
@@ -370,7 +370,7 @@ function ScanningCamera() {
                                     className="absolute left-4 md:left-0 top-[98px] text-center w-[380px] h-[500px]"
                                 />
                                 <div className='absolute top-[290px] z-20 left-[50%] -translate-x-1/2'>
-                                    <div className='text-black font-semibold text-[64px]'>{captureCountdown < 5 && captureCountdown - 1}</div>
+                                    <div className='text-black font-semibold text-[64px]'>{captureCountdown < 6 && captureCountdown - 1}</div>
                                 </div>
                                 <div className='text-black font-bold text-lg absolute top-[190px] left-[50%] -translate-x-1/2'>
                                     Đỉnh đầu
