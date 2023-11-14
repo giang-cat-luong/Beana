@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import ScanningFaceLoading from '../../components/Loading/ScanningFaceLoading';
 import ProgessLoading from '../../components/Loading/ProgessLoading';
-import { useNavigation } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const sliderUrls = [
     './assets/cameraBanner.jpg',
@@ -16,7 +16,7 @@ const sliderUrls = [
 
 function ScanningCamera() {
 
-    const navigate = useNavigation();
+    const navigate = useNavigate();
     const [scrolled, setScrolled] = useState(false);
     const [page, setPage] = useState(0);
     const [isShow, setIsShow] = useState(false);

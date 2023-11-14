@@ -24,13 +24,14 @@ import Wishlist from "./pages/Profile/components/Wishlist"
 import Repurchase from "./pages/Profile/components/Repurchase"
 import NewAddress from "./pages/Profile/components/AddressManagement/components/NewAddress";
 import AddressBook from "./pages/Profile/components/AddressManagement/components/AddressBook";
-
+import ScanningCalculation from "./pages/ScanningCalculation/";
 import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import Checkout from "./pages/Checkout/Checkout";
+
 
 
 const router = createBrowserRouter([
@@ -78,10 +79,6 @@ const router = createBrowserRouter([
       {
         path: "/scanning-result",
         element: <ScanningResult />,
-      },
-      {
-        path: "/scanning-calculation",
-        element: <ScanningCalculation />,
       },
       {
         path: "/cart",
@@ -159,6 +156,10 @@ const router = createBrowserRouter([
   {
     path: "/scanning-camera",
     element: <ScanningCamera />,
+  },
+  {
+    path: "/scanning-calculation",
+    element: <ScanningCalculation />,
   },
 
 ]);
