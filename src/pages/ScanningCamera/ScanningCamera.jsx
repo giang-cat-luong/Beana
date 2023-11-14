@@ -377,7 +377,7 @@ function ScanningCamera() {
                                 <div className='text-black font-bold text-lg absolute top-[190px] left-[50%] -translate-x-1/2'>
                                     Đỉnh đầu
                                 </div>
-                                <div className='text-black font-bold text-lg absolute top-[540px] left-[50%] -translate-x-1/2'>
+                                <div className='text-black font-bold text-lg absolute top-[460px] left-[50%] -translate-x-1/2'>
                                     Cằm
                                 </div>
                             </div>
