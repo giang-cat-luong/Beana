@@ -237,7 +237,7 @@ function ScanningCamera() {
             {page === 2 &&
                 <div>
                     <div className="w-full min-h-full h-full md:w-full md:h-full bg-center bg-cover z-0 bg-fixed" style={{ backgroundImage: `url(${sliderUrls[0]})` }}>
-                        <div className="px-10 py-10 text-white  bg-black/50 backdrop-opacity-10 w-full backdrop-invert">
+                        <div className="px-10 py-10 text-white bg-black/50 backdrop-opacity-10 w-full backdrop-invert">
                             <div className=' flex flex-col'>
                                 <div className='min-h-screen flex flex-col justify-between'>
                                     <div>

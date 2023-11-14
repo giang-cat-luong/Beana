@@ -12,15 +12,14 @@ function ScanningCalculation() {
     console.log(img)
 
     return (
-        <div className="h-[800px] md:hidden">
-            <div className="text-white  bg-black/50 backdrop-opacity-10 w-full backdrop-invert">
-                <div className=' flex flex-col'>
+        <div className="h-[620px] md:hidden">
+                <div className='relative'>
                     <img
                         src={img}
-                        className='h-[600px] w-[800px]'
+                        className='h-[620px] w-[800px]'
                     />
+                    <div className='bg-black/50 backdrop-opacity-10 w-full backdrop-invert z-10'></div>
                 </div>
-            </div>
         </div>
 
     );
