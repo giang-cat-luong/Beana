@@ -204,7 +204,7 @@ function ScanningCalculation() {
                     </div>
                 </div>
             }
-            {page === 0 &&
+            {page === 4 &&
                 <div className='relative'>
                     <img
                         src={img}
@@ -463,14 +463,37 @@ function ScanningCalculation() {
                     </div>
                 </div>
             }
-            {page === 3 &&
+            {page === 0 &&
                 <div className='relative'>
                     <div className="h-[620px] z-0 bg-fixed" style={{ backgroundImage: `url(${img})` }}>
                         <div className="h-[620px] bg-black/40 backdrop-opacity-10 backdrop-invert ">
-
+                            <div className='absolute right-12 bottom-60'>
+                                <p className='absolute bottom-1 right-0 text-white text-[10px]'>Đốm Tối</p>
+                                <img className="w-24" src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700060357/Beana_assets_analyze/8_zejl15.png' />
+                            </div>
+                            <div className='absolute right-12 bottom-40'>
+                                <p className='absolute bottom-1 right-0 text-white text-[10px]'>Độ Đàn Hồi</p>
+                                <img className="w-24" src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700060357/Beana_assets_analyze/8_zejl15.png' />
+                            </div>
+                            <div className='absolute left-12 bottom-40'>
+                                <p className='absolute bottom-1 left-0 text-white text-[10px]'>Lỗ Chân Lông</p>
+                                <img className="w-24 scale-x-[-1]" src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700060357/Beana_assets_analyze/8_zejl15.png' />
+                            </div> 
+                            <div className='absolute left-12 top-52'>
+                                <p className='flex justify-start text-white text-[10px]'>Sáng Da</p>
+                                <img className="w-24 rotate-180" src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700060357/Beana_assets_analyze/8_zejl15.png' />
+                            </div>
+                            <div className='absolute left-16 bottom-72'>
+                                <p className='flex justify-start text-white text-[10px]'>Quầng Thâm</p>
+                                <img className="w-24 rotate-180" src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700060358/Beana_assets_analyze/9_rumfam.png' />
+                            </div>
+                            <div className='absolute right-14 top-48 flex flex-col'>
+                                <p className='flex justify-end text-white text-[10px]'>Nếp nhăn</p>
+                                <img className="w-24 scale-y-[-1]" src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700060358/Beana_assets_analyze/9_rumfam.png' />
+                            </div>
                         </div>
                         <div className='w-full absolute bottom-20 left-[50%] text-center -translate-x-1/2 mb-6'>
-                            <div className='flex justify-center text-white mb-4 text-xs'>PAGE 3</div>
+                            
                         </div>
                     </div>
                 </div>
