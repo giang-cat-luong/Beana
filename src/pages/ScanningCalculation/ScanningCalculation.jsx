@@ -359,7 +359,7 @@ function ScanningCalculation() {
             }
             {page === 0 &&
                 <div className='relative'>
-                    <div className="h-[620px] w-[800px] bg-center bg-cover z-0 bg-fixed" style={{ backgroundImage: `url(${img})` }}>
+                    <div className="h-[620px] w-[800px] z-0 bg-fixed" style={{ backgroundImage: `url(${img})` }}>
                         <div className="h-[620px] bg-black/30 backdrop-opacity-10 w-[800px] backdrop-invert">
                             <img className='w-44 absolute top-24 left-1/2 -translate-x-1/2' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/tran_qxc9hz.png' />
                         </div>
