@@ -361,8 +361,8 @@ function ScanningCalculation() {
                 <div className='relative'>
                     <div className="h-[620px] z-0 bg-fixed" style={{ backgroundImage: `url(${img})` }}>
                         <div className="h-[620px] bg-black/40 backdrop-opacity-10 backdrop-invert">
-                            <img className='w-16 absolute top-[266px] left-[30%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/matrai_v1t691.png' />
-                            <img className='w-16 absolute top-[266px] right-[30%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/maphai_wrrr6p.png' />
+                            <img className='w-16 absolute top-[274px] left-[31%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/matrai_v1t691.png' />
+                            <img className='w-16 absolute top-[274px] right-[31%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/maphai_wrrr6p.png' />
                         </div>
                         {/* {analyzeCountDown >= 7
                             ? (
