@@ -4,6 +4,7 @@ import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import ScanningFaceLoading from '../../components/Loading/ScanningFaceLoading';
 import ProgessLoading from '../../components/Loading/ProgessLoading';
 import { useLocation } from "react-router-dom";
+import ProgressAnalyzeLoading from '../../components/Loading/ProgressAnalyzeLoading/ProgressAnalyzeLoading';
 
 function ScanningCalculation() {
 
@@ -14,6 +15,8 @@ function ScanningCalculation() {
     const { img } = location.state;
 
     const [loading, setLoading] = useState(false);
+    const [analyzeCountDown, setAnalyzeCountDown] = useState(8);
+
 
     const [page, setPage] = useState(0);
     const [selectedSkin, setSelectedSkin] = useState(null);
@@ -63,6 +66,25 @@ function ScanningCalculation() {
             setSkinHelp(false);
         }
     };
+
+    const startAnalyze = () => {
+
+        const countdownInterval = setInterval(() => {
+            setAnalyzeCountDown(prevCount => (prevCount > 0 ? prevCount - 1 : 0));
+        }, 1000);
+
+        setTimeout(() => {
+            clearInterval(countdownInterval);
+            setPage(3);
+        }, 10000);
+
+    };
+
+    useEffect(() => {
+        if (page === 0) {
+            startAnalyze();
+        }
+    }, [page]);
 
     useEffect(() => {
         document.addEventListener("mousedown", handleOutsideClick);
@@ -177,7 +199,7 @@ function ScanningCalculation() {
                     </div>
                 </div>
             }
-            {page === 0 &&
+            {page === 2 &&
                 <div className='relative'>
                     <img
                         src={img}
@@ -335,13 +357,44 @@ function ScanningCalculation() {
                     </div>
                 </div>
             }
-            {page === 2 &&
+            {page === 0 &&
                 <div className='relative'>
-                    <div
-                        className='fixed bottom-2 left-1/2 -translate-x-1/2 w-[90%] beana-button-green mt-2 h-9 flex items-center justify-center text-black font-bold'
-                        onClick={handleNexPageClick}
-                    >
-                        TIẾP TỤC
+                    <div>
+                        <div className="h-[620px] w-[800px] md:w-full md:h-full bg-center bg-cover z-0 bg-fixed" style={{ backgroundImage: `url(${img})` }}>
+                            <div className="h-[620px] bg-black/30 backdrop-opacity-10 w-[800px] backdrop-invert">
+
+                            </div>
+                            <div className='w-full absolute bottom-20 left-[50%] text-center -translate-x-1/2 mb-6'>
+                                <div className='flex justify-center text-white mb-4 text-xs'>
+                                    {analyzeCountDown >= 6
+                                        ? 'Công nghệ quét da tiên tiến đang hoạt động'
+                                        : analyzeCountDown >= 4 ?
+                                            'Được phát triển với bác sĩ da liễu, cá nhân hóa cho da của bạn'
+                                            : analyzeCountDown >= 2 ?
+                                                'Phân tích da cá nhân của bạn đang được xử lý'
+                                                :
+                                                'Kết quả của bạn chỉ còn trong vài khoảnh khắc'
+                                    }
+                                </div>
+                            </div>
+                            <div className='w-[90%] absolute bottom-[-10px] left-[50%] text-center -translate-x-1/2'>
+                                <ProgressAnalyzeLoading />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            {page === 3 &&
+                <div className='relative'>
+                    <div>
+                        <div className="h-[620px] w-[800px] md:w-full md:h-full bg-center bg-cover z-0 bg-fixed" style={{ backgroundImage: `url(${img})` }}>
+                            <div className="h-[620px] bg-black/30 backdrop-opacity-10 w-[800px] backdrop-invert">
+
+                            </div>
+                            <div className='w-full absolute bottom-20 left-[50%] text-center -translate-x-1/2 mb-6'>
+                                <div className='flex justify-center text-white mb-4 text-xs'>PAGE 3</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             }
