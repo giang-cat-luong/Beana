@@ -57,7 +57,7 @@ function ScanningCalculation() {
             setSkinError(false)
             setAgeError(false)
             setButtonCheck(true)
-            setPage(2)
+            setPage(0)
         }
     };
 
@@ -75,7 +75,7 @@ function ScanningCalculation() {
 
         setTimeout(() => {
             clearInterval(countdownInterval);
-            setPage(3);
+            setPage(0);
         }, 10000);
 
     };
@@ -359,27 +359,25 @@ function ScanningCalculation() {
             }
             {page === 0 &&
                 <div className='relative'>
-                    <div>
-                        <div className="h-[620px] w-[800px] md:w-full md:h-full bg-center bg-cover z-0 bg-fixed" style={{ backgroundImage: `url(${img})` }}>
-                            <div className="h-[620px] bg-black/30 backdrop-opacity-10 w-[800px] backdrop-invert">
-
+                    <div className="h-[620px] w-[800px] bg-center bg-cover z-0 bg-fixed" style={{ backgroundImage: `url(${img})` }}>
+                        <div className="h-[620px] bg-black/30 backdrop-opacity-10 w-[800px] backdrop-invert">
+                            <img className='w-44 absolute top-24 left-1/2 -translate-x-1/2' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/tran_qxc9hz.png' />
+                        </div>
+                        <div className='w-full absolute bottom-20 left-[50%] text-center -translate-x-1/2 mb-6'>
+                            <div className='flex justify-center text-white mb-4 text-xs'>
+                                {analyzeCountDown >= 6
+                                    ? 'Công nghệ quét da tiên tiến đang hoạt động'
+                                    : analyzeCountDown >= 4 ?
+                                        'Được phát triển với bác sĩ da liễu, cá nhân hóa cho da của bạn'
+                                        : analyzeCountDown >= 2 ?
+                                            'Phân tích da cá nhân của bạn đang được xử lý'
+                                            :
+                                            'Kết quả của bạn chỉ còn trong vài khoảnh khắc'
+                                }
                             </div>
-                            <div className='w-full absolute bottom-20 left-[50%] text-center -translate-x-1/2 mb-6'>
-                                <div className='flex justify-center text-white mb-4 text-xs'>
-                                    {analyzeCountDown >= 6
-                                        ? 'Công nghệ quét da tiên tiến đang hoạt động'
-                                        : analyzeCountDown >= 4 ?
-                                            'Được phát triển với bác sĩ da liễu, cá nhân hóa cho da của bạn'
-                                            : analyzeCountDown >= 2 ?
-                                                'Phân tích da cá nhân của bạn đang được xử lý'
-                                                :
-                                                'Kết quả của bạn chỉ còn trong vài khoảnh khắc'
-                                    }
-                                </div>
-                            </div>
-                            <div className='w-[90%] absolute bottom-[-10px] left-[50%] text-center -translate-x-1/2'>
-                                <ProgressAnalyzeLoading />
-                            </div>
+                        </div>
+                        <div className='w-[90%] absolute bottom-[-10px] left-[50%] text-center -translate-x-1/2'>
+                            <ProgressAnalyzeLoading />
                         </div>
                     </div>
                 </div>
