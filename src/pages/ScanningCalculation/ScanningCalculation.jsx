@@ -16,7 +16,7 @@ function ScanningCalculation() {
 
     const [loading, setLoading] = useState(false);
     const [analyzeCountDown, setAnalyzeCountDown] = useState(8);
-
+    const [animationKey, setAnimationKey] = useState(0);
 
     const [page, setPage] = useState(0);
     const [selectedSkin, setSelectedSkin] = useState(null);
@@ -57,7 +57,7 @@ function ScanningCalculation() {
             setSkinError(false)
             setAgeError(false)
             setButtonCheck(true)
-            setPage(0)
+            setPage(2)
         }
     };
 
@@ -75,13 +75,18 @@ function ScanningCalculation() {
 
         setTimeout(() => {
             clearInterval(countdownInterval);
-            setPage(0);
+            setPage(3);
         }, 10000);
 
     };
 
     useEffect(() => {
-        if (page === 0) {
+
+        setAnimationKey(animationKey + 1);
+    }, [analyzeCountDown]);
+
+    useEffect(() => {
+        if (page === 2) {
             startAnalyze();
         }
     }, [page]);
@@ -199,49 +204,51 @@ function ScanningCalculation() {
                     </div>
                 </div>
             }
-            {page === 2 &&
+            {page === 0 &&
                 <div className='relative'>
                     <img
                         src={img}
                         className='h-[620px] w-[800px] z-0'
                     />
-                    {/* {!loading ? (
-                <div className='fixed bottom-0 w-full h-24 bg-black/50 backdrop-opacity-10 backdrop-invert z-10'>
-                    <div className='flex justify-center text-secondary mt-3'> Đang tải hình lên...</div>
-                    <div className='w-[50%] absolute bottom-8 left-[50%] text-center -translate-x-1/2'>
-                        <ProgessLoading />
-                    </div>
-                </div>
-            ) : ( */}
-                    <div>
-                        <div className='fixed bottom-0 w-full h-24 bg-white z-10 border-2'>
-                            <div
-                                className='beana-button-green mx-5 mt-2 h-9 flex items-center justify-center text-black font-bold'
-                                onClick={() => handleNextPage(1)}
-                            >
-                                TIẾP TỤC
-                            </div>
-                            <div className='text-black absolute bottom-2 font-semibold text-xs left-1/2 -translate-x-1/2'>CHỤP LẠI</div>
-                        </div>
-                        <div className="fixed top-0 h-16 py-5 flex justify-center items-center text-white bg-black/70 backdrop-opacity-10 w-full backdrop-invert">
-                            <div className='text-secondary flex flex-row gap-3 justify-center'>
-                                <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>ÁNH SÁNG</div>
-                                <div className='border-l h-5 pr-2 ml-2'></div>
-                                <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>VỊ TRÍ MẶT</div>
-                                <div className='border-l h-5 pr-2 ml-2'></div>
-                                <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>NHÌN THẲNG</div>
+                    {loading ? (
+                        <div className='fixed bottom-0 w-full h-24 bg-black/50 backdrop-opacity-10 backdrop-invert z-10'>
+                            <div className='flex justify-center text-secondary mt-3'> Đang tải hình lên...</div>
+                            <div className='w-[50%] absolute bottom-8 left-[50%] text-center -translate-x-1/2'>
+                                <ProgessLoading />
                             </div>
                         </div>
-                    </div>
-                    {/* )} */}
-                    <div className='text-white text-xs tracking-wider font-medium absolute bottom-32 bg-black/70 pl-[6px] pr-2 py-[6px] rounded-3xl flex items-center left-1/2 -translate-x-1/2'>
-                        <FontAwesomeIcon
-                            icon={faCircleCheck}
-                            color='#49b949'
-                            className='text-[18px] mr-1'
-                        />
-                        SẴN SÀNG PHÂN TÍCH
-                    </div>
+                    ) : (
+                        <div>
+                            <div className='fixed bottom-0 w-full h-24 bg-white z-10 border-2'>
+                                <div
+                                    className='beana-button-green mx-5 mt-2 h-9 flex items-center justify-center text-black font-bold'
+                                    onClick={() => handleNextPage(1)}
+                                >
+                                    TIẾP TỤC
+                                </div>
+                                <div className='text-black absolute bottom-2 font-semibold text-xs left-1/2 -translate-x-1/2'>CHỤP LẠI</div>
+                            </div>
+                            <div className="fixed top-0 h-16 py-5 flex justify-center items-center text-white bg-black/70 backdrop-opacity-10 w-full backdrop-invert">
+                                <div className='text-secondary flex flex-row gap-3 justify-center'>
+                                    <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>ÁNH SÁNG</div>
+                                    <div className='border-l h-5 pr-2 ml-2'></div>
+                                    <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>VỊ TRÍ MẶT</div>
+                                    <div className='border-l h-5 pr-2 ml-2'></div>
+                                    <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>NHÌN THẲNG</div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                    {!loading &&
+                        <div className='text-white text-xs tracking-wider font-medium absolute bottom-32 bg-black/70 pl-[6px] pr-2 py-[6px] rounded-3xl flex items-center left-1/2 -translate-x-1/2'>
+                            <FontAwesomeIcon
+                                icon={faCircleCheck}
+                                color='#49b949'
+                                className='text-[18px] mr-1'
+                            />
+                            SẴN SÀNG PHÂN TÍCH
+                        </div>
+                    }
                 </div>
             }
             {page === 1 &&
@@ -357,98 +364,113 @@ function ScanningCalculation() {
                     </div>
                 </div>
             }
-            {page === 0 &&
+            {page === 2 &&
                 <div className='relative'>
-                    <div className="h-[620px] z-0 bg-fixed" style={{ backgroundImage: `url(${img})` }}>
+                    <div key={animationKey} className="h-[620px] z-0 bg-fixed" style={{ backgroundImage: `url(${img})` }}>
                         {analyzeCountDown >= 7
                             ? (
-                                <div className="h-[620px] bg-black/40 backdrop-opacity-10 backdrop-invert">
-                                    <img className='w-36 absolute top-40 left-1/2 -translate-x-1/2 opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/tran_qxc9hz.png' />
-                                    <img className='w-10 absolute top-[262px] left-[28%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/left-ma_sspixz.png' />
-                                    <img className='w-6 absolute bottom-[266px] left-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045965/Beana_assets_analyze/left-camtren_fcod48.png' />
-                                    <img className='w-10 absolute bottom-52 left-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/left-camduoi_ud7fxt.png' />
-                                    <img className='w-10 absolute top-[262px] right-[28%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/right-ma_qdbws4.png' />
-                                    <img className='w-6 absolute bottom-[266px] right-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/right-camtren_es1drv.png' />
-                                    <img className='w-10 absolute bottom-52 right-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/rightcamduoi_mgz4jw.png' />
+                                <div className="h-[620px] bg-black/40 backdrop-opacity-10 backdrop-invert ">
+                                    <div className='animate-analyzeAppear'>
+                                        <img className='w-36 absolute top-40 left-1/2 -translate-x-1/2 opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/tran_qxc9hz.png' />
+                                        <img className='w-10 absolute top-[262px] left-[28%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/left-ma_sspixz.png' />
+                                        <img className='w-6 absolute bottom-[266px] left-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045965/Beana_assets_analyze/left-camtren_fcod48.png' />
+                                        <img className='w-10 absolute bottom-52 left-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/left-camduoi_ud7fxt.png' />
+                                        <img className='w-10 absolute top-[262px] right-[28%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/right-ma_qdbws4.png' />
+                                        <img className='w-6 absolute bottom-[266px] right-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/right-camtren_es1drv.png' />
+                                        <img className='w-10 absolute bottom-52 right-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/rightcamduoi_mgz4jw.png' />
+
+                                    </div>
                                 </div>
                             ) : analyzeCountDown >= 6 ?
                                 (
-                                    <div className="h-[620px] bg-black/40 backdrop-opacity-10 backdrop-invert">
-                                        <img className='w-16 absolute top-[274px] left-[31%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/matrai_v1t691.png' />
-                                        <img className='w-16 absolute top-[274px] right-[31%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/maphai_wrrr6p.png' />
+                                    <div className="h-[620px] bg-black/40 backdrop-opacity-10 backdrop-invert ">
+                                        <div className='animate-analyzeAppear'>
+                                            <img className='w-16 absolute top-[274px] left-[31%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/matrai_v1t691.png' />
+                                            <img className='w-16 absolute top-[274px] right-[31%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/maphai_wrrr6p.png' />
+                                        </div>
                                     </div>
                                 ) : analyzeCountDown >= 5 ?
                                     (
                                         <div className="h-[620px] bg-black/40 backdrop-opacity-10 backdrop-invert">
-                                            <img className='w-10 absolute bottom-52 left-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/left-camduoi_ud7fxt.png' />
-                                            <img className='w-10 absolute bottom-52 right-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/rightcamduoi_mgz4jw.png' />
+                                            <div className='animate-analyzeAppear'>
+                                                <img className='w-10 absolute bottom-52 left-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/left-camduoi_ud7fxt.png' />
+                                                <img className='w-10 absolute bottom-52 right-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/rightcamduoi_mgz4jw.png' />
+                                            </div>
                                         </div>
                                     ) : analyzeCountDown >= 4 ?
                                         (
                                             <div className="h-[620px] bg-black/40 backdrop-opacity-10 backdrop-invert">
-                                                <img className='w-12 absolute top-[272px] left-[32%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/matduoi_erkyqv.png' />
-                                                <img className='w-12 absolute top-[272px] right-[32%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/matduoi_erkyqv.png' />
+                                                <div className='animate-analyzeAppear'>
+                                                    <img className='w-12 absolute top-[272px] left-[32%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/matduoi_erkyqv.png' />
+                                                    <img className='w-12 absolute top-[272px] right-[32%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/matduoi_erkyqv.png' />
+                                                </div>
                                             </div>
                                         ) : analyzeCountDown >= 3 ?
                                             (
                                                 <div className="h-[620px] bg-black/40 backdrop-opacity-10 backdrop-invert">
-                                                    <img className='w-36 absolute top-40 left-1/2 -translate-x-1/2 opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/tran_qxc9hz.png' />
-                                                    <img className='w-10 absolute top-[262px] left-[28%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/left-ma_sspixz.png' />
-                                                    <img className='w-6 absolute bottom-[266px] left-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045965/Beana_assets_analyze/left-camtren_fcod48.png' />
-                                                    <img className='w-10 absolute bottom-52 left-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/left-camduoi_ud7fxt.png' />
-                                                    <img className='w-10 absolute top-[262px] right-[28%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/right-ma_qdbws4.png' />
-                                                    <img className='w-6 absolute bottom-[266px] right-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/right-camtren_es1drv.png' />
-                                                    <img className='w-10 absolute bottom-52 right-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/rightcamduoi_mgz4jw.png' />
+                                                    <div className='animate-analyzeAppear'>
+                                                        <img className='w-36 absolute top-40 left-1/2 -translate-x-1/2 opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/tran_qxc9hz.png' />
+                                                        <img className='w-10 absolute top-[262px] left-[28%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/left-ma_sspixz.png' />
+                                                        <img className='w-6 absolute bottom-[266px] left-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045965/Beana_assets_analyze/left-camtren_fcod48.png' />
+                                                        <img className='w-10 absolute bottom-52 left-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/left-camduoi_ud7fxt.png' />
+                                                        <img className='w-10 absolute top-[262px] right-[28%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/right-ma_qdbws4.png' />
+                                                        <img className='w-6 absolute bottom-[266px] right-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/right-camtren_es1drv.png' />
+                                                        <img className='w-10 absolute bottom-52 right-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/rightcamduoi_mgz4jw.png' />
+                                                    </div>
                                                 </div>
                                             ) : analyzeCountDown >= 2 ?
                                                 (
                                                     <div className="h-[620px] bg-black/40 backdrop-opacity-10 backdrop-invert">
-                                                        <img className='w-16 absolute top-[274px] left-[31%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/matrai_v1t691.png' />
-                                                        <img className='w-16 absolute top-[274px] right-[31%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/maphai_wrrr6p.png' />
+                                                        <div className='animate-analyzeAppear'>
+                                                            <img className='w-16 absolute top-[274px] left-[31%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/matrai_v1t691.png' />
+                                                            <img className='w-16 absolute top-[274px] right-[31%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/maphai_wrrr6p.png' />
+                                                        </div>
                                                     </div>
                                                 ) : analyzeCountDown >= 1 ?
                                                     (
                                                         <div className="h-[620px] bg-black/40 backdrop-opacity-10 backdrop-invert">
-                                                            <img className='w-10 absolute bottom-52 left-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/left-camduoi_ud7fxt.png' />
-                                                            <img className='w-10 absolute bottom-52 right-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/rightcamduoi_mgz4jw.png' />
+                                                            <div className='animate-analyzeAppear'>
+                                                                <img className='w-10 absolute bottom-52 left-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/left-camduoi_ud7fxt.png' />
+                                                                <img className='w-10 absolute bottom-52 right-[35%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700045964/Beana_assets_analyze/rightcamduoi_mgz4jw.png' />
+                                                            </div>
                                                         </div>
                                                     ) : analyzeCountDown >= 0 &&
                                                     (
                                                         <div className="h-[620px] bg-black/40 backdrop-opacity-10 backdrop-invert">
-                                                            <img className='w-12 absolute top-[272px] left-[32%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/matduoi_erkyqv.png' />
-                                                            <img className='w-12 absolute top-[272px] right-[32%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/matduoi_erkyqv.png' />
+                                                            <div className='animate-analyzeAppear'>
+                                                                <img className='w-12 absolute top-[272px] left-[32%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/matduoi_erkyqv.png' />
+                                                                <img className='w-12 absolute top-[272px] right-[32%] opacity-30' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700048340/Beana_assets_analyze/matduoi_erkyqv.png' />
+                                                            </div>
                                                         </div>
                                                     )
                         }
-                        <div className='w-full absolute bottom-20 left-[50%] text-center -translate-x-1/2 mb-6'>
-                            <div className='flex justify-center text-white mb-4 text-xs'>
-                                {analyzeCountDown >= 6
-                                    ? 'Công nghệ quét da tiên tiến đang hoạt động'
-                                    : analyzeCountDown >= 4 ?
-                                        'Được phát triển với bác sĩ da liễu, cá nhân hóa cho da của bạn'
-                                        : analyzeCountDown >= 2 ?
-                                            'Phân tích da cá nhân của bạn đang được xử lý'
-                                            :
-                                            'Kết quả của bạn chỉ còn trong vài khoảnh khắc'
-                                }
-                            </div>
+                    </div>
+                    <div className='w-full absolute bottom-20 left-[50%] text-center -translate-x-1/2 mb-6'>
+                        <div className='flex justify-center text-white mb-4 text-xs'>
+                            {analyzeCountDown >= 6
+                                ? 'Công nghệ quét da tiên tiến đang hoạt động'
+                                : analyzeCountDown >= 4 ?
+                                    'Được phát triển với bác sĩ da liễu, cá nhân hóa cho da của bạn'
+                                    : analyzeCountDown >= 2 ?
+                                        'Phân tích da cá nhân của bạn đang được xử lý'
+                                        :
+                                        'Kết quả của bạn chỉ còn trong vài khoảnh khắc'
+                            }
                         </div>
-                        <div className='w-[90%] absolute bottom-[-10px] left-[50%] text-center -translate-x-1/2'>
-                            <ProgressAnalyzeLoading />
-                        </div>
+                    </div>
+                    <div className='w-[90%] absolute bottom-[-10px] left-[50%] text-center -translate-x-1/2'>
+                        <ProgressAnalyzeLoading />
                     </div>
                 </div>
             }
             {page === 3 &&
                 <div className='relative'>
-                    <div>
-                        <div className="h-[620px] w-[800px] md:w-full md:h-full bg-center bg-cover z-0 bg-fixed" style={{ backgroundImage: `url(${img})` }}>
-                            <div className="h-[620px] bg-black/30 backdrop-opacity-10 w-[800px] backdrop-invert">
+                    <div className="h-[620px] z-0 bg-fixed" style={{ backgroundImage: `url(${img})` }}>
+                        <div className="h-[620px] bg-black/40 backdrop-opacity-10 backdrop-invert ">
 
-                            </div>
-                            <div className='w-full absolute bottom-20 left-[50%] text-center -translate-x-1/2 mb-6'>
-                                <div className='flex justify-center text-white mb-4 text-xs'>PAGE 3</div>
-                            </div>
+                        </div>
+                        <div className='w-full absolute bottom-20 left-[50%] text-center -translate-x-1/2 mb-6'>
+                            <div className='flex justify-center text-white mb-4 text-xs'>PAGE 3</div>
                         </div>
                     </div>
                 </div>
