@@ -158,7 +158,7 @@ function ScanningCalculation() {
                     </div>
                 </div>
             }
-            {page === 4 &&
+            {page === 0 &&
                 <div className='animate-screenAppear'>
                     <UploadImage
                         img={img}
@@ -183,7 +183,7 @@ function ScanningCalculation() {
                     />
                 </div>
             }
-            {page === 0 &&
+            {page === 3 &&
                 <div className='animate-screenAppear'>
                     <ResultSkin
                         img={img}

@@ -1,8 +1,9 @@
 import ProgessLoading from "../../../../components/Loading/ProgessLoading"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleCheck} from '@fortawesome/free-solid-svg-icons';
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { Link } from "react-router-dom";
 
-export default function UploadImage({img,loading,handleNextPage}) {
+export default function UploadImage({ img, loading, handleNextPage }) {
   return (
     <div className='relative'>
       <img
@@ -25,7 +26,9 @@ export default function UploadImage({img,loading,handleNextPage}) {
             >
               TIẾP TỤC
             </div>
-            <div className='text-black absolute bottom-2 font-semibold text-xs left-1/2 -translate-x-1/2'>CHỤP LẠI</div>
+            <Link to="/scanning-camera">
+              <div className='text-black absolute bottom-2 font-semibold text-xs left-1/2 -translate-x-1/2'>CHỤP LẠI</div>
+            </Link>
           </div>
           <div className="fixed top-0 h-16 py-5 flex justify-center items-center text-white bg-black/70 backdrop-opacity-10 w-full backdrop-invert">
             <div className='text-secondary flex flex-row gap-3 justify-center'>

@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretLeft, faCaretRight, faAngleDoubleLeft, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
+import { faCaretLeft, faCaretRight, faAngleDoubleLeft, faAngleDoubleRight, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import AnglesDown from "../../../../components/AnimationIcon/AnglesDown";
 import useGetProduct from "../../../Product/hooks/useGetProduct";
 import SingleRcmProduct from "../../../../components/SingleRcmProduct/SingleRcmProduct";
+import SuccessLoading from "../../../../components/Loading/SuccessLoading";
+import { Link } from "react-router-dom";
 
 const images = [
   {
@@ -51,7 +53,7 @@ export default function ResultSkin({ img }) {
   const filteredProduct3 = products?.filter(product => product.childCategory.id === 3);
 
   const step1Product = filteredProduct1?.slice(1, 4)
-  const step2Product = filteredProduct2?.slice(0,6)
+  const step2Product = filteredProduct2?.slice(0, 6)
   const step3Product = filteredProduct3?.slice(0, 2)
 
   const [page, setPage] = useState(0);
@@ -60,9 +62,17 @@ export default function ResultSkin({ img }) {
   const [currentImageByIndex, setCurrentImageByIndex] = useState(5);
   const [selectedImageIndex, setSelectedImageIndex] = useState(2);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [redirecting, setRedirecting] = useState(false);
 
   const resultRef = useRef(null);
 
+  const getEmailResult = () => {
+    setRedirecting(true);
+    setTimeout(() => {
+      setRedirecting(false);
+
+    }, 2000);
+  }
 
   const getCurrentIndex = (index) => {
     setSelectedImageIndex(index);
@@ -107,12 +117,34 @@ export default function ResultSkin({ img }) {
 
   return (
     <div className='relative'>
+      <div style={{ position: "relative" }}>
+        {redirecting && (
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundColor: "transparent",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              zIndex: 9999,
+            }}
+          >
+            <div className=' w-[70%] md:w-[30%]'>
+              <SuccessLoading />
+            </div>
+          </div>
+        )}
+      </div>
       <div className="fixed top-0 w-full h-[50px] drop-shadow-2xl bg-white flex flex-row z-[9999]">
         <div onClick={() => setPage(0)} className="basis-1/2 bg-white flex items-center justify-center text-[12px] font-bold">KẾT QUẢ PHÂN TÍCH</div>
         <div onClick={() => setPage(1)} className="basis-1/2 bg-secondary flex items-center justify-center text-[12px] font-bold text-white">KHUYẾN NGHỊ SẢN PHẨM</div>
       </div>
       {page === 1 &&
-        <div className="animate-screenAppear py-2 px-6">
+        <div className="animate-screenAppear py-2 px-6 relative">
           <p className="text-[20px] font-bold mt-12">Khuyến nghị về thói quen chăm sóc da của bạn</p>
           <p className="text-[14px] font-light ">Theo phân tích da của bạn, chúng tôi khuyên bạn những sản phẩm này.</p>
           <div className="flex flex-row justify-between border-b-2 pb-1 mt-4">
@@ -135,8 +167,8 @@ export default function ResultSkin({ img }) {
           {step === 2 &&
             <div className="mt-4 animate-sliderDescription">
               <p className="text-secondary text-[15px]"><strong>Bước 2:</strong> Ngăn chặn vi khuẩn + Tái tạo da mặt</p>
-              <p className="text-xss">Dựa trên các vấn đề về da đã được phân tích, chúng tôi đề xuất các sản phẩm sau. 
-              Sử dụng các sản phẩm bước 2 sau khi bạn hoàn thành bước 1 để đạt được kết quả tối ưu.
+              <p className="text-xss">Dựa trên các vấn đề về da đã được phân tích, chúng tôi đề xuất các sản phẩm sau.
+                Sử dụng các sản phẩm bước 2 sau khi bạn hoàn thành bước 1 để đạt được kết quả tối ưu.
               </p>
               <div className="mt-4">
                 <SingleRcmProduct data={step2Product} />
@@ -153,6 +185,24 @@ export default function ResultSkin({ img }) {
               </div>
             </div>
           }
+          <div className='fixed bottom-0 w-[90%] bg-white py-3'>
+            <div className='bg-white'>
+              <div onClick={() => {
+                setPage(1)
+                getEmailResult();
+              }} className='beana-button-green py-2'>
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  size="1x"
+                  className="pr-2"
+                  color='#fff'
+                />
+                NHẬN CHẾ ĐỘ CHĂM SÓC DA</div>
+              <Link to="/landingPage">
+                <div className='text-center text-xs pt-3'>VỀ TRANG CHỦ</div>
+              </Link>
+            </div>
+          </div>
         </div>
       }
       {page === 0 &&
@@ -596,7 +646,10 @@ export default function ResultSkin({ img }) {
           </div>
           <div className='fixed bottom-0 w-[100%] bg-white py-3 px-4'>
             <div className='bg-white'>
-              <div className='beana-button-green py-2 '>XEM LỊCH TRÌNH CHĂM SÓC DA</div>
+              <div onClick={() => setPage(1)} className='beana-button-green py-2 '>XEM LỊCH TRÌNH CHĂM SÓC DA</div>
+              <Link to="/landingPage">
+                <div className='text-center text-xs pt-3'>VỀ TRANG CHỦ</div>
+              </Link>
             </div>
           </div>
         </div>
