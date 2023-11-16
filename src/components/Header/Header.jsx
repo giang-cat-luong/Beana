@@ -209,7 +209,7 @@ export default function Header() {
                                         </li >
                                         <div className='hidden group-hover:flex flex-col absolute left-0 p-10  w-full bg-transparent z-20 text-black duration-300'>
                                         </div>
-                                        <div className={`group ${scrolled ? 'top-[110px]' : 'top-[136px]'}  duration-500 h-0 overflow-hidden group-hover:h-[430px] absolute left-0 w-full  bg-white z-20 text-black duration-800`}>
+                                        <div className={`group ${scrolled ? 'top-[108px]' : 'top-[134px]'}  duration-500 h-0 overflow-hidden group-hover:h-[430px] absolute left-0 w-full  bg-white z-20 text-black duration-800`}>
                                             <div className="border-t-2 border-b-[1px] border-b-[#e6e1e1]">
                                                 <div className="grid grid-cols-4 gap-5  mx-36  pt-12 pb-[67px]">
                                                     <div className='flex flex-col'>
@@ -273,7 +273,7 @@ export default function Header() {
                                         </li >
                                         <div className='hidden group-hover:flex flex-col absolute left-0 p-10  w-full bg-transparent z-20 text-black duration-300'>
                                         </div>
-                                        <div className={`group ${scrolled ? 'top-[110px]' : 'top-[136px]'} duration-500 h-0 overflow-hidden group-hover:h-[430px] flex-col absolute w-full left-0 bg-white z-20 text-black duration-800`}>
+                                        <div className={`group ${scrolled ? 'top-[108px]' : 'top-[134px]'} duration-500 h-0 overflow-hidden group-hover:h-[430px] flex-col absolute w-full left-0 bg-white z-20 text-black duration-800`}>
                                             <div className='flex flex-col justify-center pt-12 pb-[67px] border-t-2 border-b-[1px] border-b-[#e6e1e1]'>
                                                 <div className='mx-36 flex flex-row gap-10 '>
                                                     {skincareTips.map((category, index) => (
@@ -333,7 +333,7 @@ export default function Header() {
                                     )}
                                     {toggleSearch ? (
                                         <div className='-z-10 '>
-                                            <div className={`group ${scrolled ? 'top-[120px]' : 'top-[146px]'} flex flex-col absolute left-0 px-10 pb-10 pt-5 w-full border-t-2 border-b-[1px] border-b-[#e6e1e1] bg-white z-20 text-black`}>
+                                            <div className={`group ${scrolled ? 'top-[108px]' : 'top-[134px]'} flex flex-col absolute left-0 px-10 pb-10 pt-5 w-full border-t-2 border-b-[1px] border-b-[#e6e1e1] bg-white z-20 text-black`}>
                                                 <div className="flex items-center   border-b-2 border-[#606060] mx-28 mb-10">
                                                     <img src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708873/Beana_assets/bean_afjwev.png' className='w-6 absolute top-4 left-[10]' />
                                                     <input className="appearance-none bg-transparent border-none w-full text-[#000] font-medium pl-8 leading-tight focus:outline-none  placeholder:text-[#404040] placeholder:font-normal text-lg" type="text" placeholder="Bạn đang tìm gì?" aria-label="Full name" />

@@ -32,7 +32,6 @@ export default function ProductDescription({ data }) {
   ]
 
   const [selectedItem, setSelectedItem] = useState(productDescription[0]);
-  const [defaultSelectedItem] = useState(productDescription[0]);
   const [animationKey, setAnimationKey] = useState(0);
   const [isHide, setIsHide] = useState(false);
 
@@ -54,7 +53,7 @@ export default function ProductDescription({ data }) {
       <div className='flex flex-row justify-between text-base text-[#606060] font-bold border-b-2 pb-1'>
         {productDescription.map((proDes, index) => (
           <div
-            className={`beana-product-description-head cursor-pointer ${selectedItem === proDes ? 'text-[#49b949] relative after:absolute after:bottom-[-4px] after:left-0 after:bg-[#49B949] after:h-0.5 after:w-full' : ''}`}
+            className={`beana-product-description-head-hover cursor-pointer ${selectedItem.id - 1 === index ? 'beana-product-description-head' : ''}`}
             key={index}
             onClick={() => handleDescriptionClick(proDes)}
           >
