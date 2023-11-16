@@ -1,13 +1,12 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react';
-import Webcam from 'react-webcam';
-import * as tf from '@tensorflow/tfjs';
-import * as facemesh from "@tensorflow-models/face-landmarks-detection";
-import { drawMesh } from "./utilities";
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import ScanningFaceLoading from '../../components/Loading/ScanningFaceLoading';
 import ProgessLoading from '../../components/Loading/ProgessLoading';
 import { useNavigate } from "react-router-dom";
+import ScanningIntroduction from './components/ScanningIntroduction';
+import ScanningTips from './components/ScanningTips'
+import ScanningCameraOpen from './components/ScanningCameraOpen'
 
 const sliderUrls = [
     './assets/cameraBanner.jpg',
@@ -17,12 +16,17 @@ const sliderUrls = [
 function ScanningCamera() {
 
     const navigate = useNavigate();
+
+    const webcamRef = useRef(null);
+    const canvasRef = useRef(null);
+
     const [scrolled, setScrolled] = useState(false);
     const [page, setPage] = useState(0);
     const [isShow, setIsShow] = useState(false);
-
     const [loading, setLoading] = useState(false);
 
+    const [captureCountdown, setCaptureCountdown] = useState(10);
+    const [imgSrc, setImgSrc] = useState(null);
 
     const handleNextPage = (page) => {
         setPage(page);
@@ -55,12 +59,14 @@ function ScanningCamera() {
         }, 3500);
     };
 
-    //for camera detection
-    const webcamRef = useRef(null);
-    const canvasRef = useRef(null);
+    const capture = useCallback(() => {
+        const imageSrc = webcamRef.current.getScreenshot();
+        setImgSrc(imageSrc);
+        setTimeout(() => {
+            navigate("/scanning-calculation", { state: { img: imageSrc } });
+        }, 2000);
+    }, [webcamRef]);
 
-    // create a capture function
-    const [captureCountdown, setCaptureCountdown] = useState(10);
     const startCaptureCountdown = () => {
         setTimeout(() => {
             const countdownInterval = setInterval(() => {
@@ -74,61 +80,11 @@ function ScanningCamera() {
         }, 5000);
     };
 
-    const [imgSrc, setImgSrc] = useState(null);
-    const capture = useCallback(() => {
-        const imageSrc = webcamRef.current.getScreenshot();
-        setImgSrc(imageSrc);
-        setTimeout(() => {
-            navigate("/scanning-calculation", { state: { img: imageSrc } });
-        }, 2000);
-    }, [webcamRef]);
-
     useEffect(() => {
         if (page === 0) {
             startCaptureCountdown();
         }
     }, [page]);
-
-    const runFaceMesh = async () => {
-        const model = facemesh.SupportedModels.MediaPipeFaceMesh;
-        const detectorConfig = {
-            runtime: "tfjs",
-            solutionPath: "https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh",
-        };
-        const detector = await facemesh.createDetector(model, detectorConfig);
-        setInterval(() => {
-            detect(detector);
-        }, 10);
-    };
-
-    const detect = async (detector) => {
-        if (
-            typeof webcamRef.current !== "undefined" &&
-            webcamRef.current !== null &&
-            webcamRef.current.video.readyState === 4
-        ) {
-            const video = webcamRef.current.video;
-            const videoWidth = webcamRef.current.video.videoWidth;
-            const videoHeight = webcamRef.current.video.videoHeight;
-
-            webcamRef.current.video.width = videoWidth;
-            webcamRef.current.video.height = videoHeight;
-
-            canvasRef.current.width = videoWidth;
-            canvasRef.current.height = videoHeight;
-
-            const face = await detector.estimateFaces(video);
-
-            const ctx = canvasRef.current.getContext("2d");
-            requestAnimationFrame(() => {
-                drawMesh(face, ctx);
-            });
-        }
-    };
-
-    useEffect(() => {
-        runFaceMesh();
-    }, []);
 
 
     return (
@@ -234,163 +190,32 @@ function ScanningCamera() {
                 </div>
             </div>
             {/* page 0 */}
-            {page === 2 &&
-                <div>
-                    <div className="w-full min-h-full h-full md:w-full md:h-full bg-center bg-cover z-0 bg-fixed" style={{ backgroundImage: `url(${sliderUrls[0]})` }}>
-                        <div className="px-10 py-10 text-white bg-black/50 backdrop-opacity-10 w-full backdrop-invert">
-                            <div className=' flex flex-col'>
-                                <div className='min-h-screen flex flex-col justify-between'>
-                                    <div>
-                                        <img src="./assets/logo.png" alt="Logo" className="pt-10" />
-                                        <p className="pt-10 font-semibold text-lg text-center">Quét làn da của bạn để phân tích chăm sóc da tùy chỉnh trong vài giây</p>
-                                    </div>
-                                    <div className='flex flex-col gap-16 pb-10'>
-                                        <p className="pt-10 font-semibold text-base text-center">
-                                            Khám phá quy trình chăm sóc da cá nhân hóa của bạn với công nghệ tiên tiến của IT, được phát triển bởi các bác sĩ da liễu</p>
-                                        <button
-                                            className={`fixed left-[50%] -translate-x-1/2 w-[80%] border-[2px] py-2 hover:bg-white/20 ease-in-out duration-500 ${scrolled ? ' bottom-0 bg-secondary mb-5' : 'bottom-10'}`}
-                                            onClick={setShow}
-                                        >
-                                            Bắt đầu
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div>
-                        <img className='px-8 pt-8 pb-28' src="./assets/cameraAds.png" />
-                    </div>
-                </div>
+            {page === 0 &&
+                <ScanningIntroduction
+                    scrolled={scrolled}
+                    setShow={setShow}
+                    sliderUrls={sliderUrls}
+                />
             }
             {/* end page 0 */}
 
             {/* page 1 */}
             {page === 1 &&
-                <div className='relative'>
-                    <div className="w-full min-h-full h-full md:w-full md:h-full bg-center bg-cover z-0 " style={{ backgroundImage: `url(${sliderUrls[1]})` }}>
-                        <div className="px-8 py-10 text-white  bg-black/50 backdrop-opacity-10 w-full backdrop-invert">
-                            <div className='min-h-screen flex flex-col'>
-                                <div className='flex flex-col justify-between gap-4'>
-                                    <div className='flex flex-row'>
-                                        <p className='pt-5 text-[29px] font-bold text-secondary'>ĐẾN GIỜ SELFIE RỒI !</p>
-                                        <img className='w-20' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708873/Beana_assets/bean_afjwev.png' />
-                                    </div>
-                                    <div className='flex flex-col'>
-                                        <ul className='pl-5 text-[13px] font-normal'>
-                                            <li className="list-decimal pt-4">
-                                                Kéo tóc ra, sau không trang điểm.
-                                            </li>
-                                            <li className="list-decimal pt-4">
-                                                Sử dụng máy ảnh mặt trước với ánh sáng tốt
-                                            </li>
-                                            <li className="list-decimal pt-4">
-                                                Giữ cho đôi mắt mở với một biểu cảm bình thường
-                                            </li>
-                                            <li className="list-decimal pt-4">
-                                                Định vị khuôn mặt đúng trong vùng cho trước
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <div
-                                            className="text-sm mt-20 border-[2px] py-5 px-8 hover:bg-white/20 text-center"
-                                        >
-                                            Vui lòng cho phép truy cập vào máy ảnh của bạn, để chúng tôi có thể cung cấp trải nghiệm cá nhân dựa trên bức ảnh selfie của bạn.
-
-                                            <br /><strong>Hình selfie của bạn sẽ không được lưu trữ trong cơ sở dữ liệu của chúng tôi.</strong>
-                                        </div>
-                                    </div>
-                                    <div className='bg-white w-full absolute bottom-0 left-0'>
-                                        <div
-                                            className="ml-6 mt-2 w-[90%] border-[2px] bg-primary shadow-sm shadow-primary text-center py-2 hover:bg-secondary hover:shadow-md hover:shadow-secondary ease-in-out duration-500"
-                                            onClick={handleSuccessSend}
-                                        >
-                                            Bắt đầu
-                                        </div>
-                                        <p className='mb-3 pt-3 text-black text-center'>Chọn ảnh của bạn</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+                <ScanningTips
+                    sliderUrls={sliderUrls}
+                    handleSuccessSend={handleSuccessSend}
+                />
             }
             {/* end page 1 */}
 
-
             {/* page 2 */}
-            {page === 0 &&
-                <div className="w-full h-full relative">
-                    <div className="">
-                        {!imgSrc &&
-                            <div className="h-28 py-5 flex justify-center items-center text-white bg-black/80 backdrop-opacity-10 w-full backdrop-invert">
-                                <div className='text-secondary flex flex-row gap-3 justify-center'>
-                                    <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>ÁNH SÁNG</div>
-                                    <div className='border-l h-5 pr-2 ml-2'></div>
-                                    {captureCountdown > 5 && captureCountdown % 2 === 0 ?
-                                        (
-                                            <div className='font-light text-[13px] border-b-2 pb-2 border-red text-red'>VỊ TRÍ MẶT</div>
-                                        ) : (
-                                            <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>VỊ TRÍ MẶT</div>
-                                        )}
-                                    <div className='border-l h-5 pr-2 ml-2'></div>
-                                    <div className='font-light text-[13px] border-b-2 pb-2 border-secondary'>NHÌN THẲNG</div>
-                                </div>
-                            </div>
-                        }
-                        {!imgSrc &&
-                            <div>
-                                {captureCountdown > 5 && captureCountdown % 2 === 0 ?
-                                    (
-                                        <div className='absolute top-28 z-20 left-12'>
-                                            <div className='font-semibold text-[20px] text-black'>Khuôn mặt bạn chưa đúng vị trí</div>
-                                        </div>
-                                    ) : (
-                                        <div className='absolute top-28 z-20 left-[50%] -translate-x-1/2'>
-                                            <div className='font-semibold text-[20px] text-black'>Bạn làm tốt lắm</div>
-                                        </div>
-
-                                    )}
-                                <div className='absolute top-36 z-10 left-8'>
-                                    <div className='text-black'>Đặt khuôn mặt của bạn vào giữa khung hình</div>
-                                </div>
-                            </div>
-                        }
-
-                        {!imgSrc &&
-                            <div>
-                                <Webcam
-                                    ref={webcamRef}
-                                    screenshotFormat="image/jpeg"
-                                    className="absolute top-28 left-0 right-[80px] text-center w-full h-[480px] border-2 border-secondary"
-                                />
-                                <canvas
-                                    ref={canvasRef}
-                                    className="absolute left-4 md:left-0 top-[98px] text-center w-[380px] h-[500px]"
-                                />
-                                <div className='absolute top-[290px] z-20 left-[50%] -translate-x-1/2'>
-                                    <div className='text-black font-semibold text-[64px]'>{captureCountdown < 4 && captureCountdown - 1}</div>
-                                </div>
-                                <div className='text-black font-bold text-lg absolute top-[190px] left-[50%] -translate-x-1/2'>
-                                    Đỉnh đầu
-                                </div>
-                                <div className='text-black font-bold text-lg absolute top-[480px] left-[50%] -translate-x-1/2'>
-                                    Cằm
-                                </div>
-                            </div>
-                        }
-                    </div>
-                    {imgSrc && (
-
-                        <img
-                            src={imgSrc}
-                        />
-                    )}
-
-                </div>
+            {page === 2 &&
+                <ScanningCameraOpen
+                    captureCountdown={captureCountdown}
+                    imgSrc={imgSrc}
+                    webcamRef={webcamRef}
+                    canvasRef={canvasRef}
+                />
             }
             {/* end page 2 */}
         </div>

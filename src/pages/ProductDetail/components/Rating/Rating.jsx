@@ -214,7 +214,14 @@ export default function Rating() {
           {isSelected && <div className="text-sm text-[#f10000] pb-2">{isSelected}</div>}
           {rating > 0 ? (
             <div
-              className={`font-semibold text-[#fff] bg-${starStatus[rating - 1].color} text-[13px] px-6 py-2 rounded-lg`}
+              className={`font-semibold text-[#fff] text-[13px] px-6 py-2 rounded-lg 
+              ${starStatus[rating - 1].color === 'red' ? 'bg-red' :
+                  starStatus[rating - 1].color === 'grey' ? 'bg-grey' :
+                    starStatus[rating - 1].color === 'blue' ? 'bg-blue' :
+                      starStatus[rating - 1].color === 'orange' ? 'bg-orange' :
+                        starStatus[rating - 1].color === 'secondary' && 'bg-secondary'
+                }  
+              `}
             >
               {starStatus[rating - 1].statusStarChosen}
             </div>
