@@ -84,6 +84,7 @@ export default {
         sliderDescription: 'sliderDescription 0.4s ease ',
         cartAppear: 'sliderDescription 1s ease ',
         analyzeAppear: 'analyzeSkin 0.5s ease ',
+        analyzeLineAppear: 'analyzeSkin 0.8s ease ',
       },
       boxShadow: {
         'chat': '0 4px 12px 0 rgba(0, 0, 0, .15)',

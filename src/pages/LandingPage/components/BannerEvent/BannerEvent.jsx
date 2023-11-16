@@ -1,53 +1,14 @@
-import React from 'react'
 import { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-import Lottie from "lottie-react"
-import Spider from './spider.json'
-import Rescue from './rescue.json'
-import { useToken } from '../../../../services/Auth/services';
-import { useNavigate } from 'react-router-dom';
-import BeanScream from '../../../../components/Loading/BeanScream';
 
 export default function BannerEvent() {
 
-    const decodedToken = useToken();
-    const navigate = useNavigate();
-
     const [isShow, setIsShow] = useState(true);
-    const [openSpider, setOpenSpider] = useState(false);
-    const [iSCatchBean, setIsCatchBean] = useState(false);
-    const [isRescue, setIsRescue] = useState(false);
-    const [isGoRescue, setIsGoRescue] = useState(false);
 
     const setShow = () => {
         setIsShow(false);
     };
-    const handleOpenSpider = () => {
-        setOpenSpider(true);
-        setIsShow(false)
-        setTimeout(() => {
-            setIsCatchBean(true);
-            setTimeout(() => {
-                setIsCatchBean(false);
-                setOpenSpider(false);
-                setIsRescue(true);
-            }, 1000);
-        }, 4400);
-    };
-    const handleRescue = () => {
-        setIsGoRescue(true);
-        setIsRescue(false)
-        setTimeout(() => {
-            if (decodedToken) {
-                navigate("/products")
-            } else {
-                navigate("/login")
-            }
-        }, 3000);
-    };
-
-
 
     useEffect(() => {
         const adCount = parseInt(localStorage.getItem('adClosedCount') || '1', 10);
@@ -67,7 +28,7 @@ export default function BannerEvent() {
 
     return (
         <div className='relative visible'>
-            {(isShow && !decodedToken) && (
+            {isShow && (
                 <div
                     style={{
                         position: "fixed",
