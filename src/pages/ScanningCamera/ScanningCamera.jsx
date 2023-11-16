@@ -57,7 +57,6 @@ function ScanningCamera() {
     }, []);
 
     const handleSuccessSend = () => {
-        setPage(1);
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
@@ -132,10 +131,8 @@ function ScanningCamera() {
     };
 
     useEffect(() => {
-        if (page === 2) {
             runFaceMesh();
-        }
-    }, [page]);
+    }, []);
 
     return (
         <div className=" min-h-full h-full md:hidden">
@@ -214,7 +211,7 @@ function ScanningCamera() {
                                             </div>
                                             <button
                                                 className="absolute bottom-3 w-[90%] -translate-x-1/2 left-[50%] font-normal text-[#fff] text-[13px] border-2 px-6 py-2 bg-primary shadow-md shadow-primary hover:bg-[#49B949] hover:text-[#fff] hover:shadow-md hover:shadow-[#49B949]"
-                                                onClick={() => handleNextPage(page + 1)}
+                                                onClick={() => handleNextPage(1)}
                                             >
                                                 Bắt Đầu
                                             </button>

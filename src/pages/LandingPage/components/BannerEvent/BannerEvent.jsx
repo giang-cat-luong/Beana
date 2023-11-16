@@ -45,7 +45,7 @@ export default function BannerEvent() {
                 >
                     <div className='relative'>
                         <a href='/products' className='flex justify-center '>
-                            <img src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1698682641/Beana_assets/halloween_event.png' className='w-[90%] md:w-[30%] shadow-[0_25px_60px_-20px_#86bb86]' />
+                            <img src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1698682641/Beana_assets/halloween_event.png' className='w-[60%] md:w-[30%] shadow-[0_25px_60px_-20px_#86bb86]' />
                         </a>
                         <div>
                             <FontAwesomeIcon
