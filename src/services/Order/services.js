@@ -1,17 +1,17 @@
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
-import { addAddress, getAddress } from "../Address/callers";
+import { addAddress, getOrder } from "../Order/callers";
 import Failed from "../../components/Notification/Failed";
 import { useState } from 'react';
 
 const API_KEY = {
-  GET_ADDRESS: "address",
+  GET_ORDER: "orders",
 };
 
-export const useGetAddress = () => {
+export const useGetOrder = () => {
   return useQuery(
     {
-      queryKey: [API_KEY.GET_ADDRESS],
-      queryFn: () => getAddress(),
+      queryKey: [API_KEY.GET_ORDER],
+      queryFn: () => getOrder(),
     },
     {
       staleTime: "100000",

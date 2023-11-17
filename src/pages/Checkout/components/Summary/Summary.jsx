@@ -1,11 +1,17 @@
 import { useCheckout } from "../../../../services/Checkout/services";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-export default function Summary({ data, totalPrice, defaultAddress, selectedPayment }) {
-  console.log(data);
-  console.log(selectedPayment)
+import { useState, useEffect } from "react";
+import Failed from "../../../../components/Notification/Failed";
+import BeanLoading from "../../../../components/Loading/BeanLoading";
+import { useNavigate } from "react-router-dom";
+
+export default function Summary({ data, totalPrice, addressList, defaultAddress, selectedPayment, selectedDelivery, setPage }) {
+
+  const navigate = useNavigate();
   //checkout
-  const { mutate } = useCheckout();
+  const { mutate, isFailed, isLoading, isSuccess, data: checkoutData } = useCheckout();
+  const [isFailedOpen, setIsFailedOpen] = useState(false);
 
   const orderDetailsList = data?.map((item) => ({
     productId: item.item.id,
@@ -23,18 +29,42 @@ export default function Summary({ data, totalPrice, defaultAddress, selectedPaym
       console.error(error);
     }
   }
+  //address default
+  const [defaultAddressSelected, setDefaultAddressSelected] = useState();
+
+  useEffect(() => {
+    const findDefaultAddress = addressList?.find((address) => address.id === defaultAddress)
+    setDefaultAddressSelected(findDefaultAddress);
+  }, [addressList]);
+
+  if (isLoading) {
+    return <BeanLoading />;
+  }
+  if (isSuccess) {
+    return navigate("/payment-momo", { state: { dataCheckout: checkoutData } });
+  }
+
 
   return (
     <div className='border-t-[1px] border-l-[1px] border-b-[1px] border-[#c3c2bc] mt-8 bg-white'>
+      {isFailed && (
+        <Failed
+          isFailed={isFailed}
+          setIsFailed={() => setIsFailedOpen(false)}
+          title="Đặt hàng thất bại"
+          description="Có vấn đề xảy ra khi đặt hàng!"
+        />
+      )}
       <div>
         <div className='px-16 mb-20 mt-8 '>
           <div className="text-[24px] font-bold tracking-widest">
             THÔNG TIN TÓM TẮT
           </div>
-          <div className="mt-10  ">
+          <div className="mt-10 flex flex-row justify-between ">
             <div className="tracking-widest text-base font-bold">
               THÔNG TIN KHÁCH HÀNG
             </div>
+            <div onClick={() => setPage(0)} className="text-sm font-medium hover:underline text-secondary cursor-pointer">Sửa</div>
           </div>
           <div
             className={`cursor-pointer h-[130px] border-[2px] shadow-lg mt-6 tracking-wider text-sm font-medium relative border-dashed border-secondary
@@ -48,10 +78,10 @@ export default function Summary({ data, totalPrice, defaultAddress, selectedPaym
                 />
                 <div className={`text-black`}>
                   <div className="flex flex-row gap-2">
-                    <p className="font-semibold">Vũ Trường Giang -</p>
-                    <p>0981890260</p>
+                    <p className="font-semibold">{defaultAddressSelected?.fullName} -</p>
+                    <p>{defaultAddressSelected?.phone}</p>
                   </div>
-                  <p className="mt-2">Phường Hiệp Phú Quận 9 TPHCM</p>
+                  <p className="mt-2">{defaultAddressSelected?.address}</p>
                 </div>
               </div>
 
@@ -61,34 +91,84 @@ export default function Summary({ data, totalPrice, defaultAddress, selectedPaym
             <div className="tracking-widest text-base font-bold">
               HÌNH THỨC VẬN CHUYỂN
             </div>
+            <div onClick={() => setPage(1)} className="text-sm font-medium hover:underline text-secondary cursor-pointer">Sửa</div>
           </div>
-          <div class="flex items-center mb-4 mt-6">
-            <input
-              checked
-              id="default-radio-2"
-              type="radio"
-              value="0"
-              name="payment-method"
-              class="w-8 h-8"
-            />
-            <label class="ml-2 text-md font-medium text-black">
-              <span className="text-secondary">[NowFree]</span>  Giao hàng nhanh trong  <span className="text-secondary">2 giờ (Trễ tặng 100k)</span> <strong>: 0 đ</strong> (Nhận hàng trước <span className="text-secondary">10h</span> ngày mai)
-            </label>
-          </div>
+          {selectedDelivery === "0" &&
+            <div class="flex items-center mb-4 mt-6">
+              <input
+                checked
+                id="default-radio-2"
+                type="radio"
+                value="0"
+                name="delivery-method"
+                class="w-8 h-8"
+              />
+              <label class="ml-2 text-md font-medium text-black">
+                <span className="text-secondary">[NowFree]</span>  Giao hàng nhanh trong  <span className="text-secondary">2 giờ (Trễ tặng 100k)</span> <strong>: 0 đ</strong> (Nhận hàng trước <span className="text-secondary">10h</span> ngày mai)
+              </label>
+            </div>
+          }
+          {selectedDelivery === "1" &&
+            <div class="flex items-center  mb-4 mt-6">
+              <input
+                id="default-radio-3"
+                type="radio"
+                value="1"
+                name="delivery-method"
+                class="w-6 h-6"
+                checked
+              />
+              <label class="ml-2 text-md font-medium text-black">
+                Giao hàng trong 48 giờ<strong> : 0 đ</strong>
+              </label>
+            </div>
+          }
 
-          <div className="mt-10 tracking-widest text-base font-bold">
-            PHƯƠNG THỨC THANH TOÁN
+          <div className="mt-10  flex flex-row justify-between">
+            <div className="tracking-widest text-base font-bold">
+              PHƯƠNG THỨC THANH TOÁN
+            </div>
+            <div onClick={() => setPage(2)} className="text-sm font-medium hover:underline text-secondary cursor-pointer">Sửa</div>
           </div>
-          <div class="mt-6 flex items-center">
-            <input
-              checked
-              id="default-radio-3"
-              type="radio"
-              value="1"
-              class="w-6 h-6"
-            />
-            <label class="ml-2 text-md font-medium text-black">Thanh toán trực tuyến MOMO</label>
-          </div>
+          {selectedPayment === "1" &&
+            <div class="mt-6 flex items-center">
+              <input
+                checked
+                id="default-radio-3"
+                type="radio"
+                value="1"
+                class="w-6 h-6"
+              />
+              <label class="ml-2 text-md font-medium text-black">Thanh toán trực tuyến MOMO</label>
+            </div>
+          }
+          {selectedPayment === "2" &&
+            <div class="flex items-center mt-6">
+              <input
+                id="default-radio-1"
+                type="radio"
+                value="2"
+                name="payment-method"
+                checked
+                class="w-6 h-6"
+              />
+              <label class="ml-2 text-md font-medium text-black">Thanh toán tiền khi nhận hàng (COD)</label>
+            </div>
+          }
+          {selectedPayment === "3" &&
+            <div class="flex items-center mt-6">
+              <input
+                id="default-radio-2"
+                type="radio"
+                value="0"
+                name="payment-method"
+                checked
+                class="w-6 h-6"
+              />
+              <label class="ml-2 text-md font-medium text-black">Thẻ ATM nội địa/Internet Banking (Hỗ trợ Internet Banking)</label>
+            </div>
+          }
+
           <div className="mt-8 text-sm font-medium flex flex-row justify-between">
             <div>
               Tạm tính

@@ -1,49 +1,16 @@
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-export default function Delivery({ addressList, defaultAddress, handleSetDefaultAddress, handleNextPage }) {
+export default function Delivery({ selectedDelivery,handleSetDelivery, handleNextPage }) {
 
+    console.log(selectedDelivery)
     return (
         <div className='border-t-[1px] border-l-[1px] border-b-[1px] border-[#c3c2bc] mt-8 bg-white'>
             <div>
                 <div className='px-16 mb-20 mt-8 '>
                     <div className="text-[24px] font-bold tracking-widest">
-                        GIAO HÀNG
+                        VẬN CHUYỂN
                     </div>
-                    <div className="mt-10  flex flex-row justify-between">
-                        <div className="tracking-widest text-base font-bold">
-                            THÔNG TIN GIAO HÀNG
-                        </div>
-                    </div>
-                    {addressList?.map((address) => (
-                        <div
-                            key={address.id}
-                            className={`cursor-pointer h-[130px] border-[2px] shadow-lg mt-6 tracking-wider text-sm font-medium relative ${defaultAddress === address.id ? "border-dashed border-secondary  " : "border-dashed border-[#faf9f5]"
-                                }`}
-                            onClick={() => handleSetDefaultAddress(address.id)}
-                        >
-                            <div className=" px-14 pt-6 pb-12">
-                                <div className="flex flex-col">
-                                    <FontAwesomeIcon
-                                        icon={faCircleCheck}
-                                        className={`text-[25px] absolute top-7 left-4 ${defaultAddress === address.id ? 'text-secondary ' : 'text-grey '}`}
-                                    />
-                                    <div className={`${defaultAddress === address.id ? 'text-black ' : 'text-[#71716e] '}`}>
-                                        <div className="flex flex-row gap-2">
-                                            <p className="font-semibold">{address?.fullName} -</p>
-                                            <p>{address.phone}</p>
-                                        </div>
-                                        <p className="mt-2">{address.address}</p>
-                                    </div>
-                                </div>
-                                {defaultAddress === address.id &&
-                                    <div className="absolute right-0 top-0">
-                                        <img className="w-8" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1699474594/Beana_assets/default_w3ztfr.png" />
-                                    </div>
-                                }
-                            </div>
-                        </div>
-                    ))}
                     <div className="mt-12  flex flex-row justify-between">
                         <div className="tracking-widest text-base font-bold">
                             HÌNH THỨC VẬN CHUYỂN
@@ -54,8 +21,10 @@ export default function Delivery({ addressList, defaultAddress, handleSetDefault
                             id="default-radio-2"
                             type="radio"
                             value="0"
+                            onChange={() => handleSetDelivery("0")}
                             name="payment-method"
                             class="w-8 h-8"
+                            checked={selectedDelivery === "0"}
                         />
                         <label class="ml-2 text-md font-medium text-black">
                             <span className="text-secondary">[NowFree]</span>  Giao hàng nhanh trong  <span className="text-secondary">2 giờ (Trễ tặng 100k)</span> <strong>: 0 đ</strong> (Nhận hàng trước <span className="text-secondary">10h</span> ngày mai)
@@ -66,8 +35,10 @@ export default function Delivery({ addressList, defaultAddress, handleSetDefault
                             id="default-radio-3"
                             type="radio"
                             value="1"
+                            onChange={() => handleSetDelivery("1")}
                             name="payment-method"
                             class="w-6 h-6"
+                            checked={selectedDelivery === "1"}
                         />
                         <label class="ml-2 text-md font-medium text-black">
                             Giao hàng trong 48 giờ<strong> : 0 đ</strong>

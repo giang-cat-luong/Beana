@@ -18,8 +18,7 @@ export default function Checkout() {
     const { data: addressList } = useAddress();
 
     //address
-    const [defaultAddress, setDefaultAddress] = useState(null);
-
+    const [defaultAddress, setDefaultAddress] = useState();
     const handleSetDefaultAddress = (addressId) => {
         setDefaultAddress(addressId);
     };
@@ -36,15 +35,28 @@ export default function Checkout() {
 
         setTotalPrice(total);
     };
+
     useEffect(() => {
         updateTotalPrice();
     }, [data]);
 
+    useEffect(() => {
+        const findDefaultAddress = addressList?.find((address) => address.status === 1)
+        setDefaultAddress(findDefaultAddress?.id);
+    }, [addressList]);
+
     //payment
-    const [selectedPayment, setSelectedPayment] = useState("2"); // Đặt giá trị mặc định
+    const [selectedPayment, setSelectedPayment] = useState("2");
 
     const handlePayment = (paymentMethod) => {
         setSelectedPayment(paymentMethod);
+    };
+
+    //payment
+    const [selectedDelivery, setSelectedDelivery] = useState("0");
+
+    const handleSetDelivery = (delivery) => {
+        setSelectedDelivery(delivery);
     };
 
     //page
@@ -54,7 +66,6 @@ export default function Checkout() {
         setPage(currentPage)
     }
 
-    
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -148,16 +159,36 @@ export default function Checkout() {
                         <div onClick={() => setPage(3)} className={`cursor-pointer ${page === 3 && 'text-secondary border-b-[2px] border-secondary pb-2'}`}>Summary</div>
                     </div>
                     {page === 0 &&
-                        <CustomerInformation setPage={setPage} />
+                        <CustomerInformation
+                            setPage={setPage}
+                            addressList={addressList}
+                            defaultAddress={defaultAddress}
+                            handleSetDefaultAddress={handleSetDefaultAddress} />
                     }
                     {page === 1 &&
-                        <Delivery addressList={addressList} defaultAddress={defaultAddress} handleNextPage={handleNextPage} handleSetDefaultAddress={handleSetDefaultAddress} />
+                        <Delivery
+                            selectedDelivery={selectedDelivery}
+                            handleSetDelivery={handleSetDelivery}
+                            handleNextPage={handleNextPage}
+                        />
                     }
                     {page === 2 &&
-                        <Payment handlePayment={handlePayment} handleNextPage={handleNextPage} selectedPayment={selectedPayment} />
+                        <Payment
+                            handlePayment={handlePayment}
+                            handleNextPage={handleNextPage}
+                            selectedPayment={selectedPayment}
+                        />
                     }
                     {page === 3 &&
-                        <Summary data={data} totalPrice={totalPrice} defaultAddress={defaultAddress} selectedPayment={selectedPayment}/>
+                        <Summary
+                            data={data}
+                            addressList={addressList}
+                            totalPrice={totalPrice}
+                            defaultAddress={defaultAddress}
+                            selectedPayment={selectedPayment}
+                            selectedDelivery={selectedDelivery}
+                            setPage={setPage}
+                        />
                     }
                 </div>
             </div>

@@ -51,11 +51,6 @@ export default function Payment({ handlePayment, handleNextPage, selectedPayment
             />
             <label class="ml-2 text-md font-medium text-black">Thanh toán trực tuyến MOMO</label>
           </div>
-          {selectedPayment === 1 &&
-            <div className="px-8">
-
-            </div>
-          }
           <div className="mt-16 flex flex-col gap-5 text-[13px] font-bold">
             <button
               className="bg-secondary py-3 text-white border-[1px] border-secondary hover:bg-white hover:text-secondary hover:border-[1px] hover:border-primary duration-500"

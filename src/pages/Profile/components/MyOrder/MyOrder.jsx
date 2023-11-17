@@ -1,12 +1,16 @@
 import { useState } from 'react'
 
-import AllOrder from './AllOrder';
-import Cancelled from './Cancelled';
-import NewOrder from './NewOrder';
-import Pending from './Pending';
-import Success from './Success';
+import AllOrder from '../MyOrder/components/AllOrder';
+import Cancelled from '../MyOrder/components/Cancelled';
+import NewOrder from '../MyOrder/components/NewOrder';
+import Pending from '../MyOrder/components/Pending';
+import Success from '../MyOrder/components/Success';
+import useOrder from './hooks/useOrder';
 
 export default function MyOrder() {
+
+  const { data, isLoading } = useOrder();
+  console.log(data)
   const [status, setStatus] = useState(1);
 
   const handleClickStatus = (index) => {

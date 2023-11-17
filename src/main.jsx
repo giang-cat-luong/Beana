@@ -31,6 +31,7 @@ import {
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import Checkout from "./pages/Checkout/Checkout";
+import PaymentMomo from "./pages/Checkout/components/PaymentMomo";
 
 
 
@@ -160,6 +161,10 @@ const router = createBrowserRouter([
   {
     path: "/scanning-calculation",
     element: <ScanningCalculation />,
+  },
+  {
+    path: "/payment-momo",
+    element: <PaymentMomo />,
   },
 
 ]);

@@ -187,7 +187,7 @@ export default function Header() {
             <div >
                 <nav >
                     <div className={`flex flex-row px-5 py-5  md:py-5 border-b ${loggedIn ? 'md:px-[77px]' : 'md:px-20'} `}>
-                        <a className='flex  md:pt-1' href="https://beana.com">
+                        <a className='flex  md:pt-1' href="https://beana.id.vn">
                             <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1699710769/Beana_assets/logo_teacher_eu0vcz.png" className="w-full md:w-56" alt="Beana Logo" />
                         </a>
 

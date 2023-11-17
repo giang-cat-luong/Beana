@@ -1,31 +1,36 @@
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { addOrder } from "./callers";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-// const API_KEY = {
-//   GET_CART: "cart",
-//   ADD_TO_CART: "add_to_cart",
-// };
-
-// export const useGetCart = () => {
-//   return useQuery(
-//     {
-//       queryKey: [API_KEY.GET_CART],
-//       queryFn: () => getCart(),
-//     },
-//     {
-//       staleTime: "100000",
-//     },
-//   );
-// };
 export const useCheckout = () => {
-  // const navigate = useNavigate();
-  return useMutation(addOrder, {
+  // const queryClient = useQueryClient();
+  const [isFailed, setIsFailed] = useState(false);
+  const navigate = useNavigate();
+  const mutation = useMutation(addOrder, {
     onSuccess: () => {
-      // navigate("/");
+      // queryClient.invalidateQueries({ queryKey: ['address'] });
+      // navigate("/payment-momo")
     },
     onError: () => {
+      setIsFailed(true);
+      setTimeout(() => {
+        setIsFailed(false);
+      }, 5000);
     },
+
   });
+  const mutate = mutation.mutate;
+  const isLoading = mutation.isLoading;
+  const isSuccess = mutation.isSuccess;
+  const data = mutation.data;
+  return {
+    mutate,
+    isFailed,
+    isLoading,
+    isSuccess,
+    data
+  };
 };
 
 
