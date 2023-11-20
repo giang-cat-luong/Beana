@@ -1,15 +1,17 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import useCart from "../../pages/Cart/hooks/useCart";
 import { useState, useEffect, useRef } from "react";
 import { useRemoveCartItem } from "../../services/Cart/services";
 import EmptyCart from "../NoData/EmptyCart";
 import BeanLoading from "../Loading/BeanLoading";
+import { useToken } from "../../services/Auth/services";
 
 export default function CartSideBar({ isOpen, setIsOpen }) {
-    const sidebarRef = useRef(null); 
 
+    const sidebarRef = useRef(null);
+    const decodedToken = useToken();
     const handleOutsideClick = (e) => {
         if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
             setIsOpen(false);
@@ -118,17 +120,35 @@ export default function CartSideBar({ isOpen, setIsOpen }) {
                                 </div>
                             </div>
                             <div className="flex flex-row gap-3 justify-between w-full">
-                                <div
-                                    className='text-[13px] font-normal px-6 py-3 beana-button-green-hover cursor-pointer'
-                                    onClick={navigateToCart}
-                                >
-                                    XEM GIỎ HÀNG
-                                </div>
-                                <div className='beana-button-white-hover px-8 py-3 text-[13px] font-normal'
-
-                                >
-                                    THANH TOÁN
-                                </div>
+                                {data?.length <= 0 ? (
+                                    <div
+                                        className='text-[13px] font-normal px-6 py-3 beana-button-green-hover cursor-pointer'
+                                    >
+                                        XEM GIỎ HÀNG
+                                    </div>) : (
+                                    <div
+                                        className='text-[13px] font-normal px-6 py-3 beana-button-green-hover cursor-pointer'
+                                        onClick={navigateToCart}
+                                    >
+                                        XEM GIỎ HÀNG
+                                    </div>
+                                )
+                                }
+                                {decodedToken ? (
+                                    <Link to="/checkout">
+                                        <div className='beana-button-white-hover px-8 py-3 text-[13px] font-normal'
+                                        >
+                                            THANH TOÁN
+                                        </div>
+                                    </Link>
+                                ) : (
+                                    <Link to="/login">
+                                        <div className='beana-button-white-hover px-8 py-3 text-[13px] font-normal'
+                                        >
+                                            THANH TOÁN
+                                        </div>
+                                    </Link>
+                                )}
                             </div>
                         </div>
 

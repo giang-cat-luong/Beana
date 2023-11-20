@@ -328,13 +328,13 @@ function Login({ props }) {
                             <p className="social-text">Hoặc đăng nhập bằng các nền tảng</p>
                             <div className="social-media">
                                 <a href="#" className="social-icon">
-                                    <img src="/assets/facebook.svg" style={{ width: '40px' }} alt="" />
+                                    <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708782/Beana_assets/facebook_ir5hat.svg" style={{ width: '40px' }} alt="" />
                                 </a>
                                 <a href="#" className="social-icon">
-                                    <img src="/assets/insta.svg" style={{ width: '40px' }} alt="" />
+                                    <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708780/Beana_assets/insta_uwxljd.svg" style={{ width: '40px' }} alt="" />
                                 </a>
                                 <a href="#" className="social-icon">
-                                    <img src="/assets/google.svg" style={{ width: '40px' }} alt="" />
+                                    <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708784/Beana_assets/google_aq6hfx.svg" style={{ width: '40px' }} alt="" />
                                 </a>
                             </div>
                         </form>
@@ -454,13 +454,13 @@ function Login({ props }) {
                             <p className="social-text">Hoặc đăng nhập bằng các nền tảng</p>
                             <div className="social-media">
                                 <a href="#" className="social-icon">
-                                    <img src="/assets/facebook.svg" style={{ width: '40px' }} alt="" />
+                                    <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708782/Beana_assets/facebook_ir5hat.svg" style={{ width: '40px' }} alt="" />
                                 </a>
                                 <a href="#" className="social-icon">
-                                    <img src="/assets/insta.svg" style={{ width: '40px' }} alt="" />
+                                    <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708780/Beana_assets/insta_uwxljd.svg" style={{ width: '40px' }} alt="" />
                                 </a>
                                 <a href="#" className="social-icon">
-                                    <img src="/assets/google.svg" style={{ width: '40px' }} alt="" />
+                                    <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708784/Beana_assets/google_aq6hfx.svg" style={{ width: '40px' }} alt="" />
                                 </a>
                             </div>
                         </form>
@@ -480,7 +480,7 @@ function Login({ props }) {
                                 </button>
                             </Link>
                         </div>
-                        <img src="/assets/phone.png" className="image" alt="" />
+                        <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708889/Beana_assets/phone_end1yy.png" className="image" alt="" />
                     </div>
                     <div className="panel right-panel">
                         <div className="content">
@@ -495,7 +495,7 @@ function Login({ props }) {
                             </Link>
                         </div>
                         <img
-                            src="/assets/phone1.png"
+                            src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708786/Beana_assets/phone1_q3b0xy.png"
                             style={{ marginRight: "90px" }}
                             className="image"
                             alt=""

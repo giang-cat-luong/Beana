@@ -57,7 +57,7 @@ export default function Summary({ data, totalPrice, addressList, defaultAddress,
       )}
       <div>
         <div className='px-16 mb-20 mt-8 '>
-          <div className="text-[24px] font-bold tracking-widest">
+          <div className="text-overLg font-bold tracking-widest">
             THÔNG TIN TÓM TẮT
           </div>
           <div className="mt-10 flex flex-row justify-between ">

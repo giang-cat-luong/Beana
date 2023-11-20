@@ -8,7 +8,7 @@ export default function ScanningIntroduction({sliderUrls,scrolled,setShow}) {
                     <div className=' flex flex-col'>
                         <div className='min-h-screen flex flex-col justify-between'>
                             <div>
-                                <img src="./assets/logo.png" alt="Logo" className="pt-10" />
+                                <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708868/Beana_assets/logo_wvawux.png" alt="Logo" className="pt-10" />
                                 <p className="pt-10 font-semibold text-lg text-center">Quét làn da của bạn để phân tích chăm sóc da tùy chỉnh trong vài giây</p>
                             </div>
                             <div className='flex flex-col gap-16 pb-10'>
@@ -27,7 +27,7 @@ export default function ScanningIntroduction({sliderUrls,scrolled,setShow}) {
                 </div>
             </div>
             <div>
-                <img className='px-8 pt-8 pb-28' src="./assets/cameraAds.png" />
+                <img className='px-8 pt-8 pb-28' src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708870/Beana_assets/cameraAds_q1jgef.png" />
             </div>
         </div>
     )

@@ -13,9 +13,9 @@ import useGetProduct from '../Product/hooks/useGetProduct'
 export default function LandingPage() {
 
     const sliderUrls = [
-        './assets/slider1.jpg',
-        './assets/slider2.jpeg',
-        './assets/slider3.png',
+        'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708874/Beana_assets/slider1_po5hba.jpg',
+        'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708874/Beana_assets/slider2_tfdbdq.jpg',
+        'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708888/Beana_assets/slider3_vdzqje.png',
     ];
     const sliderTitle = [
         'PHÂN TÍCH DA MẶT AI BEANA ',
@@ -44,15 +44,15 @@ export default function LandingPage() {
 
     const productCategory = [
         {
-            url: './assets/makeup.png',
+            url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708874/Beana_assets/makeup_gxit11.png',
             name: "Trang Điểm Mặt"
         },
         {
-            url: './assets/skincare.jpg',
+            url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708868/Beana_assets/skincare_wkzuo9.jpg',
             name: "Chăm Sóc Da Mặt"
         },
         {
-            url: './assets/giftandsets.png',
+            url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708875/Beana_assets/giftandsets_ocmglr.png',
             name: "Gifts And Sets"
         },
     ];

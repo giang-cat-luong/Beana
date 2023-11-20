@@ -46,7 +46,7 @@ export default function UserData({handleHelp,setPage}) {
     <div className='relative'>
       <div className='h-full mt-12 px-4'>
         <div className='font-bold text-xs tracking-wider'>BƯỚC 1/1</div>
-        <div className='font-light text-[#333333] text-[24px] tracking-wider mt-5'>HỒ SƠ VỀ DA CỦA BẠN!</div>
+        <div className='font-light text-[#333333] text-overLg tracking-wider mt-5'>HỒ SƠ VỀ DA CỦA BẠN!</div>
         <div className='font-bold text-[#333333] text-[18px] tracking-wider mt-6'>TUỔI CỦA BẠN</div>
         <div className='font-normal text-[#858383] text-[12px] tracking-wider mt-3'>Thông tin này giúp cung cấp thông tin cho việc phân tích và chuẩn đoán khuôn mặt</div>
         <div className='flex mt-6 justify-center items-center'>

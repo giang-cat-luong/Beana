@@ -206,7 +206,7 @@ export default function ResultSkin({ img }) {
         </div>
       }
       {page === 0 &&
-        <div className="h-[620px] z-0 bg-fixed animate-screenAppear" style={{ backgroundImage: `url(${img})` }}>
+        <div className="h-[620px] z-0 bg-fixed bg-center animate-screenAppear" style={{ backgroundImage: `url('https://res.cloudinary.com/dc4hafqoa/image/upload/v1700497153/Beana_assets/635bcc2d96817846e4852f51_634fd79657515cf1330c7103_63207867a3bbeed46b755d80_guide-to-face-recognition_o0jgxy.png')` }}>
           {currentImageByIndex === 5 &&
             <div className="h-[620px] bg-black/5 backdrop-opacity-10 backdrop-invert ">
               <div className='animate-analyzeLineAppear'>
@@ -340,7 +340,7 @@ export default function ResultSkin({ img }) {
           <div ref={resultRef} className='relative pb-24'>
             {currentImageByIndex === 5 &&
               <div className='animate-cartAppear'>
-                <p className='font-bold text-[24px] text-center mt-6'>KẾT QUẢ CỦA BẠN</p>
+                <p className='font-bold text-overLg text-center mt-6'>KẾT QUẢ CỦA BẠN</p>
                 <p className='font-light text-[12px] text-center mt-8'>Khám phá những kết quả được phát hiện từ phân tích da IT beana™ cá nhân của bạn</p>
 
                 <div>
@@ -424,8 +424,8 @@ export default function ResultSkin({ img }) {
             {currentImageByIndex === 4 &&
               <div className='animate-cartAppear'>
                 <p className='font-bold text-[10px] text-secondary text-center mt-6'>Khu Vực Da Tốt</p>
-                <p className='font-light text-[24px] text-center mt-6'>KẾT QUẢ CỦA BẠN CHO</p>
-                <p className='font-bold text-[24px] text-center'>Độ đàn hồi</p>
+                <p className='font-light text-overLg text-center mt-6'>KẾT QUẢ CỦA BẠN CHO</p>
+                <p className='font-bold text-overLg text-center'>Độ đàn hồi</p>
                 <p className='font-light text-[12px] text-center mt-4 px-6'>
                   Lo ngại về da? Chúng tôi - IT beana đã có giải pháp cho bạn. <br />
                   Khám phá kết quả tùy chỉnh của bạn dựa trên công nghệ quét da tiên tiến của IT.
@@ -461,8 +461,8 @@ export default function ResultSkin({ img }) {
             {currentImageByIndex === 3 &&
               <div className='animate-cartAppear'>
                 <p className='font-bold text-[10px] text-secondary text-center mt-6'>Khu Vực Da Tốt</p>
-                <p className='font-light text-[24px] text-center mt-6'>KẾT QUẢ CỦA BẠN CHO</p>
-                <p className='font-bold text-[24px] text-center'>Đốm tối</p>
+                <p className='font-light text-overLg text-center mt-6'>KẾT QUẢ CỦA BẠN CHO</p>
+                <p className='font-bold text-overLg text-center'>Đốm tối</p>
                 <p className='font-light text-[12px] text-center mt-4 px-6'>
                   Lo ngại về da? Chúng tôi - IT beana đã có giải pháp cho bạn. <br />
                   Khám phá kết quả tùy chỉnh của bạn dựa trên công nghệ quét da tiên tiến của IT.
@@ -498,8 +498,8 @@ export default function ResultSkin({ img }) {
             {currentImageByIndex === 2 &&
               <div className='animate-cartAppear'>
                 <p className='font-bold text-[10px] text-secondary text-center mt-6'>Khu Vực Da Tốt</p>
-                <p className='font-light text-[24px] text-center mt-6'>KẾT QUẢ CỦA BẠN CHO</p>
-                <p className='font-bold text-[24px] text-center'>Lỗ chân lông</p>
+                <p className='font-light text-overLg text-center mt-6'>KẾT QUẢ CỦA BẠN CHO</p>
+                <p className='font-bold text-overLg text-center'>Lỗ chân lông</p>
                 <p className='font-light text-[12px] text-center mt-4 px-6'>
                   Lo ngại về da? Chúng tôi - IT beana đã có giải pháp cho bạn. <br />
                   Khám phá kết quả tùy chỉnh của bạn dựa trên công nghệ quét da tiên tiến của IT.
@@ -535,8 +535,8 @@ export default function ResultSkin({ img }) {
             {currentImageByIndex === 1 &&
               <div className='animate-cartAppear'>
                 <p className='font-bold text-[10px] text-secondary text-center mt-6'>Khu Vực Da Tốt</p>
-                <p className='font-light text-[24px] text-center mt-6'>KẾT QUẢ CỦA BẠN CHO</p>
-                <p className='font-bold text-[24px] text-center'>Sáng da</p>
+                <p className='font-light text-overLg text-center mt-6'>KẾT QUẢ CỦA BẠN CHO</p>
+                <p className='font-bold text-overLg text-center'>Sáng da</p>
                 <p className='font-light text-[12px] text-center mt-4 px-6'>
                   Lo ngại về da? Chúng tôi - IT beana đã có giải pháp cho bạn. <br />
                   Khám phá kết quả tùy chỉnh của bạn dựa trên công nghệ quét da tiên tiến của IT.
@@ -572,8 +572,8 @@ export default function ResultSkin({ img }) {
             {currentImageByIndex === 6 &&
               <div className='animate-cartAppear'>
                 <p className='font-bold text-[10px] text-red text-center mt-6'>Khu Vực Da Yếu #1</p>
-                <p className='font-light text-[24px] text-center mt-6'>KẾT QUẢ CỦA BẠN CHO</p>
-                <p className='font-bold text-[24px] text-center'>Quầng thâm</p>
+                <p className='font-light text-overLg text-center mt-6'>KẾT QUẢ CỦA BẠN CHO</p>
+                <p className='font-bold text-overLg text-center'>Quầng thâm</p>
                 <p className='font-light text-[12px] text-center mt-4 px-6'>
                   Lo ngại về da? Chúng tôi - IT beana đã có giải pháp cho bạn. <br />
                   Khám phá kết quả tùy chỉnh của bạn dựa trên công nghệ quét da tiên tiến của IT.
@@ -609,8 +609,8 @@ export default function ResultSkin({ img }) {
             {currentImageByIndex === 7 &&
               <div className='animate-cartAppear'>
                 <p className='font-bold text-[10px] text-red text-center mt-6'>Khu Vực Da Yếu #2</p>
-                <p className='font-light text-[24px] text-center mt-6'>KẾT QUẢ CỦA BẠN CHO</p>
-                <p className='font-bold text-[24px] text-center'>Nếp nhăn</p>
+                <p className='font-light text-overLg text-center mt-6'>KẾT QUẢ CỦA BẠN CHO</p>
+                <p className='font-bold text-overLg text-center'>Nếp nhăn</p>
                 <p className='font-light text-[12px] text-center mt-4 px-6'>
                   Lo ngại về da? Chúng tôi - IT beana đã có giải pháp cho bạn. <br />
                   Khám phá kết quả tùy chỉnh của bạn dựa trên công nghệ quét da tiên tiến của IT.

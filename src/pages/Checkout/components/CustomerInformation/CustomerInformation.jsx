@@ -21,11 +21,7 @@ export default function CustomerInformation({ setPage, addressList, defaultAddre
         setShowMore(!showMore);
         setVisibleAddress(prevCount => prevCount + addressList.length);
     };
-    const handleShowLess = () => {
-        setShowMore(!showMore);
-        setVisibleAddress(3);
-    };
-
+    
     const handleScrollAddress = () => {
         setShowMore(!showMore);
         setVisibleAddress(3);
@@ -75,7 +71,7 @@ export default function CustomerInformation({ setPage, addressList, defaultAddre
                 />}
             <div>
                 <div className='px-16 mb-20 mt-8 '>
-                    <div className="text-[24px] font-bold tracking-widest">
+                    <div className="text-overLg font-bold tracking-widest">
                         THÔNG TIN KHÁCH HÀNG
                     </div>
                     <div className="w-full mt-8">

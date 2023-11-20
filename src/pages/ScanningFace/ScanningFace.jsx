@@ -4,7 +4,7 @@ import Questionnaire from "../../components/Questionnaire/Questionnaire";
 import { Link } from "react-router-dom";
 
 const sliderUrls = [
-  './assets/slider1.jpg',
+  'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708874/Beana_assets/slider1_po5hba.jpg',
 ];
 const sliderTitle = [
   'PHÂN TÍCH DA MẶT AI BEANA ',
@@ -20,7 +20,7 @@ const sliderTitleDescription = [
   '#fff',
 ];
 const sliderImg = [
-  './assets/qr-code.png',
+  'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708787/Beana_assets/qr-code_ghe29a.png',
 ];
 
 export default function ScanningFace() {
@@ -40,6 +40,7 @@ export default function ScanningFace() {
         colorTitle={sliderTitleColor}
         colorDescription={sliderTitleDescription}
         img={sliderImg}
+        premium={true}
       />
       <div className="md:hidden flex justify-center border-[1px] border-white mx-20 py-1 my-5 rounded-3xl bg-primary text-white shadow-md shadow-primary hover:bg-secondary hover:shadow-md hover:shadow-secondary cursor-pointer">
         <Link to="/scanning-camera">
@@ -49,7 +50,7 @@ export default function ScanningFace() {
       <div className="  md:px-36">
         <div className="md:py-20 md:flex md:flex-col md:gap-24">
           <div className="px-6 md:flex md:flex-row md:justify-between md:items-center md:gap-36">
-            <img className="basis-1/2 w-[520px] h-[456px] md:p-0 " src="./assets/facescanning1.png" />
+            <img className="basis-1/2 w-[520px] h-[456px] md:p-0 " src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708876/Beana_assets/facescanning1_eo10r0.png" />
             <div className="basis-1/2">
               <p className="pt-8 md:pt-0 font-semibold text-black text-lg">KHÁM PHA DA MẶT CỦA BẠN</p>
               <p className="font-medium text-black text-sm pt-6">Vấn đề về da? Tất cả chúng
@@ -59,7 +60,7 @@ export default function ScanningFace() {
             </div>
           </div>
           <div className="px-6 pt-24 md:pt-0 md:flex md:flex-row-reverse md:justify-between md:items-center md:gap-32">
-            <img className="basis-1/2 w-[520px] h-[456px]" src="./assets/facescanning2.png" />
+            <img className="basis-1/2 w-[520px] h-[456px]" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708881/Beana_assets/facescanning2_tggx9l.png" />
             <div className="basis-1/2">
               <p className="pt-8 md:pt-0 font-semibold text-black text-lg">MỘT CÔNG NGHỆ HIỆN ĐẠI</p>
               <p className="font-medium text-black text-sm pt-6">Sử dụng hơn 20 năm nghiên cứu về da,
@@ -69,7 +70,7 @@ export default function ScanningFace() {
             </div>
           </div>
           <div className="px-6 pt-24 md:pt-0 md:flex flex-row justify-between items-center gap-36">
-            <img className="basis-1/2 w-[520px] h-[456px]" src="./assets/facescanning3.png" />
+            <img className="basis-1/2 w-[520px] h-[456px]" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708784/Beana_assets/facescanning3_v5aytf.png" />
             <div className="basis-1/2">
               <p className="pt-8 md:pt-0 font-semibold text-black text-lg">FACE SCANNING HOẠT ĐỘNG NHƯ THẾ NÀO</p>
               <p className="font-medium text-black text-sm pt-6">Công nghệ này đã được điều chỉnh để
@@ -87,17 +88,17 @@ export default function ScanningFace() {
             <p className="pt-8 md:pt-0 font-bold text-black text-[30px] text-center">CÁC BƯỚC SỬ DỤNG FACE SCANNING</p>
             <div className="md:flex flex-row max-w-full justify-between gap-10 ">
               <div className="flex-1 pt-5 md:pt-0">
-                <img className="w-full border-[1px]" src="./assets/step1.png" />
+                <img className="w-full border-[1px]" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708798/Beana_assets/step1_u4agfe.png" />
                 <p className="pt-8 md:pt-5 font-bold text-black text-[20px] text-center">BƯỚC 1 CHỤP ẢNH TỰ SƯỚNG</p>
                 <p className="font-medium text-black text-sm pt-4 text-center px-5">Chụp một bức ảnh tự sướng trong ánh sáng tự nhiên với tóc buộc lên.</p>
               </div>
               <div className="flex-1 md:pt-0 pt-10">
-                <img className="w-full border-[1px]" src="./assets/step2.png" />
+                <img className="w-full border-[1px]" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708885/Beana_assets/step2_bma6b8.png" />
                 <p className="pt-8 md:pt-5 font-bold text-black text-[22px] text-center">BƯỚC 2 PHÂN TÍCH</p>
                 <p className="font-medium text-black text-sm pt-4 text-center px-5">Hãy để công nghệ làm việc của nó, phân tích các nhu cầu riêng biệt của làn da của bạn.</p>
               </div>
               <div className="flex-1 md:pt-0 pt-10">
-                <img className="w-full border-[1px]" src="./assets/step3.png" />
+                <img className="w-full border-[1px]" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708894/Beana_assets/step3_hg61q5.png" />
                 <p className="pt-8 md:pt-5 font-bold text-black text-[22px] text-center">BƯỚC 3 KẾT QUẢ</p>
                 <p className="font-medium text-black text-sm pt-4 text-center px-5">Khám phá phân tích làn da cá nhân và lịch trình riêng cho kết quả rõ rệt!</p>
               </div>
@@ -112,7 +113,7 @@ export default function ScanningFace() {
       </div>
       <div className="w-full bg-primary">
         <div className="flex flex-col justify-center items-center gap-4 py-9">
-          <img className="hidden md:block md:w-40" src="./assets/qr-code.png" />
+          <img className="hidden md:block md:w-40" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708787/Beana_assets/qr-code_ghe29a.png" />
           <p className="font-bold text-white text-[30px] text-center">Kết quả nằm trong tầm tay của bạn! Bạn đã sẵn sàng chưa?</p>
           <p className="hidden md:block font-medium text-white text-[20px]">Quét mã QR bằng điện thoại để bắt đầu</p>
           <p className='hidden md:block text-white'>Hoặc</p>

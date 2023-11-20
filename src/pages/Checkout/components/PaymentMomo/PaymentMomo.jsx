@@ -7,6 +7,8 @@ export default function PaymentMomo() {
 
     const location = useLocation();
     const { dataCheckout } = location.state || { dataCheckout: null };
+    const { packageCheckout } = location.state || { packageCheckout: null };
+    
 
     const initialTime = {
         hours: 0,
@@ -83,7 +85,7 @@ export default function PaymentMomo() {
 
                         <p className='pt-5 text-gray-500 font-medium]'>Mã đơn hàng</p>
                         <div className='flex flex-row gap-2 pt-2'>
-                            <p className='text-base font-semibold tracking-wide'>{dataCheckout.id + dataCheckout.amount}{dataCheckout.id + dataCheckout.amount} </p>
+                            <p className='text-base font-semibold tracking-wide'>{dataCheckout?.id + dataCheckout?.amount}{dataCheckout?.id + dataCheckout?.amount} </p>
                         </div>
 
                         <div className='border-b w-full mt-5'></div>
@@ -98,7 +100,7 @@ export default function PaymentMomo() {
 
                         <p className='pt-5 text-gray-500 first-line:font-medium]'>Số tiền</p>
                         <div className='flex flex-row gap-2 pt-2'>
-                            <p className='text-[24px] font-medium tracking-wide'>{dataCheckout.amount.toLocaleString("vn")}đ </p>
+                            <p className='text-overLg font-medium tracking-wide'>{dataCheckout?.amount.toLocaleString("vn")}đ </p>
                         </div>
                     </div>
                     <div className=' rounded shadow-md py-3 px-8 bg-[#ffeff7] mt-5'>

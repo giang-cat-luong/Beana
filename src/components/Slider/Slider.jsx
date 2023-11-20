@@ -2,8 +2,11 @@ import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircle } from '@fortawesome/free-solid-svg-icons'
 import Questionnaire from "../Questionnaire/Questionnaire";
+import PackageUpgrade from "../PackagesUpgrade/PackageUpgrade";
 
-export default function Slider({ sliderUrls, title, description, button, colorTitle, colorDescription, img }) {
+export default function Slider({ sliderUrls, title, description, button, colorTitle, colorDescription, img, premium }) {
+
+    const [isPackage, setIsPackage] = useState(false);
 
     const [isOpenQA, setIsOpenQA] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -28,10 +31,14 @@ export default function Slider({ sliderUrls, title, description, button, colorTi
         setIsOpenQA(!isOpenQA);
     }
 
+    const tooglePackageUpgrade = () => {
+        setIsPackage(!isPackage);
+    }
+
     return (
         <div className="h-[300px] md:h-[600px] w-full  relative group">
-            {isOpenQA && <Questionnaire/>}
-           
+            {isOpenQA && <Questionnaire />}
+            {isPackage && <PackageUpgrade />}
             <div style={{ backgroundImage: `url(${sliderUrls[currentIndex]})` }} className="w-full h-full md:w-full md:h-full  bg-center bg-cover duration-500">
                 {currentIndex === 0 ?
                     (
@@ -49,14 +56,23 @@ export default function Slider({ sliderUrls, title, description, button, colorTi
                                         <div>
                                             <p className="hidden md:flex text-white font-normal">Quét mã QR bằng điện thoại để bắt đầu</p>
                                             <p className='hidden md:flex py-3 text-white'>Hoặc</p>
-                                            <button 
-                                            className="font-normal text-[#fff] mt-2 md:mt-0 text-xs md:text-[13px] border-2 px-3 py-2 hover:bg-[#49B949] hover:text-[#fff] hover:shadow-md hover:shadow-[#49B949]"
-                                            onClick={toggleQuestionQA}
+                                            <button
+                                                className="font-normal text-[#fff] mt-2 md:mt-0 text-xs md:text-[13px] border-2 px-3 py-2 hover:bg-[#49B949] hover:text-[#fff] hover:shadow-md hover:shadow-[#49B949]"
+                                                onClick={toggleQuestionQA}
                                             >
                                                 Trả Lời Một Vài Câu Hỏi
                                             </button>
                                         </div>
                                         <img className="w-0 md:w-40 md:h-full" src={img[currentIndex]} />
+                                    </div>
+                                }
+                                {premium &&
+                                    <div className="flex flex-row items-center gap-2 pt-8">
+                                        <div className="font-normal text-white">Bạn có 1 lần xài thử Face Scanning miễn phí</div>
+                                        <div onClick={tooglePackageUpgrade} className="flex flex-row items-center beana-button-green-hover py-2 px-2 rounded">
+                                            <img className="w-5" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1700479799/Beana_svg/crown_y9xwkp.svg" />
+                                            <div className="font-normal ">Nâng cấp gói của bạn</div>
+                                        </div>
                                     </div>
                                 }
                             </div>
@@ -92,12 +108,12 @@ export default function Slider({ sliderUrls, title, description, button, colorTi
             </div>
             {sliderUrls.length > 1 &&
                 <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 hover:bg-white/20 text-white cursor-pointer">
-                    <img src="./assets/left-arrow.png" className="w-8" onClick={prevSlide} />
+                    <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708780/Beana_assets/left-arrow_gvhyv9.png" className="w-8" onClick={prevSlide} />
                 </div>
             }
             {sliderUrls.length > 1 &&
                 <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 hover:bg-white/20 text-white cursor-pointer">
-                    <img src="./assets/right-arrow.png" className="w-8" onClick={nextSlide} />
+                    <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708787/Beana_assets/right-arrow_bkeoa6.png" className="w-8" onClick={nextSlide} />
                 </div>
             }
             <div className="flex top-4 justify-center py-2 ">

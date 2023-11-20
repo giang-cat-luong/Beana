@@ -12,7 +12,7 @@ export default function BannerScanning() {
         <div className='  px-36 flex flex-row '>
               {isOpenQA && <Questionnaire/>}
             <div className='basis-1/2 bg-[#86BB86] pl-20 py-6 text-[#fff]'>
-                <h1 className='font-semibold text-[24px]'>Phân Tích Chăm Sóc Da Ảo Mới</h1>
+                <h1 className='font-semibold text-overLg'>Phân Tích Chăm Sóc Da Ảo Mới</h1>
                 <p className='font-light text-sm pt-1 leading-6'>Tìm Kiếm Một Thói Quen Chăm Sóc Da Đầy Đủ? Công Cụ Phân Tích Chăm
                     Sóc Da Ảo Mới Của Chúng Tôi Đánh Giá Làn Da Của Bạn Và Đưa Ra Các
                     Đề Xuất Được Cá Nhân Hóa Nhất.

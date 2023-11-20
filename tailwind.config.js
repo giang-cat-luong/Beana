@@ -23,7 +23,8 @@ export default {
 
       },
       fontSize: {
-        xss: '13px'
+        xss: '13px',
+        overLg: '24px'
       },
       padding: {
         '5px': '5px',
@@ -32,7 +33,7 @@ export default {
         DEFAULT: '1px',
       },
       fontFamily: {
-        Montserrat: ['Montserrat', 'sans-serif'],
+        NotoSans: ['Noto Sans', 'sans-serif'],
       },
       screens: {
         'sm': '640px',

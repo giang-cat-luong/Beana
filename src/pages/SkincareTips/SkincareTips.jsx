@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const sliderUrls = [
-    './assets/sliderSkincareTips.jpeg',
+    'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708789/Beana_assets/sliderSkincareTips_l5bgnc.jpg',
 ];
 const sliderTitle = [
     'MẸO CHĂM SÓC DA',
@@ -25,100 +25,100 @@ const sliderTitleDescription = [
 
 const routines = [
     {
-        url: './assets/routines1.png',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708788/Beana_assets/routines1_hlohil.png',
         name: "Da thường đến khô nhạy cảm",
     },
     {
-        url: './assets/routines2.png',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708788/Beana_assets/routines2_vfbmwc.png',
         name: "Hỗn hợp cho da nhờn nhạy cảm",
     },
     {
-        url: './assets/routines3.png',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708788/Beana_assets/routines3_cttl3b.png',
         name: "Da nhạy cảm khô và mất nước",
     },
     {
-        url: './assets/routines4.png',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708788/Beana_assets/routines4_wsdcsm.png',
         name: "Chăm sóc da toàn thân",
     },
 ];
 
 const guides = [
     {
-        url: './assets/guides1.jpg',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708784/Beana_assets/guides1_oruicw.jpg',
         name: "Da Không Đều Là Gì Và Bạn Có Thể Quản Lý Nó Như Thế Nào?",
     },
     {
-        url: './assets/guides2.jpg',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708785/Beana_assets/guides2_zlpjqn.jpg',
         name: "Tẩy Da Chết: Tại Sao Nó Quan Trọng Và Làm Thế Nào Để Thực Hiện Đúng Cách",
     },
     {
-        url: './assets/guides3.jpg',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708785/Beana_assets/guides3_zy1dpw.jpg',
         name: "Kem Chống Nắng Kéo Dài Bao Lâu?",
     },
     {
-        url: './assets/guides4.jpg',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708785/Beana_assets/guides4_rqz3kn.jpg',
         name: "Nguyên Nhân Gây Bệnh Chàm Bùng Phát?",
     },
     {
-        url: './assets/guides5.jpg',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708786/Beana_assets/guides5_beampy.jpg',
         name: "Peptide Trong Chăm Sóc Da: Hướng Dẫn Cho Người Mới Bắt Đầu",
     },
 ];
 
 const concerns = [
     {
-        url: './assets/concerns1.png',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708871/Beana_assets/concerns1_lvotms.png',
         name: "Mụn & Vết Thâm",
     },
     {
-        url: './assets/concerns2.png',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708782/Beana_assets/concerns2_c4owyq.png',
         name: "Da Khô",
     },
     {
-        url: './assets/concerns3.png',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708871/Beana_assets/concerns3_kzjpki.png',
         name: "Bệnh Chàm",
     },
     {
-        url: './assets/concerns4.png',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708880/Beana_assets/concerns4_a8mtzu.png',
         name: "Da Thô Ráp, Sần Sùi, Bong Tróc",
     },
     {
-        url: './assets/concerns5.png',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708783/Beana_assets/concerns5_grxuhx.png',
         name: "Da Ngứa",
     },
     {
-        url: './assets/concerns6.png',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708872/Beana_assets/concerns6_sb4f8t.png',
         name: "Da bị mẩn đỏ",
     },
     {
-        url: './assets/concerns7.png',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708783/Beana_assets/concerns7_sjwltg.png',
         name: "Chăm sóc da chống nắng",
     },
     {
-        url: './assets/concerns8.png',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708872/Beana_assets/concerns8_eyfs0g.png',
         name: "Da không đều màu",
     },
 ];
 
 const makeup = [
     {
-        url: './assets/makeup1.jpg',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708781/Beana_assets/makeup1_v0bf45.jpg',
         name: "Chăm Sóc Da Mặt Trước Khi Trang Điểm Như Thế Nào?",
     },
     {
-        url: './assets/makeup2.jpg',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708782/Beana_assets/makeup2_l2ik4r.jpg',
         name: "Cần Chăm Sóc Da Mặt Thế Nào Sau Khi Trang Điểm",
     },
     {
-        url: './assets/makeup3.jpg',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708783/Beana_assets/makeup3_cqeciv.jpg',
         name: "Bí Quyết Giữ Lâu Lớp Trang Điểm, Da Mịn Mướt",
     },
     {
-        url: './assets/makeup4.png',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708785/Beana_assets/makeup4_viq7k7.png',
         name: "Đắp Mặt Nạ Gì Để Trang Điểm Ăn Phấn?",
     },
     {
-        url: './assets/makeup5.png',
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708879/Beana_assets/makeup5_iwggi7.png',
         name: "Bật Mí Bí Kíp Không Phải Ai Cũng Biết Trước Khi Make Up Với Mặt Nạ Giấy",
     },
 ];
@@ -126,7 +126,7 @@ function SampleNextArrow(props) {
     const { onClick } = props;
     return (
         <div onClick={onClick} className=" block absolute top-[-12%] right-0 text-2xl rounded-full p-2 bg-black/30 hover:bg-[#86bb86] text-white cursor-pointer">
-            <img src="./assets/right-arrow.png" className="w-8" />
+            <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708787/Beana_assets/right-arrow_bkeoa6.png" className="w-8" />
         </div>
     );
 }
@@ -135,7 +135,7 @@ function SamplePrevArrow(props) {
     const { onClick } = props;
     return (
         <div onClick={onClick} className=" block absolute top-[-12%] right-16 text-2xl rounded-full p-2 bg-black/30 hover:bg-[#86bb86] text-white cursor-pointer">
-            <img src="./assets/left-arrow.png" className="w-8" />
+            <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708780/Beana_assets/left-arrow_gvhyv9.png" className="w-8" />
         </div>
     );
 }
@@ -259,7 +259,7 @@ export default function SkincareTips() {
                                             <FontAwesomeIcon
                                                 icon={faCircleArrowRight}
                                                 color="#86bb86"
-                                                className="text-[24px] group-hover:text-[#0E740E]"
+                                                className="text-overLg group-hover:text-[#0E740E]"
                                                 fixedWidth
                                             />
                                         </div>
@@ -342,7 +342,7 @@ export default function SkincareTips() {
                                             <FontAwesomeIcon
                                                 icon={faCircleArrowRight}
                                                 color="#86bb86"
-                                                className="text-[24px] group-hover:text-[#0E740E]"
+                                                className="text-overLg group-hover:text-[#0E740E]"
                                                 fixedWidth
                                             />
                                         </div>
@@ -359,7 +359,7 @@ export default function SkincareTips() {
             <div className="w-full bg-gradient-to-br from-[#86bb86] from-45% to-[#E0F7CD] to-95%">
                 <div className='  flex flex-row gap-4 justify-center items-center px-10 py-12'>
                     <div className="basis-1/2">
-                        <img className="w-[702px] h-[702px] rounded-3xl" src="./assets/skincaretipsBanner.jpg" />
+                        <img className="w-[702px] h-[702px] rounded-3xl" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708788/Beana_assets/skincaretipsBanner_pxrc60.jpg" />
                     </div>
                     <div className="basis-1/2 flex flex-col gap-2">
                         <p className="font-bold text-white text-[40px]">OILY OR DRY? ROUGH AND FLAKY OR REDNESS-PRONE?</p>

@@ -43,7 +43,7 @@ export default function Product() {
           {data.map((product, index) => (
             <div className={` ${index === 6 ? 'col-span-2' : 'col-span-1'} ${index === 7 ? 'order-1' : ''}`} key={index}>
               {index === 2 ? (
-                <div style={{ backgroundImage: 'url("./assets/productAds.png")' }} className="w-full h-full bg-center bg-cover">
+                <div style={{ backgroundImage: 'url("https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708886/Beana_assets/productAds_ce3hw9.png")' }} className="w-full h-full bg-center bg-cover">
                   <div className="pl-3 pr-2 py-6">
                     <h1 className='font-semibold text-[19px] text-[#fff]'>Lời khuyên của chuyên gia</h1>
                     <p className='font-light text-base text-[#fff] pt-2 leading-6'>
@@ -55,7 +55,7 @@ export default function Product() {
                 </div>
               ) : index === 6 ? (
                 <a href="/">
-                  <div style={{ backgroundImage: 'url("./assets/productAds1.jpg")' }} className="w-full h-full bg-center bg-cover">
+                  <div style={{ backgroundImage: 'url("https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708788/Beana_assets/productAds1_pmojci.jpg")' }} className="w-full h-full bg-center bg-cover">
                     <div className="pl-5 pr-32 py-6 text-[#32439b]">
                       <h1 className='font-semibold text-[22px] ]'>#CHƠI MINIGAME NHẬN QUÀ</h1>
                       <p className='font-semibold text-base ] pt-2 leading-6'>
@@ -72,7 +72,7 @@ export default function Product() {
 
               ) : index === 7 ? null
                 : index === 14 ? (
-                  <div style={{ backgroundImage: 'url("./assets/productAds4.png")' }} className="w-full h-full bg-center bg-cover object-cover relative">
+                  <div style={{ backgroundImage: 'url("https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708895/Beana_assets/productAds4_v0xpmj.png")' }} className="w-full h-full bg-center bg-cover object-cover relative">
                     <div className="flex flex-col justify-between px-3 py-6 text-[#fff]">
                       <h1 className='font-semibold text-[19px]'>Phân tích chăm sóc da ảo MỚI</h1>
                       <p className='font-light text-base ] pt-2 leading-6'>

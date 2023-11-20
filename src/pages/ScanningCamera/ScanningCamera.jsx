@@ -15,8 +15,8 @@ import ScanningTips from './components/ScanningTips'
 
 
 const sliderUrls = [
-    './assets/cameraBanner.jpg',
-    './assets/cameraBanner1.jpg'
+    'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708781/Beana_assets/cameraBanner_obhzc5.jpg',
+    'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708781/Beana_assets/cameraBanner1_xkcqvv.jpg'
 ]
 
 function ScanningCamera() {

@@ -8,7 +8,7 @@ function SampleNextArrow(props) {
     const { onClick } = props;
     return (
         <div onClick={onClick} className=" block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-[-5%] text-2xl rounded-full p-2 bg-black/30 hover:bg-[#86bb86] text-white cursor-pointer">
-            <img src="./assets/right-arrow.png" className="w-8" />
+            <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708787/Beana_assets/right-arrow_bkeoa6.png" className="w-8" />
         </div>
     );
 }
@@ -17,7 +17,7 @@ function SamplePrevArrow(props) {
     const { onClick } = props;
     return (
         <div onClick={onClick} className=" block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-[-5%] text-2xl rounded-full p-2 bg-black/30 hover:bg-[#86bb86] text-white cursor-pointer">
-            <img src="./assets/left-arrow.png" className="w-8" />
+            <img src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708780/Beana_assets/left-arrow_gvhyv9.png" className="w-8" />
         </div>
     );
 }

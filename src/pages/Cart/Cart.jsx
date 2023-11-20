@@ -7,6 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 import EmptyCart from "../../components/NoData/EmptyCart";
 import BeanLoading from '../../components/Loading/BeanLoading'
 import ScrollToTop from "../../hooks/useScrollToTop";
+import { useToken } from "../../services/Auth/services";
+
 export default function Cart() {
 
     const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +16,9 @@ export default function Cart() {
     const [isCouponLoading, setIsCouponLoading] = useState(false);
     const navigate = useNavigate();
     const { data } = useCart();
-    console.log(data);
+
+    const decodedToken = useToken();
+    console.log(decodedToken);
 
     const [checkoutQuantity, setCheckoutQuantity] = useState(0);
 
@@ -285,11 +289,21 @@ export default function Cart() {
                         </div>
 
                         <div className="flex flex-col gap-5 text-[13px] font-bold">
-                            <div onClick={handleCheckoutNavigate} className="beana-button-green-hover py-3">
-                                <button>
-                                    THANH TOÁN
-                                </button>
-                            </div>
+                            {decodedToken ? (
+                                <div onClick={handleCheckoutNavigate} className="beana-button-green-hover py-3">
+                                    <button>
+                                        THANH TOÁN
+                                    </button>
+                                </div>
+                            ) : (
+                                <Link to="/login">
+                                    <div className="beana-button-green-hover py-3">
+                                        <button>
+                                            THANH TOÁN
+                                        </button>
+                                    </div>
+                                </Link>
+                            )}
                             <Link to="/products" className="text-center bg-white border-secondary border-[1px] py-3 text-secondary hover:bg-secondary hover:text-white duration-500">
                                 <button>
                                     TIẾP TỤC MUA SẮM

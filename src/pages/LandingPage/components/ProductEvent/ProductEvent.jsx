@@ -7,7 +7,7 @@ export default function ProductEvent() {
                 <img className='w-[100%] h-[100%] bg-center bg-cover' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697817670/Beana_assets/MA_BK_b6k3yv.jpg' />
             </div>
             <div className='basis-3/5 bg-[#FBEFF2] pl-12 pr-12 pt-10 pb-4 text-[#000]'>
-                <h1 className='font-bold text-[24px]'>Ưu Đãi Đặc Biệt</h1>
+                <h1 className='font-bold text-overLg'>Ưu Đãi Đặc Biệt</h1>
                 <h1 className='font-bold text-[28px] text-[#86bb86]'>Tiết Kiệm Đến 50%</h1>
                 <p className='font-medium  text-[#0C0C0C] pt-1 leading-6'>
                     Ngày Phụ Nữ Việt Nam Đang Đến!

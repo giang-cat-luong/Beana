@@ -47,7 +47,7 @@ export default function Profile() {
   }
 
   return (
-    <div className="px-36 md:pt-[35px] font-Montserrat">
+    <div className="px-36 md:pt-[35px] font-NotoSans">
       <BreadCrumb breadCrumbName="Thông tin tài khoản" />
       <div className='flex flex-row gap-5 justify-between'>
         <div className='basis-[27%]'>

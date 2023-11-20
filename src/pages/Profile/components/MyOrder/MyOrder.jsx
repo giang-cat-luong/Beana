@@ -10,7 +10,28 @@ import useOrder from './hooks/useOrder';
 export default function MyOrder() {
 
   const { data, isLoading } = useOrder();
-  console.log(data)
+  //data NewOrder
+  const today = new Date();
+
+  const dataNewOrder = data?.filter(item => {
+    const itemDate = new Date(item.orderDate);
+    return (
+      itemDate.getDate() === today.getDate() &&
+      itemDate.getMonth() === today.getMonth() &&
+      itemDate.getFullYear() === today.getFullYear()
+    );
+  });
+  //data pending
+  const dataPending = data?.filter(item => item.status === 1)
+
+  //data success
+  const dataSuccess = data?.filter(item => item.status === 5)
+
+  //data cancel
+  const dataCancel = data?.filter(item => item.status === 0)
+
+
+
   const [status, setStatus] = useState(1);
 
   const handleClickStatus = (index) => {
@@ -42,11 +63,11 @@ export default function MyOrder() {
         </div>
       </div>
 
-      {status === 1 && <AllOrder />}
-      {status === 2 && <NewOrder />}
-      {status === 3 && <Pending />}
-      {status === 4 && <Success />}
-      {status === 5 && <Cancelled />}
+      {status === 1 && <AllOrder data={data} isLoading={isLoading} />}
+      {status === 2 && <NewOrder data={dataNewOrder} isLoading={isLoading} />}
+      {status === 3 && <Pending data={dataPending} isLoading={isLoading} />}
+      {status === 4 && <Success data={dataSuccess} isLoading={isLoading} />}
+      {status === 5 && <Cancelled data={dataCancel} isLoading={isLoading} />}
 
     </div>
   )

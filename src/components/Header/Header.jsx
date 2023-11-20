@@ -29,6 +29,32 @@ const skincareTips = [
     },
 ];
 
+const faceScanningPackages = [
+    {
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1700489568/Beana_assets/bg_package_shducu.png',
+        name: "Miễn Phí",
+        description: "Miễn phí lần đầu cho bạn trải nghiệm và sử dụng dịch vụ face scanning của Beana. Tuy nhiên sẽ giới hạn một số tính năng và dịch vụ",
+        urlLink: "/scanning-face"
+    },
+    {
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708798/Beana_assets/step1_u4agfe.png',
+        name: "1 lượt Face scanning",
+        description: "Cho phép cá nhân trải nghiệm và sử dụng dịch vụ face scanning của Beana trong 1 lần. Không giới hạn các dịch vụ và tính năng.",
+        urlLink: "/scanning-packages"
+    },
+    {
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708894/Beana_assets/step3_hg61q5.png',
+        name: "5 lượt Face scanning",
+        description: "Cho phép cá nhân trải nghiệm và sử dụng dịch vụ face scanning của Beana trong 5 lần. Không giới hạn các dịch vụ và tính năng.",
+        urlLink: "/scanning-packages"
+    },
+    {
+        url: 'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708885/Beana_assets/step2_bma6b8.png',
+        name: "1 tháng Face scanning",
+        description: "Không giới hạn số lượt face scanning trong vòng 1 tháng. Cho phép cá nhân thỏa thích sử dụng và trải nghiệp các dịch vụ face scanning cao cấp.",
+        urlLink: "/scanning-packages"
+    },
+];
 
 export default function Header() {
 
@@ -131,7 +157,7 @@ export default function Header() {
     };
 
     return (
-        <div className={`font-Montserrat w-full fixed top-0 z-[1000] duration-500 ease-in-out ${scrolled ? 'bg-[#d6fcdf]' : 'bg-white'}`}>
+        <div className={`font-NotoSans w-full fixed top-0 z-[1000] duration-500 ease-in-out ${scrolled ? 'bg-[#d6fcdf]' : 'bg-white'}`}>
             <CartSideBar isOpen={isOpen} setIsOpen={setIsOpen} />
             <div style={{ position: "relative" }}>
                 {redirecting && (
@@ -178,7 +204,7 @@ export default function Header() {
                             <p className="text-[13px]">CONTACT US</p>
                         </div>
                         <div className="flex flex-row items-center bg-[#0E740E] text-white px-[0.2rem] mr-[10px]">
-                            <img src='../assets/facebook.svg' className="mr-[5px] w-[25px]" />
+                            <img src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708782/Beana_assets/facebook_ir5hat.svg' className="mr-[5px] w-[25px]" />
                             <a href='https://www.facebook.com/profile.php?id=61551793473535' target="_blank" style={{ alignItems: 'center' }}> <p className="text-[13px]" >JOIN FANPAGE</p></a>
                         </div>
                     </div>
@@ -258,11 +284,40 @@ export default function Header() {
                                     </div>
                                 </div>
                                 <div>
-                                    <li className='beana-top-menu-item group'>
-                                        <Link to='./scanning-face'>
-                                            FACE SCANNING
-                                        </Link>
-                                    </li >
+                                    <div className='group'>
+                                        <li className='beana-top-menu-item group'>
+                                            <Link to='./scanning-face'>
+                                                FACE SCANNING
+                                            </Link>
+                                        </li >
+                                        <div className='hidden group-hover:flex flex-col absolute left-0 p-10  w-full bg-transparent z-20 text-black duration-300'>
+                                        </div>
+                                        <div className={`group ${scrolled ? 'top-[108px]' : 'top-[134px]'} duration-500 h-0 border-b-[1px] border-b-[#e6e1e1] overflow-hidden group-hover:h-[480px] flex-col absolute w-full left-0 bg-white z-20 text-black duration-800`}>
+                                            <div className='flex flex-col justify-center pt-12 pb-[67px] border-t-2 '>
+                                                <div className='mx-36 flex flex-row gap-10'>
+                                                    {faceScanningPackages.map((packageFs, index) => (
+                                                        <div key={index} className='basis-1/4'>
+                                                            <img className='w-[100%] h-[250px] rounded-[1.25rem] object-cover border-[1px] border-[#fff]' src={packageFs.url} />
+                                                            <Link to={`${packageFs.urlLink}`} className="flex flex-row justify-between">
+                                                                <p className='pt-5 pl-2 font-bold text-[20px]  text-[#86bb86] hover:text-[#49B949] hover:underline'> {packageFs.name}</p>
+                                                                <div className='py-4'>
+                                                                    <FontAwesomeIcon
+                                                                        icon={faCircleArrowRight}
+                                                                        color="#86bb86"
+                                                                        size="2x"
+                                                                        className="hover:text-[#0E740E]"
+                                                                        fixedWidth
+                                                                    />
+                                                                </div>
+                                                            </Link>
+                                                            <p className='pt-1 pl-2 font-bold text-xss  text-black/95  hover:underline'> {packageFs.description}</p>
+                                                        </div>
+                                                    ))}
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div>
                                     <div className='group'>
@@ -273,8 +328,8 @@ export default function Header() {
                                         </li >
                                         <div className='hidden group-hover:flex flex-col absolute left-0 p-10  w-full bg-transparent z-20 text-black duration-300'>
                                         </div>
-                                        <div className={`group ${scrolled ? 'top-[108px]' : 'top-[134px]'} duration-500 h-0 overflow-hidden group-hover:h-[430px] flex-col absolute w-full left-0 bg-white z-20 text-black duration-800`}>
-                                            <div className='flex flex-col justify-center pt-12 pb-[67px] border-t-2 border-b-[1px] border-b-[#e6e1e1]'>
+                                        <div className={`group ${scrolled ? 'top-[108px]' : 'top-[134px]'} duration-500 h-0 overflow-hidden border-b-[1px] border-b-[#e6e1e1] group-hover:h-[430px] flex-col absolute w-full left-0 bg-white z-20 text-black duration-800`}>
+                                            <div className='flex flex-col justify-center pt-12 pb-[67px] border-t-2 '>
                                                 <div className='mx-36 flex flex-row gap-10 '>
                                                     {skincareTips.map((category, index) => (
                                                         <div key={index} className='basis-1/4'>
@@ -425,46 +480,46 @@ export default function Header() {
                                                 <div className={`group ${scrolled ? 'top-[50px]' : 'top-[50px]'} hidden group-hover:block absolute left-[-68%] px-4 py-3 w-64 border-2 rounded-sm bg-white z-20 text-black duration-800`}>
                                                     <div className="flex flex-col gap-3 ">
                                                         <Link to='./profile'>
-                                                        <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
-                                                            <FontAwesomeIcon
-                                                                icon={faFileInvoice}
-                                                                color="#000"
-                                                                size="lg"
-                                                                className='pr-2'
-                                                                fixedWidth
-                                                            />
-                                                            <div className="text-sm text-[#fff] ">
+                                                            <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
+                                                                <FontAwesomeIcon
+                                                                    icon={faFileInvoice}
+                                                                    color="#000"
+                                                                    size="lg"
+                                                                    className='pr-2'
+                                                                    fixedWidth
+                                                                />
+                                                                <div className="text-sm text-[#fff] ">
                                                                     Tài khoản của bạn
+                                                                </div>
                                                             </div>
-                                                        </div>
                                                         </Link>
                                                         <Link to='./profile/my-order'>
-                                                        <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
-                                                            <FontAwesomeIcon
-                                                                icon={faCartFlatbedSuitcase}
-                                                                color="#000"
-                                                                size="lg"
-                                                                className='pr-2'
-                                                                fixedWidth
-                                                            />
-                                                            <div className="text-sm text-[#fff] ">
-                                                                Quản lý đơn hàng
+                                                            <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
+                                                                <FontAwesomeIcon
+                                                                    icon={faCartFlatbedSuitcase}
+                                                                    color="#000"
+                                                                    size="lg"
+                                                                    className='pr-2'
+                                                                    fixedWidth
+                                                                />
+                                                                <div className="text-sm text-[#fff] ">
+                                                                    Quản lý đơn hàng
+                                                                </div>
                                                             </div>
-                                                        </div>
                                                         </Link>
                                                         <Link to='./profile/address-management'>
-                                                        <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
-                                                            <FontAwesomeIcon
-                                                                icon={faLocationDot}
-                                                                color="#000"
-                                                                size="lg"
-                                                                className='pr-2'
-                                                                fixedWidth
-                                                            />
-                                                            <div className="text-sm text-[#fff] ">
-                                                                Địa chỉ giao hàng
+                                                            <div className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'>
+                                                                <FontAwesomeIcon
+                                                                    icon={faLocationDot}
+                                                                    color="#000"
+                                                                    size="lg"
+                                                                    className='pr-2'
+                                                                    fixedWidth
+                                                                />
+                                                                <div className="text-sm text-[#fff] ">
+                                                                    Địa chỉ giao hàng
+                                                                </div>
                                                             </div>
-                                                        </div>
                                                         </Link>
                                                         <div
                                                             className='flex flex-row items-center bg-[#86bb86] py-2 px-6 hover:bg-[#0E740E] cursor-pointer'

@@ -32,6 +32,9 @@ import {
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import Checkout from "./pages/Checkout/Checkout";
 import PaymentMomo from "./pages/Checkout/components/PaymentMomo";
+import FaceScanningPackaga from "./pages/ScanningFacePackage/ScanningFacePackage";
+import ScanningFacePackage from "./pages/ScanningFacePackage/ScanningFacePackage";
+import PaymentPackage from "./pages/ScanningFacePackage/components/PaymentPackage.jsx/PaymentPackage";
 
 
 
@@ -76,6 +79,10 @@ const router = createBrowserRouter([
       {
         path: "/scanning-face",
         element: <ScanningFace />,
+      },
+      {
+        path: "/scanning-packages",
+        element: <ScanningFacePackage />,
       },
       {
         path: "/scanning-result",
@@ -165,6 +172,10 @@ const router = createBrowserRouter([
   {
     path: "/payment-momo",
     element: <PaymentMomo />,
+  },
+  {
+    path: "/payment-package",
+    element: <PaymentPackage />,
   },
 
 ]);

@@ -15,7 +15,7 @@ export default function Footer() {
   }
 
   return (
-    <div className='flex flex-col font-Montserrat select-none'>
+    <div className='flex flex-col font-NotoSans select-none'>
       <div className="py-6 md:flex flex-row justify-between  md:px-14 md:py-6 text-sm text-[#49B949] bg-[#E0F7CD]">
         <div className="md:flex items-center flex-row gap-4 md:px-10">
           <img className="mx-auto md:mx-0" src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697710360/Beana_assets/rabbit_l4irkw.svg' />

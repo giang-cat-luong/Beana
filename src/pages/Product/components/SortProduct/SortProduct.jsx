@@ -175,9 +175,9 @@ export default function SortProduct() {
                 )}
                 <div className={`select-none duration-500 max-h-0 overflow-hidden ${isDropdownPrice ? 'max-h-[400px]' : ''}`}>
                     <div className='flex flex-row justify-between py-4'>
-                        <input type='text' placeholder='0' className='w-20 h-[30px] ring-[1px] ring-[#c2c2c2] ring-inset rounded-sm outline-none pl-2 placeholder:text-sm placeholder:font-normal placeholder:text-inherit placeholder:font-Montserrat' />
+                        <input type='text' placeholder='0' className='w-20 h-[30px] ring-[1px] ring-[#c2c2c2] ring-inset rounded-sm outline-none pl-2 placeholder:text-sm placeholder:font-normal placeholder:text-inherit placeholder:font-NotoSans' />
                         <div className='flex border-solid border-t-[1px] border-[#bdbdbd] w-4 mt-[14px]'></div>
-                        <input type='text' placeholder='&#8363; ĐẾN' className='w-20 h-[30px] ring-[1px] ring-[#c2c2c2] ring-inset rounded-sm outline-none pl-2 placeholder:text-sm placeholder:font-normal placeholder:text-inherit placeholder:font-Montserrat' />
+                        <input type='text' placeholder='&#8363; ĐẾN' className='w-20 h-[30px] ring-[1px] ring-[#c2c2c2] ring-inset rounded-sm outline-none pl-2 placeholder:text-sm placeholder:font-normal placeholder:text-inherit placeholder:font-NotoSans' />
                     </div>
                     <button className="w-full font-medium text-[#fff] bg-[#86bb86]  shadow shadow-[#86bb86] text-[16px] border-2 px-6 py-[6px] hover:bg-[#49B949] hover:text-[#fff] hover:shadow-md hover:shadow-[#49B949]">ÁP DỤNG</button>
                 </div>

@@ -7,7 +7,7 @@ export default function Payment({ handlePayment, handleNextPage, selectedPayment
     <div className='border-t-[1px] border-l-[1px] border-b-[1px] border-[#c3c2bc] mt-8 bg-white'>
       <div>
         <div className='px-16 mb-20 mt-8 '>
-          <div className="text-[24px] font-bold tracking-widest">
+          <div className="text-overLg font-bold tracking-widest">
             THANH TOÁN
           </div>
           <div className="mt-10  flex flex-row justify-between">
