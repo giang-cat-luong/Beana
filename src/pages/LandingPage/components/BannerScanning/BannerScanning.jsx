@@ -27,7 +27,7 @@ export default function BannerScanning() {
                         >Trả Lời Một Vài Câu Hỏi</button>
                     </div>
                     <div>
-                        <img className='w-24 h-24 mt-2 mr-4' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708787/Beana_assets/qr-code_ghe29a.png' />
+                        <img className='w-24 h-24 mt-2 mr-4' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700566841/qr-code_udmtsm.png' />
                     </div>
                 </div>
             </div>

@@ -368,7 +368,7 @@ export default function SkincareTips() {
                         </p>
                         <button className="mt-5 w-44 font-normal text-[#fff] text-[13px] border-2 px-6 py-2 hover:bg-[#49B949] hover:text-[#fff]">Tìm hiểu thêm</button>
                         <p className="text-white font-normal">Hoặc</p>
-                        <img className="w-32" src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708787/Beana_assets/qr-code_ghe29a.png' />
+                        <img className="w-32" src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700566841/qr-code_udmtsm.png' />
                         <p className="text-white font-normal">Scan QR code on mobile device to get started</p>
                     </div>
                 </div>

@@ -20,7 +20,7 @@ const sliderTitleDescription = [
   '#fff',
 ];
 const sliderImg = [
-  'https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708787/Beana_assets/qr-code_ghe29a.png',
+  'https://res.cloudinary.com/dc4hafqoa/image/upload/v1700566841/qr-code_udmtsm.png',
 ];
 
 export default function ScanningFace() {
@@ -113,7 +113,7 @@ export default function ScanningFace() {
       </div>
       <div className="w-full bg-primary">
         <div className="flex flex-col justify-center items-center gap-4 py-9">
-          <img className="hidden md:block md:w-40" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708787/Beana_assets/qr-code_ghe29a.png" />
+          <img className="hidden md:block md:w-40" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1700566841/qr-code_udmtsm.png" />
           <p className="font-bold text-white text-[30px] text-center">Kết quả nằm trong tầm tay của bạn! Bạn đã sẵn sàng chưa?</p>
           <p className="hidden md:block font-medium text-white text-[20px]">Quét mã QR bằng điện thoại để bắt đầu</p>
           <p className='hidden md:block text-white'>Hoặc</p>

@@ -43,7 +43,7 @@ export default function Slider({ sliderUrls, title, description, button, colorTi
                 {currentIndex === 0 ?
                     (
                         <div className="flex flex-row w-full h-full">
-                            <div className="basis-1/2 flex flex-col justify-center pl-5 md:px-14  gap-1">
+                            <div className="basis-3/4 md:basis-1/2 flex flex-col justify-center pl-5 md:px-14  gap-1">
                                 <p className={`text-[12px] font-bold text-[${colorTitle[currentIndex]}] md:text-[40px]`}>{title[currentIndex]}</p>
                                 <p className={`text-[12px] font-normal text-[${colorDescription[currentIndex]}] md:text-[20px]`}>
                                     {description[currentIndex]}
@@ -67,7 +67,7 @@ export default function Slider({ sliderUrls, title, description, button, colorTi
                                     </div>
                                 }
                                 {premium &&
-                                    <div className="flex flex-row items-center gap-2 pt-8">
+                                    <div className="flex flex-col md:flex-row items-start md:items-center gap-2 pt-8 text-[10px] md:text-base">
                                         <div className="font-normal text-white">Bạn có 1 lần xài thử Face Scanning miễn phí</div>
                                         <div onClick={tooglePackageUpgrade} className="flex flex-row items-center beana-button-green-hover py-2 px-2 rounded">
                                             <img className="w-5" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1700479799/Beana_svg/crown_y9xwkp.svg" />

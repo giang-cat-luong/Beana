@@ -82,7 +82,7 @@ export default function Product() {
                       <ul className="list-disc">
                         <li className="ml-6 font-normal ">Có sẵn dành riêng cho điện thoại di động</li>
                       </ul>
-                      <img className='w-16 h-16 mt-2 mr-4 mb-4 absolute bottom-0 right-0' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1697708787/Beana_assets/qr-code_ghe29a.png' />
+                      <img className='w-16 h-16 mt-2 mr-4 mb-4 absolute bottom-0 right-0' src='https://res.cloudinary.com/dc4hafqoa/image/upload/v1700566841/qr-code_udmtsm.png' />
                     </div>
                   </div>
                 ) : (
