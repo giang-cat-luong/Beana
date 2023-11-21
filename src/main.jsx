@@ -58,9 +58,6 @@ const router = createBrowserRouter([
 
     children: [
       {
-        index: true, element: <Navigate to="/landingPage" replace />
-      },
-      {
         path: "/landingPage",
         element: <LandingPage />,
       },
