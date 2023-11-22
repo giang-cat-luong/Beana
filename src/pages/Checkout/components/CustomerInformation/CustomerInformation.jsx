@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState, useRef } from 'react';
 import { useAddAddress } from '../../../../services/Address/services';
 import { faCircleCheck, faCaretUp, faCaretDown } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Success from '../../../../components/Notification/Success/Success';
 import Failed from '../../../../components/Notification/Failed';
+import useGetProvince from './hooks/useGetProvince'
+import useGetDistrict from './hooks/useGetDistrict'
+import useGetWard from './hooks/useGetWard'
+import CircleLoadingWhite from '../../../../components/Loading/CircleLoadingWhite'
 
 export default function CustomerInformation({ setPage, addressList, defaultAddress, handleSetDefaultAddress, }) {
 
@@ -21,7 +25,7 @@ export default function CustomerInformation({ setPage, addressList, defaultAddre
         setShowMore(!showMore);
         setVisibleAddress(prevCount => prevCount + addressList.length);
     };
-    
+
     const handleScrollAddress = () => {
         setShowMore(!showMore);
         setVisibleAddress(3);
@@ -35,7 +39,7 @@ export default function CustomerInformation({ setPage, addressList, defaultAddre
     const [ward, setWard] = useState("");
     const [address, setAddress] = useState("");
 
-    const { mutate, isFailed, isSuccess } = useAddAddress();
+    const { mutate, isFailed, isSuccess, isLoading } = useAddAddress();
 
     const addAddress = () => {
         try {
@@ -51,6 +55,37 @@ export default function CustomerInformation({ setPage, addressList, defaultAddre
             console.error(error);
         }
     }
+
+    //province
+    const { data: provinceList } = useGetProvince();
+    const [provinceId, setProvinceId] = useState(null);
+
+    const { data: districtList } = useGetDistrict(provinceId);
+    const [districtId, setDistrictId] = useState(null);
+
+    const { data: wardList } = useGetWard(districtId);
+    const [wardId, setWardId] = useState(null);
+
+
+    const handleProvinceChange = (e) => {
+        const selectedProvinceName = e.target.options[e.target.selectedIndex].text;
+        setProvinceId(e.target.value)
+        setProvince(selectedProvinceName);
+        console.log(selectedProvinceName);
+    };
+
+    const handleDistrictChange = (e) => {
+        const selectedDistrictName = e.target.options[e.target.selectedIndex].text;
+        setDistrictId(e.target.value)
+        setDistrict(selectedDistrictName);
+        console.log(selectedDistrictName);
+    };
+
+    const handleWardChange = (e) => {
+        const selectedWardName = e.target.options[e.target.selectedIndex].text;
+        setWard(selectedWardName);
+        console.log(selectedWardName);
+    };
 
     return (
         <div className='border-t-[1px] border-l-[1px] border-b-[1px] border-[#c3c2bc] mt-8 bg-white'>
@@ -161,34 +196,7 @@ export default function CustomerInformation({ setPage, addressList, defaultAddre
 
                     <div className={`h-0 overflow-hidden duration-500 ${newAddress ? 'h-[680px]' : ''}`}>
                         <div className="mt-6 tracking-wider text-sm font-medium">
-                            <div>Province</div>
-                            <input className="appearance-none mt-2 bg-transparent w-full text-[#000] border-[1px] border-black leading-tight py-4 pl-4 placeholder:text-[#606060]"
-                                type="text"
-                                placeholder="Nhập tỉnh..."
-                                onChange={(event) => setProvince(event.target.value)}
-                                value={province || ""}
-                            />
-                        </div>
-                        <div className="mt-6 tracking-wider text-sm font-medium">
-                            <div>District</div>
-                            <input className="appearance-none mt-2 bg-transparent w-full text-[#000] border-[1px] border-black leading-tight py-4 pl-4 placeholder:text-[#606060]"
-                                type="text"
-                                placeholder="Nhập huyện..."
-                                onChange={(event) => setDistrict(event.target.value)}
-                                value={district || ""}
-                            />
-                        </div>
-                        <div className="mt-6 tracking-wider text-sm font-medium">
-                            <div>Ward</div>
-                            <input className="appearance-none mt-2 bg-transparent w-full text-[#000] border-[1px] border-black leading-tight py-4 pl-4 placeholder:text-[#606060]"
-                                type="text"
-                                placeholder="Nhập phường..."
-                                onChange={(event) => setWard(event.target.value)}
-                                value={ward || ""}
-                            />
-                        </div>
-                        <div className="mt-6 tracking-wider text-sm font-medium">
-                            <div>Full name</div>
+                            <div>Tên đầy đủ</div>
                             <input className="appearance-none mt-2 bg-transparent w-full text-[#000] border-[1px] border-black leading-tight py-4 pl-4 placeholder:text-[#606060]"
                                 type="text"
                                 placeholder="Nhập tên đầy đủ..."
@@ -197,16 +205,7 @@ export default function CustomerInformation({ setPage, addressList, defaultAddre
                             />
                         </div>
                         <div className="mt-6 tracking-wider text-sm font-medium">
-                            <div>Address</div>
-                            <input className="appearance-none mt-2 bg-transparent w-full text-[#000] border-[1px] border-black leading-tight py-4 pl-4 placeholder:text-[#606060]"
-                                type="text"
-                                placeholder="Nhập địa chỉ..."
-                                onChange={(event) => setAddress(event.target.value)}
-                                value={address || ""}
-                            />
-                        </div>
-                        <div className="mt-6 tracking-wider text-sm font-medium">
-                            <div>Phone</div>
+                            <div>Số điện thoại</div>
                             <input className="appearance-none mt-2 bg-transparent w-full text-[#000] border-[1px] border-black leading-tight py-4 pl-4 placeholder:text-[#606060]"
                                 type="text"
                                 placeholder="Nhập số điện thoại..."
@@ -214,10 +213,50 @@ export default function CustomerInformation({ setPage, addressList, defaultAddre
                                 value={phone || ""}
                             />
                         </div>
+                        <div className="mt-6 tracking-wider text-sm font-medium">
+                            <div>Province</div>
+                            <select onChange={handleProvinceChange} className='mt-2 outline-none border border-gray-300 p-2 rounded-md w-full'>
+                                <option value="">Vui lòng chọn tỉnh/ thành phố</option>
+                                {provinceList?.results?.map((province) => (
+                                    <option value={province.province_id}>{province.province_name}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="mt-6 tracking-wider text-sm font-medium">
+                            <div>District</div>
+                            <select onChange={handleDistrictChange} className='mt-2 outline-none border border-gray-300 p-2 rounded-md w-full'>
+                                <option value="">Vui lòng chọn quận/ huyện</option>
+                                {districtList?.results?.map((district) => (
+                                    <option value={district.district_id}>{district.district_name}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="mt-6 tracking-wider text-sm font-medium">
+                            <div>Ward</div>
+                            <select onChange={handleWardChange} className='mt-2 outline-none border border-gray-300 p-2 rounded-md w-full'>
+                                <option value="">Vui lòng chọn phường/ xã</option>
+                                {wardList?.results?.map((ward) => (
+                                    <option value={ward.ward_id}>{ward.ward_name}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="mt-6 tracking-wider text-sm font-medium">
+                            <div>Địa chỉ nhận hàng</div>
+                            <input className="appearance-none mt-2 bg-transparent w-full text-[#000] border-[1px] border-black leading-tight py-4 pl-4 placeholder:text-[#606060]"
+                                type="text"
+                                placeholder="Số nhà, tên đường..."
+                                onChange={(event) => setAddress(event.target.value)}
+                                value={address || ""}
+                            />
+                        </div>
                         <div
                             onClick={addAddress}
                             className='beana-button-green-hover py-1 px-4 rounded-md inline-block mt-2'>
                             Thêm
+                            {isLoading &&
+                                <div className='inline-block pl-1'>
+                                    <CircleLoadingWhite size="15" />
+                                </div>}
                         </div>
                     </div>
 

@@ -38,10 +38,12 @@ export const useAddAddress = () => {
     },
   });
   const mutate = mutation.mutate;
+  const isLoading = mutation.isLoading;
   return {
     mutate,
     isFailed,
-    isSuccess
+    isSuccess,
+    isLoading
   };
 };
 

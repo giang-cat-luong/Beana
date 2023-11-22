@@ -20,6 +20,16 @@ export const instanceUpload = axios.create({
   withCredentials: true,
 });
 
+const urlVNProvince = "https://vapi.vnappmob.com/api/province";
+export const instanceProvince = axios.create({
+  // withCredentials: true,
+  baseURL: urlVNProvince,
+  // headers: {
+  //   "Content-Type": "application/json",
+  //   'Access-Control-Allow-Origin': '*', 
+  // },
+});
+
 instance.interceptors.request.use(
   (config) => {
     const accessToken = localStorage.getItem("userToken");
