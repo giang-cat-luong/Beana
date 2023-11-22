@@ -81,7 +81,7 @@ export default function Summary({ data, totalPrice, addressList, defaultAddress,
                     <p className="font-semibold">{defaultAddressSelected?.fullName} -</p>
                     <p>{defaultAddressSelected?.phone}</p>
                   </div>
-                  <p className="mt-2">{defaultAddressSelected?.address}</p>
+                  <p className="mt-2">{defaultAddressSelected?.address}, {defaultAddressSelected?.ward}, {defaultAddressSelected?.district}, {defaultAddressSelected?.province}</p>
                 </div>
               </div>
 

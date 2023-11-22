@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
-import { addAddress, getAddress } from "../Address/callers";
+import { addAddress, getAddress, setDefaultAddress } from "../Address/callers";
 import Failed from "../../components/Notification/Failed";
 import { useState } from 'react';
 
@@ -18,6 +18,7 @@ export const useGetAddress = () => {
     },
   );
 };
+
 export const useAddAddress = () => {
   const queryClient = useQueryClient();
   const [isFailed, setIsFailed] = useState(false);
@@ -46,5 +47,26 @@ export const useAddAddress = () => {
     isLoading
   };
 };
+export const useSetDefaultAddress = () => {
+  const queryClient = useQueryClient();
+  const [isSuccess, setIsSuccess] = useState(false);
+  const mutation = useMutation(setDefaultAddress, {
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['address'] });
+      setIsSuccess(true);
+      setTimeout(() => {
+        setIsSuccess(false);
+      }, 5000);
+    },
+    onError: () => {
+    },
+  });
+  const mutate = mutation.mutate;
+  return {
+    mutate,
+    isSuccess,
+  };
+};
+
 
 

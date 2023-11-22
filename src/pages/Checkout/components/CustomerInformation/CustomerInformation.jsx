@@ -64,27 +64,23 @@ export default function CustomerInformation({ setPage, addressList, defaultAddre
     const [districtId, setDistrictId] = useState(null);
 
     const { data: wardList } = useGetWard(districtId);
-    const [wardId, setWardId] = useState(null);
 
 
     const handleProvinceChange = (e) => {
         const selectedProvinceName = e.target.options[e.target.selectedIndex].text;
         setProvinceId(e.target.value)
         setProvince(selectedProvinceName);
-        console.log(selectedProvinceName);
     };
 
     const handleDistrictChange = (e) => {
         const selectedDistrictName = e.target.options[e.target.selectedIndex].text;
         setDistrictId(e.target.value)
         setDistrict(selectedDistrictName);
-        console.log(selectedDistrictName);
     };
 
     const handleWardChange = (e) => {
         const selectedWardName = e.target.options[e.target.selectedIndex].text;
         setWard(selectedWardName);
-        console.log(selectedWardName);
     };
 
     return (
@@ -150,7 +146,7 @@ export default function CustomerInformation({ setPage, addressList, defaultAddre
                                                 <p className="font-semibold">{address?.fullName} -</p>
                                                 <p>{address.phone}</p>
                                             </div>
-                                            <p className="mt-2">{address.address}</p>
+                                            <p className="mt-2">{address.address}, {address.ward}, {address.district}, {address.province}</p>
                                         </div>
                                     </div>
                                     {defaultAddress === address.id &&

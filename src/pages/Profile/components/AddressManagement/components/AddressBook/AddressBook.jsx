@@ -3,6 +3,8 @@ import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { faCircleCheck, faCaretUp, faCaretDown } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useSetDefaultAddress } from "../../../../../../services/Address/services";
+import Success from "../../../../../../components/Notification/Success/Success";
 
 export default function AddressBook() {
 
@@ -10,7 +12,9 @@ export default function AddressBook() {
 
   const { data: addressList } = useAddress();
 
-  const [defaultAddress, setDefaultAddress] = useState(null);
+  const { mutate, isSuccess } = useSetDefaultAddress();
+
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [visibleAddress, setVisibleAddress] = useState(4);
 
@@ -25,20 +29,34 @@ export default function AddressBook() {
     addressRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const handleSetDefaultAddress = (addressId) => {
-    setDefaultAddress(addressId);
+  const handleSetDefaultAddress = async (addressId) => {
+    try {
+      mutate(
+        addressId
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div className='pt-[10px] pb-20 px-5'>
+      {isSuccess &&
+        <Success
+          title="Thành công"
+          description="Bạn đã đặt địa chỉ mặc định thành công"
+          isSuccess={isSuccess}
+          setIsSuccess={() => setIsSuccessOpen(false)}
+        />}
       <div ref={addressRef} className='mt-2 text-[18px] font-semibold '>Sổ địa chỉ</div>
       <div className="flex flex-row justify-between flex-wrap">
         {addressList
+          ?.sort((a, b) => (a.status === 1 ? -1 : b.status === 1 ? 1 : 0))
           ?.slice(0, visibleAddress)
           ?.map((address) => (
             <div
               key={address.id}
-              className={`w-[48%] cursor-pointer h-[130px] border-[2px] shadow-lg mt-6 tracking-wider text-[13px] font-medium relative ${defaultAddress === address.id ? "border-dashed border-secondary  " : "border-dashed border-[#faf9f5]"
+              className={`w-[48%] cursor-pointer h-[130px] border-[2px] shadow-lg mt-6 tracking-wider text-[13px] font-medium relative ${address.status === true ? "border-dashed border-secondary  " : "border-dashed border-[#faf9f5]"
                 }`}
               onClick={() => handleSetDefaultAddress(address.id)}
             >
@@ -46,17 +64,17 @@ export default function AddressBook() {
                 <div className="flex flex-col">
                   <FontAwesomeIcon
                     icon={faCircleCheck}
-                    className={`text-[25px] absolute top-7 left-4 ${defaultAddress === address.id ? 'text-secondary ' : 'text-grey '}`}
+                    className={`text-[25px] absolute top-7 left-4 ${address.status === 1 ? 'text-secondary ' : 'text-grey '}`}
                   />
-                  <div className={`${defaultAddress === address.id ? 'text-black ' : 'text-[#71716e] '}`}>
+                  <div className={`${address.status === 1 ? 'text-black ' : 'text-[#71716e] '}`}>
                     <div className="flex flex-row gap-2">
                       <p className="font-semibold">{address?.fullName} -</p>
                       <p>{address.phone}</p>
                     </div>
-                    <p className="mt-2">{address.address}</p>
+                    <p className="mt-2">{address.address}, {address.ward}, {address.district}, {address.province}</p>
                   </div>
                 </div>
-                {defaultAddress === address.id &&
+                {address.status === 1 &&
                   <div className="absolute right-0 top-0">
                     <img className="w-8" src="https://res.cloudinary.com/dc4hafqoa/image/upload/v1699474594/Beana_assets/default_w3ztfr.png" />
                   </div>

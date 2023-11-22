@@ -18,3 +18,9 @@ export const addAddress = async ({ fullName, phone, province, district, ward, ad
   });
   return res.data;
 };
+export const setDefaultAddress = async (id) => {
+  const res = await instance.put(`${API.SET_DEFAULT_ADDRESS}/${id}`);
+
+  return res.data;
+};
+
