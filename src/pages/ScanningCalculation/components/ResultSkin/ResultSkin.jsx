@@ -206,7 +206,7 @@ export default function ResultSkin({ img }) {
         </div>
       }
       {page === 0 &&
-        <div className="h-[620px] z-0 bg-fixed bg-center animate-screenAppear" style={{ backgroundImage: `url(${img})` }}>
+        <div className="h-[620px] z-0 bg-fixed animate-screenAppear" style={{ backgroundImage: `url(${img})` }}>
           {currentImageByIndex === 5 &&
             <div className="h-[620px] bg-black/5 backdrop-opacity-10 backdrop-invert ">
               <div className='animate-analyzeLineAppear'>
