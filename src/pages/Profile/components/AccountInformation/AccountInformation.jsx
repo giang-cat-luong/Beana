@@ -2,6 +2,7 @@ import { useState } from "react";
 import Datepicker from "tailwind-datepicker-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faArrowRight, faArrowLeft, faUser } from "@fortawesome/free-solid-svg-icons";
+import useProfile from "./hooks/useProfile";
 
 
 const options = {
@@ -53,6 +54,16 @@ const options = {
 
 export default function AccountInformation() {
 
+  const { data: profile, isLoading } = useProfile();
+
+  const dateObject = new Date(profile?.dob);
+
+  const day = dateObject.getDate();
+  const month = dateObject.getMonth() + 1;
+  const year = dateObject.getFullYear();
+
+  const formattedDateString = `${month}/${day}/${year}`;
+ 
   //handle date
   const [show, setShow] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null)
@@ -76,14 +87,14 @@ export default function AccountInformation() {
             <input
               className="beana-input-profile bg-[#eeeeee] cursor-not-allowed"
               type="text"
-              placeholder="vutruonggiang452002@gmail.com"
+              placeholder={profile?.email}
               disabled
             />
             <div className="relative">
               <input
                 className="beana-input-profile mt-4"
                 type="text"
-                placeholder="Trường Giang"
+                placeholder={profile?.name}
               // onChange={(event) => setProvince(event.target.value)}
               // value={province || ""}
               />
@@ -91,15 +102,15 @@ export default function AccountInformation() {
             </div>
             <div className='flex flex-row gap-4 items-center mt-3'>
               <div className='flex flex-row items-center gap-1'>
-                <input type="radio" name="fav_language" value="HTML" />
+                <input type="radio" name="fav_language" value="HTML" checked={profile?.gender === 0 && true} />
                 <label className='text-[13px] font-medium'>Nam</label>
               </div>
               <div className='flex flex-row items-center gap-1'>
-                <input type="radio" name="fav_language" value="HTML" />
+                <input type="radio" name="fav_language" value="HTML" checked={profile?.gender === 1 && true} />
                 <label className='text-[13px] font-medium'>Nữ</label>
               </div>
               <div className='flex flex-row items-center gap-1'>
-                <input type="radio" name="fav_language" value="HTML" />
+                <input type="radio" name="fav_language" value="HTML" checked={profile?.gender === 2 && true} />
                 <label className='text-[13px] font-medium'>Khác</label>
               </div>
             </div>
@@ -112,7 +123,7 @@ export default function AccountInformation() {
                 <input
                   type="text"
                   className="text-[13px] absolute left-8 outline-none font-semibold"
-                  placeholder="Chọn ngày sinh"
+                  placeholder={formattedDateString}
                   value={selectedDate || ""}
                   readOnly />
                 <div onClick={() => setShow(true)} className="font-medium text-[13px] underline hover:text-secondary cursor-pointer">Sửa</div>

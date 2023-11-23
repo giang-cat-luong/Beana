@@ -206,7 +206,7 @@ export default function ResultSkin({ img }) {
         </div>
       }
       {page === 0 &&
-        <div className="h-[620px] z-0 bg-fixed bg-center animate-screenAppear" style={{ backgroundImage: `url('https://res.cloudinary.com/dc4hafqoa/image/upload/v1700497153/Beana_assets/635bcc2d96817846e4852f51_634fd79657515cf1330c7103_63207867a3bbeed46b755d80_guide-to-face-recognition_o0jgxy.png')` }}>
+        <div className="h-[620px] z-0 bg-fixed bg-center animate-screenAppear" style={{ backgroundImage: `url(${img})` }}>
           {currentImageByIndex === 5 &&
             <div className="h-[620px] bg-black/5 backdrop-opacity-10 backdrop-invert ">
               <div className='animate-analyzeLineAppear'>
