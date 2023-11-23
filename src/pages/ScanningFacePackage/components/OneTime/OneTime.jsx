@@ -76,7 +76,7 @@ export default function OneTime({ packages, setPackages,handlePayment }) {
                 <p className="text-[#0d1216db]">Thang đo chi tiết kết quả da mặt</p>
             </div>
 
-            <div onClick={()=>handlePayment("19.000","Gói 1 lần Face scanning")} className="beana-button-white-hover text-center px-4 py-[10px] rounded-md mt-12">
+            <div onClick={()=>handlePayment(19000)} className="beana-button-white-hover text-center px-4 py-[10px] rounded-md mt-12">
                 Mua ngay
             </div>
         </div>

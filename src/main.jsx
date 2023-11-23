@@ -32,10 +32,7 @@ import {
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import Checkout from "./pages/Checkout/Checkout";
 import PaymentMomo from "./pages/Checkout/components/PaymentMomo";
-import FaceScanningPackaga from "./pages/ScanningFacePackage/ScanningFacePackage";
 import ScanningFacePackage from "./pages/ScanningFacePackage/ScanningFacePackage";
-import PaymentPackage from "./pages/ScanningFacePackage/components/PaymentPackage.jsx/PaymentPackage";
-
 
 
 const router = createBrowserRouter([
@@ -143,21 +140,6 @@ const router = createBrowserRouter([
 
     ],
   },
-  // {
-  //   path: "/",
-  //   element: <Home />,
-  //   errorElement: <Error404 />,
-
-  //   children: [
-  //     {
-  //       index: true, element: <Navigate to="/landingPage" replace />
-  //     },
-  //     {
-  //       path: "/landingPage",
-  //       element: <LandingPage />,
-  //     },
-  //   ],
-  // },
   {
     path: "/scanning-camera",
     element: <ScanningCamera />,
@@ -170,11 +152,6 @@ const router = createBrowserRouter([
     path: "/payment-momo",
     element: <PaymentMomo />,
   },
-  {
-    path: "/payment-package",
-    element: <PaymentPackage />,
-  },
-
 ]);
 
 const queryClient = new QueryClient({
@@ -184,9 +161,9 @@ const queryClient = new QueryClient({
 const rootElement = document.getElementById('root')
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-      <ReactQueryDevtools position="bottom-right" />
-    </QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+        <ReactQueryDevtools position="bottom-right" />
+      </QueryClientProvider>
   </React.StrictMode>,
 )

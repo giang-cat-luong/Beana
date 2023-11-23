@@ -8,7 +8,7 @@ export default function PaymentMomo() {
     const location = useLocation();
     const { dataCheckout } = location.state || { dataCheckout: null };
     const { packageCheckout } = location.state || { packageCheckout: null };
-    
+    console.log(dataCheckout)
 
     const initialTime = {
         hours: 0,
@@ -85,14 +85,14 @@ export default function PaymentMomo() {
 
                         <p className='pt-5 text-gray-500 font-medium]'>Mã đơn hàng</p>
                         <div className='flex flex-row gap-2 pt-2'>
-                            <p className='text-base font-semibold tracking-wide'>{dataCheckout?.id + dataCheckout?.amount}{dataCheckout?.id + dataCheckout?.amount} </p>
+                            <p className='text-base font-semibold tracking-wide'>{dataCheckout?.code} </p>
                         </div>
 
                         <div className='border-b w-full mt-5'></div>
 
                         <p className='pt-5 text-gray-500 font-medium]'>Mô tả</p>
                         <div className='flex flex-col pt-2'>
-                            <p className='text-base font-semibold tracking-wide'>Khách hàng: Vũ Trường Giang </p>
+                            <p className='text-base font-semibold tracking-wide'>Khách hàng: {dataCheckout?.user.name} </p>
                             <p className='text-base font-semibold tracking-wide'>Nội dung: Thanh toán giao dịch tại Beana </p>
                         </div>
 

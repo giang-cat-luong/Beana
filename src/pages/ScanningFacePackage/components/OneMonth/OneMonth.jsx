@@ -141,7 +141,7 @@ export default function OneMonth({ packages, setPackages,handlePayment }) {
             </div>
 
 
-            <div onClick={()=>handlePayment("159.000","Gói 1 tháng Face scanning")} className="beana-button-green-hover text-center px-4 py-[10px] rounded-md mt-12">
+            <div onClick={()=>handlePayment(159000)} className="beana-button-green-hover text-center px-4 py-[10px] rounded-md mt-12">
                 Mua ngay
             </div>
             <p className="text-center text-xs pt-2 font-medium">Dành cho cá nhân sử dụng <span className="text-secondary">thường xuyên</span> dịch vụ Face scanning</p>

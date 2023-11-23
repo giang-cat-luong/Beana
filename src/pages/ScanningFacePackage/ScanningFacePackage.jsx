@@ -4,7 +4,8 @@ import ThreeTimes from "./components/ThreeTimes";
 import OneMonth from "./components/OneMonth";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import useAddress from "../Checkout/hooks/useAddress";
+import { useCheckout } from "../../services/Checkout/services";
 
 export default function ScanningFacePackage() {
 
@@ -12,7 +13,11 @@ export default function ScanningFacePackage() {
   const navigate = useNavigate();
 
   const [packages, setPackages] = useState(1)
+  const { mutate, isFailed, isLoading, isSuccess, data: checkoutData } = useCheckout();
+  const { data: addressList } = useAddress();
 
+  const defaultAddress = addressList?.find((address) => address.status === 1)
+  
   const setToggle = (index) => {
     setPackages(index);
   }
@@ -21,11 +26,20 @@ export default function ScanningFacePackage() {
     packageRef.current.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const handlePayment = (price, code) => {
-    console.log(price,code)
-    navigate("/payment-package", { state: { packageCheckout: { price, code } } });
+  const handlePayment = (price) => {
+    try {
+      mutate({
+        amount: price,
+        addressId: defaultAddress?.id,
+        paymentId: 1,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
-
+  if (isSuccess) {
+    return navigate("/payment-momo", { state: { dataCheckout: checkoutData } });
+  }
   return (
     <div className='min-h-screen'>
       <div className='flex flex-row pb-28 bg-white px-4'>
