@@ -297,6 +297,7 @@ function ScanningCamera() {
                         {!imgSrc &&
                             <div>
                                 <Webcam
+                                    mirrored
                                     ref={webcamRef}
                                     screenshotFormat="image/jpeg"
                                     className="absolute top-28 left-0 right-[80px] text-center w-full h-[480px] border-2 border-secondary"
